@@ -216,3 +216,7 @@ public int Age
     }
 }
 ```
+
+# Commit message convention
+1. [Always use emoji at the start of the commit](https://gitmoji.dev/)
+2. Always start with infinitive verb that represent what you have done such as Update... Add... Create... not Added/Adding
