@@ -1,4 +1,4 @@
-# GrayByZrhym
+# ProjectGray
 Game Programming class project
 
 # Coding Convention [ref](https://github.com/pjumruspun/RogueliteProject/blob/develop/README.md)
