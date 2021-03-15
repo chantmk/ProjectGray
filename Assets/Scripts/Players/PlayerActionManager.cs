@@ -15,7 +15,7 @@ public class PlayerActionManager : MonoBehaviour
     {
         if (Input.GetButton("Fire1"))
         {
-            EventPublisher.Trig
+            EventPublisher.TriggerPlayerPressFire();
         }
     }
 }

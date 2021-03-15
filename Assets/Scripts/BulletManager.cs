@@ -10,10 +10,9 @@ public class BulletManager : MonoBehaviour
     
     void Start()
     {
-        rigidbody.velocity = direction * bulletSpeed;
-    }
-    private void Awake()
-    {
         rigidbody = GetComponent<Rigidbody2D>();
+        direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        rigidbody.velocity = direction * bulletSpeed;
+        rigidbody.velocity = new Vector2(direction.x * bulletSpeed, direction.y * bulletSpeed);
     }
 }

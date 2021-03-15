@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementManager : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigidbody;
+    [SerializeField] private Rigidbody2D playerRigidbody;
 
     [SerializeField] private float xSpeed = 2.0f;
     [SerializeField] private float ySpeed = 2.0f;
     private int inputX, inputY;
 
 
-    private void Awake()
+    void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    void Update()
     {
         var rawInputX = Input.GetAxisRaw("Horizontal");
         var rawInputY = Input.GetAxisRaw("Vertical");
@@ -26,6 +26,6 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = new Vector2(inputX * xSpeed, inputY * ySpeed);
+        playerRigidbody.velocity = new Vector2(inputX * xSpeed, inputY * ySpeed);
     }
 }
