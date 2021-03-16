@@ -9,12 +9,14 @@ public class RandomTile : MonoBehaviour
 {
     public Tilemap tilemap;
     private List<Vector3> tileWorldLocations;
-    private float[,] dangerTile = new float[12, 6] { { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0}, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, };
+    private float[,] dangerTile = new float[12, 6] { { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, };
     // Start is called before the first frame update
     BoundsInt bounds;
     private GameObject playerObj = null;
     int objX;
     int objY;
+    private int currentTileX = 0;
+    private int currentTileY = 0;
 
     void Start()
     {
@@ -31,7 +33,7 @@ public class RandomTile : MonoBehaviour
                 //TileBase tile = allTiles[x + y * bounds.size.x];
                 tilemap.SetTileFlags(new Vector3Int(x, y, 0), TileFlags.None);
                 /*tilemap.SetColor(new Vector3Int(x, y, 0), Color.green);*/
-          
+
             }
         }
 
@@ -63,13 +65,18 @@ public class RandomTile : MonoBehaviour
 
              }
          }*/
-        objX = (int) Math.Floor(playerObj.transform.position.x);
-        objY = (int) Math.Floor(playerObj.transform.position.y);
-        dangerTile[objX + 5, objY + 7] += 1;
+        objX = (int)Math.Floor(playerObj.transform.position.x);
+        objY = (int)Math.Floor(playerObj.transform.position.y);
+        if (dangerTile[objX + 5, objY + 7] != 5)
+        {
+            dangerTile[objX + 5, objY + 7] += 1;
+        }
+        
 
         Color color = Color.green;
         color.a = dangerTile[objX + 5, objY + 7] * 0.2f;
         tilemap.SetColor(new Vector3Int(objX, objY, 0), color);
+        playerObj.GetComponent<PlayerMovementManager>().setSpeed(dangerTile[objX + 5, objY + 7]);
         //Debug.Log(dangerTile[objX + 5, objY + 7]);
 
 
@@ -79,5 +86,14 @@ public class RandomTile : MonoBehaviour
     void Update()
     {
         //Debug.Log("Player Position: X = " + Math.Floor(playerObj.transform.position.x) + " --- Y = " + Math.Floor(playerObj.transform.position.y));
+        objX = (int)Math.Floor(playerObj.transform.position.x);
+        objY = (int)Math.Floor(playerObj.transform.position.y);
+        if (objX != currentTileX || objY != currentTileY)
+        {
+            playerObj.GetComponent<PlayerMovementManager>().setSpeed(dangerTile[objX + 5, objY + 7]);
+            currentTileX = objX;
+            currentTileY = objY;
+        }
+
     }
 }

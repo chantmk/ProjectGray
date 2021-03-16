@@ -8,6 +8,7 @@ public class PlayerMovementManager : MonoBehaviour
 
     [SerializeField] private float xSpeed = 2.0f;
     [SerializeField] private float ySpeed = 2.0f;
+    private static float xySpeed = 2.0f;
     private int inputX, inputY;
 
 
@@ -27,5 +28,13 @@ public class PlayerMovementManager : MonoBehaviour
     private void FixedUpdate()
     {
         playerRigidbody.velocity = new Vector2(inputX * xSpeed, inputY * ySpeed);
+    }
+
+    public void setSpeed(float speed)
+    {
+        
+        xSpeed = xySpeed / (1f + speed);
+        ySpeed = xySpeed / (1f + speed);
+        //Debug.Log(xSpeed);
     }
 }
