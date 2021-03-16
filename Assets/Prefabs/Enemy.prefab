@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
-  ViewRange: 0
-  AttackRange: 0
+  ViewRange: 3
+  AttackRange: 1
 --- !u!50 &8249095275983056010
 Rigidbody2D:
   serializedVersion: 4
