@@ -224,3 +224,17 @@ public int Age
     }
 }
 ```
+
+## Modifier order
+We will use order from Visual Studio EditorConfig file which preferred order as below
+
+
+- access modifiers: { public / private / protected / internal / protected internal / private protected } 
+- static
+- extern
+- new
+- inheritance modifiers: { virtual / abstract / override / sealed override }
+- readonly
+- unsafe
+- volatile
+- async
