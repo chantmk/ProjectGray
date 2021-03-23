@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 8249095275983056009}
   - component: {fileID: 8249095275983056008}
   - component: {fileID: 8249095275983056011}
-  - component: {fileID: 8249095275983056013}
   - component: {fileID: 8249095275983056010}
+  - component: {fileID: 8249095275983056013}
+  - component: {fileID: 1206890032}
+  - component: {fileID: 1206890038}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -111,21 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8249095275983056013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8249095275983056012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d39d6edb10351848aad1880dea56d60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 1
-  ViewRange: 3
-  AttackRange: 1
 --- !u!50 &8249095275983056010
 Rigidbody2D:
   serializedVersion: 4
@@ -147,3 +134,59 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8249095275983056013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249095275983056012}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d39d6edb10351848aad1880dea56d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 1
+  ViewRange: 3
+  AttackRange: 1
+--- !u!95 &1206890032
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249095275983056012}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ec02437393986340810ccb205bef70b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1206890038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249095275983056012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0227a7eafeb83444c8342c84779d15cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+  Shield: 0
+  ShieldFactor: 0
+  MovePositions:
+  - {x: -2.45, y: -1.8}
+  - {x: -2.45, y: -2.8}
+  Speed: 0.5
+  VisionRange: 3
+  AttackRange: 0.75
+  AttackSpeed: 2
