@@ -16,12 +16,6 @@ public class EnemyChase : EnemyBehaviour
         chase();
     }
 
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        //animator.ResetTrigger("IntoAttackRange");
-        //animator.ResetTrigger("IntoVisionRange");
-    }
-
     private void checkRange()
     {
         if (Vector2.Distance(player.position, transform.position) < enemy.AttackRange)
@@ -34,7 +28,7 @@ public class EnemyChase : EnemyBehaviour
         }
     }
 
-    private void chase()
+    protected virtual void chase()
     {
         // This can be improved by use A* pathfinder
         if (Vector2.Distance(player.position, transform.position) > enemy.AttackRange)
