@@ -1,5 +1,13 @@
 # ProjectGray
-Game Programming class project
+Game Programming class 
+
+# Before push
+1. make sure game is playable, if not fix it before push or code on your own branch
+2. if there are conflict, merge it and revisit 1
+
+# Commit message convention
+1. [Always use emoji at the start of the commit](https://gitmoji.dev/)
+2. Always start with infinitive verb that represent what you have done such as Update... Add... Create... not Added/Adding
 
 # Coding Convention [ref](https://github.com/pjumruspun/RogueliteProject/blob/develop/README.md)
 
@@ -216,7 +224,3 @@ public int Age
     }
 }
 ```
-
-# Commit message convention
-1. [Always use emoji at the start of the commit](https://gitmoji.dev/)
-2. Always start with infinitive verb that represent what you have done such as Update... Add... Create... not Added/Adding
