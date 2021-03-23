@@ -7,7 +7,7 @@ public class Boss : Enemy
     [Header("Boss parameters")]
     public float SpecialAttackRange;
 
-    override protected void Start()
+    protected override void Start()
     {
         base.Start();
     }
