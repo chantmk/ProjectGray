@@ -42,6 +42,6 @@ public class PlayerWeaponManager : MonoBehaviour
     private void fireWeapon()
     {
         var bullet = Instantiate(bulletObject, playerTransform.position, Quaternion.Euler(Vector3.zero));
-        
+        EventPublisher.TriggerPlayerFire();
     }
 }
