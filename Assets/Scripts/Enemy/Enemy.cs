@@ -26,13 +26,6 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
 
-    public void Start()
-    {
-        CurrentHealth = MaxHealth;
-        rigidbody = GetComponent<Rigidbody2D>();
-        MovePositions[0] = new Vector2(transform.position.x, transform.position.y);
-    }
-
     public void TakeDamage(float damage)
     {
         if (!isDead)
@@ -72,5 +65,12 @@ public class Enemy : MonoBehaviour
             }
         }
         return MovePositions[toSpot];
+    }
+
+    protected virtual void Start()
+    {
+        CurrentHealth = MaxHealth;
+        rigidbody = GetComponent<Rigidbody2D>();
+        MovePositions[0] = new Vector2(transform.position.x, transform.position.y);
     }
 }

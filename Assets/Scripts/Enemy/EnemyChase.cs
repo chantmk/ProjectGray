@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class EnemyChase : EnemyBehaviour
 {
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        base.OnStateEnter(animator, stateInfo, layerIndex);
-    }
-
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         checkRange();
         chase();
-    }
-
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        //animator.ResetTrigger("IntoAttackRange");
-        //animator.ResetTrigger("IntoVisionRange");
     }
 
     private void checkRange()
@@ -34,7 +23,7 @@ public class EnemyChase : EnemyBehaviour
         }
     }
 
-    private void chase()
+    protected virtual void chase()
     {
         // This can be improved by use A* pathfinder
         if (Vector2.Distance(player.position, transform.position) > enemy.AttackRange)
