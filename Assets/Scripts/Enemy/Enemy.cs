@@ -12,12 +12,13 @@ public class Enemy : MonoBehaviour
     public float Shield;
     public float ShieldFactor;
     [Header("Enemy movement parameters")]
-    public Vector2[] MovePositions;
+    public Vector2[] MovePositions = new Vector2[1];
     public float Speed;
     [Header("Enemy attack parameters")]
     public float VisionRange;
     public float AttackRange;
     public float AttackSpeed;
+    public bool IsRange;
 
     private float CurrentHealth;
     private bool isDead => CurrentHealth <= 0f;
@@ -25,6 +26,11 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
+
+    public float GetPercentHealth()
+    {
+        return CurrentHealth / MaxHealth;
+    }
 
     public void TakeDamage(float damage)
     {

@@ -43,4 +43,23 @@ public class EnemyBehaviour : StateMachineBehaviour
     {
         // Implement code that sets up animation IK (inverse kinematics)
     }
+
+    protected virtual void ListenToChaseSignal()
+    {
+        if (Vector2.Distance(player.position, transform.position) < enemy.VisionRange)
+        {
+            animator.SetBool("ShouldChase", true);
+        }
+        else
+        {
+            animator.SetBool("ShouldChase", false);
+        }
+    }
+    protected virtual void ListenToAttackSignal()
+    {
+        if (Vector2.Distance(player.position, transform.position) < enemy.AttackRange)
+        {
+            animator.SetTrigger("Attack");
+        }
+    }
 }

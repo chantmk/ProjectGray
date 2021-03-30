@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossChange : EnemyChase
+public class BossChase : BossBehaviour
 {
-    protected override void chase()
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        base.OnStateUpdate(animator, stateInfo, layerIndex);
+        ListenToAttackSignal();
+        chase();
+    }
+
+    private void chase()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, enemy.Speed * Time.deltaTime);
     }

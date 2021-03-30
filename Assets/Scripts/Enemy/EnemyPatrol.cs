@@ -13,11 +13,7 @@ public class EnemyPatrol : EnemyBehaviour
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         patrol();
-        if (Vector2.Distance(player.position, transform.position) < enemy.VisionRange)
-        {
-            //animator.SetTrigger("IntoVisionRange");
-            animator.SetBool("isInVisionRange", true);
-        }
+        ListenToChaseSignal();
         
     }
 
