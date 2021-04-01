@@ -8,8 +8,8 @@ public class EnemyBehaviour : StateMachineBehaviour
     protected Animator animator;
     protected Transform transform;
     protected Rigidbody2D rigidbody2D;
-    protected Transform player;
     protected Enemy enemy;
+    protected Transform player;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,13 +17,13 @@ public class EnemyBehaviour : StateMachineBehaviour
         this.animator = animator;
         enemy = animator.gameObject.GetComponent<Enemy>();
         transform = animator.gameObject.transform;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = enemy.player;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemy.FlipToPlayer(player.position.x - transform.position.x);
+        enemy.FlipToPlayer();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -57,7 +57,7 @@ public class EnemyBehaviour : StateMachineBehaviour
     }
     protected virtual void ListenToAttackSignal()
     {
-        if (Vector2.Distance(player.position, transform.position) < enemy.AttackRange)
+        if (enemy.GetVectorToPlayer().magnitude < enemy.AttackRange)
         {
             animator.SetTrigger("Attack");
         }

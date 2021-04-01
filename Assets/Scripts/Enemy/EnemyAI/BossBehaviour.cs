@@ -21,7 +21,7 @@ public class BossBehaviour : EnemyBehaviour
     {
         if (boss.GetPercentHealth() < boss.EnrageRatio && !boss.IsEnrage)
         {
-            animator.SetBool("IsEnrage", true);
+            animator.SetTrigger("Enrage");
             boss.IsEnrage = true;
         }
     }
@@ -30,7 +30,8 @@ public class BossBehaviour : EnemyBehaviour
     {
         if (boss.GetPercentHealth() < boss.LastStandRatio && !animator.GetBool("IsLastStand"))
         {
-            animator.SetBool("IsLastStand", true);
+            animator.SetTrigger("LastStand");
+            boss.IsLastStand = true;
         }
     }
 
@@ -38,14 +39,13 @@ public class BossBehaviour : EnemyBehaviour
     {
         // Override attack to look for attack and special attack + prob
         float range = Vector2.Distance(player.position, transform.position);
+        float randomRange = boss.SpecialAttackProbability + boss.AttackProbability;
         if (range < boss.SpecialAttackRange && boss.IsEnrage)
         {
-            Debug.Log("Boss Special Attack");
             animator.SetTrigger("SpecialAttack");
         }
         else if (range < boss.AttackRange)
         {
-            Debug.Log("Boss Attack");
             animator.SetTrigger("Attack");
         }
     }

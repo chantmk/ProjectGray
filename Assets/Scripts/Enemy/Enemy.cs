@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Enemy : MonoBehaviour
 {
+    public Transform player;
     [Header("Enemy life parameters")]
     public float MaxHealth;
     public float Shield;
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
 
+
     public float GetPercentHealth()
     {
         return CurrentHealth / MaxHealth;
@@ -45,8 +47,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void FlipToPlayer(float xDirection)
+    public Vector2 GetVectorToPlayer()
     {
+        return player.position - transform.position;
+    }
+
+    public void FlipToPlayer()
+    {
+        //float xDirection = player.position.x - transform.position.x;
+        float xDirection = GetVectorToPlayer().x;
         float enemyX = transform.localScale.x;
         if (xDirection < -0.01f)
         {
