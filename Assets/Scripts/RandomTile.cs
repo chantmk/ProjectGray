@@ -9,8 +9,7 @@ public class RandomTile : MonoBehaviour
 {
     public Tilemap tilemap;
     private List<Vector3> tileWorldLocations;
-    private float[,] dangerTile = new float[12, 6] { { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0 }, };
-    // Start is called before the first frame update
+    private float[,] dangerTile = new float[12, 6];
     BoundsInt bounds;
     private GameObject playerObj = null;
     int objX;
@@ -41,42 +40,17 @@ public class RandomTile : MonoBehaviour
 
     void processArrayColor()
     {
-        /* for (int x = bounds.xMin + 4; x < bounds.xMax - 1; x++)
-         {
-             for (int y = bounds.yMin; y < bounds.yMax - 4; y++)
-             {
-                 *//*TileBase tile = allTiles[x + y * bounds.size.x];
-                 if (tile != null)
-                 {
-                     Debug.Log("x:" + x + " y:" + y + " tile:" + tile.name);
-                 }
-                 else
-                 {
-                     Debug.Log("x:" + x + " y:" + y + " tile: (null)");
-                 }*//*
-                 //Debug.Log("x:" + x + " y:" + y);
-                 if (dangerTile[x + 5, y + 7] == 1)
-                 {
-                     tilemap.SetTileFlags(new Vector3Int(x, y, 0), TileFlags.None);
-                     tilemap.SetColor(new Vector3Int(x, y, 0), Color.green);
-                 }
-                 //tilemap.SetTileFlags(new Vector3Int(x, y, 0), TileFlags.None);
-                 //tilemap.SetColor(new Vector3Int(x, y, 0), Color.green);
-
-             }
-         }*/
-        objX = (int)Math.Floor(playerObj.transform.position.x);
-        objY = (int)Math.Floor(playerObj.transform.position.y);
+       /* objX = (int)Math.Floor(playerObj.transform.position.x);
+        objY = (int)Math.Floor(playerObj.transform.position.y);*/
         if (dangerTile[objX + 5, objY + 7] != 5)
         {
             dangerTile[objX + 5, objY + 7] += 1;
         }
         
-
         Color color = Color.green;
         color.a = dangerTile[objX + 5, objY + 7] * 0.2f;
         tilemap.SetColor(new Vector3Int(objX, objY, 0), color);
-        playerObj.GetComponent<PlayerMovementManager>().setSpeed(dangerTile[objX + 5, objY + 7]);
+        /*playerObj.GetComponent<PlayerMovementManager>().setSpeed(dangerTile[objX + 5, objY + 7]);*/
         //Debug.Log(dangerTile[objX + 5, objY + 7]);
 
 
@@ -88,12 +62,19 @@ public class RandomTile : MonoBehaviour
         //Debug.Log("Player Position: X = " + Math.Floor(playerObj.transform.position.x) + " --- Y = " + Math.Floor(playerObj.transform.position.y));
         objX = (int)Math.Floor(playerObj.transform.position.x);
         objY = (int)Math.Floor(playerObj.transform.position.y);
-        if (objX != currentTileX || objY != currentTileY)
+        /*if (objX != currentTileX || objY != currentTileY)
         {
             playerObj.GetComponent<PlayerMovementManager>().setSpeed(dangerTile[objX + 5, objY + 7]);
             currentTileX = objX;
             currentTileY = objY;
-        }
+        }*/
 
+    }
+
+    public float getCurrentTileData()
+    {
+        /*objX = (int)Math.Floor(playerObj.transform.position.x);
+        objY = (int)Math.Floor(playerObj.transform.position.y);*/
+        return dangerTile[objX + 5, objY + 7];
     }
 }
