@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 179973725}
   - component: {fileID: 179973726}
   - component: {fileID: 179973727}
+  - component: {fileID: 7156235225171064192}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -137,8 +138,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 0}
-  xSpeed: 2
-  ySpeed: 2
+  normalSpeed: 2
+  runningSpeed: 5
+  rechargeStamina: 20
+  expValue: 0.8
+  rawInputX: 0
+  rawInputY: 0
+  rawInputShift: 0
+  tileData: 0
+  isExhault: 0
+  stamina: 100
+  inputX: 0
+  inputY: 0
+  movement: {x: 0, y: 0}
+  tilemapObj: {fileID: 0}
+  staminaBar: {fileID: 0}
+  coefficient: 0
 --- !u!114 &179973725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,3 +193,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7156235225171064192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532720954757015461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9df81c2136fa534696aeaf8b0694cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 10
+  armor: 0
