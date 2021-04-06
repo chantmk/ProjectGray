@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Tilemap
   - StaminaBar
+  - Weapon
   layers:
   - Default
   - TransparentFX

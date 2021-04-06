@@ -8,11 +8,14 @@ public class PlayerWeaponManager : MonoBehaviour
     [SerializeField] private GameObject bulletObject;
     private float fireCooldown = 0.0f;
     private Transform playerTransform;
+    private GameObject weaponObject;
+    private IWeapon weapon;
 
     // Start is called before the first frame update
     void Start()
     {
         playerTransform = GetComponent<Transform>();
+        weaponObject = gameObject.transform.Find("Weapon").gameObject;
         EventPublisher.PlayerPressFire += processFireCommand;
     }
 
@@ -41,7 +44,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private void fireWeapon()
     {
-        var bullet = Instantiate(bulletObject, playerTransform.position, Quaternion.Euler(Vector3.zero));
+        
         EventPublisher.TriggerPlayerFire();
     }
 }
