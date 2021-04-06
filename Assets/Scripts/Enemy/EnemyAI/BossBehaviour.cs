@@ -44,14 +44,14 @@ public class BossBehaviour : EnemyBehaviour
         float randomRange = bossWeapon.SpecialAttackProbability + bossWeapon.AttackProbability;
         float random = Random.Range(0.0f, randomRange);
 
-        Debug.Log($"{random}, {bossWeapon.SpecialAttackProbability}");
+        //Debug.Log($"{random}, {bossWeapon.SpecialAttackProbability}");
         if (random <= bossWeapon.SpecialAttackProbability && range < bossWeapon.SpecialAttackRange && boss.IsEnrage)
         {
             animator.SetTrigger("SpecialAttack");
         }
         else if (range < bossWeapon.AttackRange)
         {
-            Debug.Log("HI");
+            //Debug.Log("HI");
             animator.SetTrigger("Attack");
         }
     }
