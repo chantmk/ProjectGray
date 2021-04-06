@@ -42,10 +42,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1.3734578, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.63, y: 4.8}
+  m_Size: {x: 4.376916, y: 4.8}
   m_EdgeRadius: 0
 --- !u!114 &354418186
 MonoBehaviour:
@@ -149,7 +149,7 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 0}
   AttackRange: 2.88
   AttackSpeed: 1
-  AttackDamage: 0
+  AttackDamage: 20
   AttackMaxCooldown: 2
   IsRange: 0
   SpecialAttackRange: 3.9
@@ -259,7 +259,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.45, y: 0}
+  m_Offset: {x: 0.36964512, y: -0.066473484}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -270,7 +270,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.57, y: 1.24}
+  m_Size: {x: 3.20929, y: 4.563587}
   m_EdgeRadius: 0
 --- !u!95 &6852541505086270382
 Animator:

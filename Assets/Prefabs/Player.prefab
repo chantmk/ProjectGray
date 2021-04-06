@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 179973726}
   - component: {fileID: 179973727}
   - component: {fileID: 7156235225171064192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -208,3 +208,5 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   armor: 0
+  isDead: 0
+  healthBar: {fileID: 0}

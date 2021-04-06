@@ -401,7 +401,7 @@ PrefabInstance:
     - target: {fileID: 1351499416, guid: 86a016de6325e1b42a914366cb946c37, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1738861208}
     - target: {fileID: 6852541505086270373, guid: 86a016de6325e1b42a914366cb946c37,
         type: 3}
       propertyPath: m_Name
@@ -3410,6 +3410,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1738861208 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
+    type: 3}
+  m_PrefabInstance: {fileID: 1680212096}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1930928130 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1351499416, guid: 86a016de6325e1b42a914366cb946c37,
