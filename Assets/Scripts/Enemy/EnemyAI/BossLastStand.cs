@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossLastStand : BossBehaviour
 {
-    // This class work on boss immortal, pop up mercy text and decision making
+ /*   // This class work on boss immortal, pop up mercy text and decision making
     // Kill will only play dead animation
     // While at this state mercy will pop up dialogue
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -34,5 +34,5 @@ public class BossLastStand : BossBehaviour
     private void askForMercy()
     {
 
-    }
+    }*/
 }

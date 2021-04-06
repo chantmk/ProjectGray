@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossWeapon : Weapon
+public class BossWeapon : EnemyWeapon
 {
     public GameObject[] SpecialAttacks = new GameObject[3];
 
@@ -16,7 +16,7 @@ public class BossWeapon : Weapon
         //Vector2 attackPosition = Owner.transform.position + spawnOffset;
         // May check not exceed range of Owner
         //if (Math.abs(Vector2.Distance(attackPosition, Owner.transform.position)) > )
-        var specialAttackComponent = Instantiate(SpecialAttacks[SpecialNumber], (Owner.transform.position+spawnOffset), Quaternion.Euler(Vector3.zero));
+        var specialAttackComponent = Instantiate(SpecialAttacks[SpecialNumber], (transform.position+spawnOffset), Quaternion.Euler(Vector3.zero));
     }
 
 }

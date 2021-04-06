@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrol : EnemyBehaviour
 {
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+/*    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
     }
@@ -25,5 +25,5 @@ public class EnemyPatrol : EnemyBehaviour
     {
         // This can be improved by use A* pathfinder
         transform.position = Vector2.MoveTowards(transform.position, enemy.GetNextPatrolPosition(), enemy.Speed * Time.deltaTime);
-    }
+    }*/
 }

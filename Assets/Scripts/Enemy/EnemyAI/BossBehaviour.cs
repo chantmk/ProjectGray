@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossBehaviour : EnemyBehaviour
 {
-    protected Boss boss;
+/*    protected Boss boss;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
@@ -37,16 +37,16 @@ public class BossBehaviour : EnemyBehaviour
 
     protected override void ListenToAttackSignal()
     {
-        // Override attack to look for attack and special attack + prob
-        float range = Vector2.Distance(player.position, transform.position);
-        float randomRange = boss.SpecialAttackProbability + boss.AttackProbability;
-        if (range < boss.SpecialAttackRange && boss.IsEnrage)
-        {
-            animator.SetTrigger("SpecialAttack");
-        }
-        else if (range < boss.AttackRange)
-        {
-            animator.SetTrigger("Attack");
-        }
-    }
+        //// Override attack to look for attack and special attack + prob
+        //float range = Vector2.Distance(player.position, transform.position);
+        //float randomRange = boss.SpecialAttackProbability + boss.AttackProbability;
+        //if (range < boss.SpecialAttackRange && boss.IsEnrage)
+        //{
+        //    animator.SetTrigger("SpecialAttack");
+        //}
+        //else if (range < boss.AttackRange)
+        //{
+        //    animator.SetTrigger("Attack");
+        //}
+    }*/
 }

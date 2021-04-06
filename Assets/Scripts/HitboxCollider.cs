@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class AttackHitbox : MonoBehaviour
+public class HitboxCollider : MonoBehaviour
 {
     public HashSet<Collider2D> HitColliders => hitColliders;
     private HashSet<Collider2D> hitColliders = new HashSet<Collider2D>();
