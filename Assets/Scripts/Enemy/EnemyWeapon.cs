@@ -6,9 +6,10 @@ public class EnemyWeapon : MonoBehaviour
 {
     [Header("Weapon status")]
     public GameObject ProjectileComponent;
-    public float AttackRange = 1f;
-    public float AttackSpeed = 1f;
-    public float AttackDamage = 1f;
+    public float AttackRange = 1.0f;
+    public float AttackSpeed = 1.0f;
+    public float AttackDamage = 1.0f;
+    public float AttackMaxCooldown = 2.0f;
     public bool IsRange = false;
     
     private AttackHitbox attackHitbox;
@@ -31,6 +32,7 @@ public class EnemyWeapon : MonoBehaviour
 
     protected virtual void MeleeAttack()
     {
+        Debug.Log($"Melee attack from {this.name}");
         HashSet<Collider2D> colliders = attackHitbox.HitColliders;
         foreach (Collider2D collider in colliders)
         {
@@ -44,12 +46,13 @@ public class EnemyWeapon : MonoBehaviour
 
     protected virtual void RangeAttack()
     {
+        Debug.Log($"Range attack from {this.name}");
         // This method instantiate the projectile given in projectile component
         // Instant the position and then let the object do what it have to
         var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
     }
 
-    void OnDrawGizmosSelected()
+    public virtual void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, AttackRange);
     }

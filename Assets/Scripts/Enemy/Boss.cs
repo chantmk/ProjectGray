@@ -15,14 +15,6 @@ public class Boss : Enemy
     public bool IsImmortal = false;
     public bool IsMercy = false;
     public bool IsKill = false;
-    [Header("Boss attack parameters")]
-    public float SpecialAttackRange;
-    [Range(0.0f, 1.0f)]
-    public float AttackProbability;
-    [Range(0.0f, 1.0f)]
-    public float SpecialAttackProbability;
-    [Tooltip("Boss special attack component")]
-    public GameObject[] SpecialAttacks;
 
     protected override void Start()
     {
