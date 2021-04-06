@@ -348,6 +348,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9df81c2136fa534696aeaf8b0694cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7156235225171064192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532720954757015461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9df81c2136fa534696aeaf8b0694cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxHealth: 100
   damage: 10
   armor: 0

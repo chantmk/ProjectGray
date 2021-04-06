@@ -10,6 +10,7 @@ public class AttackHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+       
         hitColliders.Add(other);
     }
 

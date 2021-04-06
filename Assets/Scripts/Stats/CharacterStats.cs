@@ -11,6 +11,7 @@ public class CharacterStats : MonoBehaviour
 
     public float damage;
     public float armor;
+    public bool isDead;
     
     void Awake()
     {
@@ -19,35 +20,44 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        damage -= this.armor;
-
-        if (damage < 0.0f) damage = 0.0f;
-
-        currentHealth -= damage;
-        Debug.Log(transform.name + " -" + damage + " Health");
-        if (currentHealth <= depleteHealth)
+        if (!isDead)
         {
-            Die();
+            damage -= this.armor;
+
+            if (damage < 0.0f) damage = 0.0f;
+
+            currentHealth -= damage;
+            Debug.Log(transform.name + " -" + damage + " Health");
+            if (currentHealth <= depleteHealth)
+            {
+                Die();
+            }
         }
+        
     }
 
     public void Heal(float healValue)
     {
-        if (healValue < 0.0f)
+        if (!isDead)
         {
-            healValue = 0.0f;
-        }
+            if (healValue < 0.0f)
+            {
+                healValue = 0.0f;
+            }
 
-        currentHealth += healValue;
-        Debug.Log(transform.name + " +" + healValue + " Health");
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
+            currentHealth += healValue;
+            Debug.Log(transform.name + " +" + healValue + " Health");
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
         }
+        
     }
 
     public virtual void Die()
     {
+        isDead = true;
         Debug.Log(transform.name + " Died");
     }
 
@@ -63,13 +73,14 @@ public class CharacterStats : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        isDead = false;
         currentHealth = maxHealth;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         // TODO: remove (For debugging)
         if (Input.GetKeyDown(KeyCode.L))

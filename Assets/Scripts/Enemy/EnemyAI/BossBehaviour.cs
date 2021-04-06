@@ -6,11 +6,13 @@ public class BossBehaviour : EnemyBehaviour
 {
     protected Boss boss;
     protected BossWeapon bossWeapon;
+    protected BossStats bossStats;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         boss = (Boss)enemy;
         bossWeapon = (BossWeapon)enemyWeapon;
+        bossStats = animator.gameObject.GetComponent<BossStats>();
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -21,7 +23,7 @@ public class BossBehaviour : EnemyBehaviour
 
     protected void ListenToEnrageSignal()
     {
-        if (boss.GetPercentHealth() < boss.EnrageRatio && !boss.IsEnrage)
+        if (bossStats.GetHealthPercentage() < boss.EnrageRatio && !boss.IsEnrage)
         {
             animator.SetTrigger("Enrage");
             boss.IsEnrage = true;
@@ -30,7 +32,7 @@ public class BossBehaviour : EnemyBehaviour
 
     protected void ListenToLastStandSignal()
     {
-        if (boss.GetPercentHealth() < boss.LastStandRatio && !animator.GetBool("IsLastStand"))
+        if (bossStats.GetHealthPercentage() < boss.LastStandRatio && !animator.GetBool("IsLastStand"))
         {
             animator.SetTrigger("LastStand");
             boss.IsLastStand = true;

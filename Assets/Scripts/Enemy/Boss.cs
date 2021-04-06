@@ -20,4 +20,15 @@ public class Boss : Enemy
     {
         base.Start();
     }
+
+    public void ChooseMercy()
+    {
+        Debug.Log("Choose mercy");
+        IsMercy = true;
+    }
+    public void ChooseKill()
+    {
+        Debug.Log("Choose Kill");
+        IsKill = true;
+    }
 }
