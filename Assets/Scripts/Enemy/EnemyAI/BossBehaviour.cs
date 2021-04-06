@@ -12,6 +12,7 @@ public class BossBehaviour : EnemyBehaviour
         base.OnStateEnter(animator, stateInfo, layerIndex);
         boss = (Boss)enemy;
         bossWeapon = (BossWeapon)enemyWeapon;
+        bossStats = animator.gameObject.GetComponent<BossStats>();
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
