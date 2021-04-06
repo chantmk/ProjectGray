@@ -1,4 +1,4 @@
-﻿enum WeaponNames
+﻿public enum WeaponIDEnum
 {
     Black,
     Yellow,
