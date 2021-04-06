@@ -9,20 +9,20 @@ public class Stats
 
     private List<float> modifiers = new List<float>();
 
-    public int GetValue()
+    public float GetValue()
     {
-        int finalValue = baseValue;
+        float finalValue = baseValue;
 
         modifiers.ForEach(x => finalValue += x);
         return finalValue;
     }
 
-    public void AddModifier(int mod)
+    public void AddModifier(float mod)
     {
         if (mod != 0) modifiers.Add(mod);
     }
 
-    public void RemoveModifier(int mod)
+    public void RemoveModifier(float mod)
     {
         if (mod != 0) modifiers.Remove(mod);
     }
