@@ -9,10 +9,15 @@ public class EventPublisher
     public delegate void OnPlayerPressFire();
     public delegate void OnPlayerFire();
 
+    //Player stats delegates
+    //public delegate void OnPlayerTakeDamage();
+
     // Player events
     //public static event OnPlayerJump PlayerJump;
     public static event OnPlayerPressFire PlayerPressFire;
     public static event OnPlayerFire PlayerFire;
+
+    //public static event OnPlayerTakeDamage PlayerTakeDamage;
 
     //public static void TriggerPlayerJump()
     //{
@@ -28,4 +33,9 @@ public class EventPublisher
     {
         PlayerFire?.Invoke();
     }
+
+    //pulblic static void TriggerPlayerTakeDamage()
+    //{
+    //    PlayerTakeDamage?.Invoke();
+    //}
 }
