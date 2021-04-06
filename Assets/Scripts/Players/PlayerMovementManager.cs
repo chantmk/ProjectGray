@@ -23,6 +23,8 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private GameObject tilemapObj;
     [SerializeField] private GameObject staminaBar;
     [SerializeField] private float coefficient;
+    private Image image;
+    private RandomTile randomTile;
 
 
     void Start()
@@ -32,6 +34,9 @@ public class PlayerMovementManager : MonoBehaviour
             tilemapObj = GameObject.FindGameObjectWithTag("Tilemap");
         if (staminaBar == null)
             staminaBar = GameObject.FindGameObjectWithTag("StaminaBar");
+        
+        randomTile = tilemapObj.GetComponent<RandomTile>();
+        image = staminaBar.GetComponent<Image>();
     }
 
     void Update()
@@ -39,7 +44,7 @@ public class PlayerMovementManager : MonoBehaviour
         rawInputX = Input.GetAxisRaw("Horizontal");
         rawInputY = Input.GetAxisRaw("Vertical");
         rawInputShift = Input.GetKey(KeyCode.LeftShift);
-        tileData = tilemapObj.GetComponent<RandomTile>().getCurrentTileData();
+        tileData = randomTile.getCurrentTileData();
 
         inputX = rawInputX == 0 ? 0 : (int)Mathf.Sign(rawInputX);
         inputY = rawInputY == 0 ? 0 : (int)Mathf.Sign(rawInputY);
@@ -66,11 +71,11 @@ public class PlayerMovementManager : MonoBehaviour
                 isExhault = false;
             }
         }
-        staminaBar.GetComponent<Image>().fillAmount = stamina / 100;
+        image.fillAmount = stamina / 100;
         coefficient = Mathf.Pow(expValue, tileData);
         movement = new Vector2(inputX, inputY);
         //Debug.Log(coefficient);
-        movement = movement.normalized * xySpeed * coefficient;
+        movement = movement.normalized * (xySpeed * coefficient);
     }
 
     private void FixedUpdate()
