@@ -47,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
             //    // return transform of player that should follow if there is not player then patrol
             //}
         }
-        return true
+        return true;
     }
 
     // Update is called once per frame
