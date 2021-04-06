@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossChase : BossBehaviour
+public class EnemyChase : EnemyBehaviour
 {
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
-        ListenToAttackSignal();
         chase();
+        ListenToAttackSignal();
+        ListenToChaseSignal();
     }
 
-    private void chase()
+    protected virtual void chase()
     {
+        // This can be improved by use A* pathfinder
         transform.position = Vector2.MoveTowards(transform.position, player.position, enemy.Speed * Time.deltaTime);
     }
 }

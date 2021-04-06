@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Enemy : MonoBehaviour
 {
+    public Transform player;
     [Header("Enemy life parameters")]
     public float MaxHealth;
     public float Shield;
@@ -14,11 +15,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy movement parameters")]
     public Vector2[] MovePositions = new Vector2[1];
     public float Speed;
-    [Header("Enemy attack parameters")]
     public float VisionRange;
-    public float AttackRange;
-    public float AttackSpeed;
-    public bool IsRange;
 
     private float CurrentHealth;
     private bool isDead => CurrentHealth <= 0f;
@@ -26,6 +23,7 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody2D rigidbody;
     private SpriteRenderer spriteRenderer;
+
 
     public float GetPercentHealth()
     {
@@ -45,8 +43,15 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void FlipToPlayer(float xDirection)
+    public Vector2 GetVectorToPlayer()
     {
+        return player.position - transform.position;
+    }
+
+    public void FlipToPlayer()
+    {
+        //float xDirection = player.position.x - transform.position.x;
+        float xDirection = GetVectorToPlayer().x;
         float enemyX = transform.localScale.x;
         if (xDirection < -0.01f)
         {
@@ -78,5 +83,10 @@ public class Enemy : MonoBehaviour
         CurrentHealth = MaxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
         MovePositions[0] = new Vector2(transform.position.x, transform.position.y);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, VisionRange);
     }
 }

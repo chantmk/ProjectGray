@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6852541505086270377}
+  - component: {fileID: 1351499416}
+  - component: {fileID: 1351499411}
   - component: {fileID: 6852541505086270376}
   - component: {fileID: 6852541505086270379}
   - component: {fileID: 6852541505086270378}
@@ -36,6 +38,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1351499416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852541505086270373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9b35c1ab30bca4ba56adbdc9136ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  MaxHealth: 0
+  Shield: 0
+  ShieldFactor: 0
+  MovePositions:
+  - {x: 0, y: 0}
+  Speed: 1
+  VisionRange: 0
+  AttackRange: 1
+  AttackSpeed: 0
+  IsRange: 0
+  EnrageRatio: 0
+  LastStandRatio: 0
+  IsEnrage: 0
+  IsImmortal: 0
+  IsMercy: 0
+  IsKill: 0
+  SpecialAttackRange: 2
+  AttackProbability: 0
+  SpecialProbability: 0
+  SpecialAttacks:
+  - {fileID: 0}
+--- !u!114 &1351499411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852541505086270373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64711e07acb0802419f24f7f4d59789d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 0}
+  ProjectileComponent: {fileID: 0}
+  HitboxComponent: {fileID: 0}
+  AttackDamage: 0
+  Target:
+    serializedVersion: 2
+    m_Bits: 0
+  IsRange: 0
+  SpecialAttacks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &6852541505086270376
 SpriteRenderer:
   m_ObjectHideFlags: 0
