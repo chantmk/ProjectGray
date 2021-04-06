@@ -69,7 +69,7 @@ public class PlayerMovementManager : MonoBehaviour
         staminaBar.GetComponent<Image>().fillAmount = stamina / 100;
         coefficient = Mathf.Pow(expValue, tileData);
         movement = new Vector2(inputX, inputY);
-        Debug.Log(coefficient);
+        //Debug.Log(coefficient);
         movement = movement.normalized * xySpeed * coefficient;
     }
 
