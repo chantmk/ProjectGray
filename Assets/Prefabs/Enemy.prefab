@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  MaxHealth: 0
-  Shield: 0
-  ShieldFactor: 0
+  MaxHealth: 100
+  Shield: 10
+  ShieldFactor: 0.2
   MovePositions:
   - {x: -2.45, y: -1.8}
   - {x: -2.45, y: -2.8}
@@ -144,6 +144,7 @@ MonoBehaviour:
   AttackRange: 0.7
   AttackSpeed: 1
   AttackDamage: 0
+  AttackMaxCooldown: 2
   IsRange: 0
 --- !u!212 &8249095275983056008
 SpriteRenderer:
