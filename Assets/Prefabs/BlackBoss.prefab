@@ -1,5 +1,75 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &354418184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 354418185}
+  - component: {fileID: 354418187}
+  - component: {fileID: 354418186}
+  m_Layer: 10
+  m_Name: AttackHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &354418185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354418184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.24, y: -0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6852541505086270377}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &354418187
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354418184}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.63, y: 4.8}
+  m_EdgeRadius: 0
+--- !u!114 &354418186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354418184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8638177d0c11bb42aac3643350d2a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6852541505086270373
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,8 +85,8 @@ GameObject:
   - component: {fileID: 6852541505086270379}
   - component: {fileID: 6852541505086270378}
   - component: {fileID: 6852541505086270382}
-  - component: {fileID: 1351499416}
   - component: {fileID: 1351499417}
+  - component: {fileID: 1930928131}
   m_Layer: 0
   m_Name: BlackBoss
   m_TagString: Untagged
@@ -34,7 +104,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.925, y: -2.826, z: 0}
   m_LocalScale: {x: 0.4183734, y: 0.4183734, z: 0.4183734}
-  m_Children: []
+  m_Children:
+  - {fileID: 354418185}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51,27 +122,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  MaxHealth: 0
-  Shield: 0
-  ShieldFactor: 0
+  MaxHealth: 1000
+  Shield: 200
+  ShieldFactor: 0.7
   MovePositions:
   - {x: 0, y: 0}
   Speed: 1
-  VisionRange: 0
-  AttackRange: 1
-  AttackSpeed: 0
-  IsRange: 0
+  VisionRange: 12.82
   EnrageRatio: 0
   LastStandRatio: 0
   IsEnrage: 0
+  IsLastStand: 0
   IsImmortal: 0
   IsMercy: 0
   IsKill: 0
-  SpecialAttackRange: 2
-  AttackProbability: 0
-  SpecialProbability: 0
-  SpecialAttacks:
-  - {fileID: 0}
 --- !u!114 &1351499411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,14 +148,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64711e07acb0802419f24f7f4d59789d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 0}
   ProjectileComponent: {fileID: 0}
-  HitboxComponent: {fileID: 0}
+  AttackRange: 2.88
+  AttackSpeed: 1
   AttackDamage: 0
-  Target:
-    serializedVersion: 2
-    m_Bits: 0
+  AttackMaxCooldown: 2
   IsRange: 0
+  SpecialAttackRange: 3.9
+  AttackProbability: 1
+  SpecialAttackProbability: 0.01
   SpecialAttacks:
   - {fileID: 0}
   - {fileID: 0}
@@ -212,35 +277,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1351499416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6852541505086270373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b9b35c1ab30bca4ba56adbdc9136ccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 0
-  Shield: 0
-  ShieldFactor: 0
-  MovePositions:
-  - {x: 0, y: 0}
-  Speed: 1
-  VisionRange: 0
-  AttackRange: 1
-  AttackSpeed: 0
-  IsRange: 0
-  EnrageRatio: 0
-  LastStandRatio: 0
-  IsEnrage: 0
-  SpecialAttackRange: 2
-  AttackProbability: 0
-  SpecialProbability: 0
-  placeholder: 0
 --- !u!114 &1351499417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,3 +289,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1930928131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852541505086270373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7801dfad0da39454aab95fdecd2c982e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Kuhaku
+    sentences:
+    - I'm empty
+    - Oh my god
+    - Change
