@@ -127,6 +127,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 126326873}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &118309045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118309044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d575a70bc4d58746b6c3dd3f41d991f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target:
+    serializedVersion: 2
+    m_Bits: 0
+  damage: 10
+  MaxDuration: 10
+  PullStrength: 100
 --- !u!1001 &126326873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +152,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3324922125395377141, guid: c782d94ccd12d52469f10ea75ff6606c,
+        type: 3}
+      propertyPath: m_Name
+      value: AttackHitbox
+      objectReference: {fileID: 0}
     - target: {fileID: 3324922125395377143, guid: c782d94ccd12d52469f10ea75ff6606c,
         type: 3}
       propertyPath: m_IsTrigger
@@ -3218,6 +3241,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1635663744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3324922125395377141, guid: c782d94ccd12d52469f10ea75ff6606c,
+    type: 3}
+  m_PrefabInstance: {fileID: 126326873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1635663746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635663744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8638177d0c11bb42aac3643350d2a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1724499936
 GameObject:
   m_ObjectHideFlags: 0
