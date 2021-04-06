@@ -127,10 +127,7 @@ MonoBehaviour:
   - {x: -2.45, y: -1.8}
   - {x: -2.45, y: -2.8}
   Speed: 0.5
-  VisionRange: 3
-  AttackRange: 0.75
-  AttackSpeed: 2
-  IsRange: 0
+  VisionRange: 2
 --- !u!114 &8249095275522155065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,13 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851d1d2534b691549a6ab39f5cf4dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Owner: {fileID: 8249095275983056012}
   ProjectileComponent: {fileID: 0}
-  HitboxComponent: {fileID: 516416393}
+  AttackRange: 0.7
+  AttackSpeed: 1
   AttackDamage: 0
-  Target:
-    serializedVersion: 2
-    m_Bits: 256
   IsRange: 0
 --- !u!212 &8249095275983056008
 SpriteRenderer:
@@ -212,7 +206,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.06, y: -0.03}

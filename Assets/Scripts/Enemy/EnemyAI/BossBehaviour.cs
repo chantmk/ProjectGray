@@ -38,7 +38,7 @@ public class BossBehaviour : EnemyBehaviour
     protected override void ListenToAttackSignal()
     {
         // Override attack to look for attack and special attack + prob
-        float range = Vector2.Distance(player.position, transform.position);
+        /*float range = Vector2.Distance(player.position, transform.position);
         float randomRange = boss.SpecialAttackProbability + boss.AttackProbability;
         if (range < boss.SpecialAttackRange && boss.IsEnrage)
         {
@@ -47,6 +47,6 @@ public class BossBehaviour : EnemyBehaviour
         else if (range < boss.AttackRange)
         {
             animator.SetTrigger("Attack");
-        }
+        }*/
     }
 }

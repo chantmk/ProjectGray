@@ -15,11 +15,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy movement parameters")]
     public Vector2[] MovePositions = new Vector2[1];
     public float Speed;
-    [Header("Enemy attack parameters")]
     public float VisionRange;
-    public float AttackRange;
-    public float AttackSpeed;
-    public bool IsRange;
 
     private float CurrentHealth;
     private bool isDead => CurrentHealth <= 0f;
@@ -87,5 +83,10 @@ public class Enemy : MonoBehaviour
         CurrentHealth = MaxHealth;
         rigidbody = GetComponent<Rigidbody2D>();
         MovePositions[0] = new Vector2(transform.position.x, transform.position.y);
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, VisionRange);
     }
 }

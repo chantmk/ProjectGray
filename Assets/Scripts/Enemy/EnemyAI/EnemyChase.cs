@@ -9,6 +9,7 @@ public class EnemyChase : EnemyBehaviour
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         chase();
         ListenToAttackSignal();
+        ListenToChaseSignal();
     }
 
     protected virtual void chase()
