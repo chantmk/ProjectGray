@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Players.Weapon;
 using UnityEngine;
+using Utils;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PlayerWeaponManager : MonoBehaviour
     void Start()
     {
         weaponNumber = transform.childCount;
-
+        print( weaponNumber );
         for (int i = 0; i < weaponNumber; i++)
         {
             var weaponObject = transform.GetChild(i).gameObject;
@@ -87,5 +88,22 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         weapons[CurrentWeaponID].Fire();
         EventPublisher.TriggerPlayerFire();
+    }
+
+    public void ChangeWeaponPrev()
+    {
+        weaponObjects[CurrentWeaponID].SetActive(false);
+        print((weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1) % weaponNumber);
+        CurrentWeaponID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
+        
+        weaponObjects[CurrentWeaponID].SetActive(true);
+    }
+
+    public void ChangeWeaponNext()
+    {
+        weaponObjects[CurrentWeaponID].SetActive(false);
+        print((weaponIDs.FindIndex(x => x == CurrentWeaponID) + 1) % weaponNumber);
+        CurrentWeaponID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
+        weaponObjects[CurrentWeaponID].SetActive(true);
     }
 }
