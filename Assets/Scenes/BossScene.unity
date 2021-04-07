@@ -407,6 +407,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 6852541505086270373, guid: 86a016de6325e1b42a914366cb946c37,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6852541505086270377, guid: 86a016de6325e1b42a914366cb946c37,
         type: 3}
       propertyPath: m_RootOrder
@@ -3265,6 +3270,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1903335475, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
+      propertyPath: weaponID
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903335476, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5130267182695972985, guid: 9f89ee25a98a0544a97772dc8c03dff9,
+        type: 3}
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
       propertyPath: m_RootOrder
