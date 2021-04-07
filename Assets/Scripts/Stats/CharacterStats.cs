@@ -59,6 +59,7 @@ public class CharacterStats : MonoBehaviour
     {
         isDead = true;
         Debug.Log(transform.name + " Died");
+        Destroy(gameObject);
     }
 
     public float GetCurrentHealth()

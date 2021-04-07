@@ -353,7 +353,6 @@ GameObject:
   - component: {fileID: 1397974323}
   - component: {fileID: 1397974322}
   - component: {fileID: 1939280293}
-  - component: {fileID: 530291382279000933}
   m_Layer: 5
   m_Name: MercyButton
   m_TagString: Untagged
@@ -489,20 +488,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dm: {fileID: 1651490893}
   boss: {fileID: 0}
---- !u!114 &530291382279000933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397974320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 459929dd457cd6e4e8806f3da2226dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dm: {fileID: 1651490893}
-  boss: {fileID: 0}
 --- !u!1 &1410803850
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +575,6 @@ GameObject:
   - component: {fileID: 1781184149}
   - component: {fileID: 1781184148}
   - component: {fileID: 1298364864}
-  - component: {fileID: 2463573971067989131}
   m_Layer: 5
   m_Name: KillButton
   m_TagString: Untagged
@@ -713,20 +697,6 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: KILL(B)
 --- !u!114 &1298364864
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781184146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 459929dd457cd6e4e8806f3da2226dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dm: {fileID: 1651490893}
-  boss: {fileID: 0}
---- !u!114 &2463573971067989131
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

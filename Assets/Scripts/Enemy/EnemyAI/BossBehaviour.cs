@@ -25,6 +25,7 @@ public class BossBehaviour : EnemyBehaviour
     {
         if (bossStats.GetHealthPercentage() < boss.EnrageRatio && !boss.IsEnrage)
         {
+            Debug.Log("boss Enrage");
             animator.SetTrigger("Enrage");
             boss.IsEnrage = true;
         }
@@ -32,8 +33,9 @@ public class BossBehaviour : EnemyBehaviour
 
     protected void ListenToLastStandSignal()
     {
-        if (bossStats.GetHealthPercentage() < boss.LastStandRatio && !animator.GetBool("IsLastStand"))
+        if (bossStats.GetHealthPercentage() < boss.LastStandRatio && !boss.IsLastStand)
         {
+            Debug.Log("boss laststand");
             animator.SetTrigger("LastStand");
             boss.IsLastStand = true;
         }

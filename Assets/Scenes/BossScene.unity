@@ -128,11 +128,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1298364864, guid: 381786c5ffd72b041a148bc9a1a45df2, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 1930928130}
+    - target: {fileID: 1939280293, guid: 381786c5ffd72b041a148bc9a1a45df2, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 1930928130}
     - target: {fileID: 7452341877007267923, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_Name
       value: PlayerHUD
       objectReference: {fileID: 0}
+    - target: {fileID: 7452341877007267934, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1724499938}
     - target: {fileID: 7452341877007267935, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -378,11 +391,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlackBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 6852541505086270373, guid: 86a016de6325e1b42a914366cb946c37,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6852541505086270377, guid: 86a016de6325e1b42a914366cb946c37,
         type: 3}
