@@ -160,4 +160,4 @@ MonoBehaviour:
     m_Bits: 0
   damage: 10
   MaxDuration: 10
-  PullStrength: 100
+  PullStrength: 30
