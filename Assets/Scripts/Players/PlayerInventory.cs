@@ -54,6 +54,11 @@ public class PlayerInventory : MonoBehaviour
         return true;
     }
 
+    public void AddHealthPack()
+    {
+        print("Add health pack");
+        healthPackCount += 1;
+    }
     public int GetHealthPackCount()
     {
         return healthPackCount;

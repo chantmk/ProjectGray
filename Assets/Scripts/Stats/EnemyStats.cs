@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyStats : CharacterStats
 {
+    public GameObject dropItem;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -14,5 +15,13 @@ public class EnemyStats : CharacterStats
     protected override void Update()
     {
         base.Update();
+    }
+
+    public override void Die()
+    {
+        isDead = true;
+        Debug.Log(transform.name + " Died");
+        Instantiate(dropItem, transform.position, Quaternion.Euler(Vector3.zero));
+        Destroy(gameObject);
     }
 }

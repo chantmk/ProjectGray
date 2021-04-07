@@ -149,7 +149,7 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 0}
   AttackRange: 2.88
   AttackSpeed: 1
-  AttackDamage: 0
+  AttackDamage: 5
   AttackMaxCooldown: 2
   IsRange: 0
   SpecialAttackRange: 3.9
