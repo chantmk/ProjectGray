@@ -258,7 +258,7 @@ MonoBehaviour:
   bulletObject: {fileID: 2079521686484699412, guid: 777b4d1b47cadb04b947ed72476ea556,
     type: 3}
   weaponID: 2
-  maxFireCooldown: 1.5
+  maxFireCooldown: 0.5
 --- !u!114 &1903335474
 MonoBehaviour:
   m_ObjectHideFlags: 0
