@@ -149,16 +149,18 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 0}
   AttackRange: 2.88
   AttackSpeed: 1
-  AttackDamage: 0
+  AttackDamage: 5
   AttackMaxCooldown: 2
   IsRange: 0
   SpecialAttackRange: 3.9
   AttackProbability: 1
   SpecialAttackProbability: 0.35
   SpecialAttacks:
+  - {fileID: 3324922126660757951, guid: c782d94ccd12d52469f10ea75ff6606c, type: 3}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  SpawnOffset: 0.5
+  player: {fileID: 0}
 --- !u!114 &5673773088795149023
 MonoBehaviour:
   m_ObjectHideFlags: 0

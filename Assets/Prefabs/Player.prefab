@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayerID: -2050882081
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4710378942119259419, guid: 9f89ee25a98a0544a97772dc8c03dff9,
+  m_Sprite: {fileID: -5130267182695972985, guid: 9f89ee25a98a0544a97772dc8c03dff9,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletObject: {fileID: 3803865437179387221, guid: 584387ce4f609714d988fbaa56048471,
     type: 3}
-  weaponID: 0
+  weaponID: 2
   maxFireCooldown: 0.5
 --- !u!114 &1903335474
 MonoBehaviour:
