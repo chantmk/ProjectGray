@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    
+    public Text ui;
     [SerializeField] private int healthPackCount;
     [SerializeField] private int resemblanceCount;
 
@@ -15,12 +18,14 @@ public class PlayerInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthPackCount = 10;
+        // healthPackCount = 10;
         resemblanceCount = 0;
-        healValue = 10f;
+        healValue = 100f;
         player = GameObject.Find("Player");
         playerStats = player.GetComponent<PlayerStats>();
         
+        ui.text = "+ 0";
+
     }
 
     // Update is called once per frame
@@ -37,11 +42,13 @@ public class PlayerInventory : MonoBehaviour
     {
         if (healthPackCount < amount) return false;
 
-        for (int i = 0; i < amount; ++i)
-        {
-            playerStats.Heal(healValue);
-        }
-        healthPackCount -= amount;
+        // for (int i = 0; i < amount; ++i)
+        // {
+        //     playerStats.Heal(healValue);
+        // }
+        playerStats.Heal(100);
+        healthPackCount -= 1;
+        ui.text = $"+ {healthPackCount}";
         
         return true;
     }
@@ -58,6 +65,7 @@ public class PlayerInventory : MonoBehaviour
     {
         print("Add health pack");
         healthPackCount += 1;
+        ui.text = $"+ {healthPackCount}";
     }
     public int GetHealthPackCount()
     {

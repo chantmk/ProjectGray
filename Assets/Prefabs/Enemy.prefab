@@ -161,6 +161,8 @@ MonoBehaviour:
   damage: 5
   armor: 0
   isDead: 0
+  dropItem: {fileID: 1653578710138710151, guid: 1188004fed0ee6849bc4809c5dbd3017,
+    type: 3}
 --- !u!212 &8249095275983056008
 SpriteRenderer:
   m_ObjectHideFlags: 0

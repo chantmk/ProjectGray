@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,12 @@ public class Teleport : MonoBehaviour
     {
         
     }
+    
+    // public override void OnInteract()
+    // {
+    //     var g = GameObject.FindGameObjectsWithTag("Player")[0];
+    //     g.GetComponent<PlayerInventory>().AddHealthPack();
+    // }
 
     void OnTriggerEnter2D(Collider2D other)
     {
