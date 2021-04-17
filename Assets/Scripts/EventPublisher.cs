@@ -38,4 +38,19 @@ public class EventPublisher
     //{
     //    PlayerTakeDamage?.Invoke();
     //}
+
+    public delegate void OnDialogueDone();
+    public static event OnDialogueDone DialogueDone;
+
+    public static void TriggerDialogueDone()
+    {
+        DialogueDone?.Invoke();
+    }
+
+    public delegate void OnStatusChange(BossStatus bossStatus);
+    public static event OnStatusChange StatusChange;
+    public static void TriggerStatus(BossStatus bossStatus)
+    {
+        StatusChange?.Invoke(bossStatus);
+    }
 }

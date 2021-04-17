@@ -20,13 +20,10 @@ public class TempButton : MonoBehaviour
         {
             dm.DisplayNextSentence();
         }
-        else if (Input.GetKeyDown(KeyCode.V))
-        {
-            boss.ChooseMercy();
-        }
-        else if (Input.GetKeyDown(KeyCode.B))
-        {
-            boss.ChooseKill();
-        }
+    }
+
+    public void SayHiOnClick()
+    {
+        Debug.Log("Hi");
     }
 }
