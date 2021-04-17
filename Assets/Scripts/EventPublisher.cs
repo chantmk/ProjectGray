@@ -53,4 +53,11 @@ public class EventPublisher
     {
         StatusChange?.Invoke(bossStatus);
     }
+
+    public delegate void OnPlayCutScene();
+    public static event OnPlayCutScene PlayCutscene;
+    public static void TriggerPlayCutScene()
+    {
+        PlayCutscene?.Invoke();
+    }
 }

@@ -16,8 +16,8 @@ public class BossLastStand : BossBehaviour
         // Immortal
         bossStats.status = Status.Immortal;
         talkManager.TriggerDotBubble();
-
-        EventPublisher.DialogueDone += askForMercy;
+        askForMercy();
+        //EventPublisher.DialogueDone += askForMercy;
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -27,12 +27,13 @@ public class BossLastStand : BossBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
-        EventPublisher.DialogueDone -= askForMercy;
+        //EventPublisher.DialogueDone -= askForMercy;
     }
 
     private void askForMercy()
     {
         // Pop up Decision maker HUD
         Debug.Log("Ask For Mercy");
+        EventPublisher.TriggerPlayCutScene();
     }
 }
