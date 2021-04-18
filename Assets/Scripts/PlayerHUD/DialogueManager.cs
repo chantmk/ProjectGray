@@ -8,18 +8,18 @@ public class DialogueManager : MonoBehaviour
 
 	public Text nameText;
 	public Text dialogueText;
-
 	public Animator animator;
 
 	private Queue<string> sentences;
 	private Transform dialogueBox;
+
 	// Use this for initialization
 	void Start()
 	{
 		sentences = new Queue<string>();
 		dialogueBox = transform.Find("DialogueBox");
-		dialogueBox.Find("KillButton").gameObject.SetActive(false);
-		dialogueBox.Find("MercyButton").gameObject.SetActive(false);
+		//dialogueBox.Find("KillButton").gameObject.SetActive(false);
+		//dialogueBox.Find("MercyButton").gameObject.SetActive(false);
 	}
 
 	public void StartDialogue(Dialogue dialogue)
@@ -40,12 +40,12 @@ public class DialogueManager : MonoBehaviour
 
 	public void DisplayNextSentence()
 	{
-		if (sentences.Count == 1)
+		/*if (sentences.Count == 1)
         {
-			dialogueBox.Find("KillButton").gameObject.SetActive(true);
-			dialogueBox.Find("MercyButton").gameObject.SetActive(true);
-			dialogueBox.Find("NextButton").gameObject.SetActive(false);
-		}
+            dialogueBox.Find("KillButton").gameObject.SetActive(true);
+            dialogueBox.Find("MercyButton").gameObject.SetActive(true);
+            dialogueBox.Find("NextButton").gameObject.SetActive(false);
+        }*/
 		if (sentences.Count == 0)
 		{
 			EndDialogue();
@@ -69,6 +69,8 @@ public class DialogueManager : MonoBehaviour
 
 	void EndDialogue()
 	{
+		// Call event to invoke other that may subscribing this event
+		EventPublisher.TriggerDialogueDone();
 		animator.SetBool("IsOpen", false);
 	}
 

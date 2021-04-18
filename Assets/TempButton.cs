@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TempButton : MonoBehaviour
 {
-    public DialogueManager dm;
+    public DialogueManager dialogueManager;
+    public DecisionManager decisionManager;
     public Boss boss;
     // Start is called before the first frame update
     void Start()
@@ -18,15 +19,20 @@ public class TempButton : MonoBehaviour
         // TODO: remove (For debugging)
         if (Input.GetKeyDown(KeyCode.N))
         {
-            dm.DisplayNextSentence();
+            dialogueManager.DisplayNextSentence();
         }
-        else if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            boss.ChooseMercy();
+            decisionManager.Mercy();
         }
-        else if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            boss.ChooseKill();
+            decisionManager.Kill();
         }
+    }
+
+    public void SayHiOnClick()
+    {
+        Debug.Log("Hi");
     }
 }

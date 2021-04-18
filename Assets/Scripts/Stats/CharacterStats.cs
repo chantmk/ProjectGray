@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Status
+{
+    Mortal,
+    Immortal,
+    Dead
+}
+
 public class CharacterStats : MonoBehaviour
 {
     [SerializeField] public float maxHealth = 100.0f;
     [SerializeField] public float currentHealth { get; private set; }
 
-    private const float depleteHealth = 0.0f;
+    protected const float depleteHealth = 0.01f;
 
     public float damage;
     public float armor;
-    public bool isDead;
+    public Status status = Status.Mortal;
     
     void Awake()
     {
@@ -20,25 +27,22 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (!isDead)
+        if (status == Status.Mortal)
         {
             damage -= this.armor;
 
             if (damage < 0.0f) damage = 0.0f;
 
             currentHealth -= damage;
-            Debug.Log(transform.name + " -" + damage + " Health");
-            if (currentHealth <= depleteHealth)
-            {
-                Die();
-            }
+            Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
+            HandleHealth();
         }
         
     }
 
     public void Heal(float healValue)
     {
-        if (!isDead)
+        if (status != Status.Dead)
         {
             if (healValue < 0.0f)
             {
@@ -55,9 +59,16 @@ public class CharacterStats : MonoBehaviour
         
     }
 
+    public virtual void HandleHealth()
+    {
+        if (currentHealth <= depleteHealth)
+        {
+            Die();
+        }
+    }
     public virtual void Die()
     {
-        isDead = true;
+        status = Status.Dead;
         Debug.Log(transform.name + " Died");
         Destroy(gameObject);
     }
@@ -76,7 +87,7 @@ public class CharacterStats : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        isDead = false;
+        status = Status.Mortal;
         currentHealth = maxHealth;
     }
 
