@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 4082615352953018388}
   - component: {fileID: 3053092181929341618}
   - component: {fileID: 2364940568892070492}
-  - component: {fileID: 10784823}
+  - component: {fileID: 782369254}
   m_Layer: 5
   m_Name: DecisionBox
   m_TagString: Untagged
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06eb44ca507f1c6428c11f12e02a83e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &10784823
+--- !u!95 &782369254
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -1512,7 +1512,7 @@ GameObject:
   - component: {fileID: 7452341877007267934}
   - component: {fileID: 7452341877007267921}
   - component: {fileID: 7452341877007267920}
-  - component: {fileID: 1917389726}
+  - component: {fileID: 782369253}
   m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
@@ -1605,7 +1605,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!95 &1917389726
+--- !u!95 &782369253
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
