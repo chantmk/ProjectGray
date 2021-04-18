@@ -60,4 +60,11 @@ public class EventPublisher
     {
         PlayCutscene?.Invoke();
     }
+
+    public delegate void OnDecisionMake(Decision decision);
+    public static event OnDecisionMake DecisionMake;
+    public static void TriggerDecisionMake(Decision decision)
+    {
+        DecisionMake?.Invoke(decision);
+    }
 }

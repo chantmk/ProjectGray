@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class TestVideo : MonoBehaviour
+public enum VideoState
+{
+    Play,
+    Pause,
+    Stop
+}
+
+public class VideoHandler : MonoBehaviour
 {
     private VideoPlayer videoPlayer;
     // Start is called before the first frame update
@@ -17,10 +24,13 @@ public class TestVideo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PlayVideo();
-        }
+        
+    }
+
+    void OnDestroy()
+    {
+        EventPublisher.PlayCutscene -= PlayVideo;
+        videoPlayer.loopPointReached -= StopVideo;
     }
 
     public void PlayVideo()
@@ -28,8 +38,9 @@ public class TestVideo : MonoBehaviour
         videoPlayer.Play();
     }
 
-    void StopVideo(VideoPlayer videoPlayer)
+    public void StopVideo(VideoPlayer videoPlayer)
     {
         videoPlayer.Stop();
+        EventPublisher.TriggerDialogueDone();
     }
 }
