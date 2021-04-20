@@ -10,14 +10,17 @@ GameObject:
   m_Component:
   - component: {fileID: 1102555091586577403}
   - component: {fileID: 8712510896010723697}
+  - component: {fileID: 3602699276726790867}
   - component: {fileID: 1399494168960419412}
-  - component: {fileID: 2331029495280057939}
   - component: {fileID: 4719026838900429687}
   - component: {fileID: 1102555091586577402}
   - component: {fileID: 1102555091586577405}
-  m_Layer: 0
+  - component: {fileID: 1524699952}
+  - component: {fileID: 305294043801756044}
+  - component: {fileID: 7416784804728002404}
+  m_Layer: 10
   m_Name: BlueBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,13 +53,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  damage: 0
+  damage: 20
   armor: 0
   status: 0
-  EnrageRatio: 0
-  HyperRatio: 0
+  EnrageRatio: 0.52
+  HyperRatio: 0.17
   Aggro: 0
   healthBar: {fileID: 0}
+--- !u!114 &3602699276726790867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1f6557ebe96904089a0bc2be1f73f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackRange: 5.52
+  AttackRatio: 0.85
+  AttackMaxCooldown: 2
+  IsRange: 1
+  ProjectileComponent: {fileID: 3781329692935539227, guid: 4f991e9dfc366854e96c69c361159cbe,
+    type: 3}
+  DashAttackEffectRange: 0
+  DashAttackMaxCooldown: 0
+  EnrageAttackRange: 5.84
+  EnrageAttackRatio: 0.58
+  EnrageAttackMaxCooldown: 5
+  EnrageAttacks:
+  - {fileID: 1697653986579597741, guid: 502cd339522e2524bbd4b5501f2cd2fb, type: 3}
+  HyperAttackRange: 3.99
+  HyperAttackRatio: 0.35
+  HyperAttackMaxCooldown: 8
+  HyperAttacks:
+  - {fileID: 7083435290850193718, guid: 42a24841908ce694eabc0d756e628c88, type: 3}
+  EnrageBulletCount: 4
+  HyperBulletCount: 8
 --- !u!114 &1399494168960419412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,37 +105,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  Speed: 1
+  VisionRange: 11.76
+  DashForce: 0
+  DashDuration: 0
   MovePositions:
   - {x: 0, y: 0}
-  Speed: 0
-  VisionRange: 0
---- !u!114 &2331029495280057939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102555091586577404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64711e07acb0802419f24f7f4d59789d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackRange: 1
-  AttackRatio: 0
-  AttackMaxCooldown: 2
-  IsRange: 0
-  ProjectileComponent: {fileID: 0}
-  EnrageAttackRange: 0
-  EnrageAttackRatio: 0
-  EnrageAttackMaxCooldown: 0
-  EnrageAttacks:
-  - {fileID: 0}
-  HyperAttackRange: 0
-  HyperAttackRatio: 0
-  HyperAttackMaxCooldown: 0
-  HyperAttacks:
-  - {fileID: 0}
 --- !u!114 &4719026838900429687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,11 +124,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: 
-    sentences: []
-  bubble: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
-  BubbleDelay: 0
+    name: Laira Lorelei
+    sentences:
+    - bobo
+    - putang
+    - ina
+    - MO!!!!
+  bubble: {fileID: 5746571033990493874, guid: e6c355bdc81cf6141b56c5f23016a194, type: 3}
+  offset: {x: 0.87, y: 0.97, z: 0}
+  BubbleDelay: 3
 --- !u!95 &1102555091586577402
 Animator:
   serializedVersion: 3
@@ -174,8 +188,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2050882081
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,6 +202,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1524699952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &305294043801756044
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &7416784804728002404
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.48, y: 0.64}
+    newSize: {x: 0.48, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.23, y: 0.45}
+  m_EdgeRadius: 0
 --- !u!1 &8888635980358798367
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +272,7 @@ GameObject:
   - component: {fileID: 6318626367792169784}
   - component: {fileID: 975904402425437355}
   - component: {fileID: 2423055084890618131}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

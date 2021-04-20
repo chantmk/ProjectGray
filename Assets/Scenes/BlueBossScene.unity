@@ -1078,6 +1078,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3482650007038657854, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
+      propertyPath: m_TargetCamera
+      value: 
+      objectReference: {fileID: 859176741}
     - target: {fileID: 7452341877007267923, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_Name
@@ -1195,12 +1200,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 381786c5ffd72b041a148bc9a1a45df2, type: 3}
---- !u!1 &832373315 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 693354534553333257, guid: 381786c5ffd72b041a148bc9a1a45df2,
-    type: 3}
-  m_PrefabInstance: {fileID: 832373314}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &859176739
 GameObject:
   m_ObjectHideFlags: 0
@@ -3247,6 +3246,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1587718542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6660168177696829220, guid: 381786c5ffd72b041a148bc9a1a45df2,
+    type: 3}
+  m_PrefabInstance: {fileID: 832373314}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1102555091591008374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3323,6 +3328,6 @@ PrefabInstance:
         type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 832373315}
+      objectReference: {fileID: 1587718542}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55baceafcd8e19d44a99b15999327eac, type: 3}

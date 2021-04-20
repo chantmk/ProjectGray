@@ -76,6 +76,7 @@ public class EnemyWeapon : MonoBehaviour
         // This method instantiate the projectile given in projectile component
         // Instant the position and then let the object do what it have to
         var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
+        projectile.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
     }
 
     public virtual void OnDrawGizmosSelected()

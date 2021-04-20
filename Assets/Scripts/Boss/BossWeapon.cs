@@ -14,8 +14,10 @@ public class BossWeapon : EnemyWeapon
     /**
      * This class tell weapon stat and what to create
      */
-
     [Header("Boss attack parameters")]
+    [Header("Dash attack parameters")]
+    public float DashAttackEffectRange;
+    public float DashAttackMaxCooldown;
     [Header("Enrage attack parameters")]
     public float EnrageAttackRange;
     [Range(0.0f, 1.0f)]
@@ -32,19 +34,24 @@ public class BossWeapon : EnemyWeapon
     [Tooltip("Boss hyper attack component")]
     public GameObject[] HyperAttacks = new GameObject[1];
 
+    protected BossStats bossStats;
+
     private float EnrageAttackCooldown;
     private float HyperAttackCooldown;
+    private float DashAttackCooldown;
 
     public override void Start()
     {
         base.Start();
         EnrageAttackCooldown = EnrageAttackMaxCooldown;
         HyperAttackCooldown = HyperAttackMaxCooldown;
+        DashAttackCooldown = DashAttackMaxCooldown;
     }
 
     public override void GetRelateComponent()
     {
-        attackDamage = GetComponent<BossStats>().damage;
+        bossStats = GetComponent<BossStats>();
+        attackDamage = bossStats.damage;
     }
 
     public override void FixedUpdate()
@@ -93,9 +100,15 @@ public class BossWeapon : EnemyWeapon
 
     public virtual void HyperAttack(int HyperNumber)
     {
-        // TODO overrid Hyper pattern here should check which boss state
+        // TODO override Hyper pattern here should check which boss state
         HyperAttackCooldown = HyperAttackMaxCooldown;
         //var hyperAttackComponent = Instantiate(HyperAttacks[HyperNumber], transform.position, Quaternion.Euler(Vector3.zero));
+    }
+
+    public virtual void DashAttack()
+    {
+        // TODO override Dash attack pattern here should check which boss state
+        Debug.Log("DashAttack " + DashAttackEffectRange);
     }
 
     public override void OnDrawGizmosSelected()
