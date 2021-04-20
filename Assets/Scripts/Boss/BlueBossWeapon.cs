@@ -19,7 +19,6 @@ public class BlueBossWeapon : BossWeapon
             case (BossStatus.Enrage):
                 for (int i=0; i<EnrageBulletCount; i++)
                 {
-                    Debug.Log("Enrage Enrage shoot");
                     var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
                     bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
@@ -27,7 +26,6 @@ public class BlueBossWeapon : BossWeapon
             case (BossStatus.Hyper):
                 for (int i = 0; i < HyperBulletCount; i++)
                 {
-                    Debug.Log("Enrage Hyper shoot");
                     var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
                     bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
@@ -42,7 +40,8 @@ public class BlueBossWeapon : BossWeapon
         base.HyperAttack(HyperNumber);
         for (int i = 0; i < HyperBulletCount; i++)
         {
-            var bullet = Instantiate(HyperAttacks[0], transform);
+            Debug.Log("Hyper shoot");
+            var bullet = Instantiate(HyperAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
             bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
         }
     }

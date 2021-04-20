@@ -56,8 +56,8 @@ MonoBehaviour:
   damage: 20
   armor: 0
   status: 0
-  EnrageRatio: 0.52
-  HyperRatio: 0.17
+  EnrageRatio: 0.75
+  HyperRatio: 0.4
   Aggro: 0
   healthBar: {fileID: 0}
 --- !u!114 &3602699276726790867

@@ -170,8 +170,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   damage: 10
-  MaxDuration: 3
-  FlightSpeed: 1
+  MaxDuration: 10
+  FlightSpeed: 0
 --- !u!50 &5440734279023711951
 Rigidbody2D:
   serializedVersion: 4
@@ -192,4 +192,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
