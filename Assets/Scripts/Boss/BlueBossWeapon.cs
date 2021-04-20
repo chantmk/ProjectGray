@@ -10,6 +10,8 @@ public class BlueBossWeapon : BossWeapon
     private int EnrageBulletCount = 4;
     [SerializeField]
     private int HyperBulletCount = 8;
+    [SerializeField]
+    private int DashAttackCount = 4;
 
     public override void EnrageAttack(int EnrageNumber)
     {
@@ -40,8 +42,17 @@ public class BlueBossWeapon : BossWeapon
         base.HyperAttack(HyperNumber);
         for (int i = 0; i < HyperBulletCount; i++)
         {
-            Debug.Log("Hyper shoot");
             var bullet = Instantiate(HyperAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
+            bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+        }
+    }
+
+    public override void DashAttack()
+    {
+        base.DashAttack(); 
+        for (int i = 0; i < DashAttackCount; i++)
+        {
+            var bullet = Instantiate(DashAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
             bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
         }
     }

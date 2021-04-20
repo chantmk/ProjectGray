@@ -80,6 +80,8 @@ MonoBehaviour:
     type: 3}
   DashAttackEffectRange: 0
   DashAttackMaxCooldown: 0
+  DashAttacks:
+  - {fileID: 1697653986579597741, guid: 502cd339522e2524bbd4b5501f2cd2fb, type: 3}
   EnrageAttackRange: 5.84
   EnrageAttackRatio: 0.58
   EnrageAttackMaxCooldown: 5
@@ -92,6 +94,7 @@ MonoBehaviour:
   - {fileID: 7083435290850193718, guid: 42a24841908ce694eabc0d756e628c88, type: 3}
   EnrageBulletCount: 4
   HyperBulletCount: 8
+  DashAttackCount: 4
 --- !u!114 &1399494168960419412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,8 +110,10 @@ MonoBehaviour:
   player: {fileID: 0}
   Speed: 1
   VisionRange: 11.76
-  DashForce: 0
-  DashDuration: 0
+  DashProbability: 0.17
+  DashForce: 20
+  DashDuration: 0.5
+  DashCooldown: 5
   MovePositions:
   - {x: 0, y: 0}
 --- !u!114 &4719026838900429687

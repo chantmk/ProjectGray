@@ -15,9 +15,12 @@ public class BossWeapon : EnemyWeapon
      * This class tell weapon stat and what to create
      */
     [Header("Boss attack parameters")]
+    
     [Header("Dash attack parameters")]
     public float DashAttackEffectRange;
     public float DashAttackMaxCooldown;
+    public GameObject[] DashAttacks = new GameObject[1];
+    
     [Header("Enrage attack parameters")]
     public float EnrageAttackRange;
     [Range(0.0f, 1.0f)]
@@ -66,6 +69,11 @@ public class BossWeapon : EnemyWeapon
         {
             HyperAttackCooldown -= Time.fixedDeltaTime;
         }
+
+        if (DashAttackCooldown > 0.0f)
+        {
+            DashAttackCooldown -= Time.fixedDeltaTime;
+        }
     }
 
     public virtual bool IsReady(Vector3 vectorToPlayer, AttackType attackType)
@@ -108,6 +116,7 @@ public class BossWeapon : EnemyWeapon
     public virtual void DashAttack()
     {
         // TODO override Dash attack pattern here should check which boss state
+        DashAttackCooldown = DashAttackMaxCooldown;
         Debug.Log("DashAttack " + DashAttackEffectRange);
     }
 

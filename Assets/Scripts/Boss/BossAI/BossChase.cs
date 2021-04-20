@@ -12,6 +12,7 @@ public class BossChase : BossBehaviour
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         ListenToAttackSignal();
+        ListenToDashSignal();
         chase();
         updateMovingAnimation();
     }
@@ -26,5 +27,13 @@ public class BossChase : BossBehaviour
         var direction = player.position - transform.position;
         animator.SetFloat("Horizontal", direction.normalized.x);
         animator.SetFloat("Vertical", direction.normalized.y);
+    }
+
+    private void ListenToDashSignal()
+    {
+        if (enemyMovement.IsReadyToDash())
+        {
+            animator.SetTrigger("Dash");
+        }
     }
 }
