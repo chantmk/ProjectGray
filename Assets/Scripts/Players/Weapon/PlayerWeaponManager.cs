@@ -20,6 +20,10 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private float fireCooldown = 0.0f;
     
+    public Vector2 Direction = Vector2.right;
+
+    private Camera camera;
+
     public int CurrentWeaponID
     {
         get { return currentWeaponID; }
@@ -30,6 +34,8 @@ public class PlayerWeaponManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        camera = Camera.main;
+        
         weaponNumber = transform.childCount;
         print( weaponNumber );
         for (int i = 0; i < weaponNumber; i++)
@@ -69,9 +75,9 @@ public class PlayerWeaponManager : MonoBehaviour
 
     void Update()
     {
-        var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f;
-        transform.position = playerTransform.position + Vector3.Normalize(mousePosition - playerTransform.position) * HoverDistance;
+        var playerPosition = playerTransform.position;
+        Direction = ((Vector2) (camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition)).normalized;
+        transform.position = playerPosition + (Vector3)Direction * HoverDistance;
     }
 
     private void processFireCommand()
@@ -86,7 +92,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private void fireWeapon()
     {
-        weapons[CurrentWeaponID].Fire();
+        weapons[CurrentWeaponID].Fire(Direction);
         EventPublisher.TriggerPlayerFire();
     }
 

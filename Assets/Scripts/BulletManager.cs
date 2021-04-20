@@ -17,7 +17,7 @@ public class BulletManager : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        direction = ((Vector2) (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position)).normalized;
         rigidbody.velocity = direction * bulletSpeed;
         rigidbody.velocity = new Vector2(direction.x * bulletSpeed, direction.y * bulletSpeed);
 
