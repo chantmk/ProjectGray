@@ -13,10 +13,18 @@ public class BossChase : BossBehaviour
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         ListenToAttackSignal();
         chase();
+        updateMovingAnimation();
     }
 
     private void chase()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, enemyMovement.Speed * Time.deltaTime);
+    }
+
+    private void updateMovingAnimation()
+    {
+        var direction = player.position - transform.position;
+        animator.SetFloat("Horizontal", direction.normalized.x);
+        animator.SetFloat("Vertical", direction.normalized.y);
     }
 }
