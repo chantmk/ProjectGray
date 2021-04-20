@@ -17,6 +17,6 @@ public class BossChase : BossBehaviour
 
     private void chase()
     {
-        transform.position = Vector2.MoveTowards(transform.position, enemy.player.position, enemy.Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.position, enemyMovement.Speed * Time.deltaTime);
     }
 }

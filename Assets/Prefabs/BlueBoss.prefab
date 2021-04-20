@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1102555091586577403}
+  - component: {fileID: 1399494168960419412}
+  - component: {fileID: 2331029495280057939}
+  - component: {fileID: 8712510896010723697}
   - component: {fileID: 1102555091586577402}
   - component: {fileID: 1102555091586577405}
   m_Layer: 0
@@ -32,6 +35,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399494168960419412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c066698e35a544f40a25ea276991e5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  MovePositions:
+  - {x: 0, y: 0}
+  Speed: 0
+  VisionRange: 0
+--- !u!114 &2331029495280057939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64711e07acb0802419f24f7f4d59789d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectileComponent: {fileID: 0}
+  AttackRange: 1
+  AttackSpeed: 1
+  AttackDamage: 1
+  AttackMaxCooldown: 2
+  IsRange: 0
+  SpecialAttackRange: 0
+  AttackProbability: 0
+  SpecialAttackProbability: 0
+  SpecialAttacks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  SpawnOffset: 0.5
+  player: {fileID: 0}
+--- !u!114 &8712510896010723697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 0
+  armor: 0
+  status: 0
+  EnrageRatio: 0
+  HyperRatio: 0
+  Aggro: 0
+  healthBar: {fileID: 0}
 --- !u!95 &1102555091586577402
 Animator:
   serializedVersion: 3

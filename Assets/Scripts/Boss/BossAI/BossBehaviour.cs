@@ -11,7 +11,7 @@ public class BossBehaviour : EnemyBehaviour
      * - Determine is boss should lastStand
      * - Determine is boss should attack/special attack
      */
-    protected Boss boss;
+    protected BossMovement bossMovement;
     protected BossWeapon bossWeapon;
     protected BossStats bossStats;
     protected TalkManager talkManager;
@@ -19,10 +19,10 @@ public class BossBehaviour : EnemyBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        boss = (Boss)enemy;
+        bossMovement = (BossMovement)enemyMovement;
         bossWeapon = (BossWeapon)enemyWeapon;
         bossStats = animator.gameObject.GetComponent<BossStats>();
-        talkManager = boss.GetComponent<TalkManager>();
+        talkManager = bossMovement.GetComponent<TalkManager>();
 
         EventPublisher.StatusChange += BossStatusHandler;
     }
@@ -64,19 +64,28 @@ public class BossBehaviour : EnemyBehaviour
     protected override void ListenToAttackSignal()
     {
         // Override attack to look for attack and special attack + prob
-        float range = Vector2.Distance(player.position, transform.position);
-        float randomRange = bossWeapon.SpecialAttackProbability + bossWeapon.AttackProbability;
+        float randomRange = bossWeapon.HyperAttackRatio + bossWeapon.EnrageAttackRatio + bossWeapon.AttackRatio;
         float random = Random.Range(0.0f, randomRange);
-
-        //Debug.Log($"{random}, {bossWeapon.SpecialAttackProbability}");
-        if (random <= bossWeapon.SpecialAttackProbability && range < bossWeapon.SpecialAttackRange && bossStats.Aggro == BossStatus.Enrage)
+        if (bossStats.Aggro == BossStatus.Hyper && random <= bossWeapon.HyperAttackRatio)
         {
-            animator.SetTrigger("SpecialAttack");
+            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Hyper))
+            {
+                animator.SetTrigger("HyperAttack");
+            }
         }
-        else if (range < bossWeapon.AttackRange)
+        else if (bossStats.Aggro == BossStatus.Enrage && random <= bossWeapon.EnrageAttackRatio + bossWeapon.HyperAttackRatio)
         {
-            //Debug.Log("HI");
-            animator.SetTrigger("Attack");
+            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Enrage))
+            {
+                animator.SetTrigger("EnrageAttack");
+            }
+        }
+        else
+        {
+            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Normal))
+            {
+                animator.SetTrigger("Attack");
+            }
         }
     }
 }

@@ -5,21 +5,46 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {
     [Header("Weapon status")]
-    public GameObject ProjectileComponent;
     public float AttackRange = 1.0f;
-    public float AttackSpeed = 1.0f;
-    public float AttackDamage = 1.0f;
+    //public float AttackSpeed = 1.0f;
+    [Range(0.0f, 1.0f)]
+    public float AttackRatio;
     public float AttackMaxCooldown = 2.0f;
     public bool IsRange = false;
-    
-    private AttackHitbox attackHitbox;
+    public GameObject ProjectileComponent;
 
-    void Start()
+    protected float attackDamage;
+    private AttackHitbox attackHitbox;
+    private float attackCooldown;
+    
+    public virtual void Start()
     {
         attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
+        attackCooldown = AttackMaxCooldown;
+        GetRelateComponent();
     }
+
+    public virtual void GetRelateComponent()
+    {
+        attackDamage = GetComponent<EnemyStats>().damage;
+    }
+
+    public virtual void FixedUpdate()
+    {
+        if (attackCooldown > 0.0f)
+        {
+            attackCooldown -= Time.fixedDeltaTime;
+        }
+    }
+
+    public virtual bool IsReady(Vector3 vectorToPlayer)
+    {
+        return attackCooldown <= 0.0f && vectorToPlayer.magnitude < AttackRange;
+    }
+
     public virtual void Attack()
     {
+        attackCooldown = AttackMaxCooldown;
         if (IsRange)
         {
             RangeAttack();
@@ -40,8 +65,7 @@ public class EnemyWeapon : MonoBehaviour
             // Below will deal damage to player if gameObject contain this collider has player class --> This may change to health class or something
             if (collider.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
             {
-                Debug.Log("SHIT2");
-                playerStats.TakeDamage(AttackDamage);
+                playerStats.TakeDamage(attackDamage);
             }
         }
     }
@@ -56,6 +80,7 @@ public class EnemyWeapon : MonoBehaviour
 
     public virtual void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, AttackRange);
     }
 }
