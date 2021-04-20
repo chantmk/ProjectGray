@@ -24,7 +24,7 @@ namespace Players.Weapon
             // weaponTransform = GetComponent
         }
 
-        public void Fire()
+        public void Fire(Vector2 direction)
         {
             var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
         }
