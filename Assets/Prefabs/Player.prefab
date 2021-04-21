@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverDistance: 0.75
+  Direction: {x: 1, y: 0}
   currentWeaponID: 0
 --- !u!1 &1903335472
 GameObject:
@@ -466,7 +467,7 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   armor: 0
-  isDead: 0
+  status: 0
   healthBar: {fileID: 0}
 --- !u!114 &620563490
 MonoBehaviour:
@@ -480,11 +481,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f4d54e92d6be4c458b011ef1f33c5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   healthPackCount: 10
   resemblanceCount: 0
   player: {fileID: 0}
   playerStats: {fileID: 0}
-  healValue: 10
+  healValue: 100
 --- !u!1001 &4532720954874852001
 PrefabInstance:
   m_ObjectHideFlags: 0
