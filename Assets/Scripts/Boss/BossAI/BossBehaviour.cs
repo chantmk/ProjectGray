@@ -21,15 +21,10 @@ public class BossBehaviour : EnemyBehaviour
         base.OnStateEnter(animator, stateInfo, layerIndex);
         bossMovement = (BossMovement)enemyMovement;
         bossWeapon = (BossWeapon)enemyWeapon;
-        bossStats = animator.gameObject.GetComponent<BossStats>();
-        talkManager = bossMovement.GetComponent<TalkManager>();
+        bossStats = (BossStats)enemyStats;
+        talkManager = parent.transform.Find("TalkBubble").GetComponent<TalkManager>();
 
         EventPublisher.StatusChange += BossStatusHandler;
-    }
-    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        base.OnStateUpdate(animator, stateInfo, layerIndex);
-
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

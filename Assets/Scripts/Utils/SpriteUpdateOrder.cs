@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpriteUpdateOrder: MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
- 
     private void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     public float DashDuration;
     public float DashCooldown;
     [Header("Enemy patrol parameters")]
-    public Vector2[] MovePositions = new Vector2[1];
+    public Vector3[] MovePositions = new Vector3[1];
     
     private int toSpot = 0;
     private float dashDurationLeft;
@@ -26,7 +26,7 @@ public class EnemyMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-        MovePositions[0] = new Vector2(transform.position.x, transform.position.y);
+        MovePositions[0] = transform.position;
         dashDurationLeft = DashDuration;
         dashCooldownLeft = DashCooldown;
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -41,7 +41,7 @@ public class EnemyMovement : MonoBehaviour
         updateDash();
     }
 
-    public Vector2 GetVectorToPlayer()
+    public Vector3 GetVectorToPlayer()
     {
         return player.transform.position - transform.position;
     }
@@ -64,9 +64,9 @@ public class EnemyMovement : MonoBehaviour
             transform.localScale = new Vector3(enemyX, transform.localScale.y, transform.localScale.z);
         }*/
 
-    public Vector2 GetNextPatrolPosition()
+    public Vector3 GetNextPatrolPosition()
     {
-        if (Vector2.Distance(transform.position, MovePositions[toSpot]) < 0.2f)
+        if (Vector3.Distance(transform.position, MovePositions[toSpot]) < 0.2f)
         {
             toSpot += 1;
 
@@ -78,6 +78,22 @@ public class EnemyMovement : MonoBehaviour
         return MovePositions[toSpot];
     }
 
+    public void Patrol()
+    {
+        rigidbody2D.velocity = (GetNextPatrolPosition() - transform.position).normalized * Speed * Time.deltaTime;
+        //transform.position = Vector2.MoveTowards(transform.position, GetNextPatrolPosition(), Speed * Time.deltaTime);
+    }
+
+    public bool ShouldChase()
+    {
+        return GetVectorToPlayer().magnitude < VisionRange;
+    }
+
+    public void Chase()
+    {
+        rigidbody2D.velocity = (player.transform.position - transform.position).normalized * Speed * Time.deltaTime;
+        //transform.position = Vector2.MoveTowards(transform.position, player.position, enemyMovement.Speed * Time.deltaTime);
+    }
     public bool IsReadyToDash()
     {
         float shouldDash = Random.Range(0.0f, 1.0f);

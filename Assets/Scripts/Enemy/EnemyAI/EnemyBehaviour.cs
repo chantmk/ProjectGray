@@ -5,21 +5,26 @@ using UnityEngine;
 public class EnemyBehaviour : StateMachineBehaviour
 {
 
+    protected GameObject parent;
+
     protected Animator animator;
     protected Transform transform;
     protected Rigidbody2D rigidbody2D;
     protected EnemyMovement enemyMovement;
     protected EnemyWeapon enemyWeapon;
+    protected EnemyStats enemyStats;
     protected Transform player;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         this.animator = animator;
-        enemyMovement = animator.gameObject.GetComponent<EnemyMovement>();
-        enemyWeapon = animator.gameObject.GetComponent<EnemyWeapon>();
-        transform = animator.gameObject.transform;
+        parent = animator.gameObject.transform.parent.gameObject;
+        enemyMovement = parent.GetComponent<EnemyMovement>();
+        enemyWeapon = parent.GetComponent<EnemyWeapon>();
+        enemyStats = parent.GetComponent<EnemyStats>();
         player = enemyMovement.player.transform;
+        transform = animator.gameObject.transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -48,7 +53,7 @@ public class EnemyBehaviour : StateMachineBehaviour
 
     protected virtual void ListenToChaseSignal()
     {
-        if (Vector2.Distance(player.position, transform.position) < enemyMovement.VisionRange)
+        if (enemyMovement.ShouldChase())
         {
             animator.SetBool("ShouldChase", true);
         }

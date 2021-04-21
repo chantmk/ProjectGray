@@ -11,7 +11,7 @@ public enum BossStatus
     LastStand
 }
 
-public class BossStats : CharacterStats
+public class BossStats : EnemyStats
 {
     [Header("Boss Life parameter")]
     [Range(0.0f, 1.0f)]
@@ -62,5 +62,10 @@ public class BossStats : CharacterStats
             healthBarImage.color = Color.yellow;
             EventPublisher.TriggerStatus(Aggro);
         }
+    }
+
+    public void Mercy()
+    {
+
     }
 }

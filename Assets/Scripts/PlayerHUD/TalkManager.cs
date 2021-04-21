@@ -65,9 +65,4 @@ public class TalkManager : MonoBehaviour
     {
 		FindObjectOfType<DecisionManager>().StartDecision();
     }
-
-    private void OnDrawGizmosSelected()
-    {
-		Gizmos.DrawSphere(transform.position + offset, 0.25f);
-    }
 }
