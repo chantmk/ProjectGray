@@ -466,7 +466,7 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   armor: 0
-  isDead: 0
+  status: 0
   healthBar: {fileID: 0}
 --- !u!114 &620563490
 MonoBehaviour:

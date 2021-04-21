@@ -143,10 +143,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  MovePositions:
-  - {x: 0, y: 0}
   Speed: 1
   VisionRange: 11.45
+  DashProbability: 0
+  DashForce: 0
+  DashDuration: 0
+  DashCooldown: 0
+  MovePositions:
+  - {x: 0, y: 0}
 --- !u!114 &470288516058063973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +168,10 @@ MonoBehaviour:
   AttackMaxCooldown: 2
   IsRange: 0
   ProjectileComponent: {fileID: 0}
+  DashAttackEffectRange: 0
+  DashAttackMaxCooldown: 0
+  DashAttacks:
+  - {fileID: 0}
   EnrageAttackRange: 3.09
   EnrageAttackRatio: 0.38
   EnrageAttackMaxCooldown: 5

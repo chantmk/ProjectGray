@@ -367,11 +367,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7156235225171064192, guid: ceb5d75e15e544846a7ba91c60b3a639,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
 --- !u!1 &883986143 stripped
@@ -3264,41 +3259,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.name
-      value: Gummy Bear
-      objectReference: {fileID: 0}
     - target: {fileID: 1541575895031012169, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_Name
       value: YellowBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 1541575895031012169, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: m_TagString
-      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3481867557849703455, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 782369250}
-    - target: {fileID: 5943690059432754097, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6909054251121272368, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 883986143}
-    - target: {fileID: 7965072923661750314, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_RootOrder
