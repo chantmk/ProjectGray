@@ -8,13 +8,22 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [SerializeField] private float normalSpeed = 2.0f;
+    
     [SerializeField] private float runningSpeed = 5.0f;
+    
     [SerializeField] private float rechargeStamina = 20.0f;
-    [SerializeField] private float expValue = 0.8f;
+    
     [SerializeField] private float rawInputX;
+    
     [SerializeField] private float rawInputY;
+    
     [SerializeField] private bool rawInputShift;
+    
     [SerializeField] private static float xySpeed = 2.0f;
+
+    private Animator animator;
+    
+    [SerializeField] private float expValue = 0.8f;
     [SerializeField] private float tileData;
     [SerializeField] private bool isExhault = false;
     [SerializeField] private float stamina = 100f;
@@ -34,6 +43,8 @@ public class PlayerMovementManager : MonoBehaviour
             tilemapObj = GameObject.FindGameObjectWithTag("Tilemap");
         if (staminaBar == null)
             staminaBar = GameObject.FindGameObjectWithTag("StaminaBar");
+
+        animator = GetComponent<Animator>();
         
         randomTile = tilemapObj.GetComponent<RandomTile>();
         image = staminaBar.GetComponent<Image>();
@@ -74,8 +85,10 @@ public class PlayerMovementManager : MonoBehaviour
         image.fillAmount = stamina / 100;
         coefficient = Mathf.Pow(expValue, tileData);
         movement = new Vector2(inputX, inputY);
-        //Debug.Log(coefficient);
         movement = movement.normalized * (xySpeed * coefficient);
+        
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
     }
 
     private void FixedUpdate()
