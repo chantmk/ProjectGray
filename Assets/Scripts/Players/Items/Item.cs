@@ -7,7 +7,6 @@ public class Item
     public string name;
     public string description;
 
-
     // Start is called before the first frame update
     void Start()
     {
