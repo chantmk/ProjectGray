@@ -2,26 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 public class PlayerMovementManager : MonoBehaviour
 {
+
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [SerializeField] private float normalSpeed = 2.0f;
-    
+
     [SerializeField] private float runningSpeed = 5.0f;
-    
+
     [SerializeField] private float rechargeStamina = 20.0f;
-    
+
     [SerializeField] private float rawInputX;
-    
+
     [SerializeField] private float rawInputY;
-    
+
     [SerializeField] private bool rawInputShift;
-    
+
     [SerializeField] private static float xySpeed = 2.0f;
 
     private Animator animator;
+
+    public enum States { Idle, Movement };
+
+    private StateMachine<States> stateMachine;
     
     [SerializeField] private float expValue = 0.8f;
     [SerializeField] private float tileData;
@@ -46,6 +52,8 @@ public class PlayerMovementManager : MonoBehaviour
 
         animator = GetComponent<Animator>();
         
+        stateMachine = new StateMachine<States>(States.Idle);
+        
         randomTile = tilemapObj.GetComponent<RandomTile>();
         image = staminaBar.GetComponent<Image>();
     }
@@ -54,53 +62,37 @@ public class PlayerMovementManager : MonoBehaviour
     {
         rawInputX = Input.GetAxisRaw("Horizontal");
         rawInputY = Input.GetAxisRaw("Vertical");
-        rawInputShift = Input.GetKey(KeyCode.LeftShift);
         tileData = randomTile.getCurrentTileData();
 
         inputX = rawInputX == 0 ? 0 : (int)Mathf.Sign(rawInputX);
         inputY = rawInputY == 0 ? 0 : (int)Mathf.Sign(rawInputY);
-        
-        if (rawInputShift && stamina > 0 && !isExhault)
-        {
-            xySpeed = runningSpeed;
-            stamina -= 1.0f;
-            if(stamina <= 0.0f)
-            {
-                isExhault = true;
-            }
-        }
-        else
-        {
-            xySpeed = normalSpeed;
-            stamina += 0.1f;
-            if (stamina > 100.0f)
-            {
-                stamina = 100.0f;
-            }
-            else if(isExhault && stamina > rechargeStamina)
-            {
-                isExhault = false;
-            }
-        }
         image.fillAmount = stamina / 100;
         coefficient = Mathf.Pow(expValue, tileData);
         movement = new Vector2(inputX, inputY);
         movement = movement.normalized * (xySpeed * coefficient);
         
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
+        // Update State
+        if (movement.sqrMagnitude < MathUtils.Epsilon)
+        {
+            print("idle");
+            stateMachine.SetNextState(States.Idle);
+        }
+        else
+        {
+            
+            stateMachine.SetNextState(States.Movement);
+        }
+        stateMachine.ChangeState();
+        
+        // Update Animation
+        animator.SetInteger(AnimatorParams.State, (int)stateMachine.CurrentState);
+
+        animator.SetFloat(AnimatorParams.Horizontal, movement.x);
+        animator.SetFloat(AnimatorParams.Vertical, movement.y);
     }
 
     private void FixedUpdate()
     {
         playerRigidbody.velocity = movement;
     }
-
-    /*public void setSpeed(float speed)
-    {
-        
-        *//*xSpeed = xySpeed / (1f + speed);
-        ySpeed = xySpeed / (1f + speed);*//*
-        //Debug.Log(xSpeed);
-    }*/
 }
