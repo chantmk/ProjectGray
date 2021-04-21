@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3590555536883542968}
   - component: {fileID: 6271421848847514928}
   - component: {fileID: 2571424120042129367}
+  - component: {fileID: -2587406575160185980}
   m_Layer: 0
   m_Name: BossBubble
   m_TagString: Untagged
@@ -71,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2050882081
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 8456465849144358525, guid: 27dddc2aeab1cbd42a51b632ced7368a,
     type: 3}
@@ -146,6 +147,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-2587406575160185980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697653986579597741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8036450162985679794
 GameObject:
   m_ObjectHideFlags: 0

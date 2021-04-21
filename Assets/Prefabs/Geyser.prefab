@@ -81,6 +81,7 @@ GameObject:
   - component: {fileID: 2767137948367451819}
   - component: {fileID: 1252956110387329322}
   - component: {fileID: 6680579764781417230}
+  - component: {fileID: 7506480183370903466}
   - component: {fileID: 5440734279023711951}
   m_Layer: 0
   m_Name: Geyser
@@ -140,8 +141,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2050882081
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a17856e20fd7a1540bbb1c8c961e876a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -172,6 +173,18 @@ MonoBehaviour:
   damage: 10
   MaxDuration: 10
   FlightSpeed: 0
+--- !u!114 &7506480183370903466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083435290850193718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &5440734279023711951
 Rigidbody2D:
   serializedVersion: 4

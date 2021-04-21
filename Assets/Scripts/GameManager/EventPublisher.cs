@@ -51,6 +51,7 @@ public class EventPublisher
     public static event OnStatusChange StatusChange;
     public static void TriggerStatus(BossStatus bossStatus)
     {
+        Debug.Log("Trigger: " + bossStatus);
         StatusChange?.Invoke(bossStatus);
     }
 
