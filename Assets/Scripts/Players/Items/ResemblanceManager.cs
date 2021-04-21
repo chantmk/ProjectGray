@@ -12,7 +12,7 @@ public class ResemblanceManager : Interactable
         player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
 
-    void onInterract()
+    public override void OnInteract()
     {
         player.GetComponent<PlayerInventory>().AddResemblance(1);
     }

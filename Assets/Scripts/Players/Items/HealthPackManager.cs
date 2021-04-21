@@ -12,7 +12,7 @@ public class HealthPackManager : Interactable
         player = GameObject.FindGameObjectsWithTag("Player")[0];
     }
     
-    void onInterract()
+    public override void OnInteract()
     {
         player.GetComponent<PlayerInventory>().AddHealthPack(1);
     }

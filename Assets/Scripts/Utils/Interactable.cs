@@ -8,15 +8,16 @@ public abstract class Interactable : MonoBehaviour
     private bool interactable = false;
     private Color color;
 
-    private void Start()
+    protected virtual void Start()
     {
         //color = transform.GetComponent<SpriteRenderer>().color;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && interactable)
         {
+            //Debug.Log("key F pressed");
             OnInteract();
         }
     }
@@ -27,6 +28,7 @@ public abstract class Interactable : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            //Debug.Log(other + " enter");
             interactable = true;
             //transform.GetComponent<SpriteRenderer>().color = Color.red;
         }
@@ -36,7 +38,8 @@ public abstract class Interactable : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            interactable = true;
+            //Debug.Log(other + " exit");
+            interactable = false;
             //transform.GetComponent<SpriteRenderer>().color = color;
         }
     }
