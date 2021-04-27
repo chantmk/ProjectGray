@@ -40,6 +40,7 @@ public class BossBehaviour : EnemyBehaviour
 
     public void BossStatusHandler(BossStatus bossStatus)
     {
+        bossStats.status = Status.Mortal;
         switch (bossStatus)
         {
             case BossStatus.Calm:
@@ -59,7 +60,9 @@ public class BossBehaviour : EnemyBehaviour
                 break;
             default:
                 throw new System.NotImplementedException();
+         
         }
+        bossMovement.SetSpotCap(bossStatus);
     }
 
     protected override void ListenToAttackSignal()

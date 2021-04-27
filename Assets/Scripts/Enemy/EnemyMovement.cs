@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Enemy patrol parameters")]
     public Vector2[] MovePositions = new Vector2[1];
     
-    private int toSpot = 0;
+    protected int toSpot = 0;
     private float dashDurationLeft;
     private float dashCooldownLeft;
     private bool isDashing = false;
@@ -64,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
             transform.localScale = new Vector3(enemyX, transform.localScale.y, transform.localScale.z);
         }*/
 
-    public Vector2 GetNextPatrolPosition()
+    public virtual Vector2 GetNextPatrolPosition()
     {
         if (Vector2.Distance(transform.position, MovePositions[toSpot]) < 0.2f)
         {

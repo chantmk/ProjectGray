@@ -150,6 +150,7 @@ MonoBehaviour:
   DashCooldown: 10
   MovePositions:
   - {x: 0, y: 0}
+  spotCap: 00000000
 --- !u!114 &3436206288533657521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,7 +167,8 @@ MonoBehaviour:
   AttackRatio: 0.87
   AttackMaxCooldown: 2
   IsRange: 0
-  ProjectileComponent: {fileID: 0}
+  ProjectileComponent: {fileID: 6022004361414076165, guid: 5ad0b38045926224e871f3f7a5805509,
+    type: 3}
   DashAttackEffectRange: 1.35
   DashAttackMaxCooldown: 10
   DashAttacks:
@@ -184,6 +186,12 @@ MonoBehaviour:
   EnrageBulletCount: 4
   HyperBulletCount: 8
   DashAttackCount: 4
+  CalmTrapMaxCooldown: 1
+  CalmTrapRatio: 0
+  EnrageTrapMaxCooldown: 1
+  EnrageTrapRatio: 0
+  HyperTrapMaxCooldown: 1
+  HyperTrapRatio: 0
 --- !u!114 &1440324254960057266
 MonoBehaviour:
   m_ObjectHideFlags: 0

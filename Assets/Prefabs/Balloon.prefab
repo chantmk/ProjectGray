@@ -179,5 +179,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   damage: 10
-  MaxDuration: 3
-  FlightSpeed: 1
+  MaxDuration: 15
+  FlightSpeed: 0
