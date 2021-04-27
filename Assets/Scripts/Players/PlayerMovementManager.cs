@@ -15,7 +15,7 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private float rawInputY;
     [SerializeField] private bool rawInputShift;
     [SerializeField] private static float xySpeed = 2.0f;
-    [SerializeField] private float tileData;
+    [SerializeField] private float[] tileData;
     [SerializeField] private bool isExhault = false;
     [SerializeField] private float stamina = 100f;
     [SerializeField] private int inputX, inputY;
@@ -61,7 +61,7 @@ public class PlayerMovementManager : MonoBehaviour
         else
         {
             xySpeed = normalSpeed;
-            stamina += 0.1f;
+            stamina += 0.08f;
             if (stamina > 100.0f)
             {
                 stamina = 100.0f;
@@ -71,8 +71,9 @@ public class PlayerMovementManager : MonoBehaviour
                 isExhault = false;
             }
         }
+        if (tileData[2] != 0f)stamina -= tileData[2] * 0.01f + 0.1f;
         image.fillAmount = stamina / 100;
-        coefficient = Mathf.Pow(expValue, tileData);
+        coefficient = Mathf.Pow(expValue, tileData[0]);
         movement = new Vector2(inputX, inputY);
         //Debug.Log(coefficient);
         movement = movement.normalized * (xySpeed * coefficient);
