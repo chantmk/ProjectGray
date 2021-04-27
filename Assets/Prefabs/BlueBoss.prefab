@@ -78,10 +78,10 @@ MonoBehaviour:
   IsRange: 1
   ProjectileComponent: {fileID: 3781329692935539227, guid: 4f991e9dfc366854e96c69c361159cbe,
     type: 3}
-  DashAttackEffectRange: 0
-  DashAttackMaxCooldown: 0
+  DashAttackEffectRange: 1
+  DashAttackMaxCooldown: 3
   DashAttacks:
-  - {fileID: 1697653986579597741, guid: 502cd339522e2524bbd4b5501f2cd2fb, type: 3}
+  - {fileID: 1707451178030945541, guid: ac5b941be5b46ee4ca04efd7370f5fab, type: 3}
   EnrageAttackRange: 5.84
   EnrageAttackRatio: 0.58
   EnrageAttackMaxCooldown: 5
@@ -116,6 +116,7 @@ MonoBehaviour:
   DashCooldown: 5
   MovePositions:
   - {x: 0, y: 0}
+  spotCap: 00000000
 --- !u!114 &4719026838900429687
 MonoBehaviour:
   m_ObjectHideFlags: 0

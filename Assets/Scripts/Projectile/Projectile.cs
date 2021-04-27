@@ -11,8 +11,8 @@ public abstract class Projectile : MonoBehaviour
 
     protected float duration;
     protected bool attacking => duration > 0.01f;
-    private AttackHitbox attackHitbox;
-    private Rigidbody2D mRigidbody;
+    protected AttackHitbox attackHitbox;
+    protected Rigidbody2D mRigidbody;
 
     // Start is called before the first frame update
     public virtual void Start()
