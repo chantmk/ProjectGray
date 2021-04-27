@@ -7,6 +7,10 @@ public class PlayerInventory : MonoBehaviour
 {
     //public Text ui;
     public Text resemblanceCountText;
+    //public Text redeemAmountText;
+    public Text healthPackText; // For inventory UI
+    public Text resemblanceText; // For inventory UI
+
     [SerializeField] private int healthPackCount;
     [SerializeField] private int resemblanceCount;
 
@@ -32,6 +36,9 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
+        resemblanceText.text = $"{resemblanceCount}";
+        healthPackText.text = $"{healthPackCount}";
         //TODO: debug
         if (Input.GetKeyDown(KeyCode.K))
         {

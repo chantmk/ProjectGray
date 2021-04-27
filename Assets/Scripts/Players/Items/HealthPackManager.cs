@@ -10,7 +10,6 @@ public class HealthPackManager : Interactable
     void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
-       
     }
     
     public override void OnInteract()

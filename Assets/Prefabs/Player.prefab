@@ -481,8 +481,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f4d54e92d6be4c458b011ef1f33c5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui: {fileID: 0}
-  healthPackCount: 10
+  resemblanceCountText: {fileID: 0}
+  healthPackText: {fileID: 0}
+  resemblanceText: {fileID: 0}
+  healthPackCount: 0
   resemblanceCount: 0
   player: {fileID: 0}
   playerStats: {fileID: 0}

@@ -62,7 +62,7 @@ public class ResemblanceRedeemManager : Interactable
         base.Update();
 
         playerResemblanceCount = playerInventory.GetResemblanceCount();
-        resemblanceCountText.text = $"Resemblance Count {playerResemblanceCount}";
+        //resemblanceCountText.text = $"Resemblance Count {playerResemblanceCount}";
 
         if (playerResemblanceCount < checkpointAmount[0])
         {
