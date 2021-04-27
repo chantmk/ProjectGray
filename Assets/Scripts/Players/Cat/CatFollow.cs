@@ -9,6 +9,7 @@ public class CatFollow : StateMachineBehaviour
     protected Transform transform;
     protected Rigidbody2D rigidbody;
 
+    private Vector3 nextPosition;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -22,6 +23,7 @@ public class CatFollow : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         moveToNextPosition();
+        updateMovingAnimation();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -44,7 +46,15 @@ public class CatFollow : StateMachineBehaviour
 
     private void moveToNextPosition()
     {
-        transform.position = Vector2.MoveTowards(transform.position, cat.calculateNextPosition(), cat.MoveSpeed * Time.deltaTime);
+        nextPosition = cat.calculateNextPosition();
+        transform.position = Vector2.MoveTowards(transform.position, nextPosition, cat.MoveSpeed * Time.deltaTime);
         //rigidbody.velocity = (transform.position - cat.calculateNextPosition()) * cat.MoveSpeed;
+    }
+
+    private void updateMovingAnimation()
+    {
+        var direction = nextPosition - transform.position;
+        animator.SetFloat("Horizontal", direction.normalized.x);
+        animator.SetFloat("Vertical", direction.normalized.y);
     }
 }

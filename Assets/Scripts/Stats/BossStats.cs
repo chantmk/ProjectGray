@@ -30,6 +30,8 @@ public class BossStats : CharacterStats
         base.Start();
         healthBar.transform.parent.gameObject.SetActive(true);
         healthBarImage = healthBar.GetComponent<Image>();
+        healthBarImage.color = Color.green;
+        // Work on exception handling below
     }
 
     // Update is called once per frame
@@ -46,15 +48,19 @@ public class BossStats : CharacterStats
         {
             Aggro = BossStatus.LastStand;
             status = Status.Immortal;
+            EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < HyperRatio)
+        else if (currentHealthPercentage < HyperRatio && Aggro == BossStatus.Enrage)
         {
             Aggro = BossStatus.Hyper;
+            healthBarImage.color = Color.red;
+            EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < EnrageRatio)
+        else if (currentHealthPercentage < EnrageRatio && Aggro == BossStatus.Calm)
         {
             Aggro = BossStatus.Enrage;
+            healthBarImage.color = Color.yellow;
+            EventPublisher.TriggerStatus(Aggro);
         }
-        EventPublisher.TriggerStatus(Aggro);
     }
 }
