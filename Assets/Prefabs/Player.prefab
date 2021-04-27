@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverDistance: 0.75
+  Direction: {x: 1, y: 0}
   currentWeaponID: 0
 --- !u!1 &1903335472
 GameObject:
@@ -288,6 +289,7 @@ GameObject:
   - component: {fileID: 179973727}
   - component: {fileID: 7156235225171064192}
   - component: {fileID: 620563490}
+  - component: {fileID: 1381136330}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -350,7 +352,8 @@ SpriteRenderer:
   m_SortingLayerID: -2050882081
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a43bc38cb0d6009458a2cadf901afbff, type: 3}
+  m_Sprite: {fileID: 1805332533127123554, guid: 58c15c797185abe4788ffb769f4f7777,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -414,10 +417,10 @@ MonoBehaviour:
   normalSpeed: 2
   runningSpeed: 5
   rechargeStamina: 20
-  expValue: 0.8
   rawInputX: 0
   rawInputY: 0
   rawInputShift: 0
+  expValue: 0.8
   tileData: 0
   isExhault: 0
   stamina: 100
@@ -466,7 +469,7 @@ MonoBehaviour:
   maxHealth: 100
   damage: 10
   armor: 0
-  isDead: 0
+  status: 0
   healthBar: {fileID: 0}
 --- !u!114 &620563490
 MonoBehaviour:
@@ -485,6 +488,25 @@ MonoBehaviour:
   player: {fileID: 0}
   playerStats: {fileID: 0}
   healValue: 10
+--- !u!95 &1381136330
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532720954757015461}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87764b8e13f9fe747b9ab98d065b4ab6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &4532720954874852001
 PrefabInstance:
   m_ObjectHideFlags: 0
