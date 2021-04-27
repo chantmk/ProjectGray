@@ -24,9 +24,9 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private static float xySpeed = 2.0f;
 
     private Animator animator;
-
+    public float AnimationSpeed = 1f;
+    private float animationSpeed = 0.2f;
     public enum States { Idle, Movement };
-
     private StateMachine<States> stateMachine;
     
     [SerializeField] private float expValue = 0.8f;
@@ -51,6 +51,7 @@ public class PlayerMovementManager : MonoBehaviour
             staminaBar = GameObject.FindGameObjectWithTag("StaminaBar");
 
         animator = GetComponent<Animator>();
+        animator.SetFloat(AnimatorParams.AnimSpeed, animationSpeed);
         
         stateMachine = new StateMachine<States>(States.Idle);
         
@@ -89,6 +90,8 @@ public class PlayerMovementManager : MonoBehaviour
 
         animator.SetFloat(AnimatorParams.Horizontal, movement.x);
         animator.SetFloat(AnimatorParams.Vertical, movement.y);
+        
+        
     }
 
     private void FixedUpdate()
