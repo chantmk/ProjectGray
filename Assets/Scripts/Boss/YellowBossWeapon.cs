@@ -11,7 +11,7 @@ public class YellowBossWeapon : BossWeapon
     private int HyperBulletCount = 8;
     [SerializeField]
     private int DashAttackCount = 4;
-    [Header("Ballopn trap parameter")]
+    [Header("Balloon trap parameter")]
     [SerializeField]
     private float CalmTrapMaxCooldown = 1.0f;
     [SerializeField]
@@ -27,6 +27,8 @@ public class YellowBossWeapon : BossWeapon
     [SerializeField]
     [Range(0.0f, 1.0f)]
     private float HyperTrapRatio;
+    [SerializeField]
+    private GameObject trap;
 
     private float currentTrapCooldown = 0.0f;
 
@@ -48,6 +50,13 @@ public class YellowBossWeapon : BossWeapon
         base.EnrageAttack(EnrageNumber);
         switch (bossStats.Aggro)
         {
+            case (BossStatus.Calm):
+                for (int i = 0; i < 1; i++)
+                {
+                    var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
+                    bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+                }
+                break;
             case (BossStatus.Enrage):
                 for (int i = 0; i < EnrageBulletCount; i++)
                 {
@@ -92,14 +101,14 @@ public class YellowBossWeapon : BossWeapon
     public void SetTrap()
     {
         resetTrapCooldown();
-        Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
+        Instantiate(trap, transform.position, Quaternion.Euler(Vector3.zero));
     }
 
     public void RandomSpawnTrap()
     {
         resetTrapCooldown();
         Vector3 position = new Vector3(Random.Range(0.0f, 1.0f) * EnrageAttackRange, Random.Range(0.0f, 1.0f) * EnrageAttackRange);
-        Instantiate(ProjectileComponent, position, Quaternion.Euler(Vector3.zero));
+        Instantiate(trap, position, Quaternion.Euler(Vector3.zero));
 
     }
 

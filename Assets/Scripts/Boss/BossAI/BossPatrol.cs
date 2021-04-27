@@ -8,12 +8,12 @@ public class BossPatrol : BossBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        bossStats.status = Status.Immortal;
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         patrol();
+        ListenToAttackSignal();
         updateMovingAnimation();
     }
 

@@ -6,6 +6,7 @@ public class YellowBossPatrol : BossPatrol
 {
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        //bossStats.status = Status.Immortal;
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         ListenToRandomTrap();
     }
