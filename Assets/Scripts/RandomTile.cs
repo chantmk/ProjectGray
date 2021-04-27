@@ -9,7 +9,7 @@ public class RandomTile : MonoBehaviour
 {
     public Tilemap tilemap;
     private List<Vector3> tileWorldLocations;
-    private float[,] dangerTile = new float[12, 6];
+    private float[,] dangerTile = new float[20, 20];
     BoundsInt bounds;
     private GameObject playerObj = null;
     int objX;

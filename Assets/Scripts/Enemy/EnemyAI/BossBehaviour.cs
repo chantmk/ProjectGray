@@ -4,36 +4,60 @@ using UnityEngine;
 
 public class BossBehaviour : EnemyBehaviour
 {
+    /**
+     * This  class is base of other behaviour
+     * - Determine when to chase
+     * - Determine is bose should enrage
+     * - Determine is boss should lastStand
+     * - Determine is boss should attack/special attack
+     */
     protected Boss boss;
     protected BossWeapon bossWeapon;
+    protected BossStats bossStats;
+    protected TalkManager talkManager;
+
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         boss = (Boss)enemy;
         bossWeapon = (BossWeapon)enemyWeapon;
+        bossStats = animator.gameObject.GetComponent<BossStats>();
+        talkManager = boss.GetComponent<TalkManager>();
+
+        EventPublisher.StatusChange += BossStatusHandler;
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
-        ListenToEnrageSignal();
-        ListenToLastStandSignal();
     }
 
-    protected void ListenToEnrageSignal()
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (boss.GetPercentHealth() < boss.EnrageRatio && !boss.IsEnrage)
-        {
-            animator.SetTrigger("Enrage");
-            boss.IsEnrage = true;
-        }
+        base.OnStateExit(animator, stateInfo, layerIndex);
+        EventPublisher.StatusChange -= BossStatusHandler;
     }
 
-    protected void ListenToLastStandSignal()
+    public void BossStatusHandler(BossStatus bossStatus)
     {
-        if (boss.GetPercentHealth() < boss.LastStandRatio && !animator.GetBool("IsLastStand"))
+        switch (bossStatus)
         {
-            animator.SetTrigger("LastStand");
-            boss.IsLastStand = true;
+            case BossStatus.Calm:
+                Debug.Log(transform.name + " Calm");
+                break;
+            case BossStatus.Enrage:
+                Debug.Log(transform.name + " Enrage");
+                animator.SetTrigger("Enrage");
+                break;
+            case BossStatus.Hyper:
+                Debug.Log(transform.name + " Hyper");
+                animator.SetTrigger("Hyper");
+                break;
+            case BossStatus.LastStand:
+                Debug.Log(transform.name + " LastStand");
+                animator.SetTrigger("LastStand");
+                break;
+            default:
+                throw new System.NotImplementedException();
         }
     }
 
@@ -45,7 +69,7 @@ public class BossBehaviour : EnemyBehaviour
         float random = Random.Range(0.0f, randomRange);
 
         //Debug.Log($"{random}, {bossWeapon.SpecialAttackProbability}");
-        if (random <= bossWeapon.SpecialAttackProbability && range < bossWeapon.SpecialAttackRange && boss.IsEnrage)
+        if (random <= bossWeapon.SpecialAttackProbability && range < bossWeapon.SpecialAttackRange && bossStats.Aggro == BossStatus.Enrage)
         {
             animator.SetTrigger("SpecialAttack");
         }

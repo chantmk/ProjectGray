@@ -36,11 +36,13 @@ public class EnemyWeapon : MonoBehaviour
         HashSet<Collider2D> colliders = attackHitbox.HitColliders;
         foreach (Collider2D collider in colliders)
         {
+            Debug.Log(collider);
             // Below will deal damage to player if gameObject contain this collider has player class --> This may change to health class or something
-            //if (collider.TryGetComponent<Player>(out Player player))
-            //{
-            //    player.TakeDamage();
-            //}
+            if (collider.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
+            {
+                Debug.Log("SHIT2");
+                playerStats.TakeDamage(AttackDamage);
+            }
         }
     }
 

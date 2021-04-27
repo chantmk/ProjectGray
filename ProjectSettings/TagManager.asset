@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Tilemap
   - StaminaBar
+  - Weapon
+  - HealthBar
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Player
   - Enemy
   - Boss
-  - 
+  - Wall
   - 
   - 
   - 
@@ -47,4 +49,7 @@ TagManager:
     locked: 0
   - name: Entity
     uniqueID: 2244085215
+    locked: 0
+  - name: UI
+    uniqueID: 549117939
     locked: 0
