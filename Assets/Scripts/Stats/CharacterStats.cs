@@ -11,15 +11,32 @@ public enum Status
 
 public class CharacterStats : MonoBehaviour
 {
-    [SerializeField] public float maxHealth = 100.0f;
-    [SerializeField] public float currentHealth { get; private set; }
-
-    protected const float depleteHealth = 0.01f;
-
+    [Header("Character base status")]
+    public float maxHealth = 100.0f;
+    public float currentHealth { get; private set; }
     public float damage;
     public float armor;
     public Status status = Status.Mortal;
-    
+
+    protected const float depleteHealth = 0.01f;
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+        status = Status.Mortal;
+        currentHealth = maxHealth;
+    }
+
+    // Update is called once per frame
+    protected virtual void Update()
+    {
+        // TODO: remove (For debugging)
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            TakeDamage(5.0f);
+        }
+    }
+
     void Awake()
     {
         currentHealth = maxHealth;
@@ -34,7 +51,7 @@ public class CharacterStats : MonoBehaviour
             if (damage < 0.0f) damage = 0.0f;
 
             currentHealth -= damage;
-            Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
+            //Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
             HandleHealth();
         }
         
@@ -50,7 +67,7 @@ public class CharacterStats : MonoBehaviour
             }
 
             currentHealth += healValue;
-            Debug.Log(transform.name + " +" + healValue + " Health");
+            //Debug.Log(transform.name + " +" + healValue + " Health");
             if (currentHealth > maxHealth)
             {
                 currentHealth = maxHealth;
@@ -81,23 +98,5 @@ public class CharacterStats : MonoBehaviour
     public float GetHealthPercentage()
     {
         return currentHealth / maxHealth;
-    }
-
-
-    // Start is called before the first frame update
-    protected virtual void Start()
-    {
-        status = Status.Mortal;
-        currentHealth = maxHealth;
-    }
-
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-        // TODO: remove (For debugging)
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            TakeDamage(5.0f);
-        }
     }
 }

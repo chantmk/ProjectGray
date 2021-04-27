@@ -22,6 +22,7 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private bool rawInputShift;
 
     [SerializeField] private static float xySpeed = 2.0f;
+    [SerializeField] private float[] tileData;
 
     private Animator animator;
     public float AnimationSpeed = 1f;
@@ -30,7 +31,6 @@ public class PlayerMovementManager : MonoBehaviour
     private StateMachine<States> stateMachine;
     
     [SerializeField] private float expValue = 0.8f;
-    [SerializeField] private float tileData;
     [SerializeField] private bool isExhault = false;
     [SerializeField] private float stamina = 100f;
     [SerializeField] private int inputX, inputY;
@@ -63,12 +63,13 @@ public class PlayerMovementManager : MonoBehaviour
     {
         rawInputX = Input.GetAxisRaw("Horizontal");
         rawInputY = Input.GetAxisRaw("Vertical");
-        tileData = randomTile.getCurrentTileData();
+        rawInputShift = Input.GetKey(KeyCode.LeftShift);
+        tileData = randomTile.getCurrentTileSpeed();
 
         inputX = rawInputX == 0 ? 0 : (int)Mathf.Sign(rawInputX);
         inputY = rawInputY == 0 ? 0 : (int)Mathf.Sign(rawInputY);
         image.fillAmount = stamina / 100;
-        coefficient = Mathf.Pow(expValue, tileData);
+        coefficient = Mathf.Pow(expValue, tileData[0]);
         movement = new Vector2(inputX, inputY);
         movement = movement.normalized * (xySpeed * coefficient);
         
@@ -91,7 +92,34 @@ public class PlayerMovementManager : MonoBehaviour
         animator.SetFloat(AnimatorParams.Horizontal, movement.x);
         animator.SetFloat(AnimatorParams.Vertical, movement.y);
         
-        
+        if (rawInputShift && stamina > 0 && !isExhault)
+        {
+            xySpeed = runningSpeed;
+            stamina -= 1.0f;
+            if(stamina <= 0.0f)
+            {
+                isExhault = true;
+            }
+        }
+        else
+        {
+            xySpeed = normalSpeed;
+            stamina += 0.08f;
+            if (stamina > 100.0f)
+            {
+                stamina = 100.0f;
+            }
+            else if(isExhault && stamina > rechargeStamina)
+            {
+                isExhault = false;
+            }
+        }
+        if (tileData[2] != 0f)stamina -= tileData[2] * 0.01f + 0.1f;
+        image.fillAmount = stamina / 100;
+        coefficient = Mathf.Pow(expValue, tileData[0]);
+        movement = new Vector2(inputX, inputY);
+        //Debug.Log(coefficient);
+        movement = movement.normalized * (xySpeed * coefficient);
     }
 
     private void FixedUpdate()
