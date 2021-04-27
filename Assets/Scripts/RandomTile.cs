@@ -16,6 +16,7 @@ public class RandomTile : MonoBehaviour
     int objY;
     private int currentTileX = 0;
     private int currentTileY = 0;
+    private float outSpeed;
 
     void Start()
     {
@@ -75,6 +76,15 @@ public class RandomTile : MonoBehaviour
     {
         /*objX = (int)Math.Floor(playerObj.transform.position.x);
         objY = (int)Math.Floor(playerObj.transform.position.y);*/
-        return dangerTile[objX + 5, objY + 7];
+        try
+        {
+            return  outSpeed = dangerTile[objX + 5, objY + 7];
+        }
+        catch (IndexOutOfRangeException e)  // CS0168
+        {
+            Console.WriteLine(e.Message);
+            throw new ArgumentOutOfRangeException("index parameter is out of range.", e);
+        }
+        //return outSpeed;
     }
 }
