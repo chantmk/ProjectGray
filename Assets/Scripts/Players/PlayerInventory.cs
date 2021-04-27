@@ -75,6 +75,7 @@ public class PlayerInventory : MonoBehaviour
         if (resemblanceCount < amount) return false;
 
         resemblanceCount -= amount;
+        Debug.Log("Redeem "+amount+" resemblances");
         return true;
     }
     
