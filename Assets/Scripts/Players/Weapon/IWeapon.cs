@@ -7,6 +7,6 @@ namespace Players.Weapon
         WeaponIDEnum WeaponID { get; }
         float MaxFireCooldown { get; }
 
-        void Fire();
+        void Fire(Vector2 direction);
     }
 }
