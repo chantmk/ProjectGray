@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public Text ui;
+    //public Text ui;
+    public Text resemblanceCountText;
     [SerializeField] private int healthPackCount;
     [SerializeField] private int resemblanceCount;
 
@@ -16,13 +17,16 @@ public class PlayerInventory : MonoBehaviour
 
     private List<Item> items = new List<Item>();
 
+    
+
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         playerStats = player.GetComponent<PlayerStats>();
-        
+
+        //resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
     }
 
     // Update is called once per frame
@@ -32,6 +36,7 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             UseHealthPack(1);
+            AddResemblance(1);
         }
     }
 
@@ -62,6 +67,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddResemblance(int amount)
     {
         resemblanceCount += amount;
+        //resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
     }
 
     public bool UseResemblance(int amount)
