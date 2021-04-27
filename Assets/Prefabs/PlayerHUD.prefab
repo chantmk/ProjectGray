@@ -226,7 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 6239799359289525864}
   decisionManager: {fileID: 2364940568892070492}
-  boss: {fileID: 0}
 --- !u!1 &1313651766
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,7 +691,6 @@ GameObject:
   - component: {fileID: 5543432101539743743}
   - component: {fileID: 4197681252538098388}
   - component: {fileID: 6655119536063428222}
-  - component: {fileID: 470239933}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -811,21 +809,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &470239933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558880616194674882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 459929dd457cd6e4e8806f3da2226dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 6239799359289525864}
-  decisionManager: {fileID: 2364940568892070492}
-  boss: {fileID: 0}
 --- !u!1 &693354534553333257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,7 +1030,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Kill
+  m_Text: Kill(P)
 --- !u!1 &5866831792878171834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1126,6 @@ GameObject:
   - component: {fileID: 8342498949963281539}
   - component: {fileID: 3693279772924984437}
   - component: {fileID: 9133787702527577522}
-  - component: {fileID: 1663957024}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1262,21 +1244,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1663957024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6314569252986306492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 459929dd457cd6e4e8806f3da2226dd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 6239799359289525864}
-  decisionManager: {fileID: 2364940568892070492}
-  boss: {fileID: 0}
 --- !u!1 &6334130948802161180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1701,4 +1668,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mercy
+  m_Text: Mercy(O)
