@@ -44,7 +44,7 @@ public class PlayerMovementManager : MonoBehaviour
         rawInputX = Input.GetAxisRaw("Horizontal");
         rawInputY = Input.GetAxisRaw("Vertical");
         rawInputShift = Input.GetKey(KeyCode.LeftShift);
-        tileData = randomTile.getCurrentTileData();
+        tileData = randomTile.getCurrentTileSpeed();
 
         inputX = rawInputX == 0 ? 0 : (int)Mathf.Sign(rawInputX);
         inputY = rawInputY == 0 ? 0 : (int)Mathf.Sign(rawInputY);
