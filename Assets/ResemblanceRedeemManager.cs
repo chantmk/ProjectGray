@@ -32,11 +32,15 @@ public class ResemblanceRedeemManager : Interactable
 
         playerResemblanceCount = playerInventory.GetResemblanceCount();
 
-        if (playerResemblanceCount <= checkpointAmount[0])
+        if (playerResemblanceCount < checkpointAmount[0])
         {
             requiredResemblanceCount = checkpointAmount[0];
         }
-        else if (playerResemblanceCount <= checkpointAmount[1])
+        else if (playerResemblanceCount >= checkpointAmount[0] && playerResemblanceCount < checkpointAmount[1])
+        {
+            requiredResemblanceCount = checkpointAmount[0];
+        }
+        else if (playerResemblanceCount >= checkpointAmount[1] && playerResemblanceCount < checkpointAmount[2])
         {
             requiredResemblanceCount = checkpointAmount[1];
         }
