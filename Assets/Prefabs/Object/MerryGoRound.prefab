@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7059574028370848558}
   - component: {fileID: 7429186785627645350}
   - component: {fileID: 3473628064990244028}
+  - component: {fileID: 5416352064096789556}
   m_Layer: 0
   m_Name: MerryGoRound
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5807322506427292163}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.42, y: -2.33, z: 0}
-  m_LocalScale: {x: 1.356092, y: 0.8335068, z: 1}
+  m_LocalScale: {x: 3.6742148, y: 3.6742148, z: 3.6742148}
   m_Children:
   - {fileID: 3032433960611856850}
   m_Father: {fileID: 0}
@@ -74,7 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: -2050882081
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 48a1f706128dab84fbdd4fcef39260a1, type: 3}
+  m_Sprite: {fileID: 6283239847456615900, guid: 48f5f30d12dff684393464e9a003248a,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   damage: 10
   MaxDuration: 3
   FlightSpeed: 1
@@ -136,6 +138,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &5416352064096789556
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807322506427292163}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e4d5c453bdd4b745a7b145d6499de95, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7612254316213603992
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +213,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.41, y: 5.26}
+  m_Size: {x: 2.14, y: 0.96}
   m_EdgeRadius: 0
 --- !u!114 &6509744061136372784
 MonoBehaviour:
