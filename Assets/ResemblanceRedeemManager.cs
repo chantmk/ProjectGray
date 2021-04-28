@@ -53,7 +53,7 @@ public class ResemblanceRedeemManager : Interactable
         redeemAmountText.text = $"Redeem with {requiredResemblanceCount} resemblances";
 
         isOpen = false;
-        resemblanceUI.SetActive(isOpen);
+        //resemblanceUI.SetActive(isOpen);
     }
 
     // Update is called once per frame
