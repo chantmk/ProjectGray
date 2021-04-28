@@ -108,8 +108,6 @@ public class PlayerMovementManager : MonoBehaviour
         switch (stateMachine.CurrentState)
         {
             case States.Movement:
-                if (tileData[2] != 0f)
-                    stamina -= tileData[2] * 0.01f + 0.1f;
                 
                 coefficient = Mathf.Pow(expValue, tileData[0]);
                 movement = new Vector2(inputX, inputY);
@@ -147,14 +145,19 @@ public class PlayerMovementManager : MonoBehaviour
         
         if (stateMachine.CurrentState != States.Rolling)
         {
-            stamina += 1f;
-            if (stamina > 100.0f)
+            if (tileData[2] != 0f)
+                stamina -= tileData[2] * 0.01f + 0.1f;
+            else
             {
-                stamina = 100.0f;
-            }
-            else if(isExhault && stamina > rechargeStamina)
-            {
-                isExhault = false;
+                stamina += 1f;
+                if (stamina > 100.0f)
+                {
+                    stamina = 100.0f;
+                }
+                else if(isExhault && stamina > rechargeStamina)
+                {
+                    isExhault = false;
+                }
             }
         }
         
