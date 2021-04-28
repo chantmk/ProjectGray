@@ -18,7 +18,7 @@ public class MerryGoRoundHorseMovement : EnemyMovement
     private float MoveRadius = 10.0f;
 
     private Vector2 centerPosition;
-    private BossStatus bossStatus;
+    private BossStatusEnum bossStatus;
 
     protected override void Start()
     {
@@ -37,7 +37,7 @@ public class MerryGoRoundHorseMovement : EnemyMovement
         }
     }
 
-    public void SetBossStatus(BossStatus status)
+    public void SetBossStatus(BossStatusEnum status)
     {
         bossStatus = status;
     }
@@ -53,6 +53,6 @@ public class MerryGoRoundHorseMovement : EnemyMovement
 
     public bool IsIdle()
     {
-        return bossStatus == BossStatus.Hyper && MaxIdleDelay <= 0.0f;
+        return bossStatus == BossStatusEnum.Hyper && MaxIdleDelay <= 0.0f;
     }
 }

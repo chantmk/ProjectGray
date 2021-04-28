@@ -790,10 +790,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9df81c2136fa534696aeaf8b0694cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 10
-  armor: 0
-  status: 0
+  MaxHealth: 100
+  Armor: 0
+  Status: 0
   healthBar: {fileID: 0}
 --- !u!114 &620563490
 MonoBehaviour:
@@ -810,6 +809,8 @@ MonoBehaviour:
   resemblanceCountText: {fileID: 0}
   healthPackText: {fileID: 0}
   resemblanceText: {fileID: 0}
+  resemblanceUI: {fileID: 0}
+  inventoryBox: {fileID: 0}
   healthPackCount: 0
   resemblanceCount: 0
   player: {fileID: 0}
@@ -841,6 +842,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4532720954757015451}
     m_Modifications:
+    - target: {fileID: 186704753, guid: dc82ca1c5e8db3242a308f77fab313a5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 186704757, guid: dc82ca1c5e8db3242a308f77fab313a5, type: 3}
       propertyPath: player
       value: 

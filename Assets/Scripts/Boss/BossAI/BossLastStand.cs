@@ -13,8 +13,7 @@ public class BossLastStand : BossBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        // Immortal
-        bossStats.status = Status.Immortal;
+        bossStats.Status = StatusEnum.Immortal;
         talkManager.TriggerDotBubble();
         EventPublisher.TriggerPlayCutScene();
 

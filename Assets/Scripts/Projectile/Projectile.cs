@@ -39,7 +39,6 @@ public abstract class Projectile : MonoBehaviour
 
     public virtual void Shoot(Vector2 direction)
     {
-        Debug.Log("Shooting");
         if (mRigidbody == null)
         {
             mRigidbody = GetComponent<Rigidbody2D>();
@@ -52,7 +51,7 @@ public abstract class Projectile : MonoBehaviour
         HashSet<Collider2D> colliders = attackHitbox.HitColliders;
         foreach (Collider2D collider in colliders)
         {
-            if (collider.gameObject.layer == target)
+            if (collider != null && collider.gameObject.layer == target)
             {
                 Attack(collider.gameObject);
             }

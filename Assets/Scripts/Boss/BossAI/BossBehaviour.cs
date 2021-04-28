@@ -38,23 +38,23 @@ public class BossBehaviour : EnemyBehaviour
         EventPublisher.StatusChange -= BossStatusHandler;
     }
 
-    public void BossStatusHandler(BossStatus bossStatus)
+    public void BossStatusHandler(BossStatusEnum bossStatus)
     {
-        bossStats.status = Status.Mortal;
+        bossStats.Status = StatusEnum.Mortal;
         switch (bossStatus)
         {
-            case BossStatus.Calm:
+            case BossStatusEnum.Calm:
                 Debug.Log(transform.name + " Calm");
                 break;
-            case BossStatus.Enrage:
+            case BossStatusEnum.Enrage:
                 Debug.Log(transform.name + " Enrage");
                 animator.SetTrigger("Enrage");
                 break;
-            case BossStatus.Hyper:
+            case BossStatusEnum.Hyper:
                 Debug.Log(transform.name + " Hyper");
                 animator.SetTrigger("Hyper");
                 break;
-            case BossStatus.LastStand:
+            case BossStatusEnum.LastStand:
                 Debug.Log(transform.name + " LastStand");
                 animator.SetTrigger("LastStand");
                 break;
@@ -70,14 +70,14 @@ public class BossBehaviour : EnemyBehaviour
         // Override attack to look for attack and special attack + prob
         float randomRange = bossWeapon.HyperAttackRatio + bossWeapon.EnrageAttackRatio + bossWeapon.AttackRatio;
         float random = Random.Range(0.0f, randomRange);
-        if (bossStats.Aggro == BossStatus.Hyper && random <= bossWeapon.HyperAttackRatio)
+        if (bossStats.Aggro == BossStatusEnum.Hyper && random <= bossWeapon.HyperAttackRatio)
         {
             if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Hyper))
             {
                 animator.SetTrigger("HyperAttack");
             }
         }
-        else if (bossStats.Aggro == BossStatus.Enrage && random <= bossWeapon.EnrageAttackRatio + bossWeapon.HyperAttackRatio)
+        else if (bossStats.Aggro == BossStatusEnum.Enrage && random <= bossWeapon.EnrageAttackRatio + bossWeapon.HyperAttackRatio)
         {
             if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Enrage))
             {

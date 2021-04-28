@@ -3,14 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BossStatus
-{
-    Calm,
-    Enrage,
-    Hyper,
-    LastStand
-}
-
 public class BossStats : CharacterStats
 {
     [Header("Boss Life parameter")]
@@ -18,7 +10,7 @@ public class BossStats : CharacterStats
     public float EnrageRatio;
     [Range(0.0f, 1.0f)]
     public float HyperRatio;
-    public BossStatus Aggro = BossStatus.Calm;
+    public BossStatusEnum Aggro = BossStatusEnum.Calm;
     [SerializeField]
     private GameObject healthBar;
 
@@ -44,21 +36,21 @@ public class BossStats : CharacterStats
     public override void HandleHealth()
     {
         float currentHealthPercentage = GetHealthPercentage();
-        if (currentHealth <= depleteHealth)
+        if (CurrentHealth <= depleteHealth)
         {
-            Aggro = BossStatus.LastStand;
-            status = Status.Immortal;
+            Aggro = BossStatusEnum.LastStand;
+            Status = StatusEnum.Immortal;
             EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < HyperRatio && Aggro == BossStatus.Enrage)
+        else if (currentHealthPercentage < HyperRatio && Aggro == BossStatusEnum.Enrage)
         {
-            Aggro = BossStatus.Hyper;
+            Aggro = BossStatusEnum.Hyper;
             healthBarImage.color = Color.red;
             EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < EnrageRatio && Aggro == BossStatus.Calm)
+        else if (currentHealthPercentage < EnrageRatio && Aggro == BossStatusEnum.Calm)
         {
-            Aggro = BossStatus.Enrage;
+            Aggro = BossStatusEnum.Enrage;
             healthBarImage.color = Color.yellow;
             EventPublisher.TriggerStatus(Aggro);
         }
@@ -66,12 +58,12 @@ public class BossStats : CharacterStats
 
     public void TakeCrashDamage(float damage)
     {
-        damage -= armor;
+        damage -= Armor;
 
-        if (damage < 0.0f) damage = 0.0f;
+        if (damage < GrayConstants.EPSILON) damage = 0.0f;
 
-        currentHealth -= damage;
-        Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
+        CurrentHealth -= damage;
+        Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
         HandleHealth();
     }
 }

@@ -84,10 +84,10 @@ GameObject:
   - component: {fileID: 470288516058063973}
   - component: {fileID: 1930928131}
   - component: {fileID: 6852541505086270376}
+  - component: {fileID: 1351499417}
   - component: {fileID: 6852541505086270379}
   - component: {fileID: 6852541505086270378}
   - component: {fileID: 6852541505086270382}
-  - component: {fileID: 1351499417}
   m_Layer: 0
   m_Name: BlackBoss
   m_TagString: Enemy
@@ -122,12 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 20
-  armor: 0
-  status: 0
-  EnrageRatio: 0.62
-  HyperRatio: 0.32
+  MaxHealth: 100
+  Armor: 0
+  Status: 0
+  EnrageRatio: 0.39
+  HyperRatio: 0.21
   Aggro: 0
   healthBar: {fileID: 0}
 --- !u!114 &563864187573055747
@@ -151,6 +150,7 @@ MonoBehaviour:
   DashCooldown: 0
   MovePositions:
   - {x: 0, y: 0}
+  spotCap: 00000000
 --- !u!114 &470288516058063973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813799400e87c6b49bf009a100406018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDamage: 10
   AttackRange: 1.54
   AttackRatio: 0.75
   AttackMaxCooldown: 2
@@ -253,6 +254,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1351499417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852541505086270373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footOffset: -1.22
 --- !u!50 &6852541505086270379
 Rigidbody2D:
   serializedVersion: 4
@@ -284,7 +298,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.003839083, y: 0}
@@ -319,15 +333,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1351499417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6852541505086270373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

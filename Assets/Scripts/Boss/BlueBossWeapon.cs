@@ -12,20 +12,21 @@ public class BlueBossWeapon : BossWeapon
     private int HyperBulletCount = 8;
     [SerializeField]
     private int DashAttackCount = 4;
+    [SerializeField]
 
     public override void EnrageAttack(int EnrageNumber)
     {
         base.EnrageAttack(EnrageNumber);
         switch (bossStats.Aggro)
         {
-            case (BossStatus.Enrage):
+            case (BossStatusEnum.Enrage):
                 for (int i=0; i<EnrageBulletCount; i++)
                 {
                     var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
                     bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
                 break;
-            case (BossStatus.Hyper):
+            case (BossStatusEnum.Hyper):
                 for (int i = 0; i < HyperBulletCount; i++)
                 {
                     var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
@@ -40,9 +41,11 @@ public class BlueBossWeapon : BossWeapon
     public override void HyperAttack(int HyperNumber)
     {
         base.HyperAttack(HyperNumber);
+
         for (int i = 0; i < HyperBulletCount; i++)
         {
-            var bullet = Instantiate(HyperAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
+            Vector3 position = new Vector3(Random.Range(HyperAttackRange / 2, HyperAttackRange), Random.Range(HyperAttackRange / 2, HyperAttackRange));
+            var bullet = Instantiate(HyperAttacks[0], transform.position + position, Quaternion.Euler(Vector3.zero));
             bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
         }
     }

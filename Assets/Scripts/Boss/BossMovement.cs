@@ -28,26 +28,26 @@ public class BossMovement : EnemyMovement
         return MovePositions[toSpot];
     }
 
-    public void SetSpotCap(BossStatus bossStatus)
+    public void SetSpotCap(BossStatusEnum bossStatus)
     {
         switch(bossStatus)
         {
-            case BossStatus.Calm:
+            case BossStatusEnum.Calm:
                 spotCapPointer = 0;
                 break;
-            case BossStatus.Enrage:
+            case BossStatusEnum.Enrage:
                 if (spotCap.Length >= 1)
                 {
                     spotCapPointer = 1;
                 }
                 break;
-            case BossStatus.Hyper:
+            case BossStatusEnum.Hyper:
                 if (spotCap.Length >= 2)
                 {
                     spotCapPointer = 2;
                 }
                 break;
-            case BossStatus.LastStand:
+            case BossStatusEnum.LastStand:
                 spotCapPointer = 0;
                 break;
         }

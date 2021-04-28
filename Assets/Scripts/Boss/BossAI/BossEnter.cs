@@ -16,7 +16,7 @@ public class BossEnter : BossBehaviour
         base.OnStateEnter(animator, stateInfo, layerIndex);
         talkManager.TriggerExclamationBubble();
         talkManager.TriggerDialogue();
-        bossStats.status = Status.Immortal;
+        bossStats.Status = StatusEnum.Immortal;
         // Add fight as a callback method for event publisher
         EventPublisher.DialogueDone += Fight;
     }
@@ -29,7 +29,7 @@ public class BossEnter : BossBehaviour
 
     private void Fight()
     {
-        bossStats.status = Status.Mortal;
+        bossStats.Status = StatusEnum.Mortal;
         animator.SetTrigger("Fight");
     }
 

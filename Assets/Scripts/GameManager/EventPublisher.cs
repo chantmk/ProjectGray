@@ -47,9 +47,9 @@ public class EventPublisher
         DialogueDone?.Invoke();
     }
 
-    public delegate void OnStatusChange(BossStatus bossStatus);
+    public delegate void OnStatusChange(BossStatusEnum bossStatus);
     public static event OnStatusChange StatusChange;
-    public static void TriggerStatus(BossStatus bossStatus)
+    public static void TriggerStatus(BossStatusEnum bossStatus)
     {
         Debug.Log("Trigger: " + bossStatus);
         StatusChange?.Invoke(bossStatus);

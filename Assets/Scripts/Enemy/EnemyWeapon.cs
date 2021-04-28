@@ -5,15 +5,14 @@ using UnityEngine;
 public class EnemyWeapon : MonoBehaviour
 {
     [Header("Weapon status")]
+    public float AttackDamage = 10.0f;
     public float AttackRange = 1.0f;
-    //public float AttackSpeed = 1.0f;
     [Range(0.0f, 1.0f)]
-    public float AttackRatio;
+    public float AttackRatio = 0.5f;
     public float AttackMaxCooldown = 2.0f;
     public bool IsRange = false;
     public GameObject ProjectileComponent;
 
-    protected float attackDamage;
     private AttackHitbox attackHitbox;
     private float attackCooldown;
     
@@ -21,17 +20,11 @@ public class EnemyWeapon : MonoBehaviour
     {
         attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
         attackCooldown = AttackMaxCooldown;
-        GetRelateComponent();
-    }
-
-    public virtual void GetRelateComponent()
-    {
-        attackDamage = GetComponent<EnemyStats>().damage;
     }
 
     public virtual void FixedUpdate()
     {
-        if (attackCooldown > 0.0f)
+        if (attackCooldown > GrayConstants.MINIMUM_TIME)
         {
             attackCooldown -= Time.fixedDeltaTime;
         }
@@ -39,7 +32,7 @@ public class EnemyWeapon : MonoBehaviour
 
     public virtual bool IsReady(Vector3 vectorToPlayer)
     {
-        return attackCooldown <= 0.0f && vectorToPlayer.magnitude < AttackRange;
+        return attackCooldown <= GrayConstants.MINIMUM_TIME && vectorToPlayer.magnitude < AttackRange;
     }
 
     public virtual void Attack()
@@ -57,7 +50,7 @@ public class EnemyWeapon : MonoBehaviour
 
     protected virtual void MeleeAttack()
     {
-        Debug.Log($"Melee attack from {this.name}");
+        //Debug.Log($"Melee attack from {this.name}");
         HashSet<Collider2D> colliders = attackHitbox.HitColliders;
         foreach (Collider2D collider in colliders)
         {
@@ -65,7 +58,7 @@ public class EnemyWeapon : MonoBehaviour
             // Below will deal damage to player if gameObject contain this collider has player class --> This may change to health class or something
             if (collider.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
             {
-                playerStats.TakeDamage(attackDamage);
+                playerStats.TakeDamage(AttackDamage);
             }
         }
     }

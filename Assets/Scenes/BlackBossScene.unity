@@ -250,6 +250,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 381786c5ffd72b041a148bc9a1a45df2, type: 3}
+--- !u!1 &278932008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1410803850, guid: 381786c5ffd72b041a148bc9a1a45df2,
+    type: 3}
+  m_PrefabInstance: {fileID: 40060187}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &420667148 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6660168177696829220, guid: 381786c5ffd72b041a148bc9a1a45df2,
@@ -3186,14 +3192,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 179973724, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
-      propertyPath: RollSpeed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 179973724, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
-      propertyPath: MaxRollDuration
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
       propertyPath: m_RootOrder
@@ -3254,6 +3252,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7156235225171064192, guid: ceb5d75e15e544846a7ba91c60b3a639,
+        type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 278932008}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
 --- !u!1 &1724499936

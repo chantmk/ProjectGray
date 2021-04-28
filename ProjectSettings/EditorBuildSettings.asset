@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BlackBossScene.unity
     guid: 1f2d64c2882174545b1e733063503412
+  - enabled: 1
+    path: Assets/Scenes/BlueBossScene.unity
+    guid: f7072abd857c23749b8598ac98924973
+  - enabled: 1
+    path: Assets/Scenes/YellowBossScene.unity
+    guid: 514d058ec9a001b42937dc7b10ec9546
   m_configObjects: {}

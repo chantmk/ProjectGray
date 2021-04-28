@@ -20,16 +20,16 @@ public class ProjectileStats : EnemyStats
     }
     public override void Die()
     {
-        status = Status.Dead;
+        Status = StatusEnum.Dead;
         animator.SetTrigger("Dead");
         Destroy(gameObject, consumeTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+/*    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(status == Status.Dead && collision.gameObject.tag == "Boss")
         {
             collision.gameObject.GetComponent<BossStats>().TakeCrashDamage(damage);
         }
-    }
+    }*/
 }

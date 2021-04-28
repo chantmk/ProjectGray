@@ -50,21 +50,21 @@ public class YellowBossWeapon : BossWeapon
         base.EnrageAttack(EnrageNumber);
         switch (bossStats.Aggro)
         {
-            case (BossStatus.Calm):
+            case (BossStatusEnum.Calm):
                 for (int i = 0; i < 1; i++)
                 {
                     var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
                     //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
                 break;
-            case (BossStatus.Enrage):
+            case (BossStatusEnum.Enrage):
                 for (int i = 0; i < EnrageBulletCount; i++)
                 {
                     var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
                     //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
                 break;
-            case (BossStatus.Hyper):
+            case (BossStatusEnum.Hyper):
                 for (int i = 0; i < HyperBulletCount; i++)
                 {
                     var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
@@ -119,13 +119,13 @@ public class YellowBossWeapon : BossWeapon
         {
             switch (bossStats.Aggro)
             {
-                case BossStatus.Calm:
+                case BossStatusEnum.Calm:
                     return random < CalmTrapRatio;
-                case BossStatus.Enrage:
+                case BossStatusEnum.Enrage:
                     return random < EnrageTrapRatio;
-                case BossStatus.Hyper:
+                case BossStatusEnum.Hyper:
                     return random < HyperTrapRatio;
-                case BossStatus.LastStand:
+                case BossStatusEnum.LastStand:
                     return false;
                 default:
                     return false;
@@ -138,13 +138,13 @@ public class YellowBossWeapon : BossWeapon
     {
         switch (bossStats.Aggro)
         {
-            case BossStatus.Calm:
+            case BossStatusEnum.Calm:
                 currentTrapCooldown = CalmTrapMaxCooldown;
                 break;
-            case BossStatus.Enrage:
+            case BossStatusEnum.Enrage:
                 currentTrapCooldown = EnrageTrapMaxCooldown;
                 break;
-            case BossStatus.Hyper:
+            case BossStatusEnum.Hyper:
                 currentTrapCooldown = HyperTrapMaxCooldown;
                 break;
             default:

@@ -49,28 +49,23 @@ public class BossWeapon : EnemyWeapon
         EnrageAttackCooldown = EnrageAttackMaxCooldown;
         HyperAttackCooldown = HyperAttackMaxCooldown;
         DashAttackCooldown = DashAttackMaxCooldown;
-    }
-
-    public override void GetRelateComponent()
-    {
         bossStats = GetComponent<BossStats>();
-        attackDamage = bossStats.damage;
     }
 
     public override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (EnrageAttackCooldown > 0.0f)
+        if (EnrageAttackCooldown > GrayConstants.MINIMUM_TIME)
         {
             EnrageAttackCooldown -= Time.fixedDeltaTime;
         }
 
-        if (HyperAttackCooldown > 0.0f)
+        if (HyperAttackCooldown > GrayConstants.MINIMUM_TIME)
         {
             HyperAttackCooldown -= Time.fixedDeltaTime;
         }
 
-        if (DashAttackCooldown > 0.0f)
+        if (DashAttackCooldown > GrayConstants.MINIMUM_TIME)
         {
             DashAttackCooldown -= Time.fixedDeltaTime;
         }
@@ -83,13 +78,13 @@ public class BossWeapon : EnemyWeapon
             case (AttackType.Normal):
                 return IsReady(vectorToPlayer);
             case (AttackType.Enrage):
-                if (EnrageAttackCooldown <= 0.0f && vectorToPlayer.magnitude < EnrageAttackRange)
+                if (EnrageAttackCooldown <= GrayConstants.MINIMUM_TIME && vectorToPlayer.magnitude < EnrageAttackRange)
                 {
                     return true;
                 }
                 return false;
             case (AttackType.Hyper):
-                if (HyperAttackCooldown <= 0.0f && vectorToPlayer.magnitude < HyperAttackRange)
+                if (HyperAttackCooldown <= GrayConstants.MINIMUM_TIME && vectorToPlayer.magnitude < HyperAttackRange)
                 {
                     return true;
                 }
@@ -103,14 +98,12 @@ public class BossWeapon : EnemyWeapon
     {
         //TODO override Enrage pattern here should check which boss state
         EnrageAttackCooldown = EnrageAttackMaxCooldown;
-        //var enrageAttackComponent = Instantiate(EnrageAttacks[EnrageNumber], transform.position, Quaternion.Euler(Vector3.zero));
     }
 
     public virtual void HyperAttack(int HyperNumber)
     {
         // TODO override Hyper pattern here should check which boss state
         HyperAttackCooldown = HyperAttackMaxCooldown;
-        //var hyperAttackComponent = Instantiate(HyperAttacks[HyperNumber], transform.position, Quaternion.Euler(Vector3.zero));
     }
 
     public virtual void DashAttack()

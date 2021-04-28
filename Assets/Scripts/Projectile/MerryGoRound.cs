@@ -8,14 +8,14 @@ public class MerryGoRound : Projectile
     private Vector3 horseRadius;
     [SerializeField]
     private GameObject horse;
-    private BossStatus bossStatus;
+    private BossStatusEnum bossStatus;
     public override void Start()
     {
         base.Start();
         spawnHorse(bossStatus);
     }
 
-    public void SetBossStatus(BossStatus status)
+    public void SetBossStatus(BossStatusEnum status)
     {
         bossStatus = status;
     }
@@ -24,7 +24,7 @@ public class MerryGoRound : Projectile
         target.GetComponent<CharacterStats>().TakeDamage(damage);
     }
 
-    private void spawnHorse(BossStatus bossStatus)
+    private void spawnHorse(BossStatusEnum bossStatus)
     {
         GameObject horse1 = Instantiate(horse, transform.position, Quaternion.Euler(Vector3.zero));
         horse1.GetComponent<MerryGoRoundHorseMovement>().SetBossStatus(bossStatus);

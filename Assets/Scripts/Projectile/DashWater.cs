@@ -13,7 +13,7 @@ public class DashWater : Projectile
     }
     protected override void Attack(GameObject target)
     {
-        Debug.Log("Splashed!");
+        target.GetComponent<CharacterStats>().TakeDamage(damage);
     }
 
     public void Clear()
