@@ -19,7 +19,7 @@ public class RandomTile : MonoBehaviour
     //private int currentTileX = 0;
     //private int currentTileY = 0;
     //private float outSpeed;
-    private int updateIdx;
+    private int[] unUpdateIdx;
     private Color updateColor;
 
     void Start()
@@ -60,6 +60,16 @@ public class RandomTile : MonoBehaviour
                 break;
         }
         Debug.Log(message: "Weapon ID:" + weaponManager.CurrentWeaponID);
+        if (dangerTile[objX + 5, objY + 7, weaponManager.CurrentWeaponID] == 0)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if(i != weaponManager.CurrentWeaponID)
+                {
+                    dangerTile[objX + 5, objY + 7, i] = 0;
+                }
+            }
+        }
         if (dangerTile[objX + 5, objY + 7, weaponManager.CurrentWeaponID] != 5)
         {
             dangerTile[objX + 5, objY + 7, weaponManager.CurrentWeaponID] += 1;
@@ -92,12 +102,12 @@ public class RandomTile : MonoBehaviour
 
     }
 
-    public float getCurrentTileSpeed()
+    public float[] getCurrentTileSpeed()
     {
         try
         {
             /* return  outSpeed = dangerTile[objX + 5, objY + 7, 0];*/
-            return dangerTile[objX + 5, objY + 7, 0];
+            return new float[3] { dangerTile[objX + 5, objY + 7, 0], dangerTile[objX + 5, objY + 7, 1], dangerTile[objX + 5, objY + 7, 2] };
         }
         catch (IndexOutOfRangeException e)  // CS0168
         {

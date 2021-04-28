@@ -6,7 +6,7 @@ Game Programming class
 2. if there are conflict, merge it and revisit 1
 
 # Commit message convention
-1. [Always use emoji at the start of the commit](https://gitmoji.dev/)
+1. Always use emoji at the start of the commit ref: [link](https://gitmoji.dev/), [link](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md)
 2. Always start with infinitive verb that represent what you have done such as Update... Add... Create... not Added/Adding
 
 # Coding Convention [ref](https://github.com/pjumruspun/RogueliteProject/blob/develop/README.md)
