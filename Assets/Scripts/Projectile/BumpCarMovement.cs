@@ -14,6 +14,7 @@ public class BumpCarMovement : EnemyMovement
     private Vector2 TopRightCorner;
     [SerializeField]
     private float duration = 10.0f;
+
     protected override void Start()
     {
         base.Start();
@@ -23,11 +24,7 @@ public class BumpCarMovement : EnemyMovement
     protected override void Update()
     {
         base.Update();
-        duration -= Time.fixedDeltaTime;
-        if (duration <= 0.0f)
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject, duration);
     }
 
     private Vector2[] randomPosition()

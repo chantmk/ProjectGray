@@ -79,16 +79,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1661194527193612361}
-  - component: {fileID: 4907534698063712580}
+  - component: {fileID: 7250006214736644446}
   - component: {fileID: 9040977762164866988}
-  - component: {fileID: 2170247058459857842}
   - component: {fileID: 5813766642272852927}
   - component: {fileID: -2019515793315021224}
   - component: {fileID: 8713834342599991267}
   - component: {fileID: 2068479650110750764}
+  - component: {fileID: 496380647}
   m_Layer: 0
   m_Name: BumpCar
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4907534698063712580
+--- !u!114 &7250006214736644446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,13 +117,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6179133934991320362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
+  m_Script: {fileID: 11500000, guid: b0e0d74d0e552fa4c99428a085602eed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 0
+  maxHealth: 10
+  damage: 10
   armor: 0
   status: 0
+  consumeTime: 30
 --- !u!114 &9040977762164866988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,25 +147,10 @@ MonoBehaviour:
   MovePositions:
   - {x: 0, y: 0}
   MaxPositionCount: 3
+  MinPositionCount: 5
   BottomLeftCorner: {x: -4.74, y: -5.67}
   TopRightCorner: {x: 6.7, y: -1.58}
---- !u!114 &2170247058459857842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6179133934991320362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d1d2534b691549a6ab39f5cf4dc61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AttackRange: 1
-  AttackRatio: 0
-  AttackMaxCooldown: 2
-  IsRange: 0
-  ProjectileComponent: {fileID: 0}
+  duration: 20
 --- !u!212 &5813766642272852927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -268,3 +254,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &496380647
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179133934991320362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.86, y: 7.86}
+    newSize: {x: 7.86, y: 7.86}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 6.17, y: 3.17}
+  m_EdgeRadius: 0

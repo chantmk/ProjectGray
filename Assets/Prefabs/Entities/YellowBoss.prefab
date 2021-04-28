@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5943690059432754097}
   m_Layer: 0
   m_Name: YellowBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackRange: 7.77
-  AttackRatio: 0.3
+  AttackRatio: 0.08
   AttackMaxCooldown: 5
   IsRange: 0
   ProjectileComponent: {fileID: 0}
