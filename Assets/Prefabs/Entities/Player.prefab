@@ -814,6 +814,7 @@ MonoBehaviour:
   resemblanceCount: 0
   player: {fileID: 0}
   playerStats: {fileID: 0}
+  healValue: 0
 --- !u!95 &1381136330
 Animator:
   serializedVersion: 3
@@ -833,7 +834,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
-  healValue: 100
 --- !u!1001 &4532720954874852001
 PrefabInstance:
   m_ObjectHideFlags: 0
