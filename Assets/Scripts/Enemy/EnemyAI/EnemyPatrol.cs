@@ -24,6 +24,6 @@ public class EnemyPatrol : EnemyBehaviour
     private void patrol()
     {
         // This can be improved by use A* pathfinder
-        transform.position = Vector2.MoveTowards(transform.position, enemy.GetNextPatrolPosition(), enemy.Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, enemyMovement.GetNextPatrolPosition(), enemyMovement.Speed * Time.deltaTime);
     }
 }

@@ -6,7 +6,7 @@ public class TempButton : MonoBehaviour
 {
     public DialogueManager dialogueManager;
     public DecisionManager decisionManager;
-    public Boss boss;
+
     // Start is called before the first frame update
     void Start()
     {

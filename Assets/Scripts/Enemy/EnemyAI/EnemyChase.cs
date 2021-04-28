@@ -15,6 +15,6 @@ public class EnemyChase : EnemyBehaviour
     protected virtual void chase()
     {
         // This can be improved by use A* pathfinder
-        transform.position = Vector2.MoveTowards(transform.position, player.position, enemy.Speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.position, enemyMovement.Speed * Time.deltaTime);
     }
 }
