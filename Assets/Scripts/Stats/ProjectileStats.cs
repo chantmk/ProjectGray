@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileStats : CharacterStats
+public class ProjectileStats : EnemyStats
 {
     [SerializeField]
     private float consumeTime = 3.0f;

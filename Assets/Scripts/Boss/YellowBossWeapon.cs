@@ -53,21 +53,21 @@ public class YellowBossWeapon : BossWeapon
             case (BossStatus.Calm):
                 for (int i = 0; i < 1; i++)
                 {
-                    var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
+                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
                     //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
                 break;
             case (BossStatus.Enrage):
                 for (int i = 0; i < EnrageBulletCount; i++)
                 {
-                    var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
+                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
                     //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
                 break;
             case (BossStatus.Hyper):
                 for (int i = 0; i < HyperBulletCount; i++)
                 {
-                    var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
+                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
                     //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
                 break;

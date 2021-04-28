@@ -6,25 +6,30 @@ public class MerryGoRound : Projectile
 {
     [SerializeField]
     private Vector3 horseRadius;
-    /**
-     * Instantiate horses and set position that horse need to move
-     * If player collide with this do damage
-    */
-
+    [SerializeField]
+    private GameObject horse;
+    private BossStatus bossStatus;
     public override void Start()
     {
         base.Start();
-        spawnHorse();
+        spawnHorse(bossStatus);
     }
 
+    public void SetBossStatus(BossStatus status)
+    {
+        bossStatus = status;
+    }
     protected override void Attack(GameObject target)
     {
         target.GetComponent<CharacterStats>().TakeDamage(damage);
     }
 
-    private void spawnHorse()
+    private void spawnHorse(BossStatus bossStatus)
     {
-
+        GameObject horse1 = Instantiate(horse, transform.position, Quaternion.Euler(Vector3.zero));
+        horse1.GetComponent<MerryGoRoundHorseMovement>().SetBossStatus(bossStatus);
+        GameObject horse2 = Instantiate(horse, transform.position, Quaternion.Euler(Vector3.zero));
+        horse2.GetComponent<MerryGoRoundHorseMovement>().SetBossStatus(bossStatus);
     }
 
     private void OnDrawGizmosSelected()
