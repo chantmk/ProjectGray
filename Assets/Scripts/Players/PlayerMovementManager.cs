@@ -2,20 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 public class PlayerMovementManager : MonoBehaviour
 {
+
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [SerializeField] private float normalSpeed = 2.0f;
+
     [SerializeField] private float runningSpeed = 5.0f;
+
     [SerializeField] private float rechargeStamina = 20.0f;
-    [SerializeField] private float expValue = 0.8f;
-    [SerializeField] private float rawInputX;
-    [SerializeField] private float rawInputY;
-    [SerializeField] private bool rawInputShift;
+
+    private float rawInputX;
+    private float rawInputY;
+    private bool rawInputShift;
+    private bool inputRoll;
+
     [SerializeField] private static float xySpeed = 2.0f;
     [SerializeField] private float[] tileData;
+
+    private Animator animator;
+    public float AnimationSpeed = 1f;
+    private float animationSpeed = 0.2f;
+    public enum States { Idle, Movement, Rolling };
+    private StateMachine<States> stateMachine;
+
+    [SerializeField] private float expValue = 0.8f;
     [SerializeField] private bool isExhault = false;
     [SerializeField] private float stamina = 100f;
     [SerializeField] private int inputX, inputY;
@@ -25,6 +39,12 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private float coefficient;
     private Image image;
     private RandomTile randomTile;
+    
+    public float RollStaminaCost = 30f;
+    public float MaxRollDuration = 0.5f;
+    public float rollDuration;
+    private Vector2 rollDirection;
+    public float RollSpeed;
 
 
     void Start()
@@ -34,6 +54,11 @@ public class PlayerMovementManager : MonoBehaviour
             tilemapObj = GameObject.FindGameObjectWithTag("Tilemap");
         if (staminaBar == null)
             staminaBar = GameObject.FindGameObjectWithTag("StaminaBar");
+
+        animator = GetComponent<Animator>();
+        animator.SetFloat(AnimatorParams.AnimSpeed, animationSpeed);
+        
+        stateMachine = new StateMachine<States>(States.Idle);
         
         randomTile = tilemapObj.GetComponent<RandomTile>();
         image = staminaBar.GetComponent<Image>();
@@ -44,51 +69,110 @@ public class PlayerMovementManager : MonoBehaviour
         rawInputX = Input.GetAxisRaw("Horizontal");
         rawInputY = Input.GetAxisRaw("Vertical");
         rawInputShift = Input.GetKey(KeyCode.LeftShift);
+        inputRoll = Input.GetKeyDown(KeyCode.Space);
         tileData = randomTile.getCurrentTileSpeed();
 
         inputX = rawInputX == 0 ? 0 : (int)Mathf.Sign(rawInputX);
         inputY = rawInputY == 0 ? 0 : (int)Mathf.Sign(rawInputY);
+
+        var isStartRolling = inputRoll && stamina > 0 && !isExhault;
+        var isInputMoving = (inputX != 0 || inputY != 0);
+        // Update State
+        switch (stateMachine.CurrentState)
+        {
+            case States.Idle:
+                if (isStartRolling)
+                    stateMachine.SetNextState(States.Rolling);
+                if (isInputMoving)
+                    stateMachine.SetNextState(States.Movement);
+                    
+                break;
+            case States.Movement:
+                if (isStartRolling)
+                    stateMachine.SetNextState(States.Rolling);
+                if (!isInputMoving)
+                    stateMachine.SetNextState(States.Idle);
+                break;
+            case States.Rolling:
+                if (rollDuration > MaxRollDuration)
+                    if (isInputMoving)
+                        stateMachine.SetNextState(States.Movement);
+                    else
+                        stateMachine.SetNextState(States.Idle);
+                break;
+
+        }
+        stateMachine.ChangeState();
+        // print(stateMachine.CurrentState);
         
-        if (rawInputShift && stamina > 0 && !isExhault)
+        switch (stateMachine.CurrentState)
         {
-            xySpeed = runningSpeed;
-            stamina -= 1.0f;
-            if(stamina <= 0.0f)
+            case States.Movement:
+                
+                coefficient = Mathf.Pow(expValue, tileData[0]);
+                movement = new Vector2(inputX, inputY);
+                //Debug.Log(coefficient);
+                movement = movement.normalized * (xySpeed * coefficient);
+                break;
+            
+            case States.Rolling:
+                if (stateMachine.PreviousState != States.Rolling)
+                {
+                    stamina -= RollStaminaCost;
+                    if (stamina <= 0.0f)
+                    {
+                        stamina = 0.0f;
+                        isExhault = true;
+                    }
+
+                    rollDuration = 0;
+                    rollDirection = new Vector2(inputX, inputY).normalized;
+                }
+                else
+                {
+                    rollDuration += Time.deltaTime;
+                }
+
+                movement = rollDirection * RollSpeed;
+
+                break;
+            case States.Idle:
+                movement = Vector2.zero;
+                break;
+            default:
+                break;
+        }
+        
+        if (stateMachine.CurrentState != States.Rolling)
+        {
+            if (tileData[2] != 0f)
+                stamina -= tileData[2] * 0.01f + 0.1f;
+            else
             {
-                isExhault = true;
+                stamina += 1f;
+                if (stamina > 100.0f)
+                {
+                    stamina = 100.0f;
+                }
+                else if(isExhault && stamina > rechargeStamina)
+                {
+                    isExhault = false;
+                }
             }
         }
-        else
-        {
-            xySpeed = normalSpeed;
-            stamina += 0.08f;
-            if (stamina > 100.0f)
-            {
-                stamina = 100.0f;
-            }
-            else if(isExhault && stamina > rechargeStamina)
-            {
-                isExhault = false;
-            }
-        }
-        if (tileData[2] != 0f)stamina -= tileData[2] * 0.01f + 0.1f;
+        
         image.fillAmount = stamina / 100;
-        coefficient = Mathf.Pow(expValue, tileData[0]);
-        movement = new Vector2(inputX, inputY);
-        //Debug.Log(coefficient);
-        movement = movement.normalized * (xySpeed * coefficient);
+        // Update Animation
+        animator.SetInteger(AnimatorParams.State, (int)stateMachine.CurrentState);
+
+        animator.SetFloat(AnimatorParams.Horizontal, movement.x);
+        animator.SetFloat(AnimatorParams.Vertical, movement.y);
+
     }
+    
 
     private void FixedUpdate()
     {
         playerRigidbody.velocity = movement;
     }
-
-    /*public void setSpeed(float speed)
-    {
-        
-        *//*xSpeed = xySpeed / (1f + speed);
-        ySpeed = xySpeed / (1f + speed);*//*
-        //Debug.Log(xSpeed);
-    }*/
 }

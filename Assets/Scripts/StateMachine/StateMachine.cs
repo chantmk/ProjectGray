@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,51 +7,27 @@ using System.Runtime.CompilerServices;
 using TMPro.EditorUtilities;
 using UnityEngine;
 
-public class StateMachine
+public class StateMachine <T>
 {
-    public int StateId { get; private set; }
+    public T CurrentState { get; private set; }
+    public T PreviousState { get; private set; }
+    public T NextState { get; private set; }
 
-    private State state;
-    private int defaultStateId;
-    private Dictionary<int, State> states = new Dictionary<int, State>();
-    private bool isJustInit;
-
-    public void Initialize(int startId, int defaultId)
+    public StateMachine(T entryState)
     {
-        isJustInit = true;
-        SetState(startId);
-        state = states[startId];
-        defaultStateId = defaultId;
+        PreviousState = entryState;
+        CurrentState = entryState;
+        NextState = entryState;
     }
 
-    public void Process()
+    public void SetNextState(T state)
     {
-        var prevState = state;
-        if (prevState.Id != StateId)
-        {
-            prevState.EndCb?.Invoke();
-
-            state = states[StateId];
-
-            state.BeginCb?.Invoke();
-        } 
-        else if (isJustInit)
-        {
-            if (!(prevState.BeginCb is null))
-                state.BeginCb();
-            isJustInit = false;
-        }
-
-        SetState(state.UpdateCb?.Invoke() ?? defaultStateId); // on update return next state
+        NextState = state;
     }
 
-    public void AddState(State state)
+    public void ChangeState()
     {
-        states[state.Id] = state;
-    }
-
-    public void SetState(int stateId)
-    {
-        StateId = stateId;
+        PreviousState = CurrentState;
+        CurrentState = NextState;
     }
 }
