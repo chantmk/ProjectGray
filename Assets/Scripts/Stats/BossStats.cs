@@ -63,4 +63,15 @@ public class BossStats : CharacterStats
             EventPublisher.TriggerStatus(Aggro);
         }
     }
+
+    public void TakeCrashDamage(float damage)
+    {
+        damage -= armor;
+
+        if (damage < 0.0f) damage = 0.0f;
+
+        currentHealth -= damage;
+        Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
+        HandleHealth();
+    }
 }

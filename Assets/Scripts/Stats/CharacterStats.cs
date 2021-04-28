@@ -13,7 +13,7 @@ public class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
     public float maxHealth = 100.0f;
-    public float currentHealth { get; private set; }
+    public float currentHealth { get; protected set; }
     public float damage;
     public float armor;
     public Status status = Status.Mortal;
@@ -51,7 +51,7 @@ public class CharacterStats : MonoBehaviour
             if (damage < 0.0f) damage = 0.0f;
 
             currentHealth -= damage;
-            //Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
+            Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
             HandleHealth();
         }
         
