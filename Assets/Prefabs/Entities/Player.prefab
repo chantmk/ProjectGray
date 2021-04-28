@@ -807,11 +807,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f4d54e92d6be4c458b011ef1f33c5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPackCount: 10
+  resemblanceCountText: {fileID: 0}
+  healthPackText: {fileID: 0}
+  resemblanceText: {fileID: 0}
+  healthPackCount: 0
   resemblanceCount: 0
   player: {fileID: 0}
   playerStats: {fileID: 0}
-  healValue: 10
 --- !u!95 &1381136330
 Animator:
   serializedVersion: 3
@@ -831,6 +833,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+  healValue: 100
 --- !u!1001 &4532720954874852001
 PrefabInstance:
   m_ObjectHideFlags: 0

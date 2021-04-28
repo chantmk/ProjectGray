@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    //public Text ui;
+    public Text resemblanceCountText;
+    //public Text redeemAmountText;
+    public Text healthPackText; // For inventory UI
+    public Text resemblanceText; // For inventory UI
+
     [SerializeField] private int healthPackCount;
     [SerializeField] private int resemblanceCount;
 
@@ -12,25 +19,38 @@ public class PlayerInventory : MonoBehaviour
 
     [SerializeField] private float healValue;
 
+    private List<Item> items = new List<Item>();
+
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
-        healthPackCount = 10;
-        resemblanceCount = 0;
-        healValue = 10f;
         player = GameObject.Find("Player");
         playerStats = player.GetComponent<PlayerStats>();
-        
+
+        //resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
     }
 
     // Update is called once per frame
     void Update()
     {
+        resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
+        resemblanceText.text = $"{resemblanceCount}";
+        healthPackText.text = $"{healthPackCount}";
         //TODO: debug
         if (Input.GetKeyDown(KeyCode.K))
         {
             UseHealthPack(1);
+            AddResemblance(1);
         }
+    }
+
+    public void AddHealthPack(int amount)
+    {
+        healthPackCount += amount;
+        Debug.Log("Total health pack " + healthPackCount);
     }
 
     public bool UseHealthPack(int amount)
@@ -46,19 +66,26 @@ public class PlayerInventory : MonoBehaviour
         return true;
     }
 
-    public bool UseResemblance(int amount)
-    {
-        if (resemblanceCount < amount) return false;
-
-        resemblanceCount -= amount;
-        return true;
-    }
-
     public int GetHealthPackCount()
     {
         return healthPackCount;
     }
 
+    public void AddResemblance(int amount)
+    {
+        resemblanceCount += amount;
+        //resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
+    }
+
+    public bool UseResemblance(int amount)
+    {
+        if (resemblanceCount < amount) return false;
+
+        resemblanceCount -= amount;
+        Debug.Log("Redeem "+amount+" resemblances");
+        return true;
+    }
+    
     public int GetResemblanceCount()
     {
         return resemblanceCount;
