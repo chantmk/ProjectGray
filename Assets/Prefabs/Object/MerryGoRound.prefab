@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footOffset: 0
 --- !u!114 &7429186785627645350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
   damage: 10
   MaxDuration: 3
   FlightSpeed: 1
+  horseRadius: {x: -1.39, y: -1.15, z: 0}
 --- !u!50 &3473628064990244028
 Rigidbody2D:
   serializedVersion: 4

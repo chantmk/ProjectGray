@@ -183,9 +183,9 @@ MonoBehaviour:
   HyperAttackMaxCooldown: 5
   HyperAttacks:
   - {fileID: 5807322506427292163, guid: 7695ad07697dd8e4d91278cd6dbdaebf, type: 3}
-  EnrageBulletCount: 4
-  HyperBulletCount: 8
-  DashAttackCount: 4
+  EnrageBulletCount: 1
+  HyperBulletCount: 1
+  DashAttackCount: 1
   CalmTrapMaxCooldown: 4
   CalmTrapRatio: 0.32
   EnrageTrapMaxCooldown: 2

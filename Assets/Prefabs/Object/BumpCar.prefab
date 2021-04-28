@@ -79,12 +79,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1661194527193612361}
+  - component: {fileID: 4907534698063712580}
+  - component: {fileID: 9040977762164866988}
+  - component: {fileID: 2170247058459857842}
   - component: {fileID: 5813766642272852927}
   - component: {fileID: -2019515793315021224}
   - component: {fileID: 8713834342599991267}
-  - component: {fileID: 4763481833880489116}
+  - component: {fileID: 2068479650110750764}
   m_Layer: 0
-  m_Name: rollerCar
+  m_Name: BumpCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,6 +108,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4907534698063712580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179133934991320362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage: 0
+  armor: 0
+  status: 0
+--- !u!114 &9040977762164866988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179133934991320362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d82332119f8770449ee54ccaa4d91c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  Speed: 1
+  VisionRange: 1
+  DashProbability: 0
+  DashForce: 0
+  DashDuration: 0
+  DashCooldown: 0
+  MovePositions:
+  - {x: 0, y: 0}
+  MaxPositionCount: 3
+  BottomLeftCorner: {x: -4.74, y: -5.67}
+  TopRightCorner: {x: 6.7, y: -1.58}
+--- !u!114 &2170247058459857842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179133934991320362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851d1d2534b691549a6ab39f5cf4dc61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackRange: 1
+  AttackRatio: 0
+  AttackMaxCooldown: 2
+  IsRange: 0
+  ProjectileComponent: {fileID: 0}
 --- !u!212 &5813766642272852927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -167,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footOffset: 0
 --- !u!50 &8713834342599991267
 Rigidbody2D:
   serializedVersion: 4
@@ -188,21 +249,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4763481833880489116
-MonoBehaviour:
+--- !u!95 &2068479650110750764
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6179133934991320362}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c74342be99fd2cb45b15aec96ad34ef2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target:
-    serializedVersion: 2
-    m_Bits: 256
-  damage: 10
-  MaxDuration: 3
-  FlightSpeed: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5847d01c4d75a146958b24eff115fa4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
