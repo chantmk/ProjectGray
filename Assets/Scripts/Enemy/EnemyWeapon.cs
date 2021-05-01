@@ -12,6 +12,7 @@ public class EnemyWeapon : MonoBehaviour
     public float AttackMaxCooldown = 2.0f;
     public bool IsRange = false;
     public GameObject ProjectileComponent;
+    public int ProjectileCount = 1;
 
     private AttackHitbox attackHitbox;
     private float attackCooldown;
@@ -68,8 +69,11 @@ public class EnemyWeapon : MonoBehaviour
         Debug.Log($"Range attack from {this.name}");
         // This method instantiate the projectile given in projectile component
         // Instant the position and then let the object do what it have to
-        var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
-        projectile.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+        for (int i=0; i < ProjectileCount; i++)
+        {
+            var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
+            projectile.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+        }
     }
 
     public virtual void OnDrawGizmosSelected()

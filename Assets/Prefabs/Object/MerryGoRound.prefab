@@ -112,13 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cc546afcbcc0040a212673c05afba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target:
-    serializedVersion: 2
-    m_Bits: 256
+  target: Player
   damage: 10
   MaxDuration: 3
   FlightSpeed: 1
   horseRadius: {x: -1.39, y: -1.15, z: 0}
+  horse: {fileID: 0}
 --- !u!50 &3473628064990244028
 Rigidbody2D:
   serializedVersion: 4

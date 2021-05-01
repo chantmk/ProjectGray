@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public LayerMask target;
+    public string target = "Player";
     public float damage = 10.0f;
     public float MaxDuration = 3.0f;
     public float FlightSpeed = 1.0f;
@@ -13,6 +13,8 @@ public abstract class Projectile : MonoBehaviour
     protected bool attacking => duration > 0.01f;
     protected AttackHitbox attackHitbox;
     protected Rigidbody2D mRigidbody;
+    
+    private bool attackFlag = false;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -51,8 +53,9 @@ public abstract class Projectile : MonoBehaviour
         HashSet<Collider2D> colliders = attackHitbox.HitColliders;
         foreach (Collider2D collider in colliders)
         {
-            if (collider != null && collider.gameObject.layer == target)
+            if (collider != null && collider.gameObject.tag == target && !attackFlag)
             {
+                attackFlag = true;
                 Attack(collider.gameObject);
             }
         }

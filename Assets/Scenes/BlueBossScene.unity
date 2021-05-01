@@ -1099,6 +1099,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 859176741}
+    - target: {fileID: 7452341877007267934, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7452341877007267935, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3432,6 +3437,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1378990222}
+    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: ProjectileCount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: healthBar

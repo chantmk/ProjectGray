@@ -12,8 +12,7 @@ public class BlueBossWeapon : BossWeapon
     private int HyperBulletCount = 8;
     [SerializeField]
     private int DashAttackCount = 4;
-    [SerializeField]
-
+    
     public override void EnrageAttack(int EnrageNumber)
     {
         base.EnrageAttack(EnrageNumber);
