@@ -9,19 +9,13 @@ public class PlayerMovementManager : MonoBehaviour
 
     [SerializeField] private Rigidbody2D playerRigidbody;
 
-    [SerializeField] private float normalSpeed = 2.0f;
-
-    [SerializeField] private float runningSpeed = 5.0f;
+    [SerializeField] private float moveSpeed = 2.0f;
 
     [SerializeField] private float rechargeStamina = 20.0f;
 
     private float rawInputX;
     private float rawInputY;
-    private bool rawInputShift;
     private bool inputRoll;
-
-    [SerializeField] private static float xySpeed = 2.0f;
-    [SerializeField] private float[] tileData;
 
     private Animator animator;
     public float AnimationSpeed = 1f;
@@ -34,11 +28,8 @@ public class PlayerMovementManager : MonoBehaviour
     [SerializeField] private float stamina = 100f;
     [SerializeField] private int inputX, inputY;
     [SerializeField] private Vector2 movement;
-    [SerializeField] private GameObject tilemapObj;
     [SerializeField] private GameObject staminaBar;
-    [SerializeField] private float coefficient;
     private Image image;
-    private RandomTile randomTile;
     
     public float RollStaminaCost = 30f;
     public float MaxRollDuration = 0.5f;
@@ -50,8 +41,6 @@ public class PlayerMovementManager : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
-        if (tilemapObj == null)
-            tilemapObj = GameObject.FindGameObjectWithTag("Tilemap");
         if (staminaBar == null)
             staminaBar = GameObject.FindGameObjectWithTag("StaminaBar");
 
@@ -59,8 +48,6 @@ public class PlayerMovementManager : MonoBehaviour
         animator.SetFloat(AnimatorParams.AnimSpeed, animationSpeed);
         
         stateMachine = new StateMachine<States>(States.Idle);
-        
-        randomTile = tilemapObj.GetComponent<RandomTile>();
         image = staminaBar.GetComponent<Image>();
     }
 
@@ -68,9 +55,7 @@ public class PlayerMovementManager : MonoBehaviour
     {
         rawInputX = Input.GetAxisRaw("Horizontal");
         rawInputY = Input.GetAxisRaw("Vertical");
-        rawInputShift = Input.GetKey(KeyCode.LeftShift);
         inputRoll = Input.GetKeyDown(KeyCode.Space);
-        tileData = randomTile.getCurrentTileSpeed();
 
         inputX = rawInputX == 0 ? 0 : (int)Mathf.Sign(rawInputX);
         inputY = rawInputY == 0 ? 0 : (int)Mathf.Sign(rawInputY);
@@ -109,10 +94,10 @@ public class PlayerMovementManager : MonoBehaviour
         {
             case States.Movement:
                 
-                coefficient = Mathf.Pow(expValue, tileData[0]);
+                // coefficient = Mathf.Pow(expValue, tileData[0]);
                 movement = new Vector2(inputX, inputY);
                 //Debug.Log(coefficient);
-                movement = movement.normalized * (xySpeed * coefficient);
+                movement = movement.normalized * moveSpeed;
                 break;
             
             case States.Rolling:
@@ -145,20 +130,16 @@ public class PlayerMovementManager : MonoBehaviour
         
         if (stateMachine.CurrentState != States.Rolling)
         {
-            if (tileData[2] != 0f)
-                stamina -= tileData[2] * 0.01f + 0.1f;
-            else
+            stamina += 1f;
+            if (stamina > 100.0f)
             {
-                stamina += 1f;
-                if (stamina > 100.0f)
-                {
-                    stamina = 100.0f;
-                }
-                else if(isExhault && stamina > rechargeStamina)
-                {
-                    isExhault = false;
-                }
+                stamina = 100.0f;
             }
+            else if(isExhault && stamina > rechargeStamina)
+            {
+                isExhault = false;
+            }
+            
         }
         
         image.fillAmount = stamina / 100;
