@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollerCoaster : Projectile
+public class RollerCoaster : EnemyProjectile
 {
     protected override void Attack(GameObject target)
     {

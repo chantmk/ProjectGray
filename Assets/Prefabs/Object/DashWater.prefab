@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 3427061052686157399}
   - component: {fileID: 3530032477875661212}
   - component: {fileID: 4263381466112441912}
-  - component: {fileID: 8236933709583381219}
-  - component: {fileID: 3441466319452860565}
   - component: {fileID: 585928132845360682}
   m_Layer: 0
   m_Name: DashWater
@@ -32,7 +30,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.59, y: -4.1, z: 0}
   m_LocalScale: {x: 2.3385684, y: 2.3385684, z: 2.3385684}
-  m_Children: []
+  m_Children:
+  - {fileID: 8533552401982606654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,9 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1a28dd6ebf4c434880d171dbdcb6bda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target:
-    serializedVersion: 2
-    m_Bits: 256
   damage: 10
   MaxDuration: 3
   FlightSpeed: 1
@@ -124,34 +120,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!70 &8236933709583381219
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707451178030945541}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.47999996, y: 1.3599999}
-  m_Direction: 0
---- !u!114 &3441466319452860565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707451178030945541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8638177d0c11bb42aac3643350d2a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &585928132845360682
 Rigidbody2D:
   serializedVersion: 4
@@ -173,3 +141,63 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &5810325971860217449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8533552401982606654}
+  - component: {fileID: 956118239642176560}
+  - component: {fileID: 8215879628624549152}
+  m_Layer: 0
+  m_Name: AttackHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8533552401982606654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810325971860217449}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.00000010195065, y: 0, z: 0}
+  m_LocalScale: {x: 0.427612, y: 0.427612, z: 0.427612}
+  m_Children: []
+  m_Father: {fileID: 1173925024933097829}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &956118239642176560
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810325971860217449}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.64076465, y: 1.2815293}
+  m_Direction: 0
+--- !u!114 &8215879628624549152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810325971860217449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8638177d0c11bb42aac3643350d2a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

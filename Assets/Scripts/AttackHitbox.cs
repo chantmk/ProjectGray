@@ -18,7 +18,7 @@ public class AttackHitbox : MonoBehaviour
     public Action<Collider2D> OnHitboxTriggerEnter;
     public Action<Collider2D> OnHitboxTriggerExit;
 
-    private void Start()
+    private void Awake()
     {
         collider2D = GetComponent<Collider2D>();
         collider2D.enabled = false;

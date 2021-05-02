@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Geyser : Projectile
+public class Geyser : EnemyProjectile
 {
-    protected override void Attack(GameObject target)
-    {
-        target.GetComponent<CharacterStats>().TakeDamage(damage);
-    }
 }

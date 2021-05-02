@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueBubble : Projectile
+public class BlueBubble : EnemyProjectile
 {
     [SerializeField]
     private bool isStunt = false;

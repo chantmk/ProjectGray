@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MerryGoRound : Projectile
+public class MerryGoRound : EnemyProjectile
 {
-    protected override void Attack(GameObject target)
-    {
-    }
 }
