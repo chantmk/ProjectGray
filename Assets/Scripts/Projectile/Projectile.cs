@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utils;
 
-public abstract class ProjectileBase : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
     protected abstract List<int> targetLayers { get; }
         

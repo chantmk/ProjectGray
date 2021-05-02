@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectile: ProjectileBase
+public class EnemyProjectile: Projectile
 {
     protected override List<int> targetLayers
     {
