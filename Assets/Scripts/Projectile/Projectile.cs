@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public LayerMask target;
+    protected abstract List<int> targetLayers { get; }
+        
     public float damage = 10.0f;
     public float MaxDuration = 3.0f;
     public float FlightSpeed = 1.0f;
 
     protected float duration;
-    protected bool attacking => duration > 0.01f;
     protected AttackHitbox attackHitbox;
     protected Rigidbody2D mRigidbody;
 
@@ -18,8 +19,20 @@ public abstract class Projectile : MonoBehaviour
     public virtual void Start()
     {
         duration = MaxDuration;
-        attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
         mRigidbody = GetComponent<Rigidbody2D>();
+
+        attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
+        attackHitbox.Enable();
+        attackHitbox.OnHitboxTriggerEnter = OnHitboxTriggerEnter;
+    }
+
+    protected virtual void OnHitboxTriggerEnter(Collider2D other)
+    {
+        var targetGameobject = other.gameObject;
+        if (targetLayers != null && targetLayers.Contains(targetGameobject.layer))
+        {
+            Attack(targetGameobject);
+        }
     }
 
     // Update is called once per frame
@@ -27,11 +40,7 @@ public abstract class Projectile : MonoBehaviour
     {
         // This method will decrease duration
         duration -= Time.fixedDeltaTime;
-        if (attacking)
-        {
-            ProcessAttack();
-        }
-        else
+        if (duration <= 0)
         {
             Destroy(gameObject);
         }
@@ -46,17 +55,6 @@ public abstract class Projectile : MonoBehaviour
         }
         mRigidbody.velocity = direction * FlightSpeed;
     }
-
-    protected virtual void ProcessAttack()
-    {
-        HashSet<Collider2D> colliders = attackHitbox.HitColliders;
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.gameObject.layer == target)
-            {
-                Attack(collider.gameObject);
-            }
-        }
-    }
+    
     protected abstract void Attack(GameObject target);
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class EnemyWeapon : MonoBehaviour
 {
@@ -19,9 +20,29 @@ public class EnemyWeapon : MonoBehaviour
     
     public virtual void Start()
     {
-        attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
+        InitializeHitbox();
         attackCooldown = AttackMaxCooldown;
         GetRelateComponent();
+    }
+
+    private void InitializeHitbox()
+    {
+        attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
+        attackHitbox.OnHitboxTriggerEnter = OnMeleeHitboxTriggerEnter;
+        attackHitbox.OnHitboxTriggerExit = OnMeleeHitboxTriggerExit;
+    }
+
+    protected virtual void OnMeleeHitboxTriggerEnter(Collider2D other)
+    {
+        var targetGameObject = other.gameObject;
+        if (targetGameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            targetGameObject.GetComponent<CharacterStats>().TakeDamage(attackDamage);
+        }
+    }
+
+    protected virtual void OnMeleeHitboxTriggerExit(Collider2D other)
+    {
     }
 
     public virtual void GetRelateComponent()
@@ -58,16 +79,7 @@ public class EnemyWeapon : MonoBehaviour
     protected virtual void MeleeAttack()
     {
         Debug.Log($"Melee attack from {this.name}");
-        HashSet<Collider2D> colliders = attackHitbox.HitColliders;
-        foreach (Collider2D collider in colliders)
-        {
-            Debug.Log(collider);
-            // Below will deal damage to player if gameObject contain this collider has player class --> This may change to health class or something
-            if (collider.TryGetComponent<PlayerStats>(out PlayerStats playerStats))
-            {
-                playerStats.TakeDamage(attackDamage);
-            }
-        }
+        attackHitbox.QuickEnable();
     }
 
     protected virtual void RangeAttack()

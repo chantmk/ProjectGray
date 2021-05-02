@@ -1,8 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Balloon : Projectile
+public class Balloon : EnemyProjectile
 {
     private Animator animator;
 

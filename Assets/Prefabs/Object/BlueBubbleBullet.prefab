@@ -118,11 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 017cd658eb376444b8032867d68b46bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target:
-    serializedVersion: 2
-    m_Bits: 256
   damage: 3
-  MaxDuration: 3
+  MaxDuration: 10
   FlightSpeed: 4
   isStunt: 0
   stuntDuration: 1
@@ -159,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footOffset: 0
 --- !u!1 &6580829471426260285
 GameObject:
   m_ObjectHideFlags: 0
