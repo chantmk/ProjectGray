@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackHole : Projectile
+public class BlackHole : EnemyProjectile
 {
     public float PullStrength = 2.0f;
 

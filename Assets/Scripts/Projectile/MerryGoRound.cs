@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MerryGoRound : Projectile
+public class MerryGoRound : EnemyProjectile
 {
     [SerializeField]
     private Vector3 horseRadius;
