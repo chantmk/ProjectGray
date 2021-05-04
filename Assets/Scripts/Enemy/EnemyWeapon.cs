@@ -36,17 +36,12 @@ public class EnemyWeapon : MonoBehaviour
         var targetGameObject = other.gameObject;
         if (targetGameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            targetGameObject.GetComponent<CharacterStats>().TakeDamage(attackDamage);
+            targetGameObject.GetComponent<CharacterStats>().TakeDamage(AttackDamage);
         }
     }
 
     protected virtual void OnMeleeHitboxTriggerExit(Collider2D other)
     {
-    }
-
-    public virtual void GetRelateComponent()
-    {
-        attackDamage = GetComponent<EnemyStats>().damage;
     }
 
     public virtual void FixedUpdate()
