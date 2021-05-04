@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BossEnter : BossBehaviour
 {
@@ -30,7 +31,8 @@ public class BossEnter : BossBehaviour
     private void Fight()
     {
         bossStats.Status = StatusEnum.Mortal;
-        animator.SetTrigger("Fight");
+        animator.SetInteger(AnimatorParams.Life, (int)bossStats.Status);
+        animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Move);
     }
 
 }

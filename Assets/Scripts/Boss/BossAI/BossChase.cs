@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BossChase : BossBehaviour
 {
@@ -25,15 +26,15 @@ public class BossChase : BossBehaviour
     private void updateMovingAnimation()
     {
         var direction = player.position - transform.position;
-        animator.SetFloat("Horizontal", direction.normalized.x);
-        animator.SetFloat("Vertical", direction.normalized.y);
+        animator.SetFloat(AnimatorParams.Horizontal, direction.normalized.x);
+        animator.SetFloat(AnimatorParams.Vertical, direction.normalized.y);
     }
 
     private void ListenToDashSignal()
     {
         if (enemyMovement.IsReadyToDash())
         {
-            animator.SetTrigger("Dash");
+            animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Roll);
         }
     }
 }

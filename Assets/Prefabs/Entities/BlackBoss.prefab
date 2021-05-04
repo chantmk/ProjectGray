@@ -169,6 +169,7 @@ MonoBehaviour:
   AttackMaxCooldown: 2
   IsRange: 0
   ProjectileComponent: {fileID: 0}
+  ProjectileCount: 1
   DashAttackEffectRange: 0
   DashAttackMaxCooldown: 0
   DashAttacks:

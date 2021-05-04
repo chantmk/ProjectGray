@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BossBehaviour : EnemyBehaviour
 {
@@ -38,31 +39,12 @@ public class BossBehaviour : EnemyBehaviour
         EventPublisher.StatusChange -= BossStatusHandler;
     }
 
-    public void BossStatusHandler(BossStatusEnum bossStatus)
+    public void BossStatusHandler(BossAggroEnum bossAggro)
     {
         bossStats.Status = StatusEnum.Mortal;
-        switch (bossStatus)
-        {
-            case BossStatusEnum.Calm:
-                Debug.Log(transform.name + " Calm");
-                break;
-            case BossStatusEnum.Enrage:
-                Debug.Log(transform.name + " Enrage");
-                animator.SetTrigger("Enrage");
-                break;
-            case BossStatusEnum.Hyper:
-                Debug.Log(transform.name + " Hyper");
-                animator.SetTrigger("Hyper");
-                break;
-            case BossStatusEnum.LastStand:
-                Debug.Log(transform.name + " LastStand");
-                animator.SetTrigger("LastStand");
-                break;
-            default:
-                throw new System.NotImplementedException();
-         
-        }
-        bossMovement.SetSpotCap(bossStatus);
+        Debug.Log(transform.name + ": " + bossAggro.ToString());
+        animator.SetInteger(AnimatorParams.Aggro, (int)bossAggro);
+        bossMovement.SetSpotCap(bossAggro);
     }
 
     protected override void ListenToAttackSignal()
@@ -70,25 +52,25 @@ public class BossBehaviour : EnemyBehaviour
         // Override attack to look for attack and special attack + prob
         float randomRange = bossWeapon.HyperAttackRatio + bossWeapon.EnrageAttackRatio + bossWeapon.AttackRatio;
         float random = Random.Range(0.0f, randomRange);
-        if (bossStats.Aggro == BossStatusEnum.Hyper && random <= bossWeapon.HyperAttackRatio)
+        if (bossStats.Aggro == BossAggroEnum.Hyper && random <= bossWeapon.HyperAttackRatio)
         {
-            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Hyper))
+            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), BossAttackEnum.Hyper))
             {
-                animator.SetTrigger("HyperAttack");
+                animator.SetTrigger(AnimatorParams.HyperAttack);
             }
         }
-        else if (bossStats.Aggro == BossStatusEnum.Enrage && random <= bossWeapon.EnrageAttackRatio + bossWeapon.HyperAttackRatio)
+        else if (bossStats.Aggro == BossAggroEnum.Enrage && random <= bossWeapon.EnrageAttackRatio + bossWeapon.HyperAttackRatio)
         {
-            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Enrage))
+            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), BossAttackEnum.Enrage))
             {
-                animator.SetTrigger("EnrageAttack");
+                animator.SetTrigger(AnimatorParams.EnrageAttack);
             }
         }
         else
         {
-            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), AttackType.Normal))
+            if (bossWeapon.IsReady(bossMovement.GetVectorToPlayer(), BossAttackEnum.Normal))
             {
-                animator.SetTrigger("Attack");
+                animator.SetTrigger(AnimatorParams.Attack);
             }
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 public class BossStats : CharacterStats
 {
@@ -10,7 +11,7 @@ public class BossStats : CharacterStats
     public float EnrageRatio;
     [Range(0.0f, 1.0f)]
     public float HyperRatio;
-    public BossStatusEnum Aggro = BossStatusEnum.Calm;
+    public BossAggroEnum Aggro = BossAggroEnum.Calm;
     [SerializeField]
     private GameObject healthBar;
 
@@ -38,19 +39,19 @@ public class BossStats : CharacterStats
         float currentHealthPercentage = GetHealthPercentage();
         if (CurrentHealth <= depleteHealth)
         {
-            Aggro = BossStatusEnum.LastStand;
+            Aggro = BossAggroEnum.LastStand;
             Status = StatusEnum.Immortal;
             EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < HyperRatio && Aggro == BossStatusEnum.Enrage)
+        else if (currentHealthPercentage < HyperRatio && Aggro == BossAggroEnum.Enrage)
         {
-            Aggro = BossStatusEnum.Hyper;
+            Aggro = BossAggroEnum.Hyper;
             healthBarImage.color = Color.red;
             EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < EnrageRatio && Aggro == BossStatusEnum.Calm)
+        else if (currentHealthPercentage < EnrageRatio && Aggro == BossAggroEnum.Calm)
         {
-            Aggro = BossStatusEnum.Enrage;
+            Aggro = BossAggroEnum.Enrage;
             healthBarImage.color = Color.yellow;
             EventPublisher.TriggerStatus(Aggro);
         }

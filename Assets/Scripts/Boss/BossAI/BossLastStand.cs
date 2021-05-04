@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BossLastStand : BossBehaviour
 {
@@ -39,18 +40,10 @@ public class BossLastStand : BossBehaviour
         talkManager.TriggerDecision();
     }
 
-    void DecisionHandler(Decision decision)
+    void DecisionHandler(DecisionEnum decision)
     {
-        switch (decision)
-        {
-            case Decision.Mercy:
-                animator.SetTrigger("Mercy");
-                break;
-            case Decision.Kill:
-                animator.SetTrigger("Kill");
-                break;
-            default:
-                throw new System.NotImplementedException();
-        }
+        animator.SetInteger(AnimatorParams.Decision, (int)decision);
+        bossStats.Status = StatusEnum.Dead;
+        animator.SetInteger(AnimatorParams.Life, (int)bossStats.Status);
     }
 }

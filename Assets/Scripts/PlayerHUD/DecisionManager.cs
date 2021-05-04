@@ -1,12 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum Decision
-{
-    Mercy,
-    Kill
-}
+using Utils;
 
 public class DecisionManager : MonoBehaviour
 {
@@ -40,13 +35,13 @@ public class DecisionManager : MonoBehaviour
 
     public void Mercy()
     {
-        EventPublisher.TriggerDecisionMake(Decision.Mercy);
+        EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
         EndDecision();
     }
 
     public void Kill()
     {
-        EventPublisher.TriggerDecisionMake(Decision.Kill);
+        EventPublisher.TriggerDecisionMake(DecisionEnum.Kill);
         EndDecision();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class MerryGoRoundHorseMovement : EnemyMovement
 {
@@ -18,7 +19,7 @@ public class MerryGoRoundHorseMovement : EnemyMovement
     private float MoveRadius = 10.0f;
 
     private Vector2 centerPosition;
-    private BossStatusEnum bossStatus;
+    private BossAggroEnum bossStatus;
 
     protected override void Start()
     {
@@ -37,7 +38,7 @@ public class MerryGoRoundHorseMovement : EnemyMovement
         }
     }
 
-    public void SetBossStatus(BossStatusEnum status)
+    public void SetBossStatus(BossAggroEnum status)
     {
         bossStatus = status;
     }
@@ -53,6 +54,6 @@ public class MerryGoRoundHorseMovement : EnemyMovement
 
     public bool IsIdle()
     {
-        return bossStatus == BossStatusEnum.Hyper && MaxIdleDelay <= 0.0f;
+        return bossStatus == BossAggroEnum.Hyper && MaxIdleDelay <= 0.0f;
     }
 }

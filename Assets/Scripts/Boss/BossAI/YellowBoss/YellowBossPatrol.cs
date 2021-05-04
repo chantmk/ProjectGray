@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class YellowBossPatrol : BossPatrol
 {
@@ -15,7 +16,7 @@ public class YellowBossPatrol : BossPatrol
         float random = Random.Range(0.0f, 1.0f);
         if (((YellowBossWeapon)bossWeapon).ShouldTrap())
         {
-            animator.SetTrigger("SetTrap");
+            animator.SetTrigger(AnimatorParams.Trap);
         }
     }
 }

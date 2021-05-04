@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class MerryGoRound : EnemyProjectile
 {
@@ -8,14 +9,14 @@ public class MerryGoRound : EnemyProjectile
     private Vector3 horseRadius;
     [SerializeField]
     private GameObject horse;
-    private BossStatusEnum bossStatus;
+    private BossAggroEnum bossStatus;
     public override void Start()
     {
         base.Start();
         spawnHorse(bossStatus);
     }
 
-    public void SetBossStatus(BossStatusEnum status)
+    public void SetBossStatus(BossAggroEnum status)
     {
         bossStatus = status;
     }
@@ -24,7 +25,7 @@ public class MerryGoRound : EnemyProjectile
         target.GetComponent<CharacterStats>().TakeDamage(damage);
     }
 
-    private void spawnHorse(BossStatusEnum bossStatus)
+    private void spawnHorse(BossAggroEnum bossStatus)
     {
         GameObject horse1 = Instantiate(horse, transform.position, Quaternion.Euler(Vector3.zero));
         horse1.GetComponent<MerryGoRoundHorseMovement>().SetBossStatus(bossStatus);

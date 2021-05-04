@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BlueBossWeapon : BossWeapon
 {
@@ -18,14 +19,14 @@ public class BlueBossWeapon : BossWeapon
         base.EnrageAttack(EnrageNumber);
         switch (bossStats.Aggro)
         {
-            case (BossStatusEnum.Enrage):
+            case (BossAggroEnum.Enrage):
                 for (int i=0; i<EnrageBulletCount; i++)
                 {
                     var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
                     bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
                 }
                 break;
-            case (BossStatusEnum.Hyper):
+            case (BossAggroEnum.Hyper):
                 for (int i = 0; i < HyperBulletCount; i++)
                 {
                     var bullet = Instantiate(EnrageAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));

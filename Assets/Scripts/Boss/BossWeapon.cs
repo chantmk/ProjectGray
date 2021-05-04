@@ -1,13 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum AttackType
-{
-    Normal,
-    Enrage,
-    Hyper
-}
+using Utils;
 
 public class BossWeapon : EnemyWeapon
 {
@@ -71,19 +65,19 @@ public class BossWeapon : EnemyWeapon
         }
     }
 
-    public virtual bool IsReady(Vector3 vectorToPlayer, AttackType attackType)
+    public virtual bool IsReady(Vector3 vectorToPlayer, BossAttackEnum attackType)
     {
         switch (attackType)
         {
-            case (AttackType.Normal):
+            case (BossAttackEnum.Normal):
                 return IsReady(vectorToPlayer);
-            case (AttackType.Enrage):
+            case (BossAttackEnum.Enrage):
                 if (EnrageAttackCooldown <= GrayConstants.MINIMUM_TIME && vectorToPlayer.magnitude < EnrageAttackRange)
                 {
                     return true;
                 }
                 return false;
-            case (AttackType.Hyper):
+            case (BossAttackEnum.Hyper):
                 if (HyperAttackCooldown <= GrayConstants.MINIMUM_TIME && vectorToPlayer.magnitude < HyperAttackRange)
                 {
                     return true;
@@ -110,7 +104,7 @@ public class BossWeapon : EnemyWeapon
     {
         // TODO override Dash attack pattern here should check which boss state
         DashAttackCooldown = DashAttackMaxCooldown;
-        Debug.Log("DashAttack " + DashAttackEffectRange);
+        Debug.Log("DashAttack: " + DashAttackEffectRange);
     }
 
     public override void OnDrawGizmosSelected()

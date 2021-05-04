@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class YellowBossChase : BossChase
 {
@@ -14,7 +15,7 @@ public class YellowBossChase : BossChase
         float random = Random.Range(0.0f, 1.0f);
         if (((YellowBossWeapon)bossWeapon).ShouldTrap())
         {
-            animator.SetTrigger("SetTrap");
+            animator.SetTrigger(AnimatorParams.Trap);
         }
     }
 }

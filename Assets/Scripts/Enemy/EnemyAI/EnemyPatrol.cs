@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class EnemyPatrol : EnemyBehaviour
 {
@@ -30,6 +31,6 @@ public class EnemyPatrol : EnemyBehaviour
     private void updateMovingAnimation()
     {
         var direction = (Vector3)enemyMovement.GetNextPatrolPosition() - transform.position;
-        animator.SetFloat("Horizontal", direction.normalized.x);
+        animator.SetFloat(AnimatorParams.Horizontal, direction.normalized.x);
     }
 }
