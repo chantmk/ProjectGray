@@ -13,6 +13,7 @@ public class TalkManager : MonoBehaviour
 	 */
 
 	public Dialogue dialogue;
+	public Dialogue mercyDialogue;
 	public GameObject bubble;
 	public Vector3 offset;
 	public float BubbleDelay;
@@ -27,6 +28,11 @@ public class TalkManager : MonoBehaviour
     public void TriggerDialogue()
 	{
 		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+	}
+
+	public void TriggerDecision()
+	{
+		FindObjectOfType<DialogueManager>().StartDialogue(mercyDialogue);
 	}
 
 	public void TriggerDotBubble()
@@ -61,10 +67,6 @@ public class TalkManager : MonoBehaviour
 		}
 	}
 
-	public void TriggerDecision()
-    {
-		FindObjectOfType<DecisionManager>().StartDecision();
-    }
 
     private void OnDrawGizmosSelected()
     {

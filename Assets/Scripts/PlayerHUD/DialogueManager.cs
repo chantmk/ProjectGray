@@ -2,32 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 public class DialogueManager : MonoBehaviour
 {
 
-	public Text nameText;
-	public Text dialogueText;
-	public Animator animator;
-
+	private Text nameText;
+	private Text dialogueText;
+	private Animator animator;
 	private Queue<string> sentences;
 	private Transform dialogueBox;
+	private PauseManager pauseManager;
+	private GameObject nextButton;
+	private GameObject mercyButton;
+	private GameObject killButton;
 
 	// Use this for initialization
 	void Start()
 	{
 		sentences = new Queue<string>();
 		dialogueBox = transform.Find("DialogueBox");
-		//dialogueBox.Find("KillButton").gameObject.SetActive(false);
-		//dialogueBox.Find("MercyButton").gameObject.SetActive(false);
-	}
+		pauseManager = dialogueBox.parent.GetComponent<PauseManager>();
+		nameText = dialogueBox.Find("Name").GetComponent<Text>();
+		dialogueText = dialogueBox.Find("DialogueText").GetComponent<Text>();
+		animator = dialogueBox.GetComponent<Animator>();
 
-	public void StartDialogue(Dialogue dialogue)
-	{
+		nextButton = dialogueBox.Find("NextButton").gameObject;
+		killButton = dialogueBox.Find("KillButton").gameObject;
+		mercyButton = dialogueBox.Find("MercyButton").gameObject;
+    }
+
+	void PlayDialogue(Dialogue dialogue)
+    {
 		animator.SetBool("IsOpen", true);
-
+		pauseManager.Pause();
 		nameText.text = dialogue.name;
-
 		sentences.Clear();
 
 		foreach (string sentence in dialogue.sentences)
@@ -35,20 +44,28 @@ public class DialogueManager : MonoBehaviour
 			sentences.Enqueue(sentence);
 		}
 
-		DisplayNextSentence();
+		DisplayNextSentence(dialogue.IsDecision);
 	}
 
-	public void DisplayNextSentence()
+	void StopDialogue()
 	{
-		/*if (sentences.Count == 1)
+		// Call event to invoke other that may subscribing this event
+		EventPublisher.TriggerDialogueDone();
+		animator.SetBool("IsOpen", false);
+		pauseManager.Resume();
+	}
+
+	public void DisplayNextSentence(bool isDecision)
+	{
+		if (isDecision && sentences.Count == 1)
         {
-            dialogueBox.Find("KillButton").gameObject.SetActive(true);
-            dialogueBox.Find("MercyButton").gameObject.SetActive(true);
-            dialogueBox.Find("NextButton").gameObject.SetActive(false);
-        }*/
+			nextButton.SetActive(false);
+			mercyButton.SetActive(true);
+			killButton.SetActive(true);
+		}
 		if (sentences.Count == 0)
 		{
-			EndDialogue();
+			StopDialogue();
 			return;
 		}
 
@@ -67,11 +84,24 @@ public class DialogueManager : MonoBehaviour
 		}
 	}
 
-	void EndDialogue()
+	public void StartDialogue(Dialogue dialogue)
 	{
-		// Call event to invoke other that may subscribing this event
-		EventPublisher.TriggerDialogueDone();
-		animator.SetBool("IsOpen", false);
+		nextButton.SetActive(true);
+		killButton.SetActive(false);
+		mercyButton.SetActive(false);
+		PlayDialogue(dialogue);
+	}
+
+	public void Mercy()
+	{
+		EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
+		StopDialogue();
+	}
+
+	public void Kill()
+	{
+		EventPublisher.TriggerDecisionMake(DecisionEnum.Kill);
+		StopDialogue();
 	}
 
 }

@@ -319,6 +319,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1930928131, guid: 86a016de6325e1b42a914366cb946c37, type: 3}
+      propertyPath: mercyDialogue.name
+      value: Shattered Black Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930928131, guid: 86a016de6325e1b42a914366cb946c37, type: 3}
+      propertyPath: mercyDialogue.IsDecision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 563864187573055747, guid: 86a016de6325e1b42a914366cb946c37,
         type: 3}
       propertyPath: player
