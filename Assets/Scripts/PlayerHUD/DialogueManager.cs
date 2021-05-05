@@ -6,36 +6,33 @@ using Utils;
 
 public class DialogueManager : MonoBehaviour
 {
-
+	private PauseManager pauseManager;
 	private Text nameText;
 	private Text dialogueText;
-	private Animator animator;
-	private Queue<string> sentences;
-	private Transform dialogueBox;
-	private PauseManager pauseManager;
 	private GameObject nextButton;
 	private GameObject mercyButton;
 	private GameObject killButton;
+	private Animator animator;
+	private Queue<string> sentences;
+	private bool isDecision = false;
 
 	// Use this for initialization
 	void Start()
 	{
 		sentences = new Queue<string>();
-		dialogueBox = transform.Find("DialogueBox");
-		pauseManager = dialogueBox.parent.GetComponent<PauseManager>();
-		nameText = dialogueBox.Find("Name").GetComponent<Text>();
-		dialogueText = dialogueBox.Find("DialogueText").GetComponent<Text>();
-		animator = dialogueBox.GetComponent<Animator>();
-
-		nextButton = dialogueBox.Find("NextButton").gameObject;
-		killButton = dialogueBox.Find("KillButton").gameObject;
-		mercyButton = dialogueBox.Find("MercyButton").gameObject;
+		nameText = transform.Find("Name").GetComponent<Text>();
+		dialogueText = transform.Find("DialogueText").GetComponent<Text>();
+		animator = transform.GetComponent<Animator>();
+		nextButton = transform.Find("NextButton").gameObject;
+		killButton = transform.Find("KillButton").gameObject;
+		mercyButton = transform.Find("MercyButton").gameObject;
+		pauseManager = transform.parent.GetComponent<PauseManager>();
     }
 
 	void PlayDialogue(Dialogue dialogue)
     {
 		animator.SetBool("IsOpen", true);
-		pauseManager.Pause();
+		pauseManager.PauseTime();
 		nameText.text = dialogue.name;
 		sentences.Clear();
 
@@ -43,8 +40,8 @@ public class DialogueManager : MonoBehaviour
 		{
 			sentences.Enqueue(sentence);
 		}
-
-		DisplayNextSentence(dialogue.IsDecision);
+		isDecision = dialogue.IsDecision;
+		DisplayNextSentence();
 	}
 
 	void StopDialogue()
@@ -52,10 +49,10 @@ public class DialogueManager : MonoBehaviour
 		// Call event to invoke other that may subscribing this event
 		EventPublisher.TriggerDialogueDone();
 		animator.SetBool("IsOpen", false);
-		pauseManager.Resume();
+		pauseManager.ResumeTime();
 	}
 
-	public void DisplayNextSentence(bool isDecision)
+	public void DisplayNextSentence()
 	{
 		if (isDecision && sentences.Count == 1)
         {

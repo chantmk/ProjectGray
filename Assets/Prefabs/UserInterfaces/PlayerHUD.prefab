@@ -219,7 +219,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 039c04b23783f09408e19b60423718f6, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1250,8 +1250,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7114842455286821502, guid: 381786c5ffd72b041a148bc9a1a45df2,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
@@ -2954,8 +2953,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7114842455286821502, guid: 381786c5ffd72b041a148bc9a1a45df2,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: OnQuitClicked
         m_Mode: 1
         m_Arguments:
@@ -3163,8 +3161,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7114842455286821502, guid: 381786c5ffd72b041a148bc9a1a45df2,
-          type: 3}
+      - m_Target: {fileID: 0}
         m_MethodName: OnMainMenuClicked
         m_Mode: 1
         m_Arguments:

@@ -14,6 +14,10 @@ public class PlayerActionManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (PauseManager.GamePaused)
+        {
+            return;
+        }
         if (Input.GetButton("Fire1"))
         {
             EventPublisher.TriggerPlayerPressFire();
