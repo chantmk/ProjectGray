@@ -59,7 +59,7 @@ public class RandomTile : MonoBehaviour
             default:
                 break;
         }
-        Debug.Log(message: "Weapon ID:" + weaponManager.CurrentWeaponID);
+        //Debug.Log(message: "Weapon ID:" + weaponManager.CurrentWeaponID);
         if (dangerTile[objX + 5, objY + 7, weaponManager.CurrentWeaponID] == 0)
         {
             for (int i = 0; i < 3; i++)

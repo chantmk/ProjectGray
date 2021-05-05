@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class EnemyBehaviour : StateMachineBehaviour
 {
@@ -25,7 +26,6 @@ public class EnemyBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //enemyMovement.FlipToPlayer();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -50,11 +50,11 @@ public class EnemyBehaviour : StateMachineBehaviour
     {
         if (Vector2.Distance(player.position, transform.position) < enemyMovement.VisionRange)
         {
-            animator.SetBool("ShouldChase", true);
+            animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Move);
         }
         else
         {
-            animator.SetBool("ShouldChase", false);
+            animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Idle);
         }
     }
     protected virtual void ListenToAttackSignal()
@@ -62,7 +62,7 @@ public class EnemyBehaviour : StateMachineBehaviour
         //TODO: This should change to cone view interaction 
         if (enemyWeapon.IsReady(enemyMovement.GetVectorToPlayer()))
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger(AnimatorParams.Attack);
         }
     }
 }

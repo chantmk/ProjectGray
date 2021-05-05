@@ -17,7 +17,7 @@ public class BlueBubble : EnemyProjectile
         else
         {
             target.GetComponent<CharacterStats>().TakeDamage(damage);
+            Destroy(gameObject, 0.01f);
         }
     }
-
 }

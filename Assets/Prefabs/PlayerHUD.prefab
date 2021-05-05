@@ -1561,7 +1561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 315.7, y: 207}
+  m_AnchoredPosition: {x: 290, y: 207}
   m_SizeDelta: {x: 510, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8364951201253763873
@@ -2160,7 +2160,7 @@ GameObject:
   - component: {fileID: 6181254875045395677}
   - component: {fileID: 3125772606987835911}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: BossHealthBar
   m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2352,7 +2352,7 @@ Canvas:
   m_GameObject: {fileID: 7452341877007267923}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

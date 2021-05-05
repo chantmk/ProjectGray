@@ -735,10 +735,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 0}
-  normalSpeed: 2
-  runningSpeed: 5
+  moveSpeed: 2
   rechargeStamina: 20
-  tileData: []
   AnimationSpeed: 1
   expValue: 0.8
   isExhault: 0
@@ -746,9 +744,7 @@ MonoBehaviour:
   inputX: 0
   inputY: 0
   movement: {x: 0, y: 0}
-  tilemapObj: {fileID: 0}
   staminaBar: {fileID: 0}
-  coefficient: 0
   RollStaminaCost: 30
   MaxRollDuration: 0.3
   rollDuration: 0
@@ -790,10 +786,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9df81c2136fa534696aeaf8b0694cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 10
-  armor: 0
-  status: 0
+  MaxHealth: 100
+  Armor: 0
+  Status: 0
   healthBar: {fileID: 0}
 --- !u!114 &620563490
 MonoBehaviour:
@@ -810,6 +805,8 @@ MonoBehaviour:
   resemblanceCountText: {fileID: 0}
   healthPackText: {fileID: 0}
   resemblanceText: {fileID: 0}
+  resemblanceUI: {fileID: 0}
+  inventoryBox: {fileID: 0}
   healthPackCount: 0
   resemblanceCount: 0
   player: {fileID: 0}
@@ -841,6 +838,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4532720954757015451}
     m_Modifications:
+    - target: {fileID: 186704753, guid: dc82ca1c5e8db3242a308f77fab313a5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 186704757, guid: dc82ca1c5e8db3242a308f77fab313a5, type: 3}
       propertyPath: player
       value: 

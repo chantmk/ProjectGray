@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class EventPublisher
 {
@@ -47,9 +48,9 @@ public class EventPublisher
         DialogueDone?.Invoke();
     }
 
-    public delegate void OnStatusChange(BossStatus bossStatus);
+    public delegate void OnStatusChange(BossAggroEnum bossStatus);
     public static event OnStatusChange StatusChange;
-    public static void TriggerStatus(BossStatus bossStatus)
+    public static void TriggerStatus(BossAggroEnum bossStatus)
     {
         Debug.Log("Trigger: " + bossStatus);
         StatusChange?.Invoke(bossStatus);
@@ -62,9 +63,9 @@ public class EventPublisher
         PlayCutscene?.Invoke();
     }
 
-    public delegate void OnDecisionMake(Decision decision);
+    public delegate void OnDecisionMake(DecisionEnum decision);
     public static event OnDecisionMake DecisionMake;
-    public static void TriggerDecisionMake(Decision decision)
+    public static void TriggerDecisionMake(DecisionEnum decision)
     {
         DecisionMake?.Invoke(decision);
     }

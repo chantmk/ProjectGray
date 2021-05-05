@@ -86,9 +86,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void Dash()
     {
-        Debug.Log("Dash " + rigidbody2D.velocity);
         isDashing = true;
-        rigidbody2D.velocity = new Vector2(1.0f, 0.0f) * DashForce;
+        rigidbody2D.velocity = GetVectorToPlayer().normalized * DashForce;
     }
 
     private void updateDash()
@@ -107,6 +106,7 @@ public class EnemyMovement : MonoBehaviour
             isDashing = false;
             rigidbody2D.velocity = Vector2.zero;
             dashDurationLeft = DashDuration;
+            dashCooldownLeft = DashCooldown;
         }
     }
 

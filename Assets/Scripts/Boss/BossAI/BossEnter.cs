@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BossEnter : BossBehaviour
 {
@@ -16,7 +17,7 @@ public class BossEnter : BossBehaviour
         base.OnStateEnter(animator, stateInfo, layerIndex);
         talkManager.TriggerExclamationBubble();
         talkManager.TriggerDialogue();
-        bossStats.status = Status.Immortal;
+        bossStats.Status = StatusEnum.Immortal;
         // Add fight as a callback method for event publisher
         EventPublisher.DialogueDone += Fight;
     }
@@ -29,8 +30,9 @@ public class BossEnter : BossBehaviour
 
     private void Fight()
     {
-        bossStats.status = Status.Mortal;
-        animator.SetTrigger("Fight");
+        bossStats.Status = StatusEnum.Mortal;
+        animator.SetInteger(AnimatorParams.Life, (int)bossStats.Status);
+        animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Move);
     }
 
 }

@@ -37,7 +37,7 @@ public class PlayerWeaponManager : MonoBehaviour
         camera = Camera.main;
         
         weaponNumber = transform.childCount;
-        print( weaponNumber );
+        //print( weaponNumber );
         for (int i = 0; i < weaponNumber; i++)
         {
             var weaponObject = transform.GetChild(i).gameObject;

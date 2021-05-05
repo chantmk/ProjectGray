@@ -6,7 +6,7 @@ public class DashWater : EnemyProjectile
 {
     protected override void Attack(GameObject target)
     {
-        Debug.Log("Splashed!");
+        target.GetComponent<CharacterStats>().TakeDamage(damage);
     }
 
     public void Clear()

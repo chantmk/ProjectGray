@@ -20,8 +20,7 @@ public class PlayerMovementManager : MonoBehaviour
     private Animator animator;
     public float AnimationSpeed = 1f;
     private float animationSpeed = 0.2f;
-    public enum States { Idle, Movement, Rolling };
-    private StateMachine<States> stateMachine;
+    private StateMachine<MovementEnum> stateMachine;
 
     [SerializeField] private float expValue = 0.8f;
     [SerializeField] private bool isExhault = false;
@@ -47,7 +46,7 @@ public class PlayerMovementManager : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetFloat(AnimatorParams.AnimSpeed, animationSpeed);
         
-        stateMachine = new StateMachine<States>(States.Idle);
+        stateMachine = new StateMachine<MovementEnum>(MovementEnum.Idle);
         image = staminaBar.GetComponent<Image>();
     }
 
@@ -65,25 +64,25 @@ public class PlayerMovementManager : MonoBehaviour
         // Update State
         switch (stateMachine.CurrentState)
         {
-            case States.Idle:
+            case MovementEnum.Idle:
                 if (isStartRolling)
-                    stateMachine.SetNextState(States.Rolling);
+                    stateMachine.SetNextState(MovementEnum.Roll);
                 if (isInputMoving)
-                    stateMachine.SetNextState(States.Movement);
+                    stateMachine.SetNextState(MovementEnum.Move);
                     
                 break;
-            case States.Movement:
+            case MovementEnum.Move:
                 if (isStartRolling)
-                    stateMachine.SetNextState(States.Rolling);
+                    stateMachine.SetNextState(MovementEnum.Roll);
                 if (!isInputMoving)
-                    stateMachine.SetNextState(States.Idle);
+                    stateMachine.SetNextState(MovementEnum.Idle);
                 break;
-            case States.Rolling:
+            case MovementEnum.Roll:
                 if (rollDuration > MaxRollDuration)
                     if (isInputMoving)
-                        stateMachine.SetNextState(States.Movement);
+                        stateMachine.SetNextState(MovementEnum.Move);
                     else
-                        stateMachine.SetNextState(States.Idle);
+                        stateMachine.SetNextState(MovementEnum.Idle);
                 break;
 
         }
@@ -92,7 +91,7 @@ public class PlayerMovementManager : MonoBehaviour
         
         switch (stateMachine.CurrentState)
         {
-            case States.Movement:
+            case MovementEnum.Move:
                 
                 // coefficient = Mathf.Pow(expValue, tileData[0]);
                 movement = new Vector2(inputX, inputY);
@@ -100,8 +99,8 @@ public class PlayerMovementManager : MonoBehaviour
                 movement = movement.normalized * moveSpeed;
                 break;
             
-            case States.Rolling:
-                if (stateMachine.PreviousState != States.Rolling)
+            case MovementEnum.Roll:
+                if (stateMachine.PreviousState != MovementEnum.Roll)
                 {
                     stamina -= RollStaminaCost;
                     if (stamina <= 0.0f)
@@ -121,14 +120,14 @@ public class PlayerMovementManager : MonoBehaviour
                 movement = rollDirection * RollSpeed;
 
                 break;
-            case States.Idle:
+            case MovementEnum.Idle:
                 movement = Vector2.zero;
                 break;
             default:
                 break;
         }
         
-        if (stateMachine.CurrentState != States.Rolling)
+        if (stateMachine.CurrentState != MovementEnum.Roll)
         {
             stamina += 1f;
             if (stamina > 100.0f)
@@ -144,7 +143,7 @@ public class PlayerMovementManager : MonoBehaviour
         
         image.fillAmount = stamina / 100;
         // Update Animation
-        animator.SetInteger(AnimatorParams.State, (int)stateMachine.CurrentState);
+        animator.SetInteger(AnimatorParams.Movement, (int)stateMachine.CurrentState);
 
         animator.SetFloat(AnimatorParams.Horizontal, movement.x);
         animator.SetFloat(AnimatorParams.Vertical, movement.y);

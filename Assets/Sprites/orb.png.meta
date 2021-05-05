@@ -17,6 +17,15 @@ TextureImporter:
   - first:
       213: 2269658688849646833
     second: orb_4
+  - first:
+      213: -6774298031070838183
+    second: orb_5
+  - first:
+      213: 854587600619297380
+    second: orb_6
+  - first:
+      213: 3842755248389036692
+    second: orb_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,10 +114,10 @@ TextureImporter:
       name: orb_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 72
-        width: 57
-        height: 66
+        x: 12
+        y: 77
+        width: 62
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,10 +135,10 @@ TextureImporter:
       name: orb_1
       rect:
         serializedVersion: 2
-        x: 75
-        y: 78
-        width: 66
-        height: 75
+        x: 74
+        y: 77
+        width: 68
+        height: 76
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,10 +156,10 @@ TextureImporter:
       name: orb_2
       rect:
         serializedVersion: 2
-        x: 144
-        y: 66
-        width: 54
-        height: 66
+        x: 142
+        y: 64
+        width: 59
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,9 +178,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 201
-        y: 72
+        y: 71
         width: 63
-        height: 63
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,8 +200,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 270
-        height: 75
+        width: 72
+        height: 77
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,6 +211,69 @@ TextureImporter:
       bones: []
       spriteID: 1f413466d827f7f10800000000000000
       internalID: 2269658688849646833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orb_5
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 63
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 952056f15dbdcf1a0800000000000000
+      internalID: -6774298031070838183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orb_6
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 64
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46add5c15ea1cdb00800000000000000
+      internalID: 854587600619297380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: orb_7
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 0
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a1ff2e985345530800000000000000
+      internalID: 3842755248389036692
       vertices: []
       indices: 
       edges: []

@@ -14,6 +14,8 @@ public abstract class Projectile : MonoBehaviour
     protected float duration;
     protected AttackHitbox attackHitbox;
     protected Rigidbody2D mRigidbody;
+    
+    private bool attackFlag = false;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -48,7 +50,6 @@ public abstract class Projectile : MonoBehaviour
 
     public virtual void Shoot(Vector2 direction)
     {
-        Debug.Log("Shooting");
         if (mRigidbody == null)
         {
             mRigidbody = GetComponent<Rigidbody2D>();

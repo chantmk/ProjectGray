@@ -6,15 +6,15 @@ using Utils;
 public class EnemyWeapon : MonoBehaviour
 {
     [Header("Weapon status")]
+    public float AttackDamage = 10.0f;
     public float AttackRange = 1.0f;
-    //public float AttackSpeed = 1.0f;
     [Range(0.0f, 1.0f)]
-    public float AttackRatio;
+    public float AttackRatio = 0.5f;
     public float AttackMaxCooldown = 2.0f;
     public bool IsRange = false;
     public GameObject ProjectileComponent;
+    public int ProjectileCount = 1;
 
-    protected float attackDamage;
     private AttackHitbox attackHitbox;
     private float attackCooldown;
     
@@ -22,7 +22,6 @@ public class EnemyWeapon : MonoBehaviour
     {
         InitializeHitbox();
         attackCooldown = AttackMaxCooldown;
-        GetRelateComponent();
     }
 
     private void InitializeHitbox()
@@ -37,7 +36,7 @@ public class EnemyWeapon : MonoBehaviour
         var targetGameObject = other.gameObject;
         if (targetGameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            targetGameObject.GetComponent<CharacterStats>().TakeDamage(attackDamage);
+            targetGameObject.GetComponent<CharacterStats>().TakeDamage(AttackDamage);
         }
     }
 
@@ -45,14 +44,9 @@ public class EnemyWeapon : MonoBehaviour
     {
     }
 
-    public virtual void GetRelateComponent()
-    {
-        attackDamage = GetComponent<EnemyStats>().damage;
-    }
-
     public virtual void FixedUpdate()
     {
-        if (attackCooldown > 0.0f)
+        if (attackCooldown > GrayConstants.MINIMUM_TIME)
         {
             attackCooldown -= Time.fixedDeltaTime;
         }
@@ -60,7 +54,7 @@ public class EnemyWeapon : MonoBehaviour
 
     public virtual bool IsReady(Vector3 vectorToPlayer)
     {
-        return attackCooldown <= 0.0f && vectorToPlayer.magnitude < AttackRange;
+        return attackCooldown <= GrayConstants.MINIMUM_TIME && vectorToPlayer.magnitude < AttackRange;
     }
 
     public virtual void Attack()
@@ -87,8 +81,11 @@ public class EnemyWeapon : MonoBehaviour
         Debug.Log($"Range attack from {this.name}");
         // This method instantiate the projectile given in projectile component
         // Instant the position and then let the object do what it have to
-        var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
-        projectile.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+        for (int i=0; i < ProjectileCount; i++)
+        {
+            var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
+            projectile.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+        }
     }
 
     public virtual void OnDrawGizmosSelected()

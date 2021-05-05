@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5943690059432754097}
   m_Layer: 0
   m_Name: YellowBoss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,10 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  damage: 20
-  armor: 0
-  status: 0
+  MaxHealth: 100
+  Armor: 0
+  Status: 0
   EnrageRatio: 0.77
   HyperRatio: 0.42
   Aggro: 0
@@ -164,11 +163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5bd51fcecfe6243a6b67dc479fb4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackDamage: 10
   AttackRange: 7.77
-  AttackRatio: 0.3
+  AttackRatio: 0.08
   AttackMaxCooldown: 5
   IsRange: 0
   ProjectileComponent: {fileID: 0}
+  ProjectileCount: 1
   DashAttackEffectRange: 1.35
   DashAttackMaxCooldown: 10
   DashAttacks:
@@ -178,14 +179,15 @@ MonoBehaviour:
   EnrageAttackMaxCooldown: 10
   EnrageAttacks:
   - {fileID: 6179133934991320362, guid: bf1924f50e29141489ea8d40245da4ae, type: 3}
+  - {fileID: 623479128520672019, guid: 97d80cb047ea384458e20612930a0ad8, type: 3}
   HyperAttackRange: 5.04
   HyperAttackRatio: 0.4
   HyperAttackMaxCooldown: 5
   HyperAttacks:
   - {fileID: 5807322506427292163, guid: 7695ad07697dd8e4d91278cd6dbdaebf, type: 3}
-  EnrageBulletCount: 4
-  HyperBulletCount: 8
-  DashAttackCount: 4
+  EnrageBulletCount: 1
+  HyperBulletCount: 1
+  DashAttackCount: 1
   CalmTrapMaxCooldown: 4
   CalmTrapRatio: 0.32
   EnrageTrapMaxCooldown: 2

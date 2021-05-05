@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BossMovement : EnemyMovement
 {
 
     [SerializeField]
     private int[] spotCap = new int[1];
+
     private int spotCapPointer = 0;
 
     protected override void Start()
@@ -28,26 +30,26 @@ public class BossMovement : EnemyMovement
         return MovePositions[toSpot];
     }
 
-    public void SetSpotCap(BossStatus bossStatus)
+    public void SetSpotCap(BossAggroEnum bossStatus)
     {
         switch(bossStatus)
         {
-            case BossStatus.Calm:
+            case BossAggroEnum.Calm:
                 spotCapPointer = 0;
                 break;
-            case BossStatus.Enrage:
+            case BossAggroEnum.Enrage:
                 if (spotCap.Length >= 1)
                 {
                     spotCapPointer = 1;
                 }
                 break;
-            case BossStatus.Hyper:
+            case BossAggroEnum.Hyper:
                 if (spotCap.Length >= 2)
                 {
                     spotCapPointer = 2;
                 }
                 break;
-            case BossStatus.LastStand:
+            case BossAggroEnum.LastStand:
                 spotCapPointer = 0;
                 break;
         }
