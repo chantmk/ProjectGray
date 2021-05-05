@@ -75,8 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -2050882081
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6283239847456615900, guid: 48f5f30d12dff684393464e9a003248a,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75e33606c0af49345a293a16ae630658, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footOffset: 0
+  footOffset: -2.11
 --- !u!114 &7429186785627645350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cc546afcbcc0040a212673c05afba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: Player
   damage: 10
   MaxDuration: 3
   FlightSpeed: 1
