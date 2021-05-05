@@ -52,6 +52,10 @@ public class PlayerMovementManager : MonoBehaviour
 
     void Update()
     {
+        if (PauseManager.GamePaused)
+        {
+            return;
+        }
         rawInputX = Input.GetAxisRaw("Horizontal");
         rawInputY = Input.GetAxisRaw("Vertical");
         inputRoll = Input.GetKeyDown(KeyCode.Space);

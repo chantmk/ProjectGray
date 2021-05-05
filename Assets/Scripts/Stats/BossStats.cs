@@ -14,6 +14,8 @@ public class BossStats : CharacterStats
     public BossAggroEnum Aggro = BossAggroEnum.Calm;
     [SerializeField]
     private GameObject healthBar;
+    [SerializeField]
+    private GameObject teleporter;
 
     private Image healthBarImage;
 
@@ -66,5 +68,12 @@ public class BossStats : CharacterStats
         CurrentHealth -= damage;
         Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
         HandleHealth();
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        // Drop/Give item
+        teleporter.SetActive(true);
     }
 }
