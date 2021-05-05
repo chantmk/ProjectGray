@@ -9,10 +9,10 @@ public class AttackHitbox : MonoBehaviour
 
     public bool IsHitboxActivate
     {
-        get => collider2D.isActiveAndEnabled;
+        get => attackCollider.isActiveAndEnabled;
     }
 
-    private Collider2D collider2D;
+    private Collider2D attackCollider;
     
     private float activateDuration;
     public Action<Collider2D> OnHitboxTriggerEnter;
@@ -20,8 +20,8 @@ public class AttackHitbox : MonoBehaviour
 
     private void Awake()
     {
-        collider2D = GetComponent<Collider2D>();
-        collider2D.enabled = false;
+        attackCollider = GetComponent<Collider2D>();
+        attackCollider.enabled = false;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,13 +36,13 @@ public class AttackHitbox : MonoBehaviour
 
     public void Enable()
     {
-        collider2D.enabled = true;
+        attackCollider.enabled = true;
 
     }
 
     public void Disable()
     {
-        collider2D.enabled = false;
+        attackCollider.enabled = false;
     }
 
     public void QuickEnable()

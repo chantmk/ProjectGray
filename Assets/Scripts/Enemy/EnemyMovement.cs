@@ -22,14 +22,14 @@ public class EnemyMovement : MonoBehaviour
     private float dashDurationLeft;
     private float dashCooldownLeft;
     private bool isDashing = false;
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D enemyRigidbody;
 
     protected virtual void Start()
     {
         MovePositions[0] = new Vector2(transform.position.x, transform.position.y);
         dashDurationLeft = DashDuration;
         dashCooldownLeft = DashCooldown;
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        enemyRigidbody = GetComponent<Rigidbody2D>();
         if (player == null)
         {
             player = GameObject.FindGameObjectsWithTag("Player")[0];
@@ -46,27 +46,14 @@ public class EnemyMovement : MonoBehaviour
         return player.transform.position - transform.position;
     }
 
-    // We will try to replace this with animator via EnemyBehaviour
-    /*
-        public void FlipToPlayer()
-        {
-            //float xDirection = player.position.x - transform.position.x;
-            float xDirection = GetVectorToPlayer().x;
-            float enemyX = transform.localScale.x;
-            if (xDirection < -0.01f)
-            {
-                enemyX = -Mathf.Abs(enemyX);
-            }
-            else if (xDirection > 0.01f)
-            {
-                enemyX = Mathf.Abs(enemyX);
-            }
-            transform.localScale = new Vector3(enemyX, transform.localScale.y, transform.localScale.z);
-        }*/
-
-    public virtual Vector2 GetNextPatrolPosition()
+    public void Patrol()
     {
-        if (Vector2.Distance(transform.position, MovePositions[toSpot]) < 0.2f)
+        enemyRigidbody.velocity = (GetNextPatrolPosition() - transform.position).normalized * Speed * Time.fixedDeltaTime;
+    }
+
+    public virtual Vector3 GetNextPatrolPosition()
+    {
+        if (Vector3.Distance(transform.position, MovePositions[toSpot]) < 0.2f)
         {
             toSpot += 1;
 
@@ -87,7 +74,7 @@ public class EnemyMovement : MonoBehaviour
     public void Dash()
     {
         isDashing = true;
-        rigidbody2D.velocity = GetVectorToPlayer().normalized * DashForce;
+        enemyRigidbody.velocity = GetVectorToPlayer().normalized * DashForce;
     }
 
     private void updateDash()
@@ -104,10 +91,15 @@ public class EnemyMovement : MonoBehaviour
         else if (dashDurationLeft <= 0.0f)
         {
             isDashing = false;
-            rigidbody2D.velocity = Vector2.zero;
+            enemyRigidbody.velocity = Vector2.zero;
             dashDurationLeft = DashDuration;
             dashCooldownLeft = DashCooldown;
         }
+    }
+
+    public void Chase()
+    {
+        enemyRigidbody.velocity = GetVectorToPlayer().normalized * Speed * Time.fixedDeltaTime;
     }
 
     void OnDrawGizmosSelected()

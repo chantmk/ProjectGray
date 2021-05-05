@@ -13,15 +13,13 @@ public abstract class Projectile : MonoBehaviour
 
     protected float duration;
     protected AttackHitbox attackHitbox;
-    protected Rigidbody2D mRigidbody;
-    
-    private bool attackFlag = false;
+    protected Rigidbody2D projectileRigidbody;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         duration = MaxDuration;
-        mRigidbody = GetComponent<Rigidbody2D>();
+        projectileRigidbody = GetComponent<Rigidbody2D>();
 
         attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
         attackHitbox.Enable();
@@ -50,11 +48,11 @@ public abstract class Projectile : MonoBehaviour
 
     public virtual void Shoot(Vector2 direction)
     {
-        if (mRigidbody == null)
+        if (projectileRigidbody == null)
         {
-            mRigidbody = GetComponent<Rigidbody2D>();
+            projectileRigidbody = GetComponent<Rigidbody2D>();
         }
-        mRigidbody.velocity = direction * FlightSpeed;
+        projectileRigidbody.velocity = direction * FlightSpeed;
     }
     
     protected abstract void Attack(GameObject target);

@@ -16,19 +16,6 @@ public class BossMovement : EnemyMovement
         base.Start();
         spotCap[0] = MovePositions.Length;
     }
-    public override Vector2 GetNextPatrolPosition()
-    {
-        if (Vector2.Distance(transform.position, MovePositions[toSpot]) < 0.2f)
-        {
-            toSpot += 1;
-
-            if (toSpot >= spotCap[spotCapPointer])
-            {
-                toSpot = 0;
-            }
-        }
-        return MovePositions[toSpot];
-    }
 
     public void SetSpotCap(BossAggroEnum bossStatus)
     {

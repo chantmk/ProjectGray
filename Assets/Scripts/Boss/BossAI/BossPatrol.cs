@@ -5,23 +5,12 @@ using Utils;
 
 public class BossPatrol : BossBehaviour
 {
-
-    public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        base.OnStateEnter(animator, stateInfo, layerIndex);
-    }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
-        patrol();
+        bossMovement.Patrol();
         ListenToAttackSignal();
         updateMovingAnimation();
-    }
-
-    private void patrol()
-    {
-        // This can be improved by use A* pathfinder
-        transform.position = Vector2.MoveTowards(transform.position, bossMovement.GetNextPatrolPosition(), bossMovement.Speed * Time.deltaTime);
     }
 
     private void updateMovingAnimation()
