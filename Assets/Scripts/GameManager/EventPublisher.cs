@@ -52,7 +52,7 @@ public class EventPublisher
     public static event OnStatusChange StatusChange;
     public static void TriggerStatus(BossAggroEnum bossStatus)
     {
-        Debug.Log("Trigger: " + bossStatus);
+        //Debug.Log("Trigger: " + bossStatus);
         StatusChange?.Invoke(bossStatus);
     }
 

@@ -7,6 +7,7 @@ using Utils;
 public class DialogueManager : MonoBehaviour
 {
 	private PauseManager pauseManager;
+	private Image profile;
 	private Text nameText;
 	private Text dialogueText;
 	private GameObject nextButton;
@@ -20,6 +21,7 @@ public class DialogueManager : MonoBehaviour
 	void Start()
 	{
 		sentences = new Queue<string>();
+		profile = transform.Find("Profile").GetComponent<Image>();
 		nameText = transform.Find("Name").GetComponent<Text>();
 		dialogueText = transform.Find("DialogueText").GetComponent<Text>();
 		animator = transform.GetComponent<Animator>();
@@ -33,7 +35,8 @@ public class DialogueManager : MonoBehaviour
     {
 		animator.SetBool("IsOpen", true);
 		pauseManager.PauseTime();
-		nameText.text = dialogue.name;
+		profile.sprite = dialogue.ProfilePicture;
+		nameText.text = dialogue.Name;
 		sentences.Clear();
 
 		foreach (string sentence in dialogue.sentences)

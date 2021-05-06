@@ -10,7 +10,6 @@ TagManager:
   - StaminaBar
   - Weapon
   - HealthBar
-  - Boss
   layers:
   - Default
   - TransparentFX
