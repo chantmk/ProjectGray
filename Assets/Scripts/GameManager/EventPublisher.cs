@@ -63,6 +63,13 @@ public class EventPublisher
         PlayCutscene?.Invoke();
     }
 
+    public delegate void OnEndCutScene();
+    public static event OnEndCutScene EndCutscene;
+    public static void TriggerEndCutScene()
+    {
+        EndCutscene?.Invoke();
+    }
+
     public delegate void OnDecisionMake(DecisionEnum decision);
     public static event OnDecisionMake DecisionMake;
     public static void TriggerDecisionMake(DecisionEnum decision)

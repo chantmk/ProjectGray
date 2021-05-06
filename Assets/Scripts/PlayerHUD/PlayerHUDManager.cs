@@ -4,15 +4,35 @@ using UnityEngine;
 
 public class PlayerHUDManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    private GameObject bossHealth;
+    private GameObject playerBar;
+
     void Start()
     {
-        transform.Find("BossHealthContainer").gameObject.SetActive(false) ;
+        bossHealth = transform.Find("BossHealthContainer").gameObject;
+        playerBar = transform.Find("PlayerBar").gameObject;
+        bossHealth.SetActive(false);
+
+        EventPublisher.PlayCutscene += HideBar;
+        EventPublisher.EndCutscene += ShowBar;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        
+        EventPublisher.PlayCutscene -= HideBar;
+        EventPublisher.EndCutscene -= ShowBar;
+    }
+
+    public void HideBar()
+    {
+        bossHealth.SetActive(false);
+        playerBar.SetActive(false);
+    }
+
+    public void ShowBar()
+    {
+        bossHealth.SetActive(true);
+        playerBar.SetActive(true);
     }
 }

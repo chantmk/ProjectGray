@@ -75,7 +75,6 @@ public class EnemyMovement : MonoBehaviour
     {
         isDashing = true;
         enemyRigidbody.velocity = GetVectorToPlayer().normalized * (DashRange/DashDuration);
-        Debug.Log(enemyRigidbody.velocity);
     }
 
     private void updateDash()

@@ -1476,8 +1476,7 @@ AnimatorState:
   m_Name: Mercy
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: -47668022142536503}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
@@ -2949,6 +2948,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: Aggro
     m_EventTreshold: 1
+  - m_ConditionMode: 6
+    m_ConditionEvent: Movement
+    m_EventTreshold: 1
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4259087576506546027}
   m_Solo: 0
@@ -3068,8 +3070,7 @@ AnimatorState:
   m_Name: Dead
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions:
-  - {fileID: 3752031738100696667}
+  m_Transitions: []
   m_StateMachineBehaviours: []
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0

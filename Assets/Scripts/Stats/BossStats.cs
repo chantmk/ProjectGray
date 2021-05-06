@@ -31,7 +31,7 @@ public class BossStats : CharacterStats
     protected override void Update()
     {
         base.Update();
-        if(!healthBarContainer.activeSelf)
+        if(!healthBarContainer.activeSelf && Aggro != BossAggroEnum.LastStand)
         {
             healthBarContainer.SetActive(true);
         }

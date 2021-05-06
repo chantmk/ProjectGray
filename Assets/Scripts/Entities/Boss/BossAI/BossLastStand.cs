@@ -18,7 +18,7 @@ public class BossLastStand : BossBehaviour
         talkManager.TriggerDotBubble();
         EventPublisher.TriggerPlayCutScene();
 
-        EventPublisher.DialogueDone += askForMercy;
+        EventPublisher.EndCutscene += askForMercy;
         EventPublisher.DecisionMake += DecisionHandler;
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -29,7 +29,7 @@ public class BossLastStand : BossBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
-        EventPublisher.DialogueDone -= askForMercy;
+        EventPublisher.EndCutscene -= askForMercy;
         EventPublisher.DecisionMake -= DecisionHandler;
     }
 

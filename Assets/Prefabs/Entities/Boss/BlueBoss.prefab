@@ -114,7 +114,7 @@ MonoBehaviour:
   HyperAttackRatio: 0.35
   HyperAttackMaxCooldown: 8
   HyperAttacks:
-  - {fileID: 7083435290850193718, guid: 42a24841908ce694eabc0d756e628c88, type: 3}
+  - {fileID: 7264316411559659834, guid: 34f60f0308a6ae54687c8c671d9fd3cd, type: 3}
   EnrageBulletCount: 4
   HyperBulletCount: 8
   DashAttackCount: 1

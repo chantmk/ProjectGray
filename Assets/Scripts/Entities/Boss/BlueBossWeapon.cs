@@ -46,7 +46,6 @@ public class BlueBossWeapon : BossWeapon
         {
             Vector3 position = new Vector3(Random.Range(HyperAttackRange / 2, HyperAttackRange), Random.Range(HyperAttackRange / 2, HyperAttackRange));
             var bullet = Instantiate(HyperAttacks[0], transform.position + position, Quaternion.Euler(Vector3.zero));
-            bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
         }
     }
 
