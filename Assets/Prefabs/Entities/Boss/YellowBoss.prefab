@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1477587721302976218}
   - component: {fileID: 8504992761955662557}
   - component: {fileID: 2833023321299562939}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   EnrageRatio: 0.77
   HyperRatio: 0.42
   Aggro: 0
-  healthBar: {fileID: 0}
+  healthBarContainer: {fileID: 0}
 --- !u!114 &6909054251121272368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   Speed: 1
   VisionRange: 10.08
   DashProbability: 0.28
-  DashForce: 20
+  DashRange: 0
   DashDuration: 0.5
   DashCooldown: 10
   MovePositions:
@@ -208,13 +208,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: Gummy Bear
+    Name: YellowBoss
+    ProfilePicture: {fileID: 0}
+    IsDecision: 0
     sentences:
     - Im
     - a
     - yellow
     - bear
     - hoho
+  mercyDialogue:
+    Name: PedroBear
+    ProfilePicture: {fileID: 0}
+    IsDecision: 0
+    sentences: []
   bubble: {fileID: 5746571033990493874, guid: e6c355bdc81cf6141b56c5f23016a194, type: 3}
   offset: {x: 1.31, y: 1.09, z: 0}
   BubbleDelay: 5

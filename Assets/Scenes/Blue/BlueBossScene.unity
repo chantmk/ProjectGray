@@ -580,6 +580,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 305294043801756044, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1102555091586577403, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: m_RootOrder
@@ -645,6 +650,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1378990222}
+    - target: {fileID: 1399494168960419412, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: DashRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399494168960419412, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: DashDuration
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: healthBarContainer

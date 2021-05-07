@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 3371847653556158531, guid: 922e9460326c7114da51f4ce202d29d8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3371847653556158531, guid: 922e9460326c7114da51f4ce202d29d8,
         type: 3}
@@ -205,22 +205,22 @@ PrefabInstance:
     - target: {fileID: 3454546583347631280, guid: 698829975ca4b4f42acde2739bcee268,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3454546583347631282, guid: 698829975ca4b4f42acde2739bcee268,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3454546583347631282, guid: 698829975ca4b4f42acde2739bcee268,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454546583347631282, guid: 698829975ca4b4f42acde2739bcee268,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.44
+      value: 12.98
       objectReference: {fileID: 0}
     - target: {fileID: 3454546583347631282, guid: 698829975ca4b4f42acde2739bcee268,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.92
+      value: 2.66
       objectReference: {fileID: 0}
     - target: {fileID: 3454546583347631282, guid: 698829975ca4b4f42acde2739bcee268,
         type: 3}
@@ -264,12 +264,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 698829975ca4b4f42acde2739bcee268, type: 3}
---- !u!1 &779734334 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3454546583347631280, guid: 698829975ca4b4f42acde2739bcee268,
-    type: 3}
-  m_PrefabInstance: {fileID: 779734333}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &782369249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,7 +305,7 @@ PrefabInstance:
     - target: {fileID: 7452341877007267935, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7452341877007267935, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
@@ -405,12 +399,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 381786c5ffd72b041a148bc9a1a45df2, type: 3}
---- !u!1 &782369250 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6660168177696829220, guid: 381786c5ffd72b041a148bc9a1a45df2,
-    type: 3}
-  m_PrefabInstance: {fileID: 782369249}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &883986142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -421,7 +409,7 @@ PrefabInstance:
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
@@ -567,16 +555,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 3481867557849703455, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 782369250}
-    - target: {fileID: 3481867557849703455, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: teleporter
-      value: 
-      objectReference: {fileID: 779734334}
     - target: {fileID: 6909054251121272368, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: player
@@ -585,7 +563,7 @@ PrefabInstance:
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
