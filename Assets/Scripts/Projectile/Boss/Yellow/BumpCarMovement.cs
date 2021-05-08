@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class BumpCarMovement : EnemyMovement
 {
+    [Header("Bouncy")]
+    [SerializeField]
+    private LayerMask wall;
+    [Header("Fix position")]
     [SerializeField]
     private int MaxPositionCount = 8;
     [SerializeField]
