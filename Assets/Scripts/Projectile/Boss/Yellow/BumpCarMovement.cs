@@ -22,7 +22,7 @@ public class BumpCarMovement : EnemyMovement
     protected override void Start()
     {
         base.Start();
-        MovePositions = randomPosition();
+        MovePositionsOffset = randomPosition();
     }
 
     protected override void Update()

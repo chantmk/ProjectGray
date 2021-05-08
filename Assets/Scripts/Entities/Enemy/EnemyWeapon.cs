@@ -87,7 +87,7 @@ public class EnemyWeapon : MonoBehaviour
         for (int i=0; i < ProjectileCount; i++)
         {
             var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
-            projectile.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+            projectile.GetComponent<Projectile>().Shoot(enemyMovement.GetVectorToPlayer());
         }
     }
 

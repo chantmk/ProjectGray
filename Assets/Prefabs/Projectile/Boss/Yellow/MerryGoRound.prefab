@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3461877375443607990}
+  - component: {fileID: 7429186785627645350}
   - component: {fileID: 9022404928124592669}
   - component: {fileID: 7059574028370848558}
-  - component: {fileID: 7429186785627645350}
   - component: {fileID: 3473628064990244028}
   - component: {fileID: 5416352064096789556}
   m_Layer: 0
@@ -36,6 +36,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7429186785627645350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5807322506427292163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46cc546afcbcc0040a212673c05afba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  MaxDuration: 3
+  FlightSpeed: 1
+  horseRadius: {x: -1.39, y: -1.15, z: 0}
+  horse: {fileID: 3926843223403712555, guid: 2e2b8c52d2b2d07439a828ba51ce1879, type: 3}
 --- !u!212 &9022404928124592669
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,23 +116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footOffset: -2.11
---- !u!114 &7429186785627645350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5807322506427292163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46cc546afcbcc0040a212673c05afba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  MaxDuration: 3
-  FlightSpeed: 1
-  horseRadius: {x: -1.39, y: -1.15, z: 0}
-  horse: {fileID: 0}
 --- !u!50 &3473628064990244028
 Rigidbody2D:
   serializedVersion: 4
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &5416352064096789556
 Animator:
   serializedVersion: 3
