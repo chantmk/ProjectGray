@@ -8,8 +8,7 @@ public class BossWeapon : EnemyWeapon
     /**
      * This class tell weapon stat and what to create
      */
-    [Header("Boss attack parameters")]
-    
+
     [Header("Dash attack parameters")]
     public float DashAttackEffectRange;
     public float DashAttackMaxCooldown;

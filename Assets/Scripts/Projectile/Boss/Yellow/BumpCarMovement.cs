@@ -22,7 +22,7 @@ public class BumpCarMovement : EnemyMovement
     protected override void Start()
     {
         base.Start();
-        MovePositions = randomPosition();
+        MovePositionsOffset = randomPosition();
     }
 
     protected override void Update()
@@ -43,6 +43,11 @@ public class BumpCarMovement : EnemyMovement
         return positions;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision);
+        Debug.Log(collision.transform.position - transform.position);
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere(BottomLeftCorner, 0.2f);

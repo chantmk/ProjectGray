@@ -6,19 +6,21 @@ public class EnemyMovement : MonoBehaviour
 {
     [Tooltip("Player reference")]
     public GameObject player;
-    [Header("Enemy movement parameters")]
+    [Header("Movement parameters")]
     public float Speed = 1.0f;
     public float VisionRange = 1.0f;
-    [Header("Enemy dash parameters")]
+    public bool ManualFlip = false;
+    [Header("Dash parameters")]
     [Range(0.0f, 1.0f)]
     public float DashProbability;
     public float DashRange;
     public float DashDuration;
     public float DashCooldown;
-    [Header("Enemy patrol parameters")]
-    public Vector2[] MovePositions = new Vector2[1];
+    [Header("Patrol parameters")]
+    public Vector2[] MovePositionsOffset = new Vector2[1];
 
     protected int toSpot = 0;
+    private Vector2 startPosition;
     private float dashDurationLeft;
     private float dashCooldownLeft;
     private bool isDashing = false;
@@ -26,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
 
     protected virtual void Start()
     {
-        MovePositions[0] = new Vector2(transform.position.x, transform.position.y);
+        startPosition = transform.position;
         dashDurationLeft = DashDuration;
         dashCooldownLeft = DashCooldown;
         enemyRigidbody = GetComponent<Rigidbody2D>();
@@ -46,6 +48,21 @@ public class EnemyMovement : MonoBehaviour
         return player.transform.position - transform.position;
     }
 
+    public void FlipToPlayer()
+    {
+        float xDirection = GetVectorToPlayer().x;
+        float enemyX = transform.localScale.x;
+        if (xDirection < -0.01f)
+        {
+            enemyX = -Mathf.Abs(enemyX);
+        }
+        else if (xDirection > 0.01f)
+        {
+            enemyX = Mathf.Abs(enemyX);
+        }
+        transform.localScale = new Vector3(enemyX, transform.localScale.y, transform.localScale.z);
+    }
+
     public void Patrol()
     {
         enemyRigidbody.velocity = (GetNextPatrolPosition() - transform.position).normalized * Speed;
@@ -53,16 +70,28 @@ public class EnemyMovement : MonoBehaviour
 
     public virtual Vector3 GetNextPatrolPosition()
     {
-        if (Vector3.Distance(transform.position, MovePositions[toSpot]) < 0.2f)
+        updateToSpot();
+        if (toSpot == 0)
+        {
+            return startPosition;
+        }
+        else
+        {
+            return startPosition + MovePositionsOffset[toSpot-1];
+        }
+    }
+
+    protected virtual void updateToSpot()
+    {
+        if (Vector3.Distance(transform.position, MovePositionsOffset[toSpot]) < 0.2f)
         {
             toSpot += 1;
 
-            if (toSpot >= MovePositions.Length)
+            if (toSpot > MovePositionsOffset.Length)
             {
                 toSpot = 0;
             }
         }
-        return MovePositions[toSpot];
     }
 
     public bool IsReadyToDash()

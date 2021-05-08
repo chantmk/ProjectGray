@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 685772366926991079}
   - component: {fileID: 6461289664328180922}
   - component: {fileID: 4050017775675519760}
+  - component: {fileID: 7251250005459984130}
   - component: {fileID: 4424429528456670200}
   - component: {fileID: 8355906792317216962}
   m_Layer: 0
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   Armor: 0
-  Status: 0
+  Status: 1
   consumeTime: 3
 --- !u!114 &8927539840941536687
 MonoBehaviour:
@@ -139,11 +140,12 @@ MonoBehaviour:
   player: {fileID: 0}
   Speed: 1
   VisionRange: 1
+  ManualFlip: 0
   DashProbability: 0
-  DashForce: 0
+  DashRange: 0
   DashDuration: 0
   DashCooldown: 0
-  MovePositions:
+  MovePositionsOffset:
   - {x: 0, y: 0}
   MaxIdleDelay: 10
   MoveRadius: 1
@@ -221,8 +223,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2050882081
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 613533edf9c241f4484c41b7a31932c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -235,6 +237,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7251250005459984130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926843223403712555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footOffset: -1.31
 --- !u!61 &4424429528456670200
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -269,7 +284,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3926843223403712555}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
