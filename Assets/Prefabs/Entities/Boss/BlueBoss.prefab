@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1399494168960419412}
   - component: {fileID: 3602699276726790867}
   - component: {fileID: 4719026838900429687}
-  - component: {fileID: 1102555091586577402}
   - component: {fileID: 1102555091586577405}
   - component: {fileID: 1524699952}
+  - component: {fileID: 1102555091586577402}
   - component: {fileID: 7416784804728002404}
   - component: {fileID: 305294043801756044}
   m_Layer: 0
@@ -74,9 +74,10 @@ MonoBehaviour:
   player: {fileID: 0}
   Speed: 1
   VisionRange: 11.76
+  ManualFlip: 0
   DashProbability: 0.25
-  DashRange: 5
-  DashDuration: 0.5
+  DashRange: 3
+  DashDuration: 0.2
   DashCooldown: 5
   MovePositions:
   - {x: 0, y: 0}
@@ -148,25 +149,6 @@ MonoBehaviour:
   bubble: {fileID: 5746571033990493874, guid: e6c355bdc81cf6141b56c5f23016a194, type: 3}
   offset: {x: 0.87, y: 0.97, z: 0}
   BubbleDelay: 3
---- !u!95 &1102555091586577402
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102555091586577404}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dee85627a9cf6c1408b5154f05dba5b7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1102555091586577405
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -230,6 +212,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footOffset: 0
+--- !u!95 &1102555091586577402
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dee85627a9cf6c1408b5154f05dba5b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &7416784804728002404
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -264,7 +265,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102555091586577404}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -303,7 +304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8888635980358798367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.168, y: -0.039, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1102555091586577403}
@@ -333,7 +334,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3672651, y: 0.4744049}
+  m_Size: {x: 0.27, y: 0.49}
   m_EdgeRadius: 0
 --- !u!114 &2423055084890618131
 MonoBehaviour:

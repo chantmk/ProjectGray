@@ -140,12 +140,16 @@ MonoBehaviour:
   player: {fileID: 0}
   Speed: 1
   VisionRange: 1
+  ManualFlip: 0
   DashProbability: 0
   DashRange: 0
   DashDuration: 0
   DashCooldown: 0
-  MovePositions:
+  MovePositionsOffset:
   - {x: 0, y: 0}
+  wall:
+    serializedVersion: 2
+    m_Bits: 2048
   MaxPositionCount: 3
   MinPositionCount: 5
   BottomLeftCorner: {x: -4.74, y: -5.67}
@@ -233,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e67c991a4faad74f8f103fd049e4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footOffset: 0
+  footOffset: -0.66
 --- !u!95 &2154570751744829028
 Animator:
   serializedVersion: 3

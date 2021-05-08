@@ -27,6 +27,10 @@ public class EnemyBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (enemyMovement.ManualFlip)
+        {
+            enemyMovement.FlipToPlayer();
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.28313985, y: 0.5699929}
+  m_Size: {x: 0.33, y: 0.61}
   m_EdgeRadius: 0
 --- !u!114 &354418186
 MonoBehaviour:
@@ -122,14 +122,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 75
   Armor: 0
   Status: 0
-  EnrageRatio: 0.39
+  EnrageRatio: 0.46
   HyperRatio: 0.21
   Aggro: 0
   healthBarContainer: {fileID: 0}
-  teleporter: {fileID: 0}
 --- !u!114 &563864187573055747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,8 +144,9 @@ MonoBehaviour:
   player: {fileID: 0}
   Speed: 1.5
   VisionRange: 11.45
+  ManualFlip: 0
   DashProbability: 0
-  DashForce: 0
+  DashRange: 0
   DashDuration: 0
   DashCooldown: 0
   MovePositions:
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackDamage: 10
-  AttackRange: 1.54
+  AttackRange: 1.82
   AttackRatio: 0.75
   AttackMaxCooldown: 5
   IsRange: 0
@@ -253,7 +253,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2050882081
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a327e9a85dadcf34699ed69490fe230f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -286,7 +286,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6852541505086270373}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -323,7 +323,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.61035085}
+  m_Size: {x: 0.16, y: 0.51}
   m_EdgeRadius: 0
 --- !u!95 &6852541505086270382
 Animator:
