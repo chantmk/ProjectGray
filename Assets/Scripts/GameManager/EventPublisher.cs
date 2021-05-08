@@ -52,7 +52,7 @@ public class EventPublisher
     public static event OnStatusChange StatusChange;
     public static void TriggerStatus(BossAggroEnum bossStatus)
     {
-        Debug.Log("Trigger: " + bossStatus);
+        //Debug.Log("Trigger: " + bossStatus);
         StatusChange?.Invoke(bossStatus);
     }
 
@@ -61,6 +61,13 @@ public class EventPublisher
     public static void TriggerPlayCutScene()
     {
         PlayCutscene?.Invoke();
+    }
+
+    public delegate void OnEndCutScene();
+    public static event OnEndCutScene EndCutscene;
+    public static void TriggerEndCutScene()
+    {
+        EndCutscene?.Invoke();
     }
 
     public delegate void OnDecisionMake(DecisionEnum decision);

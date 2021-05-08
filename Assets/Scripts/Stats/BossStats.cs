@@ -13,9 +13,7 @@ public class BossStats : CharacterStats
     public float HyperRatio;
     public BossAggroEnum Aggro = BossAggroEnum.Calm;
     [SerializeField]
-    private GameObject healthBar;
-    [SerializeField]
-    private GameObject teleporter;
+    private GameObject healthBarContainer;
 
     private Image healthBarImage;
 
@@ -23,8 +21,8 @@ public class BossStats : CharacterStats
     protected override void Start()
     {
         base.Start();
-        healthBar.transform.parent.gameObject.SetActive(true);
-        healthBarImage = healthBar.GetComponent<Image>();
+        healthBarContainer.SetActive(true);
+        healthBarImage = healthBarContainer.GetComponentInChildren<Image>();
         healthBarImage.color = Color.green;
         // Work on exception handling below
     }
@@ -33,6 +31,10 @@ public class BossStats : CharacterStats
     protected override void Update()
     {
         base.Update();
+        if(!healthBarContainer.activeSelf && Aggro != BossAggroEnum.LastStand)
+        {
+            healthBarContainer.SetActive(true);
+        }
         healthBarImage.fillAmount = GetHealthPercentage();
     }
 
@@ -74,6 +76,5 @@ public class BossStats : CharacterStats
     {
         base.Die();
         // Drop/Give item
-        teleporter.SetActive(true);
     }
 }

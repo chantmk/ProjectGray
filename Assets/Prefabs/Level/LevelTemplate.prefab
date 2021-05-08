@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3371847651661600698}
   - component: {fileID: 3371847651661600696}
   - component: {fileID: 3371847651661600699}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VisualGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26577,7 +26577,7 @@ GameObject:
   - component: {fileID: 3371847651788824815}
   - component: {fileID: 3371847651788824813}
   - component: {fileID: 3371847651788824812}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VisualTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26718,7 +26718,7 @@ GameObject:
   - component: {fileID: 3371847651881078832}
   - component: {fileID: 3371847651881078838}
   - component: {fileID: 3371847651881078833}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: VisualMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26862,7 +26862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3371847652249921152}
   - component: {fileID: 3371847652249921155}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: TileMap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26911,7 +26911,7 @@ GameObject:
   - component: {fileID: 3371847652921804823}
   - component: {fileID: 3371847652921804822}
   - component: {fileID: 3371847652921804817}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ObjectWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29973,7 +29973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3371847653556158531}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LevelTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}

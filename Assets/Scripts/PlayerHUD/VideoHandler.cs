@@ -41,6 +41,6 @@ public class VideoHandler : MonoBehaviour
     public void StopVideo(VideoPlayer videoPlayer)
     {
         videoPlayer.Stop();
-        EventPublisher.TriggerDialogueDone();
+        EventPublisher.TriggerEndCutScene();
     }
 }
