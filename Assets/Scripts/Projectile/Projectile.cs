@@ -1,25 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public abstract class Projectile : MonoBehaviour
 {
-    public LayerMask target;
+    protected abstract List<int> targetLayers { get; }
+
     public float damage = 10.0f;
     public float MaxDuration = 3.0f;
     public float FlightSpeed = 1.0f;
 
     protected float duration;
-    protected bool attacking => duration > 0.01f;
     protected AttackHitbox attackHitbox;
-    protected Rigidbody2D mRigidbody;
+    protected Rigidbody2D projectileRigidbody;
+    protected Animator animator;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         duration = MaxDuration;
+        projectileRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
-        mRigidbody = GetComponent<Rigidbody2D>();
+        attackHitbox.Enable();
+        attackHitbox.OnHitboxTriggerEnter = OnHitboxTriggerEnter;
+        attackHitbox.OnHitboxTriggerExit = OnHitboxTriggerExit;
+    }
+
+    protected virtual void OnHitboxTriggerEnter(Collider2D other)
+    {
+        var targetGameobject = other.gameObject;
+        if (targetLayers != null && targetLayers.Contains(targetGameobject.layer))
+        {
+            Attack(targetGameobject);
+        }
+    }
+
+    protected virtual void OnHitboxTriggerExit(Collider2D other)
+    {
+
     }
 
     // Update is called once per frame
@@ -27,36 +47,30 @@ public abstract class Projectile : MonoBehaviour
     {
         // This method will decrease duration
         duration -= Time.fixedDeltaTime;
-        if (attacking)
+        if (duration <= 0)
         {
-            ProcessAttack();
-        }
-        else
-        {
-            Destroy(gameObject);
+            Execute();
         }
     }
 
     public virtual void Shoot(Vector2 direction)
     {
-        Debug.Log("Shooting");
-        if (mRigidbody == null)
+        if (projectileRigidbody == null)
         {
-            mRigidbody = GetComponent<Rigidbody2D>();
+            projectileRigidbody = GetComponent<Rigidbody2D>();
         }
-        mRigidbody.velocity = direction * FlightSpeed;
+        projectileRigidbody.velocity = direction * FlightSpeed;
     }
 
-    protected virtual void ProcessAttack()
+    protected virtual void Execute()
     {
-        HashSet<Collider2D> colliders = attackHitbox.HitColliders;
-        foreach (Collider2D collider in colliders)
-        {
-            if (collider.gameObject.layer == target)
-            {
-                Attack(collider.gameObject);
-            }
-        }
+        animator.SetTrigger(AnimatorParams.Execute);
     }
+
+    public virtual void SelfDestruct()
+    {
+        Destroy(gameObject);
+    }   
+    
     protected abstract void Attack(GameObject target);
 }

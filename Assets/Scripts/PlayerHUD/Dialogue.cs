@@ -6,8 +6,9 @@ using UnityEngine;
 public class Dialogue
 {
 
-    public string name;
-
+    public string Name;
+    public Sprite ProfilePicture;
+    public bool IsDecision = false;
     [TextArea(3, 10)]
     public string[] sentences;
 }

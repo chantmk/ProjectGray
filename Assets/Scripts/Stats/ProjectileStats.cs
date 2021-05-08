@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
-public class ProjectileStats : CharacterStats
+public class ProjectileStats : EnemyStats
 {
     [SerializeField]
     private float consumeTime = 3.0f;
@@ -20,16 +21,16 @@ public class ProjectileStats : CharacterStats
     }
     public override void Die()
     {
-        status = Status.Dead;
+        Status = StatusEnum.Dead;
         animator.SetTrigger("Dead");
         Destroy(gameObject, consumeTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+/*    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(status == Status.Dead && collision.gameObject.tag == "Boss")
         {
             collision.gameObject.GetComponent<BossStats>().TakeCrashDamage(damage);
         }
-    }
+    }*/
 }

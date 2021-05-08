@@ -2,14 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public enum BossStatus
-{
-    Calm,
-    Enrage,
-    Hyper,
-    LastStand
-}
+using Utils;
 
 public class BossStats : CharacterStats
 {
@@ -18,9 +11,9 @@ public class BossStats : CharacterStats
     public float EnrageRatio;
     [Range(0.0f, 1.0f)]
     public float HyperRatio;
-    public BossStatus Aggro = BossStatus.Calm;
+    public BossAggroEnum Aggro = BossAggroEnum.Calm;
     [SerializeField]
-    private GameObject healthBar;
+    private GameObject healthBarContainer;
 
     private Image healthBarImage;
 
@@ -28,8 +21,8 @@ public class BossStats : CharacterStats
     protected override void Start()
     {
         base.Start();
-        healthBar.transform.parent.gameObject.SetActive(true);
-        healthBarImage = healthBar.GetComponent<Image>();
+        healthBarContainer.SetActive(true);
+        healthBarImage = healthBarContainer.GetComponentInChildren<Image>();
         healthBarImage.color = Color.green;
         // Work on exception handling below
     }
@@ -38,27 +31,31 @@ public class BossStats : CharacterStats
     protected override void Update()
     {
         base.Update();
+        if(!healthBarContainer.activeSelf && Aggro != BossAggroEnum.LastStand)
+        {
+            healthBarContainer.SetActive(true);
+        }
         healthBarImage.fillAmount = GetHealthPercentage();
     }
 
     public override void HandleHealth()
     {
         float currentHealthPercentage = GetHealthPercentage();
-        if (currentHealth <= depleteHealth)
+        if (CurrentHealth <= depleteHealth)
         {
-            Aggro = BossStatus.LastStand;
-            status = Status.Immortal;
+            Aggro = BossAggroEnum.LastStand;
+            Status = StatusEnum.Immortal;
             EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < HyperRatio && Aggro == BossStatus.Enrage)
+        else if (currentHealthPercentage < HyperRatio && Aggro == BossAggroEnum.Enrage)
         {
-            Aggro = BossStatus.Hyper;
+            Aggro = BossAggroEnum.Hyper;
             healthBarImage.color = Color.red;
             EventPublisher.TriggerStatus(Aggro);
         }
-        else if (currentHealthPercentage < EnrageRatio && Aggro == BossStatus.Calm)
+        else if (currentHealthPercentage < EnrageRatio && Aggro == BossAggroEnum.Calm)
         {
-            Aggro = BossStatus.Enrage;
+            Aggro = BossAggroEnum.Enrage;
             healthBarImage.color = Color.yellow;
             EventPublisher.TriggerStatus(Aggro);
         }
@@ -66,12 +63,18 @@ public class BossStats : CharacterStats
 
     public void TakeCrashDamage(float damage)
     {
-        damage -= armor;
+        damage -= Armor;
 
-        if (damage < 0.0f) damage = 0.0f;
+        if (damage < GrayConstants.EPSILON) damage = 0.0f;
 
-        currentHealth -= damage;
-        Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
+        CurrentHealth -= damage;
+        Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
         HandleHealth();
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        // Drop/Give item
     }
 }

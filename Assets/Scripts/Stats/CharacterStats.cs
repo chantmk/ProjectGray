@@ -1,30 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum Status
-{
-    Mortal,
-    Immortal,
-    Dead
-}
+using Utils;
 
 public class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
-    public float maxHealth = 100.0f;
-    public float currentHealth { get; protected set; }
-    public float damage;
-    public float armor;
-    public Status status = Status.Mortal;
+    public float MaxHealth = 100.0f;
+    public float CurrentHealth { get; protected set; }
+    public float Armor;
+    public StatusEnum Status = StatusEnum.Mortal;
 
     protected const float depleteHealth = 0.01f;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        status = Status.Mortal;
-        currentHealth = maxHealth;
+        Status = StatusEnum.Mortal;
+        CurrentHealth = MaxHealth;
     }
 
     // Update is called once per frame
@@ -39,19 +32,19 @@ public class CharacterStats : MonoBehaviour
 
     void Awake()
     {
-        currentHealth = maxHealth;
+        CurrentHealth = MaxHealth;
     }
 
     public void TakeDamage(float damage)
     {
-        if (status == Status.Mortal)
+        if (Status == StatusEnum.Mortal)
         {
-            damage -= this.armor;
+            damage -= this.Armor;
 
-            if (damage < 0.0f) damage = 0.0f;
+            if (damage < GrayConstants.EPSILON) damage = 0.0f;
 
-            currentHealth -= damage;
-            Debug.Log(transform.name + " -" + damage + " Health left: " + currentHealth);
+            CurrentHealth -= damage;
+            //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
             HandleHealth();
         }
         
@@ -59,18 +52,18 @@ public class CharacterStats : MonoBehaviour
 
     public void Heal(float healValue)
     {
-        if (status != Status.Dead)
+        if (Status != StatusEnum.Dead)
         {
-            if (healValue < 0.0f)
+            if (healValue < GrayConstants.EPSILON)
             {
                 healValue = 0.0f;
             }
 
-            currentHealth += healValue;
+            CurrentHealth += healValue;
             //Debug.Log(transform.name + " +" + healValue + " Health");
-            if (currentHealth > maxHealth)
+            if (CurrentHealth > MaxHealth)
             {
-                currentHealth = maxHealth;
+                CurrentHealth = MaxHealth;
             }
         }
         
@@ -78,25 +71,25 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void HandleHealth()
     {
-        if (currentHealth <= depleteHealth)
+        if (CurrentHealth <= depleteHealth)
         {
             Die();
         }
     }
     public virtual void Die()
     {
-        status = Status.Dead;
+        Status = StatusEnum.Dead;
         Debug.Log(transform.name + " Died");
         Destroy(gameObject);
     }
 
     public float GetCurrentHealth()
     {
-        return currentHealth;
+        return CurrentHealth;
     }
 
     public float GetHealthPercentage()
     {
-        return currentHealth / maxHealth;
+        return CurrentHealth / MaxHealth;
     }
 }

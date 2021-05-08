@@ -10,7 +10,6 @@ TagManager:
   - StaminaBar
   - Weapon
   - HealthBar
-  - Boss
   layers:
   - Default
   - TransparentFX
@@ -24,9 +23,9 @@ TagManager:
   - Enemy
   - Boss
   - Wall
-  - 
-  - 
-  - 
+  - EnemyHitbox
+  - PlayerHitbox
+  - NaturalHitbox
   - 
   - 
   - 
@@ -45,6 +44,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Level
+    uniqueID: 1173605657
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
