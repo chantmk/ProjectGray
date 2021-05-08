@@ -74,9 +74,10 @@ MonoBehaviour:
   player: {fileID: 0}
   Speed: 1
   VisionRange: 11.76
+  ManualFlip: 0
   DashProbability: 0.25
-  DashRange: 5
-  DashDuration: 0.5
+  DashRange: 3
+  DashDuration: 0.2
   DashCooldown: 5
   MovePositions:
   - {x: 0, y: 0}
@@ -264,7 +265,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102555091586577404}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

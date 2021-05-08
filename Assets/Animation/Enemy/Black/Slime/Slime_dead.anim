@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Enemy_dead
+  m_Name: Slime_dead
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0

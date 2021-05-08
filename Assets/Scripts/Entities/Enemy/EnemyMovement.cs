@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Enemy movement parameters")]
     public float Speed = 1.0f;
     public float VisionRange = 1.0f;
+    public bool ManualFlip = false;
     [Header("Enemy dash parameters")]
     [Range(0.0f, 1.0f)]
     public float DashProbability;
@@ -44,6 +45,21 @@ public class EnemyMovement : MonoBehaviour
     public Vector2 GetVectorToPlayer()
     {
         return player.transform.position - transform.position;
+    }
+
+    public void FlipToPlayer()
+    {
+        float xDirection = GetVectorToPlayer().x;
+        float enemyX = transform.localScale.x;
+        if (xDirection < -0.01f)
+        {
+            enemyX = -Mathf.Abs(enemyX);
+        }
+        else if (xDirection > 0.01f)
+        {
+            enemyX = Mathf.Abs(enemyX);
+        }
+        transform.localScale = new Vector3(enemyX, transform.localScale.y, transform.localScale.z);
     }
 
     public void Patrol()

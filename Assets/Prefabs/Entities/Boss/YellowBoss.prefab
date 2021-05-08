@@ -143,6 +143,7 @@ MonoBehaviour:
   player: {fileID: 0}
   Speed: 1
   VisionRange: 10.08
+  ManualFlip: 0
   DashProbability: 0.28
   DashRange: 0
   DashDuration: 0.5
@@ -179,7 +180,7 @@ MonoBehaviour:
   EnrageAttackMaxCooldown: 10
   EnrageAttacks:
   - {fileID: 6179133934991320362, guid: bf1924f50e29141489ea8d40245da4ae, type: 3}
-  - {fileID: 623479128520672019, guid: 97d80cb047ea384458e20612930a0ad8, type: 3}
+  - {fileID: 6094096480085443426, guid: 97d80cb047ea384458e20612930a0ad8, type: 3}
   HyperAttackRange: 5.04
   HyperAttackRatio: 0.4
   HyperAttackMaxCooldown: 5
@@ -209,19 +210,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     Name: YellowBoss
-    ProfilePicture: {fileID: 0}
+    ProfilePicture: {fileID: 21300000, guid: 74d6355855a1d9249a34c7476fb9d2ad, type: 3}
     IsDecision: 0
     sentences:
-    - Im
-    - a
-    - yellow
-    - bear
-    - hoho
+    - "\u304F\u307E\u304F\u307E\u2501\u2501\u2501\u2501\u2501\u2501"
+    - "\u30FD\uFF08 \u30FB(\uFF6A)\u30FB \uFF09\u30CE"
+    - "\u2501\u2501\u2501\u2501\u2501\u2501 !!"
+    - "\u3076\u308B ~ 3"
   mercyDialogue:
-    Name: PedroBear
-    ProfilePicture: {fileID: 0}
+    Name: Pedo Bear
+    ProfilePicture: {fileID: 21300000, guid: 74d6355855a1d9249a34c7476fb9d2ad, type: 3}
     IsDecision: 0
-    sentences: []
+    sentences:
+    - Wanna fun?
   bubble: {fileID: 5746571033990493874, guid: e6c355bdc81cf6141b56c5f23016a194, type: 3}
   offset: {x: 1.31, y: 1.09, z: 0}
   BubbleDelay: 5
@@ -328,14 +329,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1541575895031012169}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

@@ -1,0 +1,920 @@
+fileFormatVersion: 2
+guid: a46f170044f636148ac63c25862c1b94
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1762600211799945471
+    second: TeddyBear_0
+  - first:
+      213: 4692723002001042510
+    second: TeddyBear_1
+  - first:
+      213: 3154652917492573860
+    second: TeddyBear_2
+  - first:
+      213: 5409846629512653058
+    second: TeddyBear_3
+  - first:
+      213: -1824591647525673718
+    second: TeddyBear_4
+  - first:
+      213: 3956355628096659734
+    second: TeddyBear_5
+  - first:
+      213: 9044189035636225821
+    second: TeddyBear_6
+  - first:
+      213: -3181970344350667816
+    second: TeddyBear_7
+  - first:
+      213: -2681772715343740000
+    second: TeddyBear_8
+  - first:
+      213: -8022782062298190708
+    second: TeddyBear_9
+  - first:
+      213: 5545299080505316999
+    second: TeddyBear_10
+  - first:
+      213: 3955852298767018218
+    second: TeddyBear_11
+  - first:
+      213: -1823437014676467258
+    second: TeddyBear_12
+  - first:
+      213: 9008758177392350528
+    second: TeddyBear_13
+  - first:
+      213: 7536253562501500614
+    second: TeddyBear_14
+  - first:
+      213: 6189821086295208232
+    second: TeddyBear_15
+  - first:
+      213: -8071155826219763534
+    second: TeddyBear_16
+  - first:
+      213: 699423890119526316
+    second: TeddyBear_17
+  - first:
+      213: 8938847530839362476
+    second: TeddyBear_18
+  - first:
+      213: 7445175460965243114
+    second: TeddyBear_19
+  - first:
+      213: -4633674611120924709
+    second: TeddyBear_20
+  - first:
+      213: 1761594359264773360
+    second: TeddyBear_21
+  - first:
+      213: 7033406544028831416
+    second: TeddyBear_22
+  - first:
+      213: -3452667104660252755
+    second: TeddyBear_23
+  - first:
+      213: -5365057418786096629
+    second: TeddyBear_24
+  - first:
+      213: -2713036488560337477
+    second: TeddyBear_25
+  - first:
+      213: 6822814791864442888
+    second: TeddyBear_26
+  - first:
+      213: 1949270514330070791
+    second: TeddyBear_27
+  - first:
+      213: -7602073789237422091
+    second: TeddyBear_28
+  - first:
+      213: -6467367969748390389
+    second: TeddyBear_29
+  - first:
+      213: 4887575528357264053
+    second: TeddyBear_30
+  - first:
+      213: -8494408526991323370
+    second: TeddyBear_31
+  - first:
+      213: 914108963061861879
+    second: TeddyBear_32
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TeddyBear_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 191
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff03d51dd83067810800000000000000
+      internalID: 1762600211799945471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 191
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ca39b05b6ef1140800000000000000
+      internalID: 4692723002001042510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_2
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 191
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a66bc84d1497cb20800000000000000
+      internalID: 3154652917492573860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_3
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 191
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2092271d8d2a31b40800000000000000
+      internalID: 5409846629512653058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_4
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 191
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a05661d409fbda6e0800000000000000
+      internalID: -1824591647525673718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_5
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 191
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611a1d96b7cc7e630800000000000000
+      internalID: 3956355628096659734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_6
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 70
+        width: 172
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d17749e720a638d70800000000000000
+      internalID: 9044189035636225821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_7
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 128
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dba623a4de57d3d0800000000000000
+      internalID: -3181970344350667816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_8
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 128
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a30a9d8ced68cad0800000000000000
+      internalID: -2681772715343740000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_9
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 128
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8c275a883a59a090800000000000000
+      internalID: -8022782062298190708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_10
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 128
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786d1da222cd4fc40800000000000000
+      internalID: 5545299080505316999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_11
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 128
+        width: 42
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8abebe4b206e630800000000000000
+      internalID: 3955852298767018218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_12
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 128
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c119e532b9d1b6e0800000000000000
+      internalID: -1823437014676467258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_13
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 128
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 045ddd6f4d9850d70800000000000000
+      internalID: 9008758177392350528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_14
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 69
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ce8c22bfa6269860800000000000000
+      internalID: 7536253562501500614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 69
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82139df9b79a6e550800000000000000
+      internalID: 6189821086295208232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_16
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 69
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b8b853f98e7dff80800000000000000
+      internalID: -8071155826219763534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_17
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 69
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca70ff5825ad4b900800000000000000
+      internalID: 699423890119526316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_18
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 69
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cabce01287a2d0c70800000000000000
+      internalID: 8938847530839362476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_19
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 69
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae8d941b2a3925760800000000000000
+      internalID: 7445175460965243114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_20
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 7
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd7146fcd71e1bfb0800000000000000
+      internalID: -4633674611120924709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_21
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 7
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f40f468cb0727810800000000000000
+      internalID: 1761594359264773360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_22
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 7
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be0fb9bcfdab9160800000000000000
+      internalID: 7033406544028831416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_23
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 7
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da79c03bf89a510d0800000000000000
+      internalID: -3452667104660252755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_24
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 7
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0a3ea1f3bc7b85b0800000000000000
+      internalID: -5365057418786096629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_25
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 7
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd10bc10bb595ad0800000000000000
+      internalID: -2713036488560337477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_26
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 7
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8006c5587e18fae50800000000000000
+      internalID: 6822814791864442888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_27
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 7
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f69c184333d0b10800000000000000
+      internalID: 1949270514330070791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_28
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 7
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7123c8a22008690800000000000000
+      internalID: -7602073789237422091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_29
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 7
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e686bd81b4f36a0800000000000000
+      internalID: -6467367969748390389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_30
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 7
+        width: 39
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba70ac2c0824d340800000000000000
+      internalID: 4887575528357264053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_31
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 7
+        width: 40
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f02a3337ccd1a80800000000000000
+      internalID: -8494408526991323370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeddyBear_32
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 7
+        width: 41
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fd8d4d32419fac00800000000000000
+      internalID: 914108963061861879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

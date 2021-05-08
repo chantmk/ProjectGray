@@ -245,12 +245,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 381786c5ffd72b041a148bc9a1a45df2, type: 3}
---- !u!1 &50704542 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3454546583347631280, guid: 698829975ca4b4f42acde2739bcee268,
-    type: 3}
-  m_PrefabInstance: {fileID: 1849496314}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &278932008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1410803850, guid: 381786c5ffd72b041a148bc9a1a45df2,
@@ -344,11 +338,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 767217385}
-    - target: {fileID: 5673773088795149023, guid: 86a016de6325e1b42a914366cb946c37,
-        type: 3}
-      propertyPath: teleporter
-      value: 
-      objectReference: {fileID: 50704542}
     - target: {fileID: 5673773088795149023, guid: 86a016de6325e1b42a914366cb946c37,
         type: 3}
       propertyPath: healthBarContainer
@@ -587,11 +576,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Teleporter
-      objectReference: {fileID: 0}
-    - target: {fileID: 3454546583347631280, guid: 698829975ca4b4f42acde2739bcee268,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3454546583347631282, guid: 698829975ca4b4f42acde2739bcee268,
         type: 3}

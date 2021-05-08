@@ -561,94 +561,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: mercyDialogue.Name
-      value: Pedo Bear
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.ProfilePicture
-      value: 
-      objectReference: {fileID: 21300000, guid: 74d6355855a1d9249a34c7476fb9d2ad,
-        type: 3}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: mercyDialogue.ProfilePicture
-      value: 
-      objectReference: {fileID: 21300000, guid: 74d6355855a1d9249a34c7476fb9d2ad,
-        type: 3}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[0]
-      value: "\u304F\u307E\u304F\u307E\u2501\u2501\u2501\u2501\u2501\u2501"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[1]
-      value: "\u30FD\uFF08 \u30FB(\uFF6A)\u30FB \uFF09\u30CE"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[2]
-      value: "\u2501\u2501\u2501\u2501\u2501\u2501 !!"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[3]
-      value: "\u3076\u308B ~ 3"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: dialogue.sentences.Array.data[4]
-      value: HOHO
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: mercyDialogue.sentences.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: mercyDialogue.sentences.Array.data[0]
-      value: Wanna fun?
-      objectReference: {fileID: 0}
     - target: {fileID: 1541575895031012169, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_Name
       value: YellowBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: EnrageAttacks.Array.data[1]
-      value: 
-      objectReference: {fileID: 6094096480085443426, guid: 97d80cb047ea384458e20612930a0ad8,
-        type: 3}
     - target: {fileID: 3481867557849703455, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: healthBarContainer
       value: 
       objectReference: {fileID: 309973610}
-    - target: {fileID: 5943690059432754097, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943690059432754097, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5943690059432754097, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6909054251121272368, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: player
