@@ -45,6 +45,7 @@ public class BossStats : CharacterStats
         {
             Aggro = BossAggroEnum.LastStand;
             Status = StatusEnum.Immortal;
+            Debug.Log("Death");
             EventPublisher.TriggerStatus(Aggro);
         }
         else if (currentHealthPercentage < HyperRatio && Aggro == BossAggroEnum.Enrage)

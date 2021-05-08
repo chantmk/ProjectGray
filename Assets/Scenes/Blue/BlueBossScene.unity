@@ -197,6 +197,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2303609437224435937, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303609437224435937, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5799712895011780172, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
         type: 3}
       propertyPath: m_RootOrder
@@ -259,6 +269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5799712895011780179, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
         type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799712895011780179, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+        type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 537805ea4e439f6479df2fd96a6a95af, type: 3}
@@ -279,9 +294,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3482650007038657854, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
+      propertyPath: m_SkipOnDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3482650007038657854, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 784064809}
+    - target: {fileID: 3482650007038657854, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
+      propertyPath: m_PlaybackSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7452341877007267923, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_Name
@@ -659,6 +684,11 @@ PrefabInstance:
         type: 3}
       propertyPath: DashDuration
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: Status
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}

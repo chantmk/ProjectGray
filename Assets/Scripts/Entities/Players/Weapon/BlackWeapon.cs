@@ -11,6 +11,9 @@ namespace Players.Weapon
 
         [SerializeField] private float maxFireCooldown;
         // [SerializeField] private readonly WeaponIDEnum weaponID;
+        public AudioClip shootingSound;
+        public float soundVolume = 1f;
+        private AudioSource audioSrc;
 
         public WeaponIDEnum WeaponID
         {
@@ -22,11 +25,14 @@ namespace Players.Weapon
         private void Start()
         {
             // weaponTransform = GetComponent
-        }
+            audioSrc = GetComponent<AudioSource>();
+    }
 
-        public void Fire(Vector2 direction)
+    public void Fire(Vector2 direction)
         {
             var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
+            audioSrc.PlayOneShot(shootingSound, soundVolume);
+
         }
     }
 }

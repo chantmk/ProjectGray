@@ -19,6 +19,8 @@ public class AudioManager : MonoBehaviour
     public void PauseBGM()
     {
         AudioListener.pause = true;
+        Destroy(GetComponent<AudioSource>());
+        GetComponent<AudioSource>().Play();
     }
 
     public void ResumeBGM()
