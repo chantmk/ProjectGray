@@ -50,6 +50,9 @@ public class DialogueManager : MonoBehaviour
 	void StopDialogue()
 	{
 		// Call event to invoke other that may subscribing this event
+		nextButton.SetActive(false);
+		mercyButton.SetActive(false);
+		killButton.SetActive(false);
 		EventPublisher.TriggerDialogueDone();
 		animator.SetBool("IsOpen", false);
 		pauseManager.ResumeTime();
