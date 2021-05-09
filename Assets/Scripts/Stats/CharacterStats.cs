@@ -13,11 +13,26 @@ public class CharacterStats : MonoBehaviour
 
     protected const float depleteHealth = 0.01f;
 
+    private readonly List<StatBuff> statBuffs;
+    private readonly List<MovementBuff> movementBuffs;
+
+    public CharacterStats()
+    {
+        statBuffs = new List<StatBuff>();
+        movementBuffs = new List<MovementBuff>();
+    }
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
         Status = StatusEnum.Mortal;
         CurrentHealth = MaxHealth;
+
+        
+
+        //TEST STAT
+        //MaxHealthIncreaseBuff buff = new MaxHealthIncreaseBuff();
+        statBuffs.Add(new MaxHealthIncreaseBuff());
     }
 
     // Update is called once per frame
@@ -28,6 +43,9 @@ public class CharacterStats : MonoBehaviour
         {
             TakeDamage(5.0f);
         }
+
+        ApplyStatBuff();
+
     }
 
     void Awake()
@@ -91,5 +109,37 @@ public class CharacterStats : MonoBehaviour
     public float GetHealthPercentage()
     {
         return CurrentHealth / MaxHealth;
+    }
+
+    public void setMaxHealth(float health)
+    {
+        MaxHealth = health;
+    }
+
+    public void AddStatBuff(StatBuff buff)
+    {
+        statBuffs.Add(buff);
+        ApplyStatBuff();
+    }
+
+    public void RemoveStatBuff(StatBuff buff)
+    {
+        statBuffs.Remove(buff);
+    }
+
+    private void ApplyStatBuff()
+    {
+        foreach (var statBuff in statBuffs)
+        {
+            statBuff.Apply(this);
+        }
+    }
+
+    private void UpdateStatBuff()
+    {
+        foreach (var statBuff in statBuffs)
+        {
+           // statBuff.Update(this);
+        }
     }
 }

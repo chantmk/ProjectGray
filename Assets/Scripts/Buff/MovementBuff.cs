@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementBuff : MonoBehaviour, IBuff
+public abstract class MovementBuff : ScriptableObject//, IBuff
 {
     [SerializeField] private bool isPermanentBuff;
     [SerializeField] private float buffTimeOut;
 
-    public bool isPermanentBuff => isPermanentBuff;
-    public float buffTimeOut => buffTimeOut;
+    //public bool isPermanentBuff => isPermanentBuff;
+    //public float buffTimeOut => buffTimeOut;
 
     void Start()
     {
@@ -20,5 +20,5 @@ public class MovementBuff : MonoBehaviour, IBuff
 
     }
 
-    public abstract void Apply();
+    public abstract void Apply(CharacterStats characterStats);
 }

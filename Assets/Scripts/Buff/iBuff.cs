@@ -3,8 +3,12 @@
 
 interface IBuff
 {
-    bool isPermanentBuff { get; }
-    float buffTimeOut { get; }
+    //bool isPermanentBuff { get; }
+    //float maxBuffDuration { get; }
+    //float buffDuration { get; }
+    //bool isApplied { get; }
 
-    void Apply();
+
+    void End();
+    void Apply(CharacterStats characterStats);
 }

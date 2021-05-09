@@ -2,23 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatBuff : MonoBehaviour, IBuff
+public abstract class StatBuff : ScriptableObject, IBuff
 {
-    [SerializeField] private bool isPermanentBuff;
-    [SerializeField] private float buffTimeOut;
+    protected string buffName;
+    protected bool isPermanentBuff;
+    protected float maxBuffDuration;
+    protected float buffDuration;
+    protected bool isApplied;
+    protected int priority;
 
-    public bool isPermanentBuff => isPermanentBuff;
-    public float buffTimeOut => buffTimeOut;
+    protected bool isFinished;
 
-    void Start()
+    public void Tick(float delta)
     {
-
+        if (!isPermanentBuff)
+        {
+            buffDuration -= delta;
+            if (buffDuration <= 0)
+            {
+                isFinished = true;
+                End();
+            }
+        }       
     }
 
-    void Update()
-    {
 
-    }
-
-    public abstract void Apply();
+    public abstract void End();
+    public abstract void Apply(CharacterStats characterStats);
 }
