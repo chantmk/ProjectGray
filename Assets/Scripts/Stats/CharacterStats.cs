@@ -6,20 +6,21 @@ using Utils;
 public class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
-    public float MaxHealth = 100.0f;
+    public float BaseMaxHealth;
+    public float MaxHealth;
     public float CurrentHealth { get; protected set; }
     public float Armor;
     public StatusEnum Status = StatusEnum.Mortal;
 
     protected const float depleteHealth = 0.01f;
 
-    private readonly List<StatBuff> statBuffs;
-    private readonly List<MovementBuff> movementBuffs;
+    //private readonly List<StatBuff> statBuffs;
+    //private readonly List<MovementBuff> movementBuffs;
 
     public CharacterStats()
     {
-        statBuffs = new List<StatBuff>();
-        movementBuffs = new List<MovementBuff>();
+        //statBuffs = new List<StatBuff>();
+        //movementBuffs = new List<MovementBuff>();
     }
 
     // Start is called before the first frame update
@@ -28,13 +29,8 @@ public class CharacterStats : MonoBehaviour
         Status = StatusEnum.Mortal;
         CurrentHealth = MaxHealth;
 
-
-
-        //TEST STAT
-        //MaxHealthIncreaseBuff buff = new MaxHealthIncreaseBuff();
-        
     }
-       
+
 
     // Update is called once per frame
     protected virtual void Update()
@@ -45,7 +41,7 @@ public class CharacterStats : MonoBehaviour
             TakeDamage(5.0f);
         }
 
-        
+
 
     }
 
@@ -66,7 +62,7 @@ public class CharacterStats : MonoBehaviour
             //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
             HandleHealth();
         }
-        
+
     }
 
     public void Heal(float healValue)
@@ -85,7 +81,7 @@ public class CharacterStats : MonoBehaviour
                 CurrentHealth = MaxHealth;
             }
         }
-        
+
     }
 
     public virtual void HandleHealth()
@@ -117,32 +113,26 @@ public class CharacterStats : MonoBehaviour
         MaxHealth = health;
     }
 
-    public void AddStatBuff(StatBuff buff)
-    {
-        statBuffs.Add(buff);
-        ApplyStatBuff();
-    }
+    //public void AddStatBuff(StatBuff buff)
+    //{
+    //    statBuffs.Add(buff);
+    //    ApplyStatBuff();
+    //}
 
-    public void RemoveStatBuff(StatBuff buff)
-    {
-        statBuffs.Remove(buff);
-    }
+    //public void RemoveStatBuff(StatBuff buff)
+    //{
+    //    statBuffs.Remove(buff);
+    //}
 
-    private void ApplyStatBuff()
-    {
-        int i = 0;
-        foreach (var statBuff in statBuffs)
-        {
-            Debug.Log(i++);
-            statBuff.Apply(this);
-        }
-    }
 
-    private void UpdateStatBuff()
-    {
-        foreach (var statBuff in statBuffs)
-        {
-           // statBuff.Update(this);
-        }
-    }
+
+    //private void UpdateStatBuff()
+    //{
+    //    foreach (var statBuff in statBuffs)
+    //    {
+    //        // statBuff.Update(this);
+    //    }
+    //}
+
+
 }

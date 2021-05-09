@@ -9,24 +9,8 @@ public abstract class StatBuff : IBuff
     protected float maxBuffDuration;
     protected float buffDuration;
     protected bool isApplied;
-    //protected int priority;
 
     protected bool isFinished;
-
-    //Del
-    //public void Tick(float delta)
-    //{
-    //    if (!isPermanentBuff)
-    //    {
-    //        buffDuration -= delta;
-    //        if (buffDuration <= 0)
-    //        {
-    //            isFinished = true;
-    //            End();
-    //        }
-    //    }       
-    //}
-
 
     public abstract void End();
     public abstract void Apply(CharacterStats characterStats);
