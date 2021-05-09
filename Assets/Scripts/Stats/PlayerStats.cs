@@ -14,7 +14,9 @@ public class PlayerStats : CharacterStats
         if (healthBar == null)
             healthBar = GameObject.FindGameObjectWithTag("HealthBar");
         healthBarImage = healthBar.GetComponent<Image>();
-        
+
+        //AddStatBuff(new MaxHealthIncreaseBuff());
+
     }
     
     protected override void Update()

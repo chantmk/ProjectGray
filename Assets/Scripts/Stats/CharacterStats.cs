@@ -28,12 +28,13 @@ public class CharacterStats : MonoBehaviour
         Status = StatusEnum.Mortal;
         CurrentHealth = MaxHealth;
 
-        
+
 
         //TEST STAT
         //MaxHealthIncreaseBuff buff = new MaxHealthIncreaseBuff();
-        statBuffs.Add(new MaxHealthIncreaseBuff());
+        
     }
+       
 
     // Update is called once per frame
     protected virtual void Update()
@@ -44,7 +45,7 @@ public class CharacterStats : MonoBehaviour
             TakeDamage(5.0f);
         }
 
-        ApplyStatBuff();
+        
 
     }
 
@@ -129,8 +130,10 @@ public class CharacterStats : MonoBehaviour
 
     private void ApplyStatBuff()
     {
+        int i = 0;
         foreach (var statBuff in statBuffs)
         {
+            Debug.Log(i++);
             statBuff.Apply(this);
         }
     }

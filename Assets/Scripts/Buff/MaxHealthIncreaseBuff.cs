@@ -14,7 +14,7 @@ public class MaxHealthIncreaseBuff : StatBuff
         buffDuration = 999;
         isApplied = false ;
         isFinished = false;
-        priority = 9;
+        //priority = 0;
 }
 
     public void Update()
