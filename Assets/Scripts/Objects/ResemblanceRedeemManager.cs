@@ -132,7 +132,7 @@ public class ResemblanceRedeemManager : Interactable
             // Redeem 2 resemblances
             if (playerInventory.UseResemblance(checkpointAmount[0]))
             {
-                playerInventory.AddBuff(ResemblanceBuffEnum.IncreaseHealth);
+                //TODO : playerInventory.AddBuff(ResemblanceBuffEnum.IncreaseHealth);
             }
             else
             {
