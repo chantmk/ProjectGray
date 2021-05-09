@@ -4,6 +4,7 @@
 interface IBuff
 {
     bool isPermanentBuff { get; }
-    float timeOut { get; }
+    float buffTimeOut { get; }
 
+    void Apply();
 }

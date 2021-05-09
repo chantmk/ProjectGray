@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class StatBuff : MonoBehaviour, IBuff
 {
-    // Start is called before the first frame update
+    [SerializeField] private bool isPermanentBuff;
+    [SerializeField] private float buffTimeOut;
+
+    public bool isPermanentBuff => isPermanentBuff;
+    public float buffTimeOut => buffTimeOut;
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    public abstract void Apply();
 }
