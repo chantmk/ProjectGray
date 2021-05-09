@@ -6,12 +6,15 @@ using Utils;
 public class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
-    public float MaxHealth = 100.0f;
+    public float BaseMaxHealth;
+    public float MaxHealth;
     public float CurrentHealth { get; protected set; }
     public float Armor;
     public StatusEnum Status = StatusEnum.Mortal;
 
     protected const float depleteHealth = 0.01f;
+
+    //private readonly List<MovementBuff> movementBuffs;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -19,6 +22,7 @@ public class CharacterStats : MonoBehaviour
         Status = StatusEnum.Mortal;
         CurrentHealth = MaxHealth;
     }
+
 
     // Update is called once per frame
     protected virtual void Update()
@@ -47,7 +51,7 @@ public class CharacterStats : MonoBehaviour
             //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
             HandleHealth();
         }
-        
+
     }
 
     public void Heal(float healValue)
@@ -66,7 +70,7 @@ public class CharacterStats : MonoBehaviour
                 CurrentHealth = MaxHealth;
             }
         }
-        
+
     }
 
     public virtual void HandleHealth()
@@ -76,6 +80,7 @@ public class CharacterStats : MonoBehaviour
             Die();
         }
     }
+
     public virtual void Die()
     {
         Status = StatusEnum.Dead;
@@ -91,5 +96,10 @@ public class CharacterStats : MonoBehaviour
     public float GetHealthPercentage()
     {
         return CurrentHealth / MaxHealth;
+    }
+
+    public void setMaxHealth(float health)
+    {
+        MaxHealth = health;
     }
 }
