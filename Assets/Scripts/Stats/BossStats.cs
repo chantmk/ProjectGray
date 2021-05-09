@@ -15,8 +15,16 @@ public class BossStats : CharacterStats
     [SerializeField]
     private GameObject healthBarContainer;
 
-    private Image healthBarImage;
+    [Header("Default sprite")]
+    [SerializeField]
+    private Sprite calmSprite;
+    [SerializeField]
+    private Sprite enrageSprite;
+    [SerializeField]
+    private Sprite hyperSprite;
 
+    private Image healthBarImage;
+    private SpriteRenderer renderer;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -24,6 +32,7 @@ public class BossStats : CharacterStats
         healthBarContainer.SetActive(true);
         healthBarImage = healthBarContainer.GetComponentInChildren<Image>();
         healthBarImage.color = Color.green;
+        renderer = GetComponent<SpriteRenderer>();
         // Work on exception handling below
     }
 
@@ -51,14 +60,35 @@ public class BossStats : CharacterStats
         else if (currentHealthPercentage < HyperRatio && Aggro == BossAggroEnum.Enrage)
         {
             Aggro = BossAggroEnum.Hyper;
+            updateSprite(Aggro);
             healthBarImage.color = Color.red;
             EventPublisher.TriggerStatus(Aggro);
         }
         else if (currentHealthPercentage < EnrageRatio && Aggro == BossAggroEnum.Calm)
         {
             Aggro = BossAggroEnum.Enrage;
+            updateSprite(Aggro);
             healthBarImage.color = Color.yellow;
             EventPublisher.TriggerStatus(Aggro);
+        }
+    }
+
+    private void updateSprite(BossAggroEnum aggro)
+    {
+        switch (aggro)
+        {
+            case (BossAggroEnum.Calm):
+                renderer.sprite = calmSprite;
+                break;
+            case (BossAggroEnum.Enrage):
+                renderer.sprite = enrageSprite;
+                break;
+            case (BossAggroEnum.Hyper):
+                renderer.sprite = hyperSprite;
+                break;
+            default:
+                renderer.sprite = calmSprite;
+                break;
         }
     }
 

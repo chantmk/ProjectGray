@@ -129,6 +129,12 @@ MonoBehaviour:
   HyperRatio: 0.21
   Aggro: 0
   healthBarContainer: {fileID: 0}
+  calmSprite: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+    type: 3}
+  enrageSprite: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+    type: 3}
+  hyperSprite: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+    type: 3}
 --- !u!114 &563864187573055747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +155,7 @@ MonoBehaviour:
   DashRange: 0
   DashDuration: 0
   DashCooldown: 0
-  MovePositions:
+  MovePositionsOffset:
   - {x: 0, y: 0}
   spotCap: 00000000
 --- !u!114 &470288516058063973
@@ -200,7 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     Name: BlackBoss
-    ProfilePicture: {fileID: 21300000, guid: a327e9a85dadcf34699ed69490fe230f, type: 3}
+    ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+      type: 3}
     IsDecision: 0
     sentences:
     - "\u2359\u2291\u23C3\u23C1'\u2307 \u238D\u233F"
@@ -208,7 +215,8 @@ MonoBehaviour:
     - "\u2291\u23C3\u2390\u27D2 \u23C3 \u22CF\u27DF\u260A\u27D2 \u2385\u23C3\u22AC"
   mercyDialogue:
     Name: Shattered Black
-    ProfilePicture: {fileID: 21300000, guid: a327e9a85dadcf34699ed69490fe230f, type: 3}
+    ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+      type: 3}
     IsDecision: 1
     sentences:
     - P... L... E ... A ...
@@ -254,12 +262,13 @@ SpriteRenderer:
   m_SortingLayerID: -2050882081
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a327e9a85dadcf34699ed69490fe230f, type: 3}
+  m_Sprite: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.48, y: 0.64}
+  m_Size: {x: 0.34, y: 0.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -316,8 +325,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.64}
-    newSize: {x: 0.48, y: 0.64}
+    oldSize: {x: 0.34, y: 0.6}
+    newSize: {x: 0.34, y: 0.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
