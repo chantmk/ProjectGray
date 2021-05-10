@@ -94,7 +94,7 @@ public class CharacterStats : MonoBehaviour
 
     public float GetHealthPercentage()
     {
-        return CurrentHealth / MaxHealth;
+        return (float)CurrentHealth / (float)MaxHealth;
     }
 
     public void setMaxHealth(int health)
