@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseMaxHealth: 0
   MaxHealth: 75
   Armor: 0
   Status: 0
@@ -204,22 +205,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7801dfad0da39454aab95fdecd2c982e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    Name: BlackBoss
-    ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
-      type: 3}
+  enterDialogue:
     IsDecision: 0
     sentences:
-    - "\u2359\u2291\u23C3\u23C1'\u2307 \u238D\u233F"
-    - "\u22CF\u27DF\u260A\u27D2 \u23C1\u235C \u22D4\u27D2\u27D2\u23C1 \u22AC\u235C\u238D"
-    - "\u2291\u23C3\u2390\u27D2 \u23C3 \u22CF\u27DF\u260A\u27D2 \u2385\u23C3\u22AC"
-  mercyDialogue:
-    Name: Shattered Black
-    ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
-      type: 3}
+    - name: Prince
+      ProfilePicture: {fileID: 5010711115108243104, guid: b4fc9a3eb8191604b9578241881abfba,
+        type: 3}
+      sentence: '!'
+      IsRight: 1
+  lastStandDialogue:
+    IsDecision: 0
+    sentences:
+    - name: Black boss
+      ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+        type: 3}
+      sentence: "\u235C\u235C\u235C\u2291"
+      IsRight: 0
+  askForMercyDialogue:
     IsDecision: 1
     sentences:
-    - P... L... E ... A ...
+    - name: KuHaKu
+      ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
+        type: 3}
+      sentence: "\u2330\u27D2\u23C1 \u22D4\u27D2 \u260C\u235C"
+      IsRight: 0
+  killDialogue:
+    IsDecision: 0
+    sentences: []
+  mercyDialogue:
+    IsDecision: 0
+    sentences: []
   bubble: {fileID: 5746571033990493874, guid: e6c355bdc81cf6141b56c5f23016a194, type: 3}
   offset: {x: 0.75, y: 1.06, z: 0}
   BubbleDelay: 2

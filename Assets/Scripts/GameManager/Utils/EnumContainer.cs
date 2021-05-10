@@ -35,4 +35,13 @@
         Mercy,
         Kill
     }
+
+    public enum DialogueStateEnum
+    {
+        Enter,
+        LastStand,
+        Decision,
+        Kill,
+        Mercy
+    }
 }

@@ -14,6 +14,8 @@ public class EnemyWeapon : MonoBehaviour
     public bool IsRange = false;
     public GameObject ProjectileComponent;
     public int ProjectileCount = 1;
+    [SerializeField]
+    private float shootAngle = 30.0f;
 
     protected EnemyMovement enemyMovement;
 
@@ -87,7 +89,8 @@ public class EnemyWeapon : MonoBehaviour
         for (int i=0; i < ProjectileCount; i++)
         {
             var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
-            projectile.GetComponent<Projectile>().Shoot(enemyMovement.GetVectorToPlayer());
+            var rotation = Quaternion.AngleAxis(Random.Range(-shootAngle, shootAngle), Vector3.up);
+            projectile.GetComponent<Projectile>().Shoot(rotation * enemyMovement.GetVectorToPlayer().normalized);
         }
     }
 
