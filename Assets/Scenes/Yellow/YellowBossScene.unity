@@ -4594,12 +4594,12 @@ PrefabInstance:
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.59
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.74
+      value: -5.09
       objectReference: {fileID: 0}
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
@@ -4862,16 +4862,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 883986143}
-    - target: {fileID: 6909054251121272368, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: spotCap.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6909054251121272368, guid: ded1ab8579e4c4c46803f79af2c14939,
-        type: 3}
-      propertyPath: MovePositionsOffset.Array.data[0].x
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_RootOrder
