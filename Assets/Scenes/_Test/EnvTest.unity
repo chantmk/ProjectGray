@@ -121,6 +121,33 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &58100915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1903335472, guid: ceb5d75e15e544846a7ba91c60b3a639,
+    type: 3}
+  m_PrefabInstance: {fileID: 883986142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &58100919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58100915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edd9b7612d440d08064f95ed4c404db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletObject: {fileID: 2079521686484699412, guid: 777b4d1b47cadb04b947ed72476ea556,
+    type: 3}
+  weaponID: 2
+  maxFireCooldown: 1
+  maxScatterAngle: 20
+  bulletAmount: 5
+  shootingSound: {fileID: 8300000, guid: 947f505725f7f1242b54f89d47e0dd59, type: 3}
+  soundVolume: 0.4
+  timeBetweenBullet: 0.01
 --- !u!1001 &194209108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -356,6 +383,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1903335475, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
+      propertyPath: maxFireCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867380298266972541, guid: ceb5d75e15e544846a7ba91c60b3a639,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 947f505725f7f1242b54f89d47e0dd59, type: 3}
     - target: {fileID: 4532720954757015451, guid: ceb5d75e15e544846a7ba91c60b3a639,
         type: 3}
       propertyPath: m_RootOrder
@@ -416,7 +452,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1903335475, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
 --- !u!20 &1304273550 stripped
 Camera:

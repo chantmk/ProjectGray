@@ -15,14 +15,12 @@ public abstract class Projectile : MonoBehaviour
     protected float duration;
     protected AttackHitbox attackHitbox;
     protected Rigidbody2D projectileRigidbody;
-    protected Animator animator;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         duration = MaxDuration;
         projectileRigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
         attackHitbox.Enable();
         attackHitbox.OnHitboxTriggerEnter = OnHitboxTriggerEnter;
@@ -65,7 +63,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Execute()
     {
-        animator.SetTrigger(AnimatorParams.Execute);
+        SelfDestruct();
     }
 
     public virtual void SelfDestruct()

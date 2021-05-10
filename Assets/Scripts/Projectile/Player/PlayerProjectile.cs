@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.VFX;
 
-public class PlayerProjectile : Projectile
+public abstract class PlayerProjectile : Projectile
 {
-
     protected override List<int> targetLayers
     {
         get { return _targetLayers; }
@@ -14,14 +15,4 @@ public class PlayerProjectile : Projectile
     {
         _targetLayers = new List<int>() {LayerMask.NameToLayer("Enemy"), LayerMask.NameToLayer("Boss")};
     }
-
-    protected override void Attack(GameObject target)
-    {
-        target.GetComponent<EnemyStats>().TakeDamage(damage);
-    }
 }
-
-// public class Player : PlayereProjectile
-// {
-//     
-// }
