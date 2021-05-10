@@ -35,4 +35,21 @@
         Mercy,
         Kill
     }
+
+    public enum DialogueStateEnum
+    {
+        Enter,
+        LastStand,
+        Decision,
+        Kill,
+        Mercy
+    }
+    
+    public enum EnvStateEnum
+    {
+        ZeroCharge,
+        Charging,
+        Discharging,
+        Activataed,
+    }
 }
