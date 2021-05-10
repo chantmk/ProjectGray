@@ -186,3 +186,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed66d3f8bd327524e9de94a975fa7ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameOverImage: {fileID: 7792479004156996544}
