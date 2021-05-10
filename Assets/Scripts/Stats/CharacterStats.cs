@@ -6,14 +6,13 @@ using Utils;
 public class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
-    public float BaseMaxHealth;
-    public float MaxHealth;
-    public float CurrentHealth { get; protected set; }
-    public float Armor;
+    public int BaseMaxHealth;
+    public int MaxHealth;
+    public int CurrentHealth { get; protected set; }
+    public int Armor;
     public StatusEnum Status = StatusEnum.Mortal;
 
-    protected const float depleteHealth = 0.01f;
-
+    public int depleteHealth = 0;
     //private readonly List<MovementBuff> movementBuffs;
 
     // Start is called before the first frame update
@@ -30,7 +29,7 @@ public class CharacterStats : MonoBehaviour
         // TODO: remove (For debugging)
         if (Input.GetKeyDown(KeyCode.L))
         {
-            TakeDamage(5.0f);
+            TakeDamage(1);
         }
     }
 
@@ -39,13 +38,13 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if (Status == StatusEnum.Mortal)
         {
             damage -= this.Armor;
 
-            if (damage < GrayConstants.EPSILON) damage = 0.0f;
+            if (damage < 0) damage = 0;
 
             CurrentHealth -= damage;
             //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
@@ -54,13 +53,13 @@ public class CharacterStats : MonoBehaviour
 
     }
 
-    public void Heal(float healValue)
+    public void Heal(int healValue)
     {
         if (Status != StatusEnum.Dead)
         {
-            if (healValue < GrayConstants.EPSILON)
+            if (healValue < 0)
             {
-                healValue = 0.0f;
+                healValue = 0;
             }
 
             CurrentHealth += healValue;
@@ -98,7 +97,7 @@ public class CharacterStats : MonoBehaviour
         return CurrentHealth / MaxHealth;
     }
 
-    public void setMaxHealth(float health)
+    public void setMaxHealth(int health)
     {
         MaxHealth = health;
     }
