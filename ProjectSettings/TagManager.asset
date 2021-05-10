@@ -10,6 +10,7 @@ TagManager:
   - StaminaBar
   - Weapon
   - HealthBar
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - EnemyHitbox
   - PlayerHitbox
   - NaturalHitbox
-  - 
+  - WallHitbox
   - 
   - 
   - 
