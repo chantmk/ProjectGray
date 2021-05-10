@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Tooltip("Player reference")]
-    public GameObject player;
     [Header("Movement parameters")]
-    public float Speed = 1.0f;
-    public float VisionRange = 1.0f;
+    [SerializeField]
+    private float speed = 1.0f;
+    [SerializeField]
+    private float visionRange = 1.0f;
     public bool ManualFlip = false;
     [Header("Dash parameters")]
     [Range(0.0f, 1.0f)]
@@ -20,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
     public Vector2[] MovePositionsOffset = new Vector2[1];
 
     protected int toSpot = 0;
+
+    private Transform player;
     private Vector2 startPosition;
     private float dashDurationLeft;
     private float dashCooldownLeft;
@@ -32,10 +34,7 @@ public class EnemyMovement : MonoBehaviour
         dashDurationLeft = DashDuration;
         dashCooldownLeft = DashCooldown;
         enemyRigidbody = GetComponent<Rigidbody2D>();
-        if (player == null)
-        {
-            player = GameObject.FindGameObjectsWithTag("Player")[0];
-        }
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
     }
 
     protected virtual void Update()
@@ -43,9 +42,9 @@ public class EnemyMovement : MonoBehaviour
         updateDash();
     }
 
-    public Vector2 GetVectorToPlayer()
+    public Vector3 GetVectorToPlayer()
     {
-        return player.transform.position - transform.position;
+        return player.position - transform.position;
     }
 
     public void FlipToPlayer()
@@ -65,7 +64,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Patrol()
     {
-        enemyRigidbody.velocity = (GetNextPatrolPosition() - transform.position).normalized * Speed;
+        enemyRigidbody.velocity = (GetNextPatrolPosition() - transform.position).normalized * speed;
     }
 
     public virtual Vector3 GetNextPatrolPosition()
@@ -132,12 +131,12 @@ public class EnemyMovement : MonoBehaviour
     }
     public void Chase()
     {
-        enemyRigidbody.velocity = GetVectorToPlayer().normalized * Speed;
+        enemyRigidbody.velocity = GetVectorToPlayer().normalized * speed;
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, VisionRange);
+        Gizmos.DrawWireSphere(transform.position, visionRange);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, DashRange);
     }

@@ -11,7 +11,7 @@ public class EnemyBehaviour : StateMachineBehaviour
     protected Rigidbody2D enemyRigidbody;
     protected EnemyMovement enemyMovement;
     protected EnemyWeapon enemyWeapon;
-    protected Transform player;
+    //protected Transform player;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -21,7 +21,7 @@ public class EnemyBehaviour : StateMachineBehaviour
         enemyMovement = animator.gameObject.GetComponent<EnemyMovement>();
         enemyWeapon = animator.gameObject.GetComponent<EnemyWeapon>();
         transform = animator.gameObject.transform;
-        player = enemyMovement.player.transform;
+        //player = enemyMovement.player.transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -53,14 +53,14 @@ public class EnemyBehaviour : StateMachineBehaviour
 
     protected virtual void ListenToChaseSignal()
     {
-        if (Vector2.Distance(player.position, transform.position) < enemyMovement.VisionRange)
+/*        if (Vector2.Distance(player.position, transform.position) < enemyMovement.VisionRange)
         {
             animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Move);
         }
         else
         {
             animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Idle);
-        }
+        }*/
     }
     protected virtual void ListenToAttackSignal()
     {
