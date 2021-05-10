@@ -13,7 +13,7 @@ public class PlayerBlackBullet : PlayerProjectile
     
     protected override void Attack(GameObject target)
     {
-        target.GetComponent<EnemyStats>().TakeDamage(damage);
+        target.GetComponent<CharacterStats>().TakeDamage(damage);
         Destroy(gameObject);
     }
 }
