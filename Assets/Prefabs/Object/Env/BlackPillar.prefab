@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 93931240}
   - component: {fileID: 93931239}
   - component: {fileID: 93931236}
+  - component: {fileID: 212433335}
   m_Layer: 12
   m_Name: BlackPillar
   m_TagString: Untagged
@@ -141,3 +142,16 @@ MonoBehaviour:
     type: 3}
   dischargeRate: 0.2
   maxDischargeCountDown: 5
+--- !u!114 &212433335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5910752420920239478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e31f1bfa0d743b5a8a1fb2d85135040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footOffset: 0
