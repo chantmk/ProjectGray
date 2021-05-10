@@ -44,4 +44,12 @@
         Kill,
         Mercy
     }
+    
+    public enum EnvStateEnum
+    {
+        ZeroCharge,
+        Charging,
+        Discharging,
+        Activataed,
+    }
 }
