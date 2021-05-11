@@ -991,11 +991,14 @@ MonoBehaviour:
   MaxHealth: 100
   Armor: 0
   Status: 0
+  depleteHealth: 0
   healthBar: {fileID: 0}
   RechargeStamina: 20
+  BaseRechargeStamina: 20
   MaxStamina: 100
   BaseStamina: 100
   DamageMultiplier: 1
+  statMultiplierValue: 1.5
 --- !u!114 &620563490
 MonoBehaviour:
   m_ObjectHideFlags: 0
