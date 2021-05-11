@@ -53,11 +53,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 50
+  BaseMaxHealth: 20
   MaxHealth: 0
   Armor: 0
   Status: 1
   healthBar: {fileID: 0}
+  depleteHealth: 0
 --- !u!114 &7450516599694171039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManualFlip: 0
   footOffset: {x: 0, y: -0.39, z: 0}
-  speed: 1
+  speed: 1.75
   visionRange: 5
   minimumDistance: 0.2
   seekPathInterval: 0.5
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851d1d2534b691549a6ab39f5cf4dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 1
   AttackRange: 1
   AttackRatio: 1
   AttackMaxCooldown: 2
@@ -271,7 +272,7 @@ GameObject:
   - component: {fileID: 2928103748099168682}
   - component: {fileID: 8185616761281473987}
   - component: {fileID: 6388282592688698987}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -337,6 +338,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7938880298156240729}
     m_Modifications:
+    - target: {fileID: 237807035180898445, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 60163163
+      objectReference: {fileID: 0}
     - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Name
@@ -345,7 +351,7 @@ PrefabInstance:
     - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
@@ -465,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 7709345532511810435, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 638fc67364d87dd4393c86fe0f93008c, type: 3}

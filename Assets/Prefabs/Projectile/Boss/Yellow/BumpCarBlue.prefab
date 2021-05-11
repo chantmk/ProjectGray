@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2068479650110750764}
   - component: {fileID: 496380647}
   - component: {fileID: 7227569227935789490}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BumpCarBlue
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -51,11 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 30
+  BaseMaxHealth: 10
   MaxHealth: 0
   Armor: 0
   Status: 1
   healthBar: {fileID: 0}
+  depleteHealth: 0
 --- !u!114 &9040977762164866988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +81,8 @@ MonoBehaviour:
   dashCooldown: 0
   movePositions: []
   bounceAngle: 60
-  collisionDamage: 20
+  collisionDamage: 2
+  consumeTime: 10
 --- !u!212 &5813766642272852927
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -246,10 +248,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1661194527193612361}
     m_Modifications:
+    - target: {fileID: 237807035180898445, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 60163163
+      objectReference: {fileID: 0}
     - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Name
       value: HealthBarContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
@@ -355,6 +367,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709345532511810435, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 638fc67364d87dd4393c86fe0f93008c, type: 3}

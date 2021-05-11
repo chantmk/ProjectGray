@@ -817,5 +817,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 832373315}
+    - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: BaseMaxHealth
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55baceafcd8e19d44a99b15999327eac, type: 3}

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4397124828501247106}
   - component: {fileID: 2427738116467060297}
   - component: {fileID: 5043034459802170652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BumpCarRed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -51,11 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 30
+  BaseMaxHealth: 5
   MaxHealth: 0
   Armor: 0
   Status: 1
   healthBar: {fileID: 0}
+  depleteHealth: 0
 --- !u!114 &6685892353119304450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManualFlip: 0
   footOffset: {x: 0, y: -0.7, z: 0}
-  speed: 1
+  speed: 2
   visionRange: 1
   minimumDistance: 0.2
   seekPathInterval: 0.5
@@ -80,7 +81,8 @@ MonoBehaviour:
   dashCooldown: 0
   movePositions: []
   bounceAngle: 60
-  collisionDamage: 20
+  collisionDamage: 2
+  consumeTime: 10
 --- !u!212 &8151421871441026833
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -251,6 +253,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -355,6 +362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709345532511810435, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 638fc67364d87dd4393c86fe0f93008c, type: 3}
