@@ -105,7 +105,10 @@ public class BossStats : CharacterStats
 
     public override void Die()
     {
-        base.Die();
-        // Drop/Give item
+        //base.Die();
+        Status = StatusEnum.Dead;
+        //TODO: Drop/Give item
+        
+        Destroy(gameObject);
     }
 }
