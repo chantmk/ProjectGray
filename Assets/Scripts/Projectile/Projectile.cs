@@ -34,6 +34,11 @@ public abstract class Projectile : MonoBehaviour
         {
             Attack(targetGameobject);
         }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Wall") || other.gameObject.layer == LayerMask.NameToLayer("WallHitbox"))
+        {
+            Execute();
+        }
     }
 
     protected virtual void OnHitboxTriggerExit(Collider2D other)
