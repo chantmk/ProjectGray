@@ -17,6 +17,11 @@ public class BossMovement : EnemyMovement
         spotCap[0] = movePositions.Count;
     }
 
+    protected override void FindHealthBar()
+    {
+
+    }
+
     public void SetSpotCap(BossAggroEnum bossStatus)
     {
         switch(bossStatus)

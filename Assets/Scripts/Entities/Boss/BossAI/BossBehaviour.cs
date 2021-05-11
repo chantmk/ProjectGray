@@ -74,4 +74,12 @@ public class BossBehaviour : EnemyBehaviour
             }
         }
     }
+    protected override void ListenToLifeSignal()
+    {
+        if (bossStats.Status == StatusEnum.Dead)
+        {
+            animator.SetInteger(AnimatorParams.Life, (int)bossStats.Status);
+            enemyMovement.StopMoving();
+        }
+    }
 }

@@ -50,10 +50,7 @@ public class EnemyMovement : MonoBehaviour
     {
         startPosition = transform.position;
         movePositions.Add(Vector2.zero);
-        if (healthBar == null)
-        {
-            healthBar = transform.Find("HealthBarContainer").gameObject;
-        }
+        FindHealthBar();
         for (int i=0; i<movePositions.Count; i++)
         {
             movePositions[i] += startPosition;
@@ -72,6 +69,14 @@ public class EnemyMovement : MonoBehaviour
     protected virtual void Update()
     {
         updateDash();
+    }
+
+    protected virtual void FindHealthBar()
+    {
+        if (healthBar == null)
+        {
+            healthBar = transform.Find("HealthBarContainer").gameObject;
+        }
     }
 
     public Vector3 GetVectorToPlayer()
@@ -103,7 +108,10 @@ public class EnemyMovement : MonoBehaviour
             enemyX = Mathf.Abs(enemyX);
         }
         transform.localScale = new Vector3(enemyX, enemyScale.y, enemyScale.z);
-        healthBar.transform.localScale = enemyScale;
+        if (healthBar != null)
+        {
+            healthBar.transform.localScale = enemyScale;
+        }
     }
 
     public void Patrol()
