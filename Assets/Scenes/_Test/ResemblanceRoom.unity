@@ -945,6 +945,11 @@ PrefabInstance:
       propertyPath: pickSound
       value: 
       objectReference: {fileID: 8300000, guid: 0db8507c73cf09649864cc38675583e8, type: 3}
+    - target: {fileID: 8199501130399546961, guid: 86ad03857a0150343a33a440096b9bf9,
+        type: 3}
+      propertyPath: pickVolume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8199501130399546962, guid: 86ad03857a0150343a33a440096b9bf9,
         type: 3}
       propertyPath: m_Name
