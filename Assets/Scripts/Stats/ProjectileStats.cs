@@ -19,7 +19,7 @@ public class ProjectileStats : EnemyStats
     {
         base.Update();
     }
-    public override void Die()
+    public override void HealthRunOut()
     {
         Status = StatusEnum.Dead;
         animator.SetTrigger("Dead");

@@ -2,23 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDead : EnemyBehaviour
+public class HorseDead : EnemyBehaviour
 {
-    private Vector3 direction;
-
+    MerryGoRoundHorseMovement horseMovement;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
-        direction = transform.position - player.position;
+        horseMovement = ((MerryGoRoundHorseMovement)enemyMovement);
+        horseMovement.Shoot();
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
-        knocked();
-    }
-    private void knocked()
-    {
-        transform.position += direction * Time.deltaTime;
+        horseMovement.Fly();
     }
 }

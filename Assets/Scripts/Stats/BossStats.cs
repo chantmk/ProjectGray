@@ -12,8 +12,6 @@ public class BossStats : CharacterStats
     [Range(0.0f, 1.0f)]
     public float HyperRatio;
     public BossAggroEnum Aggro = BossAggroEnum.Calm;
-    [SerializeField]
-    private GameObject healthBarContainer;
 
     [Header("Default sprite")]
     [SerializeField]
@@ -23,7 +21,6 @@ public class BossStats : CharacterStats
     [SerializeField]
     private Sprite hyperSprite;
 
-    private Image healthBarImage;
     private SpriteRenderer renderer;
     
     private static GameObject resemblanceOrbPrefab;
@@ -32,10 +29,9 @@ public class BossStats : CharacterStats
     // Start is called before the first frame update
     protected override void Start()
     {
+        Teleport.DisablePortal();
+        healthBar.SetActive(true);
         base.Start();
-        healthBarContainer.SetActive(true);
-        healthBarImage = healthBarContainer.GetComponentInChildren<Image>();
-        healthBarImage.color = Color.green;
         renderer = GetComponent<SpriteRenderer>();
         
         resemblanceOrbPrefab = Resources.Load("ResemblanceOrb") as GameObject;
@@ -47,16 +43,31 @@ public class BossStats : CharacterStats
     protected override void Update()
     {
         base.Update();
-        if(!healthBarContainer.activeSelf && Aggro != BossAggroEnum.LastStand)
+
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            healthBarContainer.SetActive(true);
+            TakeCrashDamage(2);
         }
-        healthBarImage.fillAmount = GetHealthPercentage();
+        if (!healthBar.activeSelf && Aggro != BossAggroEnum.LastStand)
+        {
+            healthBar.SetActive(true);
+        }
+        else if (Aggro == BossAggroEnum.LastStand)
+        {
+            healthBar.SetActive(false);
+        }
+    }
+
+    protected override void GetHealthBarImage()
+    {
+        healthBarImage = healthBar.GetComponentInChildren<Image>();
+        healthBarImage.color = Color.green;
     }
 
     public override void HandleHealth()
     {
         float currentHealthPercentage = GetHealthPercentage();
+        HandleHealthBar();
         if (CurrentHealth <= depleteHealth)
         {
             Aggro = BossAggroEnum.LastStand;
