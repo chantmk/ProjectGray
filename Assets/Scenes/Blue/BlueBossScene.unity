@@ -764,6 +764,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 1102555091586577404, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1399494168960419412, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: player
@@ -774,5 +779,10 @@ PrefabInstance:
       propertyPath: healthBarContainer
       value: 
       objectReference: {fileID: 832373315}
+    - target: {fileID: 8888635980358798367, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55baceafcd8e19d44a99b15999327eac, type: 3}

@@ -229,7 +229,7 @@ MonoBehaviour:
     type: 3}
   weaponID: 0
   maxFireCooldown: 0.5
-  shootingSound: {fileID: 8300000, guid: 8acf3e811d84dca439ee67257afa084a, type: 3}
+  shootingSound: {fileID: 8300000, guid: b6eb7f09d99dfce4b9b02b71f5d9ba7c, type: 3}
   soundVolume: 0.3
 --- !u!114 &811335465
 MonoBehaviour:
