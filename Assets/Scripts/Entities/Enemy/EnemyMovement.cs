@@ -1,41 +1,74 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
+using Utils;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [Tooltip("Player reference")]
-    public GameObject player;
     [Header("Movement parameters")]
-    public float Speed = 1.0f;
-    public float VisionRange = 1.0f;
     public bool ManualFlip = false;
+    [SerializeField]
+    private Vector3 footOffset;
+    [SerializeField]
+    protected float speed = 1.0f;
+    [SerializeField]
+    private float visionRange = 1.0f;
+    [SerializeField]
+    private float minimumDistance = 0.2f;
+    [SerializeField]
+    private float seekPathInterval = 0.5f;
     [Header("Dash parameters")]
+    [SerializeField]
     [Range(0.0f, 1.0f)]
-    public float DashProbability;
-    public float DashRange;
-    public float DashDuration;
-    public float DashCooldown;
+    private float dashProbability;
+    [SerializeField]
+    private float dashRange;
+    [SerializeField]
+    private float dashDuration;
+    [SerializeField]
+    private float dashCooldown;
     [Header("Patrol parameters")]
-    public Vector2[] MovePositionsOffset = new Vector2[1];
+    [Tooltip("Offset from start position")]
+    [SerializeField]
+    protected List<Vector2> movePositions = new List<Vector2>();
 
     protected int toSpot = 0;
+    protected Rigidbody2D enemyRigidbody;
+    private Transform player;
     private Vector2 startPosition;
     private float dashDurationLeft;
     private float dashCooldownLeft;
     private bool isDashing = false;
-    private Rigidbody2D enemyRigidbody;
+    private GameObject healthBar;
 
+    private Seeker seeker;
+    private Path path;
+    private int currentWayPoint = 0;
+    private float seekerIntervalLeft = 0.0f;
+
+    private void Awake()
+    {
+        enemyRigidbody = GetComponent<Rigidbody2D>();
+    }
     protected virtual void Start()
     {
         startPosition = transform.position;
-        dashDurationLeft = DashDuration;
-        dashCooldownLeft = DashCooldown;
-        enemyRigidbody = GetComponent<Rigidbody2D>();
-        if (player == null)
+        SetMovementPosition();
+        for (int i = 0; i < movePositions.Count; i++)
         {
-            player = GameObject.FindGameObjectsWithTag("Player")[0];
+            movePositions[i] += startPosition;
         }
+
+        FindHealthBar();
+
+        dashDurationLeft = dashDuration;
+        dashCooldownLeft = dashCooldown;
+
+        player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        
+        seeker = GetComponent<Seeker>();
+        FindPath();
     }
 
     protected virtual void Update()
@@ -43,15 +76,49 @@ public class EnemyMovement : MonoBehaviour
         updateDash();
     }
 
-    public Vector2 GetVectorToPlayer()
+    protected virtual void SetMovementPosition()
     {
-        return player.transform.position - transform.position;
+        movePositions.Add(new Vector2(Random.Range(0, 1), Random.Range(0, 1)).normalized);
+        movePositions.Add(new Vector2(Random.Range(0, 1), Random.Range(0, 1)).normalized);
+        movePositions.Add(Vector2.zero);
     }
 
-    public void FlipToPlayer()
+    protected virtual void FindHealthBar()
     {
-        float xDirection = GetVectorToPlayer().x;
-        float enemyX = transform.localScale.x;
+        if (healthBar == null)
+        {
+            healthBar = transform.Find("HealthBarContainer").gameObject;
+        }
+    }
+
+    public Vector3 GetVectorToPlayer()
+    {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        }
+        return player.position - transform.position;
+    }
+
+    public Vector3 GetDirectionToPlayer()
+    {
+        return GetVectorToPlayer().normalized;
+    }
+
+    public Vector3 GetHeadingDirection()
+    {
+        if (enemyRigidbody == null)
+        {
+            enemyRigidbody = GetComponent<Rigidbody2D>();
+        }
+        return enemyRigidbody.velocity.normalized;
+    }
+
+    public void Flip()
+    {
+        float xDirection = GetHeadingDirection().x;
+        Vector3 enemyScale = transform.localScale;
+        float enemyX = enemyScale.x;
         if (xDirection < -0.01f)
         {
             enemyX = -Mathf.Abs(enemyX);
@@ -60,50 +127,100 @@ public class EnemyMovement : MonoBehaviour
         {
             enemyX = Mathf.Abs(enemyX);
         }
-        transform.localScale = new Vector3(enemyX, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(enemyX, enemyScale.y, enemyScale.z);
+        if (healthBar != null)
+        {
+            healthBar.transform.localScale = enemyScale;
+        }
     }
 
-    public void Patrol()
+    public virtual void Patrol()
     {
-        enemyRigidbody.velocity = (GetNextPatrolPosition() - transform.position).normalized * Speed;
+        enemyRigidbody.velocity = (GetNextPatrolPosition() - transform.position).normalized * speed;
     }
 
     public virtual Vector3 GetNextPatrolPosition()
     {
         updateToSpot();
-        if (toSpot == 0)
-        {
-            return startPosition;
-        }
-        else
-        {
-            return startPosition + MovePositionsOffset[toSpot-1];
-        }
+        return movePositions[toSpot];
+
     }
 
     protected virtual void updateToSpot()
     {
-        if (Vector3.Distance(transform.position, MovePositionsOffset[toSpot]) < 0.2f)
+        if (Vector2.Distance(transform.position, movePositions[toSpot]) < minimumDistance)
         {
             toSpot += 1;
 
-            if (toSpot > MovePositionsOffset.Length)
+            if (toSpot >= movePositions.Count)
             {
                 toSpot = 0;
             }
         }
     }
 
+    public bool ShouldChase()
+    {
+        return GetVectorToPlayer().magnitude < visionRange;
+    }
+
+    public void Chase()
+    {
+        enemyRigidbody.velocity = (GetNextChasePosition() - (transform.position + footOffset)).normalized * speed;
+    }
+
+    private Vector3 GetNextChasePosition()
+    {
+        updateSeekerInterval();
+        return path.vectorPath[currentWayPoint];
+    }
+
+    private void updateSeekerInterval()
+    {
+        seekerIntervalLeft -= Time.deltaTime;
+        if (seekerIntervalLeft < GrayConstants.MINIMUM_TIME)
+        {
+            FindPath();
+        }
+
+        if (Vector3.Distance(transform.position + footOffset, path.vectorPath[currentWayPoint]) < minimumDistance)
+        {
+            if (currentWayPoint < path.vectorPath.Count-1)
+            {
+                currentWayPoint += 1;
+            }
+            else
+            {
+                FindPath();
+            }
+        }
+    }
+
+    private void onPathComplete(Path newPath)
+    {
+        if (!newPath.error)
+        {
+            path = newPath;
+            currentWayPoint = 0;
+            seekerIntervalLeft = seekPathInterval;
+        }
+    }
+
+    private void FindPath()
+    {
+        seeker.StartPath(transform.position + footOffset, player.position, onPathComplete); 
+    }
+
     public bool IsReadyToDash()
     {
         float shouldDash = Random.Range(0.0f, 1.0f);
-        return !isDashing && dashCooldownLeft <= 0.0f && shouldDash < DashProbability;
+        return !isDashing && dashCooldownLeft <= 0.0f && shouldDash < dashProbability;
     }
 
     public void Dash()
     {
         isDashing = true;
-        enemyRigidbody.velocity = GetVectorToPlayer().normalized * (DashRange/DashDuration);
+        enemyRigidbody.velocity = GetVectorToPlayer().normalized * (dashRange/dashDuration);
     }
 
     private void updateDash()
@@ -121,8 +238,8 @@ public class EnemyMovement : MonoBehaviour
         else if (dashDurationLeft <= 0.0f)
         {
             isDashing = false;
-            dashDurationLeft = DashDuration;
-            dashCooldownLeft = DashCooldown;
+            dashDurationLeft = dashDuration;
+            dashCooldownLeft = dashCooldown;
         }
     }
 
@@ -130,15 +247,20 @@ public class EnemyMovement : MonoBehaviour
     {
         return isDashing;
     }
-    public void Chase()
+
+    public void StopMoving()
     {
-        enemyRigidbody.velocity = GetVectorToPlayer().normalized * Speed;
+        enemyRigidbody.velocity = Vector3.zero;
     }
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, VisionRange);
+        Gizmos.DrawWireSphere(transform.position, visionRange);
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, DashRange);
+        Gizmos.DrawWireSphere(transform.position, dashRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + footOffset);
+        Gizmos.DrawWireCube(transform.position + footOffset, new Vector3(0.5f, 0.2f, 0.2f));
     }
 }

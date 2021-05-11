@@ -57,7 +57,6 @@ public class DialogueManager : MonoBehaviour
 			StopDialogue();
         }
 		animator.SetBool("IsOpen", true);
-		Debug.Log("Play dialogue");
 		PauseManager.PauseTime();
 		sentences.Clear();
 
@@ -127,7 +126,6 @@ public class DialogueManager : MonoBehaviour
 
 	public void StartDialogue(DialogueStateEnum dialogueState, Dialogue dialogue)
 	{
-		Debug.Log("Start dialogue: " + dialogueState);
 		nextButton.SetActive(true);
 		killButton.SetActive(false);
 		mercyButton.SetActive(false);
@@ -138,7 +136,6 @@ public class DialogueManager : MonoBehaviour
 	public void StopDialogue()
 	{
 		// Call event to invoke other that may subscribing this event
-		Debug.Log("Dialogue done: " + currentDialogueState);
 		nextButton.SetActive(false);
 		mercyButton.SetActive(false);
 		killButton.SetActive(false);
@@ -152,6 +149,7 @@ public class DialogueManager : MonoBehaviour
 		audioSrc.PlayOneShot(mercySound, mercyVolume);
 		StopDialogue();
 		EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
+		Debug.Log("Trigger");
 	}
 
 	public void Kill()
