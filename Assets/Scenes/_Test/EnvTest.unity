@@ -207,23 +207,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 93931236, guid: d118b0e3faed00842a4753b058108712, type: 3}
-      propertyPath: dischargeRate
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 93931236, guid: d118b0e3faed00842a4753b058108712, type: 3}
-      propertyPath: blackHolePrefab
-      value: 
-      objectReference: {fileID: 3324922126660757951, guid: c782d94ccd12d52469f10ea75ff6606c,
-        type: 3}
-    - target: {fileID: 93931236, guid: d118b0e3faed00842a4753b058108712, type: 3}
-      propertyPath: maxDischargeCountDown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 93931240, guid: d118b0e3faed00842a4753b058108712, type: 3}
-      propertyPath: m_BodyType
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5873319817027547892, guid: d118b0e3faed00842a4753b058108712,
         type: 3}
       propertyPath: m_RootOrder
@@ -283,11 +266,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlackPillar
-      objectReference: {fileID: 0}
-    - target: {fileID: 5910752420920239478, guid: d118b0e3faed00842a4753b058108712,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d118b0e3faed00842a4753b058108712, type: 3}
