@@ -99,7 +99,6 @@ public class PlayerWeaponManager : MonoBehaviour
     public void ChangeWeaponPrev()
     {
         weaponObjects[CurrentWeaponID].SetActive(false);
-        print((weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1) % weaponNumber);
         CurrentWeaponID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
         
         weaponObjects[CurrentWeaponID].SetActive(true);
@@ -108,7 +107,6 @@ public class PlayerWeaponManager : MonoBehaviour
     public void ChangeWeaponNext()
     {
         weaponObjects[CurrentWeaponID].SetActive(false);
-        print((weaponIDs.FindIndex(x => x == CurrentWeaponID) + 1) % weaponNumber);
         CurrentWeaponID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
         weaponObjects[CurrentWeaponID].SetActive(true);
     }
