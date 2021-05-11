@@ -2,6 +2,11 @@
 
 public class PlayerBlackBullet : PlayerProjectile
 {
+    public override void Start()
+    {
+        base.Start();
+        damage *= PlayerConfig.DamageMultiplier;
+    }
     public override void Shoot(Vector2 direction)
     {
         if (projectileRigidbody == null)

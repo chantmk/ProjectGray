@@ -11,6 +11,7 @@ public class PlayerBlueBullet : PlayerProjectile
     {
         base.Start();
         MinFlightSpeed = Mathf.Pow(MinFlightSpeed, 2);
+        damage *= PlayerConfig.DamageMultiplier;
     }
 
     public override void Update()
