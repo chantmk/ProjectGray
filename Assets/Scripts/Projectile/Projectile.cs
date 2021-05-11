@@ -7,7 +7,7 @@ public abstract class Projectile : MonoBehaviour
 {
     protected abstract List<int> targetLayers { get; }
 
-    public float damage = 10.0f;
+    public int damage = 1;
     public float MaxDuration = 3.0f;
     public float MaxFlightSpeed = 1.5f;
     public float MinFlightSpeed = 0.2f;

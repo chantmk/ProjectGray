@@ -92,11 +92,11 @@ public class BossStats : CharacterStats
         }
     }
 
-    public void TakeCrashDamage(float damage)
+    public void TakeCrashDamage(int damage)
     {
         damage -= Armor;
 
-        if (damage < GrayConstants.EPSILON) damage = 0.0f;
+        if (damage < 0) damage = 0;
 
         CurrentHealth -= damage;
         Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);

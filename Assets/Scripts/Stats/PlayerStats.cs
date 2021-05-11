@@ -34,13 +34,13 @@ public class PlayerStats : CharacterStats
         switch (buff)
         {
             case ResemblanceBuffEnum.IncreaseHealth:
-                setMaxHealth(BaseMaxHealth * 1.5f);
+                setMaxHealth((int) (BaseMaxHealth * 1.5f));
                 break;
             case ResemblanceBuffEnum.IncreaseStamina:
                 RechargeStamina *= 1.5f;
                 break;
             case ResemblanceBuffEnum.IncreaseDamage:
-                DamageMultiplier *= 1.5f;
+                DamageMultiplier = 1.5f;
                 break;
         }
 

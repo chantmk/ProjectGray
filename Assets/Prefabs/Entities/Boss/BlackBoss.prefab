@@ -122,10 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 0
-  MaxHealth: 75
+  BaseMaxHealth: 15
+  MaxHealth: 15
   Armor: 0
   Status: 0
+  depleteHealth: 0
   EnrageRatio: 0.46
   HyperRatio: 0.21
   Aggro: 0
@@ -171,13 +172,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813799400e87c6b49bf009a100406018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 2
   AttackRange: 1.82
   AttackRatio: 0.75
   AttackMaxCooldown: 5
   IsRange: 0
   ProjectileComponent: {fileID: 0}
   ProjectileCount: 1
+  shootAngle: 60
   DashAttackEffectRange: 0
   DashAttackMaxCooldown: 0
   DashAttacks:
@@ -192,7 +194,7 @@ MonoBehaviour:
   HyperAttackMaxCooldown: 0
   HyperAttacks:
   - {fileID: 0}
-  shootAngle: 60
+  enrageShootAngle: 60
 --- !u!114 &1930928131
 MonoBehaviour:
   m_ObjectHideFlags: 0

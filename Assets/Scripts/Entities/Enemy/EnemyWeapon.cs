@@ -6,7 +6,7 @@ using Utils;
 public class EnemyWeapon : MonoBehaviour
 {
     [Header("Weapon status")]
-    public float AttackDamage = 10.0f;
+    public int AttackDamage = 1;
     public float AttackRange = 1.0f;
     [Range(0.0f, 1.0f)]
     public float AttackRatio = 0.5f;

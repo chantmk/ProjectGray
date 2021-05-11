@@ -121,10 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 0
-  MaxHealth: 100
+  BaseMaxHealth: 15
+  MaxHealth: 15
   Armor: 0
   Status: 0
+  depleteHealth: 0
   EnrageRatio: 0.77
   HyperRatio: 0.42
   Aggro: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5bd51fcecfe6243a6b67dc479fb4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 2
   AttackRange: 7.77
   AttackRatio: 0.08
   AttackMaxCooldown: 5
