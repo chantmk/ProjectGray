@@ -23,7 +23,6 @@ public class PlayerMovementManager : MonoBehaviour
     private float animationSpeed = 0.2f;
     private StateMachine<MovementEnum> stateMachine;
 
-    [SerializeField] private float expValue = 0.8f;
     [SerializeField] private bool isExhault = false;
     [SerializeField] private float stamina = 100f;
     [SerializeField] private int inputX, inputY;
