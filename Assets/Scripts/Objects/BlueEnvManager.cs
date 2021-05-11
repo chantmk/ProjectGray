@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 // [ExecuteAlways]
 public class BlueEnvManager : MonoBehaviour
 {
+    [SerializeField] private Sprite[] puddleSprites = new Sprite[6];
     [SerializeField] private GameObject puddlePrefabs;
     private Dictionary<Vector2Int, BlueEnvPuddleManager> puddleDict;
     private Transform playerTransform;
@@ -70,10 +71,11 @@ public class BlueEnvManager : MonoBehaviour
         }
         else
         {
-            var puddleManager = Instantiate(puddlePrefabs, 
-                PuddleCoord2Coord(puddleCoord), 
-                Quaternion.Euler(Vector3.zero)).GetComponent<BlueEnvPuddleManager>();
-
+            var puddle = Instantiate(puddlePrefabs,
+                PuddleCoord2Coord(puddleCoord),
+                Quaternion.Euler(Vector3.zero));
+            var puddleManager = puddle.GetComponent<BlueEnvPuddleManager>();
+            
             puddleDict[puddleCoord] = puddleManager;
         }
         
@@ -82,8 +84,8 @@ public class BlueEnvManager : MonoBehaviour
     private Vector3 QuantizePosition(Vector3 position)
     {
         return new Vector3(
-            Mathf.Round((position.x -0.25f)* invScale) * scale,
-            Mathf.Round((position.y -0.25f)* invScale) * scale,
+            Mathf.Round((position.x - 0.25f) * invScale) * scale,
+            Mathf.Round((position.y - 0.25f) * invScale) * scale,
             0f
         );
     }
@@ -95,7 +97,7 @@ public class BlueEnvManager : MonoBehaviour
     
     private Vector3 PuddleCoord2Coord(Vector2Int coord)
     {
-        return new Vector3(coord.x * scale, coord.y * scale, 0f);
+        return new Vector3(coord.x * scale + 0.25f, coord.y * scale + 0.25f, 0f);
     }
 
     void FixedUpdate()
