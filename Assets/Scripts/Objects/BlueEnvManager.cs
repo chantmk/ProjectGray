@@ -42,9 +42,12 @@ public class BlueEnvManager : MonoBehaviour
         EventPublisher.PlayerFire -= OnPlayerFire;
     }
 
-    private void OnPlayerFire()
+    private void OnPlayerFire(WeaponIDEnum weaponID)
     {
-        isCreateOnPlayerFire = true;
+        if (weaponID == WeaponIDEnum.Blue)
+        {
+            isCreateOnPlayerFire = true;
+        }
     }
 
     private void CreateBigPuddle(Vector2Int centerCoord)

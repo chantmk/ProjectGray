@@ -67,9 +67,9 @@ public class BlackPillarManager : MonoBehaviour
         }
     }
 
-    public void OnPlayerPressFire()
+    public void OnPlayerPressFire(WeaponIDEnum weaponID)
     {
-        if (isPlayerInArea)
+        if (isPlayerInArea && weaponID == WeaponIDEnum.Black)
             isAddCharge = true;
     }
 

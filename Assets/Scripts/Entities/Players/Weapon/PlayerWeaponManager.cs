@@ -93,7 +93,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private void fireWeapon()
     {
         weapons[CurrentWeaponID].Fire(Direction);
-        EventPublisher.TriggerPlayerFire();
+        EventPublisher.TriggerPlayerFire((WeaponIDEnum)CurrentWeaponID);
     }
 
     public void ChangeWeaponPrev()
