@@ -45,11 +45,11 @@ public class MerryGoRoundHorseMovement : EnemyMovement
 
     private void setPosition()
     {
-        MovePositionsOffset = new Vector2[2];
-        MovePositionsOffset[0].x = centerPosition.x;
-        MovePositionsOffset[0].y = centerPosition.y + MoveRadius;
-        MovePositionsOffset[1].x = centerPosition.x;
-        MovePositionsOffset[1].y = centerPosition.y + MoveRadius;
+/*        movePositionsOffset = new Vector2[2];
+        movePositionsOffset[0].x = centerPosition.x;
+        movePositionsOffset[0].y = centerPosition.y + MoveRadius;
+        movePositionsOffset[1].x = centerPosition.x;
+        movePositionsOffset[1].y = centerPosition.y + MoveRadius;*/
     }
 
     public bool IsIdle()

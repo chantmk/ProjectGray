@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 1206890032}
   - component: {fileID: 4872033802944566047}
   - component: {fileID: 8249095275983056010}
+  - component: {fileID: 3266536537356674394}
   m_Layer: 0
   m_Name: BlackEnemy_Slime
   m_TagString: Enemy
@@ -137,16 +138,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0227a7eafeb83444c8342c84779d15cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  Speed: 0.5
-  VisionRange: 2
   ManualFlip: 1
-  DashProbability: 0
-  DashRange: 0
-  DashDuration: 0
-  DashCooldown: 0
-  MovePositionsOffset:
-  - {x: 0, y: 2}
+  speed: 1
+  visionRange: 5
+  minimumDistance: 0.2
+  seekPathInterval: 0.5
+  dashProbability: 0
+  dashRange: 0
+  dashDuration: 0
+  dashCooldown: 0
+  movePositionsOffset:
+  - {x: 0, y: 0}
 --- !u!114 &8249095275522155065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,3 +289,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3266536537356674394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249095275983056012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

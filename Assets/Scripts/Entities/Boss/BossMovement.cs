@@ -14,7 +14,7 @@ public class BossMovement : EnemyMovement
     protected override void Start()
     {
         base.Start();
-        spotCap[0] = MovePositionsOffset.Length;
+        spotCap[0] = movePositionsOffset.Count;
     }
 
     public void SetSpotCap(BossAggroEnum bossStatus)

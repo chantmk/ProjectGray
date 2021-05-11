@@ -29,7 +29,7 @@ public class EnemyBehaviour : StateMachineBehaviour
     {
         if (enemyMovement.ManualFlip)
         {
-            enemyMovement.FlipToPlayer();
+            enemyMovement.Flip();
         }
     }
 
@@ -53,14 +53,14 @@ public class EnemyBehaviour : StateMachineBehaviour
 
     protected virtual void ListenToChaseSignal()
     {
-/*        if (Vector2.Distance(player.position, transform.position) < enemyMovement.VisionRange)
+        if (enemyMovement.ShouldChase())
         {
             animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Move);
         }
         else
         {
             animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Idle);
-        }*/
+        }
     }
     protected virtual void ListenToAttackSignal()
     {
@@ -69,5 +69,11 @@ public class EnemyBehaviour : StateMachineBehaviour
         {
             animator.SetTrigger(AnimatorParams.Attack);
         }
+    }
+
+    protected void updateMovingAnimation()
+    {
+        var direction = enemyMovement.GetHeadingDirection();
+        animator.SetFloat(AnimatorParams.Horizontal, direction.normalized.x);
     }
 }

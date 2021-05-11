@@ -22,7 +22,7 @@ public class BumpCarMovement : EnemyMovement
     protected override void Start()
     {
         base.Start();
-        MovePositionsOffset = randomPosition();
+        movePositionsOffset = randomPosition();
     }
 
     protected override void Update()
@@ -31,14 +31,13 @@ public class BumpCarMovement : EnemyMovement
         Destroy(gameObject, duration);
     }
 
-    private Vector2[] randomPosition()
+    private List<Vector2> randomPosition()
     {
-        Vector2[] positions = new Vector2[Random.Range(MinPositionCount, MaxPositionCount)];
-        for (int i = 0; i < positions.Length; i++)
+        List<Vector2> positions = new List<Vector2>();
+        int size = Random.Range(MinPositionCount, MaxPositionCount);
+        for (int i = 0; i < size; i++)
         {
-            //positions[i] = new Vector2(Random.Range(BottomLeftCorner.x, TopRightCorner.x), Random.Range(BottomLeftCorner.y, TopRightCorner.y));
-            positions[i].x = Random.Range(BottomLeftCorner.x, TopRightCorner.x);
-            positions[i].y = Random.Range(BottomLeftCorner.y, TopRightCorner.y);
+            positions.Add(new Vector2(Random.Range(BottomLeftCorner.x, TopRightCorner.x), Random.Range(BottomLeftCorner.y, TopRightCorner.y)));
         }
         return positions;
     }
