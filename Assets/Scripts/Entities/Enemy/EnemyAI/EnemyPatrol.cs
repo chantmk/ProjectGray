@@ -12,10 +12,4 @@ public class EnemyPatrol : EnemyBehaviour
         ListenToChaseSignal();
         updateMovingAnimation();
     }
-
-    private void updateMovingAnimation()
-    {
-        var direction = (Vector3)enemyMovement.GetNextPatrolPosition() - transform.position;
-        animator.SetFloat(AnimatorParams.Horizontal, direction.normalized.x);
-    }
 }

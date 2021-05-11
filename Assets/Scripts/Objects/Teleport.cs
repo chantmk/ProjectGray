@@ -7,7 +7,7 @@ using Utils;
 public class Teleport : MonoBehaviour
 {
 
-    private bool isEnable = false;
+    private static bool isEnable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,5 +36,10 @@ public class Teleport : MonoBehaviour
     public void EnablePortal(DecisionEnum decision)
     {
         isEnable = true;
+    }
+
+    public static void DisablePortal()
+    {
+        isEnable = false;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 using Utils;
 
 public class EnemyStats : CharacterStats
@@ -16,11 +17,19 @@ public class EnemyStats : CharacterStats
         healthPackPrefab = Resources.Load("Healthpack") as GameObject;
         healthPackManager = healthPackPrefab.GetComponent<HealthPackManager>();
     }
-
-    // Update is called once per frame
-    protected override void Update()
+    
+    protected override void GetHealthBarImage()
     {
-        base.Update();
+        if (healthBar == null)
+        {
+            healthBar = transform.Find("HealthBarContainer").gameObject;
+        }
+        healthBarImage = healthBar.transform.Find("Health").GetComponent<Image>();
+    }
+
+    public override void HealthRunOut()
+    {
+        Status = StatusEnum.Dead;
     }
 
     public override void Die()

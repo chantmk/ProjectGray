@@ -43,4 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995b51a6e61840c4298027f5c00221c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puddlePrefabs: {fileID: 0}
+  puddlePrefabs: {fileID: 316490964001467468, guid: 4302161def4cdae479d22ccd94497903,
+    type: 3}
+  playerPuddleCoordCache: {x: 0, y: 0}
