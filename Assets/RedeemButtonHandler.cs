@@ -20,7 +20,7 @@ public class RedeemButtonHandler : MonoBehaviour
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         playerInventory = player.GetComponent<PlayerInventory>();
-        resemblancePad = GameObject.Find ("ResemblancePad").transform;
+        resemblancePad = GameObject.Find("ResemblancePad").transform;
     }
 
     public void OnButtonPress()

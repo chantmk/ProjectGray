@@ -4913,7 +4913,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 549117939
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d51219df0bd99fc4588eff73878233a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5220,7 +5220,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 549117939
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d51219df0bd99fc4588eff73878233a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5315,7 +5315,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 549117939
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d51219df0bd99fc4588eff73878233a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5751,7 +5751,6 @@ MonoBehaviour:
   playerRigidbody: {fileID: 0}
   moveSpeed: 2
   AnimationSpeed: 1
-  expValue: 0.8
   isExhault: 0
   stamina: 100
   inputX: 0
@@ -5803,8 +5802,8 @@ MonoBehaviour:
   MaxHealth: 100
   Armor: 0
   Status: 0
-  depleteHealth: 0
   healthBar: {fileID: 0}
+  depleteHealth: 0
   RechargeStamina: 20
   BaseRechargeStamina: 20
   MaxStamina: 100
@@ -5834,6 +5833,8 @@ MonoBehaviour:
   playerStats: {fileID: 0}
   healValue: 0
   HealingParticle: {fileID: 351487782}
+  healSound: {fileID: 8300000, guid: 60d8266d705af744ba26352d13c7a98c, type: 3}
+  healVolume: 0.6
 --- !u!95 &1381136330
 Animator:
   serializedVersion: 3

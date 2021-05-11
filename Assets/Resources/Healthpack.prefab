@@ -123,3 +123,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   dropChance: 0.3
+  pickSound: {fileID: 0}
+  pickVolume: 0.3

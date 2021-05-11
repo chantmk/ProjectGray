@@ -113,3 +113,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  pickSound: {fileID: 8300000, guid: 0db8507c73cf09649864cc38675583e8, type: 3}
+  pickVolume: 0.3
