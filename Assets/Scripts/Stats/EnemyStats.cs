@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Utils;
 
 public class EnemyStats : CharacterStats
 {
-    // Start is called before the first frame update
-    protected override void Start()
+    protected override void GetHealthBarImage()
     {
-        base.Start();
+        if (healthBar == null)
+        {
+            healthBar = transform.Find("HealthBarContainer").gameObject;
+        }
+        healthBarImage = healthBar.transform.Find("Health").GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    protected override void Update()
+    public override void HealthRunOut()
     {
-        base.Update();
+        Status = StatusEnum.Dead;
     }
 }

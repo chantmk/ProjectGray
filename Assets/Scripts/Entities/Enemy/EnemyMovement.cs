@@ -27,8 +27,9 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private float dashCooldown;
     [Header("Patrol parameters")]
+    [Tooltip("Offset from start position")]
     [SerializeField]
-    protected List<Vector2> movePositionsOffset = new List<Vector2>();
+    protected List<Vector2> movePositions = new List<Vector2>();
 
     protected int toSpot = 0;
     
@@ -38,6 +39,7 @@ public class EnemyMovement : MonoBehaviour
     private float dashCooldownLeft;
     private bool isDashing = false;
     private Rigidbody2D enemyRigidbody;
+    private GameObject healthBar;
 
     private Seeker seeker;
     private Path path;
@@ -47,18 +49,23 @@ public class EnemyMovement : MonoBehaviour
     protected virtual void Start()
     {
         startPosition = transform.position;
-        movePositionsOffset.Add(Vector2.zero);
-        
-        for(int i=0; i<movePositionsOffset.Count; i++)
+        movePositions.Add(Vector2.zero);
+        if (healthBar == null)
         {
-            movePositionsOffset[i] += startPosition;
+            healthBar = transform.Find("HealthBarContainer").gameObject;
+        }
+        for (int i=0; i<movePositions.Count; i++)
+        {
+            movePositions[i] += startPosition;
         }
 
         dashDurationLeft = dashDuration;
         dashCooldownLeft = dashCooldown;
-        seeker = GetComponent<Seeker>();
+
         enemyRigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        
+        seeker = GetComponent<Seeker>();
         seeker.StartPath(transform.position, player.position, onPathComplete);
     }
 
@@ -84,8 +91,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void Flip()
     {
-        float xDirection = enemyRigidbody.velocity.x;
-        float enemyX = transform.localScale.x;
+        float xDirection = GetHeadingDirection().x;
+        Vector3 enemyScale = transform.localScale;
+        float enemyX = enemyScale.x;
         if (xDirection < -0.01f)
         {
             enemyX = -Mathf.Abs(enemyX);
@@ -94,7 +102,8 @@ public class EnemyMovement : MonoBehaviour
         {
             enemyX = Mathf.Abs(enemyX);
         }
-        transform.localScale = new Vector3(enemyX, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(enemyX, enemyScale.y, enemyScale.z);
+        healthBar.transform.localScale = enemyScale;
     }
 
     public void Patrol()
@@ -105,17 +114,17 @@ public class EnemyMovement : MonoBehaviour
     public virtual Vector3 GetNextPatrolPosition()
     {
         updateToSpot();
-        return startPosition + movePositionsOffset[toSpot-1];
+        return movePositions[toSpot];
 
     }
 
     protected virtual void updateToSpot()
     {
-        if (Vector2.Distance(transform.position, movePositionsOffset[toSpot]) < minimumDistance)
+        if (Vector2.Distance(transform.position, movePositions[toSpot]) < minimumDistance)
         {
             toSpot += 1;
 
-            if (toSpot >= movePositionsOffset.Count)
+            if (toSpot >= movePositions.Count)
             {
                 toSpot = 0;
             }
@@ -148,8 +157,11 @@ public class EnemyMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, path.vectorPath[currentWayPoint]) < minimumDistance)
         {
-            currentWayPoint += 1;
-            if (currentWayPoint >= path.vectorPath.Count)
+            if (currentWayPoint < path.vectorPath.Count-1)
+            {
+                currentWayPoint += 1;
+            }
+            else
             {
                 seeker.StartPath(transform.position, player.position, onPathComplete);
             }

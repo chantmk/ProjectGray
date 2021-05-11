@@ -12,8 +12,6 @@ public class BossStats : CharacterStats
     [Range(0.0f, 1.0f)]
     public float HyperRatio;
     public BossAggroEnum Aggro = BossAggroEnum.Calm;
-    [SerializeField]
-    private GameObject healthBarContainer;
 
     [Header("Default sprite")]
     [SerializeField]
@@ -23,15 +21,12 @@ public class BossStats : CharacterStats
     [SerializeField]
     private Sprite hyperSprite;
 
-    private Image healthBarImage;
     private SpriteRenderer renderer;
     // Start is called before the first frame update
     protected override void Start()
     {
+        healthBar.SetActive(true);
         base.Start();
-        healthBarContainer.SetActive(true);
-        healthBarImage = healthBarContainer.GetComponentInChildren<Image>();
-        healthBarImage.color = Color.green;
         renderer = GetComponent<SpriteRenderer>();
         // Work on exception handling below
     }
@@ -40,16 +35,27 @@ public class BossStats : CharacterStats
     protected override void Update()
     {
         base.Update();
-        if(!healthBarContainer.activeSelf && Aggro != BossAggroEnum.LastStand)
+
+        if (!healthBar.activeSelf && Aggro != BossAggroEnum.LastStand)
         {
-            healthBarContainer.SetActive(true);
+            healthBar.SetActive(true);
         }
-        healthBarImage.fillAmount = GetHealthPercentage();
+        else if (Aggro == BossAggroEnum.LastStand)
+        {
+            healthBar.SetActive(false);
+        }
+    }
+
+    protected override void GetHealthBarImage()
+    {
+        healthBarImage = healthBar.GetComponentInChildren<Image>();
+        healthBarImage.color = Color.green;
     }
 
     public override void HandleHealth()
     {
         float currentHealthPercentage = GetHealthPercentage();
+        HandleHealthBar();
         if (CurrentHealth <= depleteHealth)
         {
             Aggro = BossAggroEnum.LastStand;

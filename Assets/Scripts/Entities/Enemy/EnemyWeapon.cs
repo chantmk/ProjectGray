@@ -77,13 +77,13 @@ public class EnemyWeapon : MonoBehaviour
 
     protected virtual void MeleeAttack()
     {
-        Debug.Log($"Melee attack from {this.name}");
+        //Debug.Log($"Melee attack from {this.name}");
         attackHitbox.QuickEnable();
     }
 
     protected virtual void RangeAttack()
     {
-        Debug.Log($"Range attack from {this.name}");
+        //Debug.Log($"Range attack from {this.name}");
         // This method instantiate the projectile given in projectile component
         // Instant the position and then let the object do what it have to
         for (int i=0; i < ProjectileCount; i++)

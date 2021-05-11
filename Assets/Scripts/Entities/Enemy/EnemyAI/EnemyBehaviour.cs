@@ -11,6 +11,7 @@ public class EnemyBehaviour : StateMachineBehaviour
     protected Rigidbody2D enemyRigidbody;
     protected EnemyMovement enemyMovement;
     protected EnemyWeapon enemyWeapon;
+    protected EnemyStats enemyStats;
     //protected Transform player;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -20,6 +21,7 @@ public class EnemyBehaviour : StateMachineBehaviour
         enemyRigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
         enemyMovement = animator.gameObject.GetComponent<EnemyMovement>();
         enemyWeapon = animator.gameObject.GetComponent<EnemyWeapon>();
+        enemyStats = animator.gameObject.GetComponent<EnemyStats>();
         transform = animator.gameObject.transform;
         //player = enemyMovement.player.transform;
     }
@@ -31,6 +33,7 @@ public class EnemyBehaviour : StateMachineBehaviour
         {
             enemyMovement.Flip();
         }
+        ListenToLifeSignal();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -68,6 +71,15 @@ public class EnemyBehaviour : StateMachineBehaviour
         if (enemyWeapon.IsReady(enemyMovement.GetVectorToPlayer()))
         {
             animator.SetTrigger(AnimatorParams.Attack);
+        }
+    }
+
+    protected virtual void ListenToLifeSignal()
+    {
+        if(enemyStats.Status == StatusEnum.Dead)
+        {
+            animator.SetInteger(AnimatorParams.Life, (int)enemyStats.Status);
+            enemyMovement.StopMoving();
         }
     }
 

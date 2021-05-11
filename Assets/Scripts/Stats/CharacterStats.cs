@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Utils;
 
-public class CharacterStats : MonoBehaviour
+public abstract class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
     public float BaseMaxHealth;
@@ -11,6 +12,9 @@ public class CharacterStats : MonoBehaviour
     public float CurrentHealth { get; protected set; }
     public float Armor;
     public StatusEnum Status = StatusEnum.Mortal;
+    [SerializeField]
+    protected GameObject healthBar;
+    protected Image healthBarImage;
 
     protected const float depleteHealth = 0.01f;
 
@@ -20,7 +24,9 @@ public class CharacterStats : MonoBehaviour
     protected virtual void Start()
     {
         Status = StatusEnum.Mortal;
+        MaxHealth = BaseMaxHealth;
         CurrentHealth = MaxHealth;
+        GetHealthBarImage();
     }
 
 
@@ -39,7 +45,13 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(float damage)
+    protected abstract void GetHealthBarImage();
+    protected virtual void HandleHealthBar()
+    {
+        healthBarImage.fillAmount = GetHealthPercentage();
+    }
+    
+    public virtual void TakeDamage(float damage)
     {
         if (Status == StatusEnum.Mortal)
         {
@@ -75,16 +87,22 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void HandleHealth()
     {
+        HandleHealthBar();
         if (CurrentHealth <= depleteHealth)
         {
-            Die();
+            HealthRunOut();
         }
+    }
+
+    public virtual void HealthRunOut()
+    {
+        Status = StatusEnum.Dead;
+        Debug.Log(transform.name + " Died");
+        Die();
     }
 
     public virtual void Die()
     {
-        Status = StatusEnum.Dead;
-        Debug.Log(transform.name + " Died");
         Destroy(gameObject);
     }
 

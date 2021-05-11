@@ -129,6 +129,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1206890038, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a, type: 3}
+      propertyPath: movePositions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206890038, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a, type: 3}
+      propertyPath: movePositions.Array.data[0].x
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206890038, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a, type: 3}
+      propertyPath: movePositions.Array.data[0].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206890038, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a, type: 3}
       propertyPath: MovePositionsOffset.Array.data[0].x
       value: 2
       objectReference: {fileID: 0}
@@ -136,10 +148,20 @@ PrefabInstance:
       propertyPath: MovePositionsOffset.Array.data[0].y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8249095275983056008, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8249095275983056009, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a,
         type: 3}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249095275983056009, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7858934
       objectReference: {fileID: 0}
     - target: {fileID: 8249095275983056009, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a,
         type: 3}
@@ -205,10 +227,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1206890038, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a, type: 3}
-      propertyPath: movePositionsOffset.Array.data[0].y
-      value: -2
-      objectReference: {fileID: 0}
     - target: {fileID: 8249095275983056009, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a,
         type: 3}
       propertyPath: m_RootOrder
@@ -269,8 +287,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackEnemy_Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 8783078143001377071, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1071654187}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbb7e5d9c42dfe4080847c7ac2d8c2a, type: 3}
+--- !u!20 &1071654187 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5799712895011780173, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1181556298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1181556298
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1000,6 +1029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7156235225171064192, guid: ceb5d75e15e544846a7ba91c60b3a639,
+        type: 3}
+      propertyPath: healthBar
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}

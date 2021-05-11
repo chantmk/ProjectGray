@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
 {
-    [SerializeField] private GameObject healthBar;
-    private Image healthBarImage;
-
     public float RechargeStamina;
     public float MaxStamina; //Current max stamina
     public float BaseStamina; //Initial base max stamina
@@ -18,17 +15,19 @@ public class PlayerStats : CharacterStats
     protected override void Start()
     {
         base.Start();
-        if (healthBar == null)
-            healthBar = GameObject.FindGameObjectWithTag("HealthBar");
-        healthBarImage = healthBar.GetComponent<Image>();
     }
     
     protected override void Update()
     {
         base.Update();
-        healthBarImage.fillAmount = GetHealthPercentage();
     }
 
+    protected override void GetHealthBarImage()
+    {
+        if (healthBar == null)
+            healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        healthBarImage = healthBar.GetComponent<Image>();
+    }
     public void ApplyStatBuff(ResemblanceBuffEnum buff)
     {
         switch (buff)
@@ -47,7 +46,7 @@ public class PlayerStats : CharacterStats
 
     }
 
-    public override void Die()
+    public override void HealthRunOut()
     {
         GameManager.Instance.HandleGameOver();
         // SceneManager.LoadScene("MainMenuScene");
