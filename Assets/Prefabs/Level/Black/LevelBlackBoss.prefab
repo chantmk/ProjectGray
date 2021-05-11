@@ -10483,7 +10483,7 @@ GameObject:
   - component: {fileID: 405160856186025139}
   - component: {fileID: 405160856186025138}
   - component: {fileID: 405160856186025141}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: ObjectWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11977,7 +11977,7 @@ GameObject:
   - component: {fileID: 2545785689625292085}
   - component: {fileID: 7328798923784798193}
   - component: {fileID: 2464974869714735651}
-  m_Layer: 11
+  m_Layer: 15
   m_Name: ObjectObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
