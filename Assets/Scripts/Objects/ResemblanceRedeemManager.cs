@@ -12,10 +12,8 @@ public class ResemblanceRedeemManager : Interactable
 
 
     private int[] checkpointAmount = { 2, 4, 6 };
-    public GameObject player;
-    public PlayerInventory playerInventory;
-    
-   
+    private GameObject player;
+    private PlayerInventory playerInventory;
 
     private int playerResemblanceCount;
     private int requiredResemblanceCount;
@@ -96,50 +94,5 @@ public class ResemblanceRedeemManager : Interactable
         resemblanceUI.SetActive(isOpen);
         //render redeem button
 
-    }
-
-    // For resemblance UI redeem button action
-    public void OnButtonPress()
-    {
-        if (playerResemblanceCount >= checkpointAmount[2])
-        {
-            // Redeem 6 resemblances
-            if (playerInventory.UseResemblance(checkpointAmount[2]))
-            {
-                //TODO : spawn DoubleDamage Item
-            }
-            else
-            {
-                Debug.Log("Failed to redeem 6");
-            }
-
-        }
-        else if (playerResemblanceCount >= checkpointAmount[1])
-        {
-            // Redeem 4 resemblances
-            if (playerInventory.UseResemblance(checkpointAmount[1]))
-            {
-                //TODO : spawn SpeedShoe Item
-            }
-            else
-            {
-                Debug.Log("Failed to redeem 4");
-            }
-
-        }
-        else
-        {
-            // Redeem 2 resemblances
-            if (playerInventory.UseResemblance(checkpointAmount[0]))
-            {
-                //TODO : spawn HealthArmor Item
-                //TODO : playerInventory.AddBuff(ResemblanceBuffEnum.IncreaseHealth);
-            }
-            else
-            {
-                Debug.Log("Failed to redeem 2");
-            }
-
-        }
     }
 }
