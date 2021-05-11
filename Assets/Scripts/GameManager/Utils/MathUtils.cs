@@ -14,6 +14,12 @@ namespace Utils
         {
             return Mathf.Abs(x - y) < float.Epsilon;
         }
+
+        public static Vector2 RandomVec2(float min, float max)
+        {
+            return new Vector2(Random.Range(min, max), Random.Range(min, max));
+        }
+        
     }
 
     public static class GrayConstants
