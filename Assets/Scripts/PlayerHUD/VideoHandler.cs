@@ -17,6 +17,7 @@ public class VideoHandler : MonoBehaviour
     void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.targetCamera = FindObjectOfType<Camera>();
         EventPublisher.PlayCutscene += PlayVideo;
         videoPlayer.loopPointReached += StopVideo;
     }

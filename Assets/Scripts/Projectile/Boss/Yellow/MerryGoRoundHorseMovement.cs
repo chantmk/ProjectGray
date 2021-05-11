@@ -16,19 +16,23 @@ public class MerryGoRoundHorseMovement : EnemyMovement
     [SerializeField]
     private float MaxIdleDelay = 10.0f;
     [SerializeField]
-    private float MoveRadius = 10.0f;
+    private int collisionDamage = 1;
 
-    private Vector2 centerPosition;
     private BossAggroEnum bossStatus;
+    private EnemyStats enemyStats;
+    private Vector2 headingDirection;
 
+    private void Awake()
+    {
+        enemyStats = GetComponent<EnemyStats>();
+    }
     protected override void Start()
     {
         base.Start();
-        centerPosition = transform.position;
-        setPosition();
-
         EventPublisher.StatusChange += SetBossStatus;
+        EventPublisher.StatusChange += SelfDestruct;
     }
+
     protected override void Update()
     {
         base.Update();
@@ -38,22 +42,66 @@ public class MerryGoRoundHorseMovement : EnemyMovement
         }
     }
 
+    private void OnDestroy()
+    {
+        EventPublisher.StatusChange -= SetBossStatus;
+        EventPublisher.StatusChange -= SelfDestruct;
+    }
+
+    protected override void SetMovementPosition()
+    {
+
+    }
+
     public void SetBossStatus(BossAggroEnum status)
     {
         bossStatus = status;
     }
 
-    private void setPosition()
-    {
-        MovePositionsOffset = new Vector2[2];
-        MovePositionsOffset[0].x = centerPosition.x;
-        MovePositionsOffset[0].y = centerPosition.y + MoveRadius;
-        MovePositionsOffset[1].x = centerPosition.x;
-        MovePositionsOffset[1].y = centerPosition.y + MoveRadius;
-    }
 
-    public bool IsIdle()
+    public bool IsChase()
     {
         return bossStatus == BossAggroEnum.Hyper && MaxIdleDelay <= 0.0f;
+    }
+
+    public void Shoot()
+    {
+        headingDirection = -GetDirectionToPlayer();
+    }
+
+    public void Fly()
+    {
+        enemyRigidbody.velocity = headingDirection * speed;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (enemyStats == null)
+        {
+            Debug.Log("Holy shit");
+        }
+        if(enemyStats.Status == StatusEnum.Dead)
+        {
+            LayerMask collisionLayer = collision.gameObject.layer;
+            if (collisionLayer == LayerMask.NameToLayer("Boss"))
+            {
+                collision.gameObject.GetComponent<BossStats>().TakeCrashDamage(collisionDamage);
+                StopMoving();
+                enemyStats.Die();
+            }
+            else if (collisionLayer == LayerMask.NameToLayer("WallHitbox"))
+            {
+                StopMoving();
+                enemyStats.Die();
+            }
+        }
+    }
+
+    public void SelfDestruct(BossAggroEnum aggroEnum)
+    {
+        if (aggroEnum == BossAggroEnum.LastStand)
+        {
+            Destroy(gameObject);
+        }
     }
 }

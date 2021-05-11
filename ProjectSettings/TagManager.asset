@@ -28,7 +28,7 @@ TagManager:
   - PlayerHitbox
   - NaturalHitbox
   - WallHitbox
-  - 
+  - Particle
   - 
   - 
   - 
@@ -54,8 +54,8 @@ TagManager:
   - name: Entity
     uniqueID: 2244085215
     locked: 0
-  - name: WorldUI
-    uniqueID: 2371808427
+  - name: Particle
+    uniqueID: 2063486301
     locked: 0
   - name: UI
     uniqueID: 549117939

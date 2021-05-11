@@ -50,8 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   MaxDuration: 3
-  FlightSpeed: 1
-  horseRadius: {x: -1.39, y: -1.15, z: 0}
+  MaxFlightSpeed: 1.5
+  MinFlightSpeed: 0.2
+  horseX: -1.59
+  horseY: -0.3
   horse: {fileID: 3926843223403712555, guid: 2e2b8c52d2b2d07439a828ba51ce1879, type: 3}
 --- !u!212 &9022404928124592669
 SpriteRenderer:
@@ -198,7 +200,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

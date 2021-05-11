@@ -11,7 +11,8 @@ public class EnemyBehaviour : StateMachineBehaviour
     protected Rigidbody2D enemyRigidbody;
     protected EnemyMovement enemyMovement;
     protected EnemyWeapon enemyWeapon;
-    protected Transform player;
+    protected EnemyStats enemyStats;
+    //protected Transform player;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -20,8 +21,9 @@ public class EnemyBehaviour : StateMachineBehaviour
         enemyRigidbody = animator.gameObject.GetComponent<Rigidbody2D>();
         enemyMovement = animator.gameObject.GetComponent<EnemyMovement>();
         enemyWeapon = animator.gameObject.GetComponent<EnemyWeapon>();
+        enemyStats = animator.gameObject.GetComponent<EnemyStats>();
         transform = animator.gameObject.transform;
-        player = enemyMovement.player.transform;
+        //player = enemyMovement.player.transform;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -29,8 +31,9 @@ public class EnemyBehaviour : StateMachineBehaviour
     {
         if (enemyMovement.ManualFlip)
         {
-            enemyMovement.FlipToPlayer();
+            enemyMovement.Flip();
         }
+        ListenToLifeSignal();
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
@@ -53,7 +56,7 @@ public class EnemyBehaviour : StateMachineBehaviour
 
     protected virtual void ListenToChaseSignal()
     {
-        if (Vector2.Distance(player.position, transform.position) < enemyMovement.VisionRange)
+        if (enemyMovement.ShouldChase())
         {
             animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Move);
         }
@@ -69,5 +72,20 @@ public class EnemyBehaviour : StateMachineBehaviour
         {
             animator.SetTrigger(AnimatorParams.Attack);
         }
+    }
+
+    protected virtual void ListenToLifeSignal()
+    {
+        if(enemyStats.Status == StatusEnum.Dead)
+        {
+            animator.SetInteger(AnimatorParams.Life, (int)enemyStats.Status);
+            enemyMovement.StopMoving();
+        }
+    }
+
+    protected void updateMovingAnimation()
+    {
+        var direction = enemyMovement.GetHeadingDirection();
+        animator.SetFloat(AnimatorParams.Horizontal, direction.normalized.x);
     }
 }

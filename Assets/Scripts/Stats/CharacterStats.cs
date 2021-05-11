@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Utils;
 
-public class CharacterStats : MonoBehaviour
+public abstract class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
     public int BaseMaxHealth;
@@ -11,6 +12,9 @@ public class CharacterStats : MonoBehaviour
     public int CurrentHealth { get; protected set; }
     public int Armor;
     public StatusEnum Status = StatusEnum.Mortal;
+    [SerializeField]
+    protected GameObject healthBar;
+    protected Image healthBarImage;
 
     public int depleteHealth = 0;
     //private readonly List<MovementBuff> movementBuffs;
@@ -19,7 +23,9 @@ public class CharacterStats : MonoBehaviour
     protected virtual void Start()
     {
         Status = StatusEnum.Mortal;
+        MaxHealth = BaseMaxHealth;
         CurrentHealth = MaxHealth;
+        GetHealthBarImage();
     }
 
 
@@ -38,7 +44,13 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(int damage)
+    protected abstract void GetHealthBarImage();
+    protected virtual void HandleHealthBar()
+    {
+        healthBarImage.fillAmount = GetHealthPercentage();
+    }
+    
+    public virtual void TakeDamage(int damage)
     {
         if (Status == StatusEnum.Mortal)
         {
@@ -47,7 +59,6 @@ public class CharacterStats : MonoBehaviour
             if (damage < 0) damage = 0;
 
             CurrentHealth -= damage;
-            //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
             HandleHealth();
         }
 
@@ -74,16 +85,22 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void HandleHealth()
     {
+        HandleHealthBar();
         if (CurrentHealth <= depleteHealth)
         {
-            Die();
+            HealthRunOut();
         }
+    }
+
+    public virtual void HealthRunOut()
+    {
+        Status = StatusEnum.Dead;
+        Debug.Log(transform.name + " Died");
+        Die();
     }
 
     public virtual void Die()
     {
-        Status = StatusEnum.Dead;
-        Debug.Log(transform.name + " Died");
         Destroy(gameObject);
     }
 

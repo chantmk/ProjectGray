@@ -47,6 +47,7 @@ public class PlayerBlueBullet : PlayerProjectile
     protected override void Attack(GameObject target)
     {
         target.GetComponent<CharacterStats>().TakeDamage(damage);
+        EventPublisher.TriggerParticleSpawn(ParticleEnum.BlueBulletSplashParticle, transform.position);
         Destroy(gameObject);
     }
 }

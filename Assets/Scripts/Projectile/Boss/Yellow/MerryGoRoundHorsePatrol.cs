@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class MerryGoRoundHorsePatrol : EnemyPatrol
 {
@@ -12,9 +13,9 @@ public class MerryGoRoundHorsePatrol : EnemyPatrol
     }
     protected override void ListenToChaseSignal()
     {
-        if(!horseMovement.IsIdle())
+        if(horseMovement.IsChase())
         {
-            animator.SetTrigger("Chase");
+            animator.SetInteger(AnimatorParams.Movement, (int)MovementEnum.Move);
         }
     }
 }

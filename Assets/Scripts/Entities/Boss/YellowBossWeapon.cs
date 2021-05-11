@@ -9,10 +9,18 @@ public class YellowBossWeapon : BossWeapon
     [SerializeField]
     private int EnrageBulletCount = 4;
     [SerializeField]
+    private float EnrageSpawnRange = 5.0f;
+    [SerializeField]
     private int HyperBulletCount = 8;
     [SerializeField]
+    private float HyperSpawnRange = 5.0f;
+    [SerializeField]
     private int DashAttackCount = 4;
+    [SerializeField]
+    private Vector2 centerPosition;
     [Header("Balloon trap parameter")]
+    [SerializeField]
+    private float TrapSpawnRange = 5.0f;
     [SerializeField]
     private float CalmTrapMaxCooldown = 1.0f;
     [SerializeField]
@@ -45,6 +53,10 @@ public class YellowBossWeapon : BossWeapon
         currentTrapCooldown -= Time.fixedDeltaTime;
     }
 
+    private Vector3 RandomAroundCenter(float range)
+    {
+        return (Vector3)centerPosition + (new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)).normalized * Random.Range(0.0f, range));
+    }
     public override void EnrageAttack(int EnrageNumber)
     {
         // This method will Instantiate some roller coaster will be called by normal attack
@@ -54,22 +66,22 @@ public class YellowBossWeapon : BossWeapon
             case (BossAggroEnum.Calm):
                 for (int i = 0; i < 1; i++)
                 {
-                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
-                    //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], RandomAroundCenter(EnrageSpawnRange), Quaternion.Euler(Vector3.zero));
+                    bullet.GetComponent<BumpCarMovement>().Shoot();
                 }
                 break;
             case (BossAggroEnum.Enrage):
                 for (int i = 0; i < EnrageBulletCount; i++)
                 {
-                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
-                    //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], RandomAroundCenter(EnrageSpawnRange), Quaternion.Euler(Vector3.zero));
+                    bullet.GetComponent<BumpCarMovement>().Shoot();
                 }
                 break;
             case (BossAggroEnum.Hyper):
                 for (int i = 0; i < HyperBulletCount; i++)
                 {
-                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], transform.position, Quaternion.Euler(Vector3.zero));
-                    //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
+                    var bullet = Instantiate(EnrageAttacks[Random.Range(0, EnrageAttacks.Length)], RandomAroundCenter(EnrageSpawnRange), Quaternion.Euler(Vector3.zero));
+                    bullet.GetComponent<BumpCarMovement>().Shoot();
                 }
                 break;
             default:
@@ -83,7 +95,7 @@ public class YellowBossWeapon : BossWeapon
         base.HyperAttack(HyperNumber);
         for (int i = 0; i < HyperBulletCount; i++)
         {
-            var bullet = Instantiate(HyperAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));
+            var bullet = Instantiate(HyperAttacks[0], centerPosition+(Vector2.up*2.0f), Quaternion.Euler(Vector3.zero));
             //bullet.GetComponent<Projectile>().Shoot(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)));
         }
     }
@@ -108,8 +120,7 @@ public class YellowBossWeapon : BossWeapon
     public void RandomSpawnTrap()
     {
         resetTrapCooldown();
-        Vector3 position = new Vector3(Random.Range(0.0f, 1.0f) * EnrageAttackRange, Random.Range(0.0f, 1.0f) * EnrageAttackRange);
-        Instantiate(trap, position, Quaternion.Euler(Vector3.zero));
+        Instantiate(trap, RandomAroundCenter(TrapSpawnRange), Quaternion.Euler(Vector3.zero));
 
     }
 
@@ -151,5 +162,17 @@ public class YellowBossWeapon : BossWeapon
             default:
                 break;
         }
+    }
+
+    public override void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(centerPosition, 3.0f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(centerPosition, 0.5f);
     }
 }

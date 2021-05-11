@@ -75,4 +75,13 @@ public class EventPublisher
     {
         DecisionMake?.Invoke(decision);
     }
+
+    public delegate void OnParticleSpawn(ParticleEnum particleEnum, Vector2 position);
+
+    public static event OnParticleSpawn ParticleSpawn;
+
+    public static void TriggerParticleSpawn(ParticleEnum particleEnum, Vector2 position)
+    {
+        ParticleSpawn?.Invoke(particleEnum, position);
+    }
 }
