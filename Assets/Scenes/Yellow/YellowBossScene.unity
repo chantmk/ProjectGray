@@ -361,6 +361,11 @@ PrefabInstance:
       propertyPath: m_TargetCamera
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3482650007038657854, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
+      propertyPath: m_PlaybackSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3847557882627877904, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -820,6 +825,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1440324254960057266, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: mercyDialogue.IsDecision
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1541575895031012169, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_Name

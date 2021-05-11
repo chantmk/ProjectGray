@@ -823,6 +823,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1378990222}
+    - target: {fileID: 4719026838900429687, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: mercyDialogue.IsDecision
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: MaxHealth
