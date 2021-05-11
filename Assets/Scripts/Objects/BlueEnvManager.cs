@@ -36,11 +36,27 @@ public class BlueEnvManager : MonoBehaviour
         
         
         EventPublisher.PlayerFire += OnPlayerFire;
+        EventPublisher.BlueBubbleDestroy += OnBlueBubbleDestroy;
     }
 
     private void OnDestroy()
     {
         EventPublisher.PlayerFire -= OnPlayerFire;
+        EventPublisher.BlueBubbleDestroy -= OnBlueBubbleDestroy;
+    }
+
+    private void OnBlueBubbleDestroy(Vector3 position)
+    {
+        CreateSmallPuddle(Coord2PuddleCoord(QuantizePosition(position)));
+    }
+
+    private void CreateSmallPuddle(Vector2Int centerCoord)
+    {
+        createPuddle(centerCoord + new Vector2Int(0,0));
+        createPuddle(centerCoord + new Vector2Int(-1,0));
+        createPuddle(centerCoord + new Vector2Int(1,0));
+        createPuddle(centerCoord + new Vector2Int(0,1));
+        createPuddle(centerCoord + new Vector2Int(0,-1));
     }
 
     private void OnPlayerFire(WeaponIDEnum weaponID)
@@ -51,7 +67,7 @@ public class BlueEnvManager : MonoBehaviour
         }
     }
 
-    private void CreateBigPuddle(Vector2Int centerCoord)
+    public void CreateBigPuddle(Vector2Int centerCoord)
     {
         
         createPuddleStrong(centerCoord);
