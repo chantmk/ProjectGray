@@ -10,9 +10,15 @@ public class BlueEnvManager : MonoBehaviour
     [SerializeField] private GameObject puddlePrefabs;
     private Dictionary<Vector2Int, BlueEnvPuddleManager> puddleDict;
     private Transform playerTransform;
+    private PlayerMovementManager playerMovementManager;
+    
     private float footOffset;
     private readonly float scale = 0.5f;
     private readonly int invScale = 2;
+    
+    public Vector2Int playerPuddleCoordCache;
+    private bool isCreateOnPlayerFire;
+
 
     public void RemovePuddle(Vector2Int key)
     {
@@ -24,7 +30,9 @@ public class BlueEnvManager : MonoBehaviour
 
         var playerGameObject = GameObject.FindGameObjectsWithTag("Player")[0];
         playerTransform = playerGameObject.transform;
+        playerMovementManager = playerGameObject.GetComponent<PlayerMovementManager>();
         footOffset = playerGameObject.GetComponent<SpriteUpdateOrder>().footOffset;
+        
         
         EventPublisher.PlayerFire += OnPlayerFire;
     }
@@ -36,9 +44,7 @@ public class BlueEnvManager : MonoBehaviour
 
     private void OnPlayerFire()
     {
-        var quantizedPosition = QuantizePosition(playerTransform.position + Vector3.up*footOffset);
-        var puddleCoord = Coord2PuddleCoord(quantizedPosition);
-        CreateBigPuddle(puddleCoord);
+        isCreateOnPlayerFire = true;
     }
 
     private void CreateBigPuddle(Vector2Int centerCoord)
@@ -54,6 +60,7 @@ public class BlueEnvManager : MonoBehaviour
     }
     private void createPuddle(Vector2Int puddleCoord)
     {
+        print("Craete");
         if (puddleDict.ContainsKey(puddleCoord))
         {
             puddleDict[puddleCoord].AddChargeOneStep();
@@ -89,11 +96,29 @@ public class BlueEnvManager : MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+    {   
+        playerPuddleCoordCache = Coord2PuddleCoord(QuantizePosition(playerTransform.position + Vector3.up*footOffset));
+
+        // if (puddleDict.ContainsKey(playerPuddleCoordCache))
+        // {
+        //     playerMovementManager.MoveSpeedFactor = 0.2f;
+        // }
+        // else
+        // {
+        //     playerMovementManager.MoveSpeedFactor = 1f;
+        // }
+        
         foreach(var item in puddleDict.Where(kvp => kvp.Value.shouldRemove).ToList())
         {
             Destroy(item.Value.gameObject);
             puddleDict.Remove(item.Key);
         }
+        
+        if (isCreateOnPlayerFire)
+        {
+            CreateBigPuddle(playerPuddleCoordCache);
+        }
+
+        isCreateOnPlayerFire = false;
     }
 }

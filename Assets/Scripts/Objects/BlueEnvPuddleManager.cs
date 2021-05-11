@@ -38,7 +38,8 @@ namespace Objects
         {
             stateMachine = new StateMachine<EnvStateEnum>(EnvStateEnum.Charging);
 
-            charge = 0.5f;
+            shouldRemove = false;
+            charge = chargeStep;
             dischargeCountDown = maxDischargeCountDown;
             spriteRenderer = GetComponent<SpriteRenderer>();
             
