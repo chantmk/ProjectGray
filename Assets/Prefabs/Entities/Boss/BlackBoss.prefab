@@ -137,6 +137,8 @@ MonoBehaviour:
     type: 3}
   hyperSprite: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
     type: 3}
+  resemblanceOrbPrefab: {fileID: 3310285250441847977, guid: 578741e2ac93a754bafbda7abe3118aa,
+    type: 3}
 --- !u!114 &563864187573055747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +196,12 @@ MonoBehaviour:
   HyperAttackMaxCooldown: 0
   HyperAttacks:
   - {fileID: 0}
+  enrageSound: {fileID: 8300000, guid: aba97606a7340da47b7733f9eb8ca084, type: 3}
+  enrageVolume: 0.7
+  hyperSound: {fileID: 0}
+  hyperVolume: 1
+  dashSound: {fileID: 0}
+  dashVolume: 1
   enrageShootAngle: 60
 --- !u!114 &1930928131
 MonoBehaviour:

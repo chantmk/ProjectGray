@@ -21,6 +21,15 @@ public class DialogueManager : MonoBehaviour
 	private Queue<Sentence> sentences;
 	private bool isDecision = false;
 
+	public AudioClip mercySound;
+	public float mercyVolume = 1f;
+	public AudioClip killSound;
+	public float killVolume = 1f;
+	public AudioClip nextSound;
+	public float nextVolume = 1f;
+	private AudioSource audioSrc;
+
+
 	// Use this for initialization
 	private void Start()
 	{
@@ -38,7 +47,8 @@ public class DialogueManager : MonoBehaviour
 		nextButton = transform.Find("NextButton").gameObject;
 		killButton = transform.Find("KillButton").gameObject;
 		mercyButton = transform.Find("MercyButton").gameObject;
-    }
+		audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
+	}
 
 	private void PlayDialogue(Dialogue dialogue)
     {
@@ -59,8 +69,21 @@ public class DialogueManager : MonoBehaviour
 		DisplayNextSentence();
 	}
 
+	public void DisplayNext()
+    {
+		PlayNextSound();
+		DisplayNextSentence();
+
+	}
+	public void PlayNextSound()
+    {
+		//Debug.Log("NEXT");
+		audioSrc.PlayOneShot(nextSound, nextVolume);
+		return;
+	}
 	public void DisplayNextSentence()
 	{
+		
 		if (isDecision && sentences.Count == 1)
         {
 			nextButton.SetActive(false);
@@ -126,12 +149,14 @@ public class DialogueManager : MonoBehaviour
 
 	public void Mercy()
 	{
+		audioSrc.PlayOneShot(mercySound, mercyVolume);
 		StopDialogue();
 		EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
 	}
 
 	public void Kill()
 	{
+		audioSrc.PlayOneShot(killSound, killVolume);
 		StopDialogue();
 		EventPublisher.TriggerDecisionMake(DecisionEnum.Kill);
 	}
