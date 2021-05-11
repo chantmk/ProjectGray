@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Yellow/YellowBossScene.unity
     guid: 514d058ec9a001b42937dc7b10ec9546
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: fcdda52b4c9c89045ab003008c5d60ac
   m_configObjects: {}

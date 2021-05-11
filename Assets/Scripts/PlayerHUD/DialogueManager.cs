@@ -6,56 +6,57 @@ using Utils;
 
 public class DialogueManager : MonoBehaviour
 {
-	private PauseManager pauseManager;
-	private Image profile;
+
+	public static DialogueStateEnum currentDialogueState = DialogueStateEnum.Enter;
+	private GameObject leftProfile;
+	private Image leftProfileImage;
+	private GameObject rightProfile;
+	private Image rightProfileImage;
 	private Text nameText;
 	private Text dialogueText;
 	private GameObject nextButton;
 	private GameObject mercyButton;
 	private GameObject killButton;
 	private Animator animator;
-	private Queue<string> sentences;
+	private Queue<Sentence> sentences;
 	private bool isDecision = false;
 
 	// Use this for initialization
-	void Start()
+	private void Start()
 	{
-		sentences = new Queue<string>();
-		profile = transform.Find("Profile").GetComponent<Image>();
+		sentences = new Queue<Sentence>();
+		
+		leftProfile = transform.Find("LeftProfile").gameObject;
+		leftProfileImage = leftProfile.GetComponent<Image>();
+		rightProfile = transform.Find("RightProfile").gameObject;
+		rightProfileImage = rightProfile.GetComponent<Image>();
+
 		nameText = transform.Find("Name").GetComponent<Text>();
 		dialogueText = transform.Find("DialogueText").GetComponent<Text>();
 		animator = transform.GetComponent<Animator>();
+
 		nextButton = transform.Find("NextButton").gameObject;
 		killButton = transform.Find("KillButton").gameObject;
 		mercyButton = transform.Find("MercyButton").gameObject;
-		pauseManager = transform.parent.GetComponent<PauseManager>();
     }
 
-	void PlayDialogue(Dialogue dialogue)
+	private void PlayDialogue(Dialogue dialogue)
     {
+		if (dialogue.sentences.Length == 0)
+        {
+			StopDialogue();
+        }
 		animator.SetBool("IsOpen", true);
-		pauseManager.PauseTime();
-		profile.sprite = dialogue.ProfilePicture;
-		nameText.text = dialogue.Name;
+		Debug.Log("Play dialogue");
+		PauseManager.PauseTime();
 		sentences.Clear();
 
-		foreach (string sentence in dialogue.sentences)
+		foreach (Sentence sentence in dialogue.sentences)
 		{
 			sentences.Enqueue(sentence);
 		}
 		isDecision = dialogue.IsDecision;
 		DisplayNextSentence();
-	}
-
-	void StopDialogue()
-	{
-		// Call event to invoke other that may subscribing this event
-		nextButton.SetActive(false);
-		mercyButton.SetActive(false);
-		killButton.SetActive(false);
-		EventPublisher.TriggerDialogueDone();
-		animator.SetBool("IsOpen", false);
-		pauseManager.ResumeTime();
 	}
 
 	public void DisplayNextSentence()
@@ -72,12 +73,26 @@ public class DialogueManager : MonoBehaviour
 			return;
 		}
 
-		string sentence = sentences.Dequeue();
+		Sentence sentence = sentences.Dequeue();
+		nameText.text = sentence.name;
+		if (sentence.IsRight)
+        {
+			rightProfile.SetActive(true);
+			leftProfile.SetActive(false);
+			rightProfileImage.sprite = sentence.ProfilePicture;
+        }
+        else
+        {
+			rightProfile.SetActive(false);
+			leftProfile.SetActive(true);
+			leftProfileImage.sprite = sentence.ProfilePicture;
+        }
+
 		StopAllCoroutines();
-		StartCoroutine(TypeSentence(sentence));
+		StartCoroutine(TypeSentence(sentence.sentence));
 	}
 
-	IEnumerator TypeSentence(string sentence)
+	private IEnumerator TypeSentence(string sentence)
 	{
 		dialogueText.text = "";
 		foreach (char letter in sentence.ToCharArray())
@@ -87,24 +102,37 @@ public class DialogueManager : MonoBehaviour
 		}
 	}
 
-	public void StartDialogue(Dialogue dialogue)
+	public void StartDialogue(DialogueStateEnum dialogueState, Dialogue dialogue)
 	{
+		Debug.Log("Start dialogue: " + dialogueState);
 		nextButton.SetActive(true);
 		killButton.SetActive(false);
 		mercyButton.SetActive(false);
+		currentDialogueState = dialogueState;
 		PlayDialogue(dialogue);
+	}
+
+	public void StopDialogue()
+	{
+		// Call event to invoke other that may subscribing this event
+		Debug.Log("Dialogue done: " + currentDialogueState);
+		nextButton.SetActive(false);
+		mercyButton.SetActive(false);
+		killButton.SetActive(false);
+		animator.SetBool("IsOpen", false);
+		EventPublisher.TriggerDialogueDone();
+		PauseManager.ResumeTime();
 	}
 
 	public void Mercy()
 	{
-		EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
 		StopDialogue();
+		EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
 	}
 
 	public void Kill()
 	{
-		EventPublisher.TriggerDecisionMake(DecisionEnum.Kill);
 		StopDialogue();
+		EventPublisher.TriggerDecisionMake(DecisionEnum.Kill);
 	}
-
 }

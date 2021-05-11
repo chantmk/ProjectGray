@@ -6,7 +6,7 @@ using Utils;
 public class EnemyWeapon : MonoBehaviour
 {
     [Header("Weapon status")]
-    public float AttackDamage = 10.0f;
+    public int AttackDamage = 1;
     public float AttackRange = 1.0f;
     [Range(0.0f, 1.0f)]
     public float AttackRatio = 0.5f;
@@ -14,6 +14,8 @@ public class EnemyWeapon : MonoBehaviour
     public bool IsRange = false;
     public GameObject ProjectileComponent;
     public int ProjectileCount = 1;
+    [SerializeField]
+    private float shootAngle = 30.0f;
 
     protected EnemyMovement enemyMovement;
 
@@ -87,7 +89,8 @@ public class EnemyWeapon : MonoBehaviour
         for (int i=0; i < ProjectileCount; i++)
         {
             var projectile = Instantiate(ProjectileComponent, transform.position, Quaternion.Euler(Vector3.zero));
-            projectile.GetComponent<Projectile>().Shoot(enemyMovement.GetVectorToPlayer());
+            var rotation = Quaternion.AngleAxis(Random.Range(-shootAngle, shootAngle), Vector3.up);
+            projectile.GetComponent<Projectile>().Shoot(rotation * enemyMovement.GetVectorToPlayer().normalized);
         }
     }
 

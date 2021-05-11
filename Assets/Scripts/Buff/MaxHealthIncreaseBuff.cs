@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MaxHealthIncreaseBuff : StatBuff
 {
-    [SerializeField] private float targetMaxHealth = 150;
+    [SerializeField] private int targetMaxHealth = 10;
 
     public void Start()
     {

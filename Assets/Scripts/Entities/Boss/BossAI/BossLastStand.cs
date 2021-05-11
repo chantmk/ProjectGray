@@ -15,11 +15,12 @@ public class BossLastStand : BossBehaviour
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
         bossStats.Status = StatusEnum.Immortal;
-        talkManager.TriggerDotBubble();
-        EventPublisher.TriggerPlayCutScene();
+        enemyRigidbody.velocity = Vector2.zero;
+        EventPublisher.EndCutscene += AskForMercy;
+        EventPublisher.DialogueDone += DialogueDoneHandler;
 
-        EventPublisher.EndCutscene += askForMercy;
-        EventPublisher.DecisionMake += DecisionHandler;
+        talkManager.TriggerDotBubble();
+        talkManager.TriggerDialogue(DialogueStateEnum.LastStand);
     }
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -29,21 +30,32 @@ public class BossLastStand : BossBehaviour
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
-        EventPublisher.EndCutscene -= askForMercy;
-        EventPublisher.DecisionMake -= DecisionHandler;
+        EventPublisher.EndCutscene -= AskForMercy;
+        EventPublisher.DialogueDone -= DialogueDoneHandler;
     }
 
-    private void askForMercy()
+    protected void AskForMercy()
     {
-        // Pop up Decision maker HUD
-        Debug.Log("Ask For Mercy");
-        talkManager.TriggerDecision();
+        talkManager.TriggerDialogue(DialogueStateEnum.Decision);
     }
 
-    void DecisionHandler(DecisionEnum decision)
+    protected virtual void DialogueDoneHandler()
     {
-        animator.SetInteger(AnimatorParams.Decision, (int)decision);
-        bossStats.Status = StatusEnum.Dead;
-        animator.SetInteger(AnimatorParams.Life, (int)bossStats.Status);
+        if (DialogueManager.currentDialogueState == DialogueStateEnum.LastStand)
+        {
+            EventPublisher.TriggerPlayCutScene();
+        }
+        else if (DialogueManager.currentDialogueState == DialogueStateEnum.Mercy)
+        {
+            bossStats.Status = StatusEnum.Dead;
+            animator.SetInteger(AnimatorParams.Decision, (int)DecisionEnum.Mercy);
+            animator.SetInteger(AnimatorParams.Life, (int)bossStats.Status);
+        }
+        else if (DialogueManager.currentDialogueState == DialogueStateEnum.Kill)
+        {
+            bossStats.Status = StatusEnum.Dead;
+            animator.SetInteger(AnimatorParams.Decision, (int)DecisionEnum.Kill);
+            animator.SetInteger(AnimatorParams.Life, (int)bossStats.Status);
+        }
     }
 }

@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3955257966538824415}
   - component: {fileID: 4297137980630701548}
-  - component: {fileID: 2887364274970151259}
   - component: {fileID: 5974347354583924481}
-  - component: {fileID: 1023446681896367548}
+  - component: {fileID: 5696635548969696090}
   m_Layer: 0
-  m_Name: Bullet2
+  m_Name: BlueBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079521686484699412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6636992917385700271}
@@ -86,23 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2887364274970151259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079521686484699412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7eca6f838574742befbb7b09d2a0a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 5
-  direction: {x: 0, y: 0}
-  ShootingRange: 0
-  shaky: 0.2
-  damage: 20
 --- !u!50 &5974347354583924481
 Rigidbody2D:
   serializedVersion: 4
@@ -124,22 +106,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1023446681896367548
-CircleCollider2D:
+--- !u!114 &5696635548969696090
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079521686484699412}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9184033548242ee92306da7c07945ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  MaxDuration: 1
+  MaxFlightSpeed: 20
+  MinFlightSpeed: 1
+  accerelation: 0.93
 --- !u!1001 &4861184984068207625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackHitbox
       objectReference: {fileID: 0}
+    - target: {fileID: 529484180667495903, guid: 097760c522c91c442a7125bdcb96c2a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
         type: 3}
       propertyPath: m_RootOrder
@@ -159,18 +147,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.126311
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6342492
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -61.484756
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2264519067867535270, guid: 097760c522c91c442a7125bdcb96c2a5,
         type: 3}
@@ -206,6 +209,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7971951804636506915, guid: 097760c522c91c442a7125bdcb96c2a5,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 097760c522c91c442a7125bdcb96c2a5, type: 3}

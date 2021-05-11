@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseMaxHealth: 0
   MaxHealth: 100
   Armor: 0
   Status: 1
@@ -134,7 +135,7 @@ MonoBehaviour:
   DashRange: 0
   DashDuration: 0
   DashCooldown: 0
-  MovePositions:
+  MovePositionsOffset:
   - {x: 0, y: 0}
 --- !u!114 &5515759759597927941
 MonoBehaviour:
@@ -156,6 +157,7 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 3781329692935539227, guid: 4f991e9dfc366854e96c69c361159cbe,
     type: 3}
   ProjectileCount: 1
+  shootAngle: 30
 --- !u!212 &322787869322666325
 SpriteRenderer:
   m_ObjectHideFlags: 0

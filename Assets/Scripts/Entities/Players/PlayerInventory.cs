@@ -19,7 +19,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] public PlayerStats playerStats;
 
-    [SerializeField] private float healValue;
+    [SerializeField] private int healValue;
 
     private List<ResemblanceBuffEnum> buffs = new List<ResemblanceBuffEnum>();
 

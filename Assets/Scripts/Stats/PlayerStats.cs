@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerStats : CharacterStats
@@ -33,16 +34,22 @@ public class PlayerStats : CharacterStats
         switch (buff)
         {
             case ResemblanceBuffEnum.IncreaseHealth:
-                setMaxHealth(BaseMaxHealth * 1.5f);
+                setMaxHealth((int) (BaseMaxHealth * 1.5f));
                 break;
             case ResemblanceBuffEnum.IncreaseStamina:
                 RechargeStamina *= 1.5f;
                 break;
             case ResemblanceBuffEnum.IncreaseDamage:
-                DamageMultiplier *= 1.5f;
+                DamageMultiplier = 1.5f;
                 break;
         }
 
 
+    }
+
+    public override void Die()
+    {
+        GameManager.Instance.HandleGameOver();
+        // SceneManager.LoadScene("MainMenuScene");
     }
 }
