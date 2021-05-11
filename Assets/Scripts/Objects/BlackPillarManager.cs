@@ -118,6 +118,11 @@ public class BlackPillarManager : MonoBehaviour
                 {
                     stateMachine.SetNextState(EnvStateEnum.ZeroCharge);
                 }
+                if (isAddCharge)
+                {
+                    stateMachine.SetNextState(EnvStateEnum.Charging);
+                    dischargeCountDown = maxDischargeCountDown;
+                }
 
                 break;
             case EnvStateEnum.Activataed:

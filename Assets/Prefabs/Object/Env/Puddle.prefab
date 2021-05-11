@@ -94,3 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e0719b027540188450a7d6de7e61a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puddleSplashPrefabs: {fileID: 7264316411559659834, guid: 34f60f0308a6ae54687c8c671d9fd3cd,
+    type: 3}
+  shouldRemove: 0
+  dischargeRate: 0.3
+  maxDischargeCountDown: 3
