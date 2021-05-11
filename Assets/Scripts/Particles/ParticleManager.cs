@@ -11,6 +11,7 @@ public class ParticleManager : MonoBehaviour
         Debug.Log("Start particle manager");
         ParticleDict = new Dictionary<ParticleEnum, GameObject>();
         //Add particle prefab
+        ParticleDict[ParticleEnum.HealingParticle] = Resources.Load("Particle/HealingParticle") as GameObject;
         ParticleDict[ParticleEnum.BlackBulletParticle] = Resources.Load("Particle/BlackBulletParticle") as GameObject;
         ParticleDict[ParticleEnum.BlueBulletSplashParticle] = Resources.Load("Particle/BlueBulletSplashParticle") as GameObject;
         
