@@ -21,12 +21,17 @@ public class EnemyWeapon : MonoBehaviour
 
     private AttackHitbox attackHitbox;
     private float attackCooldown;
-    
+
+    public AudioClip atkSound;
+    public float atkVolume = 1f;
+    private AudioSource audioSrc;
+
     public virtual void Start()
     {
         InitializeHitbox();
         attackCooldown = AttackMaxCooldown;
         enemyMovement = GetComponent<EnemyMovement>();
+        audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
     }
 
     private void InitializeHitbox()
@@ -64,6 +69,7 @@ public class EnemyWeapon : MonoBehaviour
 
     public virtual void Attack()
     {
+        audioSrc.PlayOneShot(atkSound, atkVolume);
         attackCooldown = AttackMaxCooldown;
         if (IsRange)
         {

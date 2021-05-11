@@ -23,7 +23,7 @@ public class BossStats : CharacterStats
 
     private SpriteRenderer renderer;
     
-    private static GameObject resemblanceOrbPrefab;
+    public GameObject resemblanceOrbPrefab;
 
     private ResemblanceManager resemblanceManager;
     // Start is called before the first frame update
@@ -34,7 +34,7 @@ public class BossStats : CharacterStats
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
         
-        resemblanceOrbPrefab = Resources.Load("ResemblanceOrb") as GameObject;
+        //resemblanceOrbPrefab = Resources.Load("ResemblanceOrb") as GameObject;
         resemblanceManager = resemblanceOrbPrefab.GetComponent<ResemblanceManager>();
         // Work on exception handling below
     }

@@ -137,6 +137,8 @@ MonoBehaviour:
     type: 3}
   hyperSprite: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
     type: 3}
+  resemblanceOrbPrefab: {fileID: 3310285250441847977, guid: 578741e2ac93a754bafbda7abe3118aa,
+    type: 3}
 --- !u!114 &563864187573055747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +183,8 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 0}
   ProjectileCount: 1
   shootAngle: 60
+  atkSound: {fileID: 0}
+  atkVolume: 1
   DashAttackEffectRange: 0
   DashAttackMaxCooldown: 0
   DashAttacks:

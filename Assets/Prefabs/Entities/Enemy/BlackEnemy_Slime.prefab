@@ -128,6 +128,7 @@ MonoBehaviour:
   Armor: 0
   Status: 1
   healthBar: {fileID: 0}
+  depleteHealth: 0
 --- !u!114 &1206890038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +173,8 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 0}
   ProjectileCount: 1
   shootAngle: 30
+  atkSound: {fileID: 8300000, guid: 75804766474865c42886912df7c30351, type: 3}
+  atkVolume: 0.4
 --- !u!212 &8249095275983056008
 SpriteRenderer:
   m_ObjectHideFlags: 0
