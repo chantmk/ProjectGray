@@ -26,11 +26,12 @@ namespace Players.Weapon
         {
             // weaponTransform = GetComponent
             audioSrc = GetComponent<AudioSource>();
-    }
+        }
 
-    public void Fire(Vector2 direction)
+        public void Fire(Vector2 direction)
         {
             var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
+            bullet.GetComponent<PlayerProjectile>().Shoot(direction);
             audioSrc.PlayOneShot(shootingSound, soundVolume);
 
         }

@@ -1,10 +1,18 @@
-﻿namespace Utils
+﻿using UnityEngine;
+
+namespace Utils
 {
     public static class MathUtils
     {
-        public static int Mod(int x, int m) {
+        public static int Mod(int x, int m) 
+        {
             int r = x%m;
             return r<0 ? r+m : r;
+        }
+
+        public static bool IsFloatEqual(float x, float y)
+        {
+            return Mathf.Abs(x - y) < float.Epsilon;
         }
     }
 

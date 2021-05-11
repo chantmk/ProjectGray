@@ -6,12 +6,14 @@ using Utils;
 public class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
-    public float MaxHealth = 100.0f;
-    public float CurrentHealth { get; protected set; }
-    public float Armor;
+    public int BaseMaxHealth;
+    public int MaxHealth;
+    public int CurrentHealth { get; protected set; }
+    public int Armor;
     public StatusEnum Status = StatusEnum.Mortal;
 
-    protected const float depleteHealth = 0.01f;
+    public int depleteHealth = 0;
+    //private readonly List<MovementBuff> movementBuffs;
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -20,13 +22,14 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
+
     // Update is called once per frame
     protected virtual void Update()
     {
         // TODO: remove (For debugging)
         if (Input.GetKeyDown(KeyCode.L))
         {
-            TakeDamage(5.0f);
+            TakeDamage(1);
         }
     }
 
@@ -35,28 +38,28 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if (Status == StatusEnum.Mortal)
         {
             damage -= this.Armor;
 
-            if (damage < GrayConstants.EPSILON) damage = 0.0f;
+            if (damage < 0) damage = 0;
 
             CurrentHealth -= damage;
             //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
             HandleHealth();
         }
-        
+
     }
 
-    public void Heal(float healValue)
+    public void Heal(int healValue)
     {
         if (Status != StatusEnum.Dead)
         {
-            if (healValue < GrayConstants.EPSILON)
+            if (healValue < 0)
             {
-                healValue = 0.0f;
+                healValue = 0;
             }
 
             CurrentHealth += healValue;
@@ -66,7 +69,7 @@ public class CharacterStats : MonoBehaviour
                 CurrentHealth = MaxHealth;
             }
         }
-        
+
     }
 
     public virtual void HandleHealth()
@@ -76,6 +79,7 @@ public class CharacterStats : MonoBehaviour
             Die();
         }
     }
+
     public virtual void Die()
     {
         Status = StatusEnum.Dead;
@@ -90,6 +94,11 @@ public class CharacterStats : MonoBehaviour
 
     public float GetHealthPercentage()
     {
-        return CurrentHealth / MaxHealth;
+        return (float)CurrentHealth / (float)MaxHealth;
+    }
+
+    public void setMaxHealth(int health)
+    {
+        MaxHealth = health;
     }
 }

@@ -6,12 +6,13 @@ using Utils;
 
 public class PlayerMovementManager : MonoBehaviour
 {
-
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [SerializeField] private float moveSpeed = 2.0f;
 
-    [SerializeField] private float rechargeStamina = 20.0f;
+    private PlayerStats playerStats;
+
+    [SerializeField] private float rechargeStamina => (playerStats.RechargeStamina);
 
     private float rawInputX;
     private float rawInputY;
@@ -48,6 +49,7 @@ public class PlayerMovementManager : MonoBehaviour
         
         stateMachine = new StateMachine<MovementEnum>(MovementEnum.Idle);
         image = staminaBar.GetComponent<Image>();
+        playerStats = GetComponent<PlayerStats>();
     }
 
     void Update()

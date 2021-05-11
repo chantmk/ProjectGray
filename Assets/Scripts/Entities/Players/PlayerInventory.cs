@@ -19,12 +19,9 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] public PlayerStats playerStats;
 
-    [SerializeField] private float healValue;
+    [SerializeField] private int healValue;
 
-    private List<Item> items = new List<Item>();
-
-    
-
+    private List<ResemblanceBuffEnum> buffs = new List<ResemblanceBuffEnum>();
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +36,8 @@ public class PlayerInventory : MonoBehaviour
         resemblanceText = inventoryBox.transform.Find("ResemblanceText").GetComponent<Text>();
 
         resemblanceUI.SetActive(false);
+
+
     }
 
     // Update is called once per frame
@@ -99,6 +98,21 @@ public class PlayerInventory : MonoBehaviour
     public int GetResemblanceCount()
     {
         return resemblanceCount;
+    }
+
+    public void AddBuff(ResemblanceBuffEnum buff)
+    {
+        buffs.Add(buff);
+        ApplyAllBuff();
+    }
+
+    private void ApplyAllBuff()
+    {
+        foreach (var buff in buffs)
+        {
+            playerStats.ApplyStatBuff(buff);
+        }
+
     }
 
 }

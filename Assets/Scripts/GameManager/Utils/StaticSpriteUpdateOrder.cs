@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SpriteUpdateOrderStatic : MonoBehaviour
+public class StaticSpriteUpdateOrder : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
     public float footOffset;

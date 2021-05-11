@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 1206890032}
   - component: {fileID: 4872033802944566047}
   - component: {fileID: 8249095275983056010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlackEnemy_Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ Transform:
   m_GameObject: {fileID: 8249095275983056012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.89, y: -1.74, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.78589344, y: 0.78589344, z: 0.78589344}
   m_Children:
   - {fileID: 516416394}
   m_Father: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseMaxHealth: 0
   MaxHealth: 100
   Armor: 0
   Status: 1
@@ -145,7 +146,7 @@ MonoBehaviour:
   DashDuration: 0
   DashCooldown: 0
   MovePositionsOffset:
-  - {x: 0, y: 0}
+  - {x: 0, y: 2}
 --- !u!114 &8249095275522155065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +166,7 @@ MonoBehaviour:
   IsRange: 0
   ProjectileComponent: {fileID: 0}
   ProjectileCount: 1
+  shootAngle: 30
 --- !u!212 &8249095275983056008
 SpriteRenderer:
   m_ObjectHideFlags: 0
