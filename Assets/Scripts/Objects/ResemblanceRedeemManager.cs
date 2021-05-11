@@ -106,7 +106,7 @@ public class ResemblanceRedeemManager : Interactable
             // Redeem 6 resemblances
             if (playerInventory.UseResemblance(checkpointAmount[2]))
             {
-                
+                //TODO : spawn DoubleDamage Item
             }
             else
             {
@@ -119,7 +119,7 @@ public class ResemblanceRedeemManager : Interactable
             // Redeem 4 resemblances
             if (playerInventory.UseResemblance(checkpointAmount[1]))
             {
-
+                //TODO : spawn SpeedShoe Item
             }
             else
             {
@@ -132,6 +132,7 @@ public class ResemblanceRedeemManager : Interactable
             // Redeem 2 resemblances
             if (playerInventory.UseResemblance(checkpointAmount[0]))
             {
+                //TODO : spawn HealthArmor Item
                 //TODO : playerInventory.AddBuff(ResemblanceBuffEnum.IncreaseHealth);
             }
             else
