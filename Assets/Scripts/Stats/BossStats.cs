@@ -25,6 +25,10 @@ public class BossStats : CharacterStats
 
     private Image healthBarImage;
     private SpriteRenderer renderer;
+    
+    private static GameObject resemblanceOrbPrefab;
+
+    private ResemblanceManager resemblanceManager;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -33,6 +37,9 @@ public class BossStats : CharacterStats
         healthBarImage = healthBarContainer.GetComponentInChildren<Image>();
         healthBarImage.color = Color.green;
         renderer = GetComponent<SpriteRenderer>();
+        
+        resemblanceOrbPrefab = Resources.Load("ResemblanceOrb") as GameObject;
+        resemblanceManager = resemblanceOrbPrefab.GetComponent<ResemblanceManager>();
         // Work on exception handling below
     }
 
@@ -110,5 +117,11 @@ public class BossStats : CharacterStats
         //TODO: Drop/Give item
         
         Destroy(gameObject);
+    }
+
+    public void SpawnResemblance()
+    {
+        //Do sth
+        Instantiate(resemblanceOrbPrefab, transform.position, Quaternion.identity);
     }
 }
