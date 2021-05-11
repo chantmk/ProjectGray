@@ -9,6 +9,8 @@ public class EnemyMovement : MonoBehaviour
     [Header("Movement parameters")]
     public bool ManualFlip = false;
     [SerializeField]
+    private Vector3 footOffset;
+    [SerializeField]
     private float speed = 1.0f;
     [SerializeField]
     private float visionRange = 1.0f;
@@ -49,6 +51,8 @@ public class EnemyMovement : MonoBehaviour
     protected virtual void Start()
     {
         startPosition = transform.position;
+        movePositions.Add(new Vector2(Random.Range(0,1), Random.Range(0,1)).normalized);
+        movePositions.Add(new Vector2(Random.Range(0, 1), Random.Range(0, 1)).normalized);
         movePositions.Add(Vector2.zero);
         FindHealthBar();
         for (int i=0; i<movePositions.Count; i++)
@@ -63,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         
         seeker = GetComponent<Seeker>();
-        seeker.StartPath(transform.position, player.position, onPathComplete);
+        FindPath();
     }
 
     protected virtual void Update()
@@ -146,7 +150,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void Chase()
     {
-        enemyRigidbody.velocity = (GetNextChasePosition() - transform.position).normalized * speed;
+        enemyRigidbody.velocity = (GetNextChasePosition() - (transform.position + footOffset)).normalized * speed;
     }
 
     private Vector3 GetNextChasePosition()
@@ -160,10 +164,10 @@ public class EnemyMovement : MonoBehaviour
         seekerIntervalLeft -= Time.deltaTime;
         if (seekerIntervalLeft < GrayConstants.MINIMUM_TIME)
         {
-            seeker.StartPath(transform.position, player.position, onPathComplete);
+            FindPath();
         }
 
-        if (Vector3.Distance(transform.position, path.vectorPath[currentWayPoint]) < minimumDistance)
+        if (Vector3.Distance(transform.position + footOffset, path.vectorPath[currentWayPoint]) < minimumDistance)
         {
             if (currentWayPoint < path.vectorPath.Count-1)
             {
@@ -171,7 +175,7 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                seeker.StartPath(transform.position, player.position, onPathComplete);
+                FindPath();
             }
         }
     }
@@ -184,6 +188,11 @@ public class EnemyMovement : MonoBehaviour
             currentWayPoint = 0;
             seekerIntervalLeft = seekPathInterval;
         }
+    }
+
+    private void FindPath()
+    {
+        seeker.StartPath(transform.position + footOffset, player.position, onPathComplete); 
     }
 
     public bool IsReadyToDash()
@@ -233,5 +242,9 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, visionRange);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, dashRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, transform.position + footOffset);
+        Gizmos.DrawWireCube(transform.position + footOffset, new Vector3(0.5f, 0.2f, 0.2f));
     }
 }
