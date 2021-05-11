@@ -670,12 +670,6 @@ PrefabInstance:
       objectReference: {fileID: 1472535213}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceb5d75e15e544846a7ba91c60b3a639, type: 3}
---- !u!1 &1378990222 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4532720954757015461, guid: ceb5d75e15e544846a7ba91c60b3a639,
-    type: 3}
-  m_PrefabInstance: {fileID: 1378990221}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1472535213 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1410803850, guid: 381786c5ffd72b041a148bc9a1a45df2,
@@ -818,34 +812,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 1399494168960419412, guid: 55baceafcd8e19d44a99b15999327eac,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1378990222}
-    - target: {fileID: 4719026838900429687, guid: 55baceafcd8e19d44a99b15999327eac,
-        type: 3}
-      propertyPath: mercyDialogue.IsDecision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
-        type: 3}
-      propertyPath: MaxHealth
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 832373315}
-    - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
-        type: 3}
-      propertyPath: BaseMaxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
-        type: 3}
-      propertyPath: healthBarContainer
       value: 
       objectReference: {fileID: 832373315}
     m_RemovedComponents: []
