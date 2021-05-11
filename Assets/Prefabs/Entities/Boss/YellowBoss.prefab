@@ -197,6 +197,12 @@ MonoBehaviour:
   HyperAttackMaxCooldown: 10
   HyperAttacks:
   - {fileID: 5807322506427292163, guid: 7695ad07697dd8e4d91278cd6dbdaebf, type: 3}
+  enrageSound: {fileID: 8300000, guid: 676e8c15c8710cf488c3ac34979d2e4a, type: 3}
+  enrageVolume: 0.5
+  hyperSound: {fileID: 8300000, guid: 596bf271cefbdc0419fe8eaf75fb9a23, type: 3}
+  hyperVolume: 0.5
+  dashSound: {fileID: 8300000, guid: 1da72087904d32b4b8e8ca3738718782, type: 3}
+  dashVolume: 0.5
   EnrageBulletCount: 1
   EnrageSpawnRange: 5
   HyperBulletCount: 1

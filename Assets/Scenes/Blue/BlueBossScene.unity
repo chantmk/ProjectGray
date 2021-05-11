@@ -886,6 +886,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: dashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1606c970a9047854fb79864b76c0b07b, type: 3}
+    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: dashVolume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: hyperSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 596bf271cefbdc0419fe8eaf75fb9a23, type: 3}
+    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: hyperVolume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: healthBar
