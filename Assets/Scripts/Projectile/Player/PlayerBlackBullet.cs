@@ -14,6 +14,8 @@ public class PlayerBlackBullet : PlayerProjectile
     protected override void Attack(GameObject target)
     {
         target.GetComponent<CharacterStats>().TakeDamage(damage);
+        EventPublisher.TriggerParticleSpawn(ParticleEnum.BlackBulletParticle, transform.position);
         Destroy(gameObject);
+        
     }
 }

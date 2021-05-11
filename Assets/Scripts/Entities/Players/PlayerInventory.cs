@@ -23,7 +23,7 @@ public class PlayerInventory : MonoBehaviour
 
     private List<ResemblanceBuffEnum> buffs = new List<ResemblanceBuffEnum>();
 
-    public ParticleSystem HealingParticle;
+    //public ParticleSystem HealingParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +73,7 @@ public class PlayerInventory : MonoBehaviour
         healthPackText.text = $"{healthPackCount}";
         
         //Play healing particle
-        HealingParticle.Play();
+        EventPublisher.TriggerParticleSpawn(ParticleEnum.HealingParticle, transform.position);
         return true;
     }
 
