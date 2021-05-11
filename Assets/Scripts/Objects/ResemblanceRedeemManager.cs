@@ -88,11 +88,22 @@ public class ResemblanceRedeemManager : Interactable
     public override void OnInteract()
     {
         //show ui
-        Debug.Log("Interact with resemblance redemption");
+        //Debug.Log("Interact with resemblance redemption");
         //render ui according to the amount of resemblance player has
         isOpen = !isOpen;
         resemblanceUI.SetActive(isOpen);
+
+        if (isOpen)
+        {
+            PauseManager.PauseTime();
+        }
+        else
+        {
+            PauseManager.ResumeTime();
+        }
+        
         //render redeem button
+        
 
     }
 }
