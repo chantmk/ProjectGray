@@ -7,7 +7,7 @@ public abstract class Projectile : MonoBehaviour
 {
     protected abstract List<int> targetLayers { get; }
 
-    public float damage = 10.0f;
+    public int damage = 1;
     public float MaxDuration = 3.0f;
     public float MaxFlightSpeed = 1.5f;
     public float MinFlightSpeed = 0.2f;
@@ -15,14 +15,12 @@ public abstract class Projectile : MonoBehaviour
     protected float duration;
     protected AttackHitbox attackHitbox;
     protected Rigidbody2D projectileRigidbody;
-    protected Animator animator;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
         duration = MaxDuration;
         projectileRigidbody = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         attackHitbox = transform.Find("AttackHitbox").GetComponent<AttackHitbox>();
         attackHitbox.Enable();
         attackHitbox.OnHitboxTriggerEnter = OnHitboxTriggerEnter;
@@ -65,7 +63,7 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void Execute()
     {
-        animator.SetTrigger(AnimatorParams.Execute);
+        SelfDestruct();
     }
 
     public virtual void SelfDestruct()

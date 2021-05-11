@@ -9,7 +9,7 @@ public class BumpCarMovement : EnemyMovement
     [SerializeField]
     private float bounceAngle = 60.0f;
     [SerializeField]
-    private float collisionDamage = 20.0f;
+    private int collisionDamage = 1;
     [SerializeField]
     private float consumeTime = 10.0f;
     private Vector3 currentHeading;

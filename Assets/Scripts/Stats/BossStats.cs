@@ -22,6 +22,10 @@ public class BossStats : CharacterStats
     private Sprite hyperSprite;
 
     private SpriteRenderer renderer;
+    
+    private static GameObject resemblanceOrbPrefab;
+
+    private ResemblanceManager resemblanceManager;
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -29,6 +33,9 @@ public class BossStats : CharacterStats
         healthBar.SetActive(true);
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
+        
+        resemblanceOrbPrefab = Resources.Load("ResemblanceOrb") as GameObject;
+        resemblanceManager = resemblanceOrbPrefab.GetComponent<ResemblanceManager>();
         // Work on exception handling below
     }
 
@@ -39,7 +46,7 @@ public class BossStats : CharacterStats
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            TakeCrashDamage(20.0f);
+            TakeCrashDamage(2);
         }
         if (!healthBar.activeSelf && Aggro != BossAggroEnum.LastStand)
         {
@@ -103,11 +110,11 @@ public class BossStats : CharacterStats
         }
     }
 
-    public void TakeCrashDamage(float damage)
+    public void TakeCrashDamage(int damage)
     {
         damage -= Armor;
 
-        if (damage < GrayConstants.EPSILON) damage = 0.0f;
+        if (damage < 0) damage = 0;
 
         CurrentHealth -= damage;
         Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
@@ -116,7 +123,16 @@ public class BossStats : CharacterStats
 
     public override void Die()
     {
-        base.Die();
-        // Drop/Give item
+        //base.Die();
+        Status = StatusEnum.Dead;
+        //TODO: Drop/Give item
+        
+        Destroy(gameObject);
+    }
+
+    public void SpawnResemblance()
+    {
+        //Do sth
+        Instantiate(resemblanceOrbPrefab, transform.position, Quaternion.identity);
     }
 }

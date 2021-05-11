@@ -19,9 +19,11 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] public PlayerStats playerStats;
 
-    [SerializeField] private float healValue;
+    [SerializeField] private int healValue;
 
     private List<ResemblanceBuffEnum> buffs = new List<ResemblanceBuffEnum>();
+
+    public ParticleSystem HealingParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +71,9 @@ public class PlayerInventory : MonoBehaviour
         }
         healthPackCount -= amount;
         healthPackText.text = $"{healthPackCount}";
+        
+        //Play healing particle
+        HealingParticle.Play();
         return true;
     }
 

@@ -16,7 +16,7 @@ public class MerryGoRoundHorseMovement : EnemyMovement
     [SerializeField]
     private float MaxIdleDelay = 10.0f;
     [SerializeField]
-    private float collisionDamage = 20.0f;
+    private int collisionDamage = 1;
 
     private BossAggroEnum bossStatus;
     private EnemyStats enemyStats;

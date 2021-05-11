@@ -8,7 +8,7 @@ public class EventPublisher
     // Player delegates
     //public delegate void OnPlayerJump();
     public delegate void OnPlayerPressFire();
-    public delegate void OnPlayerFire();
+    public delegate void OnPlayerFire(WeaponIDEnum weaponID);
 
     //Player stats delegates
     //public delegate void OnPlayerTakeDamage();
@@ -30,9 +30,9 @@ public class EventPublisher
         PlayerPressFire?.Invoke();
     }
 
-    public static void TriggerPlayerFire()
+    public static void TriggerPlayerFire(WeaponIDEnum weaponID)
     {
-        PlayerFire?.Invoke();
+        PlayerFire?.Invoke(weaponID);
     }
 
     //pulblic static void TriggerPlayerTakeDamage()
