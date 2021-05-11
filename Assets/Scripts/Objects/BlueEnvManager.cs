@@ -53,18 +53,22 @@ public class BlueEnvManager : MonoBehaviour
 
     private void CreateBigPuddle(Vector2Int centerCoord)
     {
-        for (int x = -1; x < 2; x++)
-        {
-            for (int y = -1; y < 2; y++)
-            {
-                createPuddle(centerCoord + new Vector2Int(x,y));
-            }
-        }
+        
+        createPuddleStrong(centerCoord);
+        createPuddleStrong(centerCoord + new Vector2Int(-1,0));
+        createPuddleStrong(centerCoord + new Vector2Int(1,0));
+        createPuddleStrong(centerCoord + new Vector2Int(0,-1));
+        createPuddleStrong(centerCoord + new Vector2Int(0,1));
+        
+        createPuddle(centerCoord + new Vector2Int(-1,-1));
+        createPuddle(centerCoord + new Vector2Int(1,-1));
+        createPuddle(centerCoord + new Vector2Int(-1,1));
+        createPuddle(centerCoord + new Vector2Int(1,1));
+        
         
     }
     private void createPuddle(Vector2Int puddleCoord)
     {
-        print("Craete");
         if (puddleDict.ContainsKey(puddleCoord))
         {
             puddleDict[puddleCoord].AddChargeOneStep();
@@ -76,6 +80,24 @@ public class BlueEnvManager : MonoBehaviour
                 Quaternion.Euler(Vector3.zero));
             var puddleManager = puddle.GetComponent<BlueEnvPuddleManager>();
             
+            puddleDict[puddleCoord] = puddleManager;
+        }
+        
+    }
+    
+    private void createPuddleStrong(Vector2Int puddleCoord)
+    {
+        if (puddleDict.ContainsKey(puddleCoord))
+        {
+            puddleDict[puddleCoord].AddChargeOneStep();
+        }
+        else
+        {
+            var puddle = Instantiate(puddlePrefabs,
+                PuddleCoord2Coord(puddleCoord),
+                Quaternion.Euler(Vector3.zero));
+            var puddleManager = puddle.GetComponent<BlueEnvPuddleManager>();
+            puddleManager.AddChargeOneStep();
             puddleDict[puddleCoord] = puddleManager;
         }
         

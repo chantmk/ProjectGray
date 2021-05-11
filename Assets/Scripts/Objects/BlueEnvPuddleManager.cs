@@ -12,7 +12,7 @@ namespace Objects
         public bool shouldRemove;
 
         private float charge;
-        private readonly float chargeStep = 0.5f;
+        private readonly float chargeStep = 0.4f;
         private readonly float maxCharge = 1;
         
         [SerializeField] private float dischargeRate; 
