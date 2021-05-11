@@ -25,6 +25,7 @@ public class BossStats : CharacterStats
     // Start is called before the first frame update
     protected override void Start()
     {
+        Teleport.DisablePortal();
         healthBar.SetActive(true);
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
@@ -36,6 +37,10 @@ public class BossStats : CharacterStats
     {
         base.Update();
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            TakeCrashDamage(20.0f);
+        }
         if (!healthBar.activeSelf && Aggro != BossAggroEnum.LastStand)
         {
             healthBar.SetActive(true);

@@ -125,6 +125,7 @@ public class DialogueManager : MonoBehaviour
 	{
 		StopDialogue();
 		EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
+		Debug.Log("Trigger");
 	}
 
 	public void Kill()

@@ -60,7 +60,7 @@ public abstract class CharacterStats : MonoBehaviour
             if (damage < GrayConstants.EPSILON) damage = 0.0f;
 
             CurrentHealth -= damage;
-            Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
+            //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
             HandleHealth();
         }
 

@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private Vector3 footOffset;
     [SerializeField]
-    private float speed = 1.0f;
+    protected float speed = 1.0f;
     [SerializeField]
     private float visionRange = 1.0f;
     [SerializeField]
@@ -34,13 +34,12 @@ public class EnemyMovement : MonoBehaviour
     protected List<Vector2> movePositions = new List<Vector2>();
 
     protected int toSpot = 0;
-    
+    protected Rigidbody2D enemyRigidbody;
     private Transform player;
     private Vector2 startPosition;
     private float dashDurationLeft;
     private float dashCooldownLeft;
     private bool isDashing = false;
-    private Rigidbody2D enemyRigidbody;
     private GameObject healthBar;
 
     private Seeker seeker;
@@ -48,22 +47,24 @@ public class EnemyMovement : MonoBehaviour
     private int currentWayPoint = 0;
     private float seekerIntervalLeft = 0.0f;
 
+    private void Awake()
+    {
+        enemyRigidbody = GetComponent<Rigidbody2D>();
+    }
     protected virtual void Start()
     {
         startPosition = transform.position;
-        movePositions.Add(new Vector2(Random.Range(0,1), Random.Range(0,1)).normalized);
-        movePositions.Add(new Vector2(Random.Range(0, 1), Random.Range(0, 1)).normalized);
-        movePositions.Add(Vector2.zero);
-        FindHealthBar();
-        for (int i=0; i<movePositions.Count; i++)
+        SetMovementPosition();
+        for (int i = 0; i < movePositions.Count; i++)
         {
             movePositions[i] += startPosition;
         }
 
+        FindHealthBar();
+
         dashDurationLeft = dashDuration;
         dashCooldownLeft = dashCooldown;
 
-        enemyRigidbody = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
         
         seeker = GetComponent<Seeker>();
@@ -73,6 +74,13 @@ public class EnemyMovement : MonoBehaviour
     protected virtual void Update()
     {
         updateDash();
+    }
+
+    protected virtual void SetMovementPosition()
+    {
+        movePositions.Add(new Vector2(Random.Range(0, 1), Random.Range(0, 1)).normalized);
+        movePositions.Add(new Vector2(Random.Range(0, 1), Random.Range(0, 1)).normalized);
+        movePositions.Add(Vector2.zero);
     }
 
     protected virtual void FindHealthBar()
@@ -85,6 +93,10 @@ public class EnemyMovement : MonoBehaviour
 
     public Vector3 GetVectorToPlayer()
     {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectsWithTag("Player")[0].transform;
+        }
         return player.position - transform.position;
     }
 
@@ -95,6 +107,10 @@ public class EnemyMovement : MonoBehaviour
 
     public Vector3 GetHeadingDirection()
     {
+        if (enemyRigidbody == null)
+        {
+            enemyRigidbody = GetComponent<Rigidbody2D>();
+        }
         return enemyRigidbody.velocity.normalized;
     }
 
@@ -118,7 +134,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void Patrol()
+    public virtual void Patrol()
     {
         enemyRigidbody.velocity = (GetNextPatrolPosition() - transform.position).normalized * speed;
     }

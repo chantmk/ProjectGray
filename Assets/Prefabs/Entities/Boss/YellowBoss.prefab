@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1477587721302976218}
   - component: {fileID: 8504992761955662557}
   - component: {fileID: 2833023321299562939}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7965072923661750314}
   - component: {fileID: 5943690059432754097}
   - component: {fileID: 2266407613150256828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: YellowBoss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 0
-  MaxHealth: 100
+  BaseMaxHealth: 100
+  MaxHealth: 0
   Armor: 0
   Status: 0
   healthBar: {fileID: 0}
@@ -158,8 +158,9 @@ MonoBehaviour:
   dashRange: 0
   dashDuration: 0
   dashCooldown: 0
-  movePositions: []
-  spotCap: 01000000
+  movePositions:
+  - {x: 10, y: 0}
+  spotCap: 010000000200000003000000
 --- !u!114 &3436206288533657521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,25 +185,29 @@ MonoBehaviour:
   DashAttackMaxCooldown: 10
   DashAttacks:
   - {fileID: 6022004361414076165, guid: 5ad0b38045926224e871f3f7a5805509, type: 3}
-  EnrageAttackRange: 5.07
+  EnrageAttackRange: 23.05
   EnrageAttackRatio: 0.57
-  EnrageAttackMaxCooldown: 10
+  EnrageAttackMaxCooldown: 3
   EnrageAttacks:
   - {fileID: 6179133934991320362, guid: bf1924f50e29141489ea8d40245da4ae, type: 3}
-  - {fileID: 6094096480085443426, guid: 97d80cb047ea384458e20612930a0ad8, type: 3}
-  HyperAttackRange: 5.04
+  - {fileID: 8390698030216503684, guid: 97d80cb047ea384458e20612930a0ad8, type: 3}
+  HyperAttackRange: 23.13
   HyperAttackRatio: 0.4
-  HyperAttackMaxCooldown: 5
+  HyperAttackMaxCooldown: 10
   HyperAttacks:
   - {fileID: 5807322506427292163, guid: 7695ad07697dd8e4d91278cd6dbdaebf, type: 3}
   EnrageBulletCount: 1
+  EnrageSpawnRange: 5
   HyperBulletCount: 1
+  HyperSpawnRange: 5
   DashAttackCount: 1
-  CalmTrapMaxCooldown: 4
+  centerPosition: {x: -2.21, y: -3.88}
+  TrapSpawnRange: 5
+  CalmTrapMaxCooldown: 5
   CalmTrapRatio: 0.32
-  EnrageTrapMaxCooldown: 2
+  EnrageTrapMaxCooldown: 3
   EnrageTrapRatio: 0.45
-  HyperTrapMaxCooldown: 1
+  HyperTrapMaxCooldown: 2
   HyperTrapRatio: 0.67
   trap: {fileID: 6022004361414076165, guid: 5ad0b38045926224e871f3f7a5805509, type: 3}
 --- !u!114 &1440324254960057266

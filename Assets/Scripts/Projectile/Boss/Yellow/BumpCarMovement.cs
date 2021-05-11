@@ -1,55 +1,95 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class BumpCarMovement : EnemyMovement
 {
     [Header("Bouncy")]
     [SerializeField]
-    private LayerMask wall;
-    [Header("Fix position")]
+    private float bounceAngle = 60.0f;
     [SerializeField]
-    private int MaxPositionCount = 8;
+    private float collisionDamage = 20.0f;
     [SerializeField]
-    private int MinPositionCount = 5;
-    [SerializeField]
-    private Vector2 BottomLeftCorner;
-    [SerializeField]
-    private Vector2 TopRightCorner;
-    [SerializeField]
-    private float duration = 10.0f;
+    private float consumeTime = 10.0f;
+    private Vector3 currentHeading;
+    private EnemyStats enemyStats;
 
     protected override void Start()
     {
         base.Start();
-        movePositions = randomPosition();
+        enemyStats = GetComponent<EnemyStats>();
+        EventPublisher.StatusChange += SelfDestruct;
     }
 
     protected override void Update()
     {
         base.Update();
-        Destroy(gameObject, duration);
     }
 
-    private List<Vector2> randomPosition()
+    private void OnDestroy()
     {
-        List<Vector2> positions = new List<Vector2>();
-        int size = Random.Range(MinPositionCount, MaxPositionCount);
-        for (int i = 0; i < size; i++)
+        EventPublisher.StatusChange -= SelfDestruct;
+    }
+
+    protected void FixedUpdate()
+    {
+        if (enemyStats.Status == StatusEnum.Dead)
         {
-            positions.Add(new Vector2(Random.Range(BottomLeftCorner.x, TopRightCorner.x), Random.Range(BottomLeftCorner.y, TopRightCorner.y)));
+            consumeTime -= Time.fixedDeltaTime;
+            if (consumeTime < GrayConstants.MINIMUM_TIME)
+            {
+                enemyStats.Die();
+            }
         }
-        return positions;
+    }
+
+    public override void Patrol()
+    {
+        enemyRigidbody.velocity = currentHeading;
+    }
+
+    public void Shoot()
+    {
+        currentHeading = -GetDirectionToPlayer() * speed;
+    }
+
+    private void RandomHeading(Collider2D collision)
+    {
+        Vector3 direction = (transform.position - (Vector3)collision.ClosestPoint(transform.position)).normalized;
+        Quaternion rotation = Quaternion.AngleAxis(Random.Range(-bounceAngle, bounceAngle), Vector3.up);
+        currentHeading = rotation * direction * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision);
-        Debug.Log(collision.transform.position - transform.position);
+        LayerMask collisionLayer = collision.gameObject.layer;
+        if (collisionLayer == LayerMask.NameToLayer("WallHitbox"))
+        {
+            RandomHeading(collision);
+        }
+        else if (collisionLayer == LayerMask.NameToLayer("Player") && enemyStats.Status != StatusEnum.Dead)
+        {
+            RandomHeading(collision);
+            collision.gameObject.GetComponent<CharacterStats>().TakeDamage(collisionDamage);
+        }
+        else if (collisionLayer == LayerMask.NameToLayer("Boss") && enemyStats.Status == StatusEnum.Dead)
+        {
+            Debug.Log("Crash");
+            collision.gameObject.GetComponent<BossStats>().TakeCrashDamage(collisionDamage);
+            enemyStats.Die();
+        }
+        else if (collisionLayer == LayerMask.NameToLayer("PlayerHitbox"))
+        {
+            Shoot();
+        }
     }
-    private void OnDrawGizmosSelected()
+
+    public void SelfDestruct(BossAggroEnum status)
     {
-        Gizmos.DrawSphere(BottomLeftCorner, 0.2f);
-        Gizmos.DrawSphere(TopRightCorner, 0.2f);
+        if (status == BossAggroEnum.LastStand)
+        {
+            Destroy(gameObject);
+        }
     }
 }
