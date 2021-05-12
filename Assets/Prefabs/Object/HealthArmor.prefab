@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4951278605208452778}
   - component: {fileID: 4951278605208452779}
   - component: {fileID: 4951278605208452772}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: HealthArmor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
