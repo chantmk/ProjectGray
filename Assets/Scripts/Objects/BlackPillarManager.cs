@@ -92,6 +92,8 @@ public class BlackPillarManager : MonoBehaviour
 
     private void SetActivateEnd()
     {
+        Status.transform.localScale = Vector3.one*0f;
+        radiusUI.Hide();
         isActivateEnd = true;
     }
     
@@ -171,13 +173,16 @@ public class BlackPillarManager : MonoBehaviour
 
     private void ActivateBlackHole()
     {
-        radiusUI.Show();
-        GameObject.Instantiate(blackHolePrefab, transform.position, quaternion.Euler(Vector3.zero));
-        Invoke("SetActivateEnd", 1f);
-        
+        radiusUI.Show(1f);
+        Invoke("ActivateBlackHoleJing2", 1f);
     }
-    
-    private void A
+
+    private void ActivateBlackHoleJing2()
+    {
+        
+        GameObject.Instantiate(blackHolePrefab, transform.position, quaternion.Euler(Vector3.zero));
+        Invoke("SetActivateEnd", 10f);
+    }
     
 
     private void OnDrawGizmos()
