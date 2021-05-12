@@ -62,12 +62,11 @@ MonoBehaviour:
   EnrageRatio: 0.71
   HyperRatio: 0.4
   Aggro: 0
-  healthBarContainer: {fileID: 3310285250441847977, guid: 578741e2ac93a754bafbda7abe3118aa,
-    type: 3}
   calmSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   enrageSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   hyperSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
-  resemblanceOrbPrefab: {fileID: 0}
+  resemblanceOrbPrefab: {fileID: 3310285250441847977, guid: 578741e2ac93a754bafbda7abe3118aa,
+    type: 3}
 --- !u!114 &1399494168960419412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +112,8 @@ MonoBehaviour:
     type: 3}
   ProjectileCount: 10
   shootAngle: 60
+  atkSound: {fileID: 0}
+  atkVolume: 1
   DashAttackEffectRange: 1
   DashAttackMaxCooldown: 3
   DashAttacks:

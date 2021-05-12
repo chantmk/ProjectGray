@@ -126,6 +126,7 @@ public class BossStats : CharacterStats
         //base.Die();
         Status = StatusEnum.Dead;
         //TODO: Drop/Give item
+        Destroy(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>());
         
         Destroy(gameObject);
     }
