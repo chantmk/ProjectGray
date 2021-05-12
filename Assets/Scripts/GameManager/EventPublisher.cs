@@ -8,7 +8,7 @@ public class EventPublisher
     // Player delegates
     //public delegate void OnPlayerJump();
     public delegate void OnPlayerPressFire();
-    public delegate void OnPlayerFire();
+    public delegate void OnPlayerFire(WeaponIDEnum weaponID);
 
     //Player stats delegates
     //public delegate void OnPlayerTakeDamage();
@@ -30,9 +30,9 @@ public class EventPublisher
         PlayerPressFire?.Invoke();
     }
 
-    public static void TriggerPlayerFire()
+    public static void TriggerPlayerFire(WeaponIDEnum weaponID)
     {
-        PlayerFire?.Invoke();
+        PlayerFire?.Invoke(weaponID);
     }
 
     //pulblic static void TriggerPlayerTakeDamage()
@@ -74,5 +74,21 @@ public class EventPublisher
     public static void TriggerDecisionMake(DecisionEnum decision)
     {
         DecisionMake?.Invoke(decision);
+    }
+
+    public delegate void OnParticleSpawn(ParticleEnum particleEnum, Vector2 position);
+
+    public static event OnParticleSpawn ParticleSpawn;
+
+    public static void TriggerParticleSpawn(ParticleEnum particleEnum, Vector2 position)
+    {
+        ParticleSpawn?.Invoke(particleEnum, position);
+    }
+    
+    public delegate void OnBlueBubbleDestroy(Vector3 position);
+    public static event OnBlueBubbleDestroy BlueBubbleDestroy;
+    public static void TriggerBlueBubbleDestroy(Vector3 position)
+    {
+        BlueBubbleDestroy?.Invoke(position);
     }
 }

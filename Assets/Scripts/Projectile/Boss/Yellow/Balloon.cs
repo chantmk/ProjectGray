@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Utils;
 
 public class Balloon : BossProjectile
 {
@@ -13,6 +14,6 @@ public class Balloon : BossProjectile
     {
         target.GetComponent<CharacterStats>().TakeDamage(damage);
         duration = 0;
-        animator.SetTrigger("Pop");
+        Execute();
     }
 }

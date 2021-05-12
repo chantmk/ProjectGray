@@ -18,7 +18,8 @@ GameObject:
   - component: {fileID: 1102555091586577402}
   - component: {fileID: 7416784804728002404}
   - component: {fileID: 305294043801756044}
-  m_Layer: 0
+  - component: {fileID: 3642012204378671296}
+  m_Layer: 9
   m_Name: BlueBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -52,14 +53,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 0
-  MaxHealth: 100
+  BaseMaxHealth: 50
+  MaxHealth: 0
   Armor: 0
   Status: 1
+  healthBar: {fileID: 0}
+  depleteHealth: 0
   EnrageRatio: 0.71
   HyperRatio: 0.4
   Aggro: 0
-  healthBarContainer: {fileID: 0}
   calmSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   enrageSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   hyperSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
@@ -75,16 +77,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c066698e35a544f40a25ea276991e5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  Speed: 1
-  VisionRange: 11.76
   ManualFlip: 0
-  DashProbability: 0.25
-  DashRange: 3
-  DashDuration: 0.2
-  DashCooldown: 5
-  MovePositionsOffset:
-  - {x: 0, y: 0}
+  footOffset: {x: 0, y: -1.42, z: 0}
+  speed: 1
+  visionRange: 1
+  minimumDistance: 0.2
+  seekPathInterval: 0.5
+  dashProbability: 0
+  dashRange: 0
+  dashDuration: 0
+  dashCooldown: 0
+  movePositions: []
   spotCap: 00000000
 --- !u!114 &3602699276726790867
 MonoBehaviour:
@@ -98,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1f6557ebe96904089a0bc2be1f73f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 2
   AttackRange: 5.52
   AttackRatio: 0.75
   AttackMaxCooldown: 2
@@ -210,7 +213,7 @@ MonoBehaviour:
     IsDecision: 0
     sentences: []
   mercyDialogue:
-    IsDecision: 1
+    IsDecision: 0
     sentences:
     - name: Little heir
       ProfilePicture: {fileID: -8497225376365943296, guid: b4fc9a3eb8191604b9578241881abfba,
@@ -225,7 +228,7 @@ MonoBehaviour:
       ProfilePicture: {fileID: 6216307911655597869, guid: b4fc9a3eb8191604b9578241881abfba,
         type: 3}
       sentence: "\u0E2D\u0E37\u0E21...\u0E41\u0E15\u0E48\u0E09\u0E31\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E44\u0E1B\u0E41\u0E25\u0E49\u0E27..."
-      IsRight: 0
+      IsRight: 1
     - name: Laira Lorelei
       ProfilePicture: {fileID: 21300000, guid: 12128925d99caab438194376417c0b1c, type: 3}
       sentence: "\u0E02\u0E2D\u0E1A\u0E04\u0E38\u0E13\u0E19\u0E30 \u0E02\u0E2D\u0E1A\u0E04\u0E38\u0E13\u0E08\u0E23\u0E34\u0E07
@@ -367,6 +370,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3642012204378671296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102555091586577404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &8888635980358798367
 GameObject:
   m_ObjectHideFlags: 0

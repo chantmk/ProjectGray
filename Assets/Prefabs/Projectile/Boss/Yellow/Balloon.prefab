@@ -42,7 +42,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -108,7 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   MaxDuration: 15
-  FlightSpeed: 0
+  MaxFlightSpeed: 1.5
+  MinFlightSpeed: 0.2
 --- !u!212 &7702666069837858796
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -6,11 +6,12 @@ using Utils;
 public class EnemyWeapon : MonoBehaviour
 {
     [Header("Weapon status")]
-    public float AttackDamage = 10.0f;
+    public int AttackDamage = 1;
     public float AttackRange = 1.0f;
     [Range(0.0f, 1.0f)]
     public float AttackRatio = 0.5f;
     public float AttackMaxCooldown = 2.0f;
+    [Header("Range parameter")]
     public bool IsRange = false;
     public GameObject ProjectileComponent;
     public int ProjectileCount = 1;
@@ -77,13 +78,13 @@ public class EnemyWeapon : MonoBehaviour
 
     protected virtual void MeleeAttack()
     {
-        Debug.Log($"Melee attack from {this.name}");
+        //Debug.Log($"Melee attack from {this.name}");
         attackHitbox.QuickEnable();
     }
 
     protected virtual void RangeAttack()
     {
-        Debug.Log($"Range attack from {this.name}");
+        //Debug.Log($"Range attack from {this.name}");
         // This method instantiate the projectile given in projectile component
         // Instant the position and then let the object do what it have to
         for (int i=0; i < ProjectileCount; i++)

@@ -10,5 +10,6 @@ public class EnemyChase : EnemyBehaviour
         enemyMovement.Chase();
         ListenToAttackSignal();
         ListenToChaseSignal();
+        updateMovingAnimation();
     }
 }

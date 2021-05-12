@@ -67,9 +67,9 @@ public class BlackPillarManager : MonoBehaviour
         }
     }
 
-    public void OnPlayerPressFire()
+    public void OnPlayerPressFire(WeaponIDEnum weaponID)
     {
-        if (isPlayerInArea)
+        if (isPlayerInArea && weaponID == WeaponIDEnum.Black)
             isAddCharge = true;
     }
 
@@ -117,6 +117,11 @@ public class BlackPillarManager : MonoBehaviour
                 if (charge == 0f)
                 {
                     stateMachine.SetNextState(EnvStateEnum.ZeroCharge);
+                }
+                if (isAddCharge)
+                {
+                    stateMachine.SetNextState(EnvStateEnum.Charging);
+                    dischargeCountDown = maxDischargeCountDown;
                 }
 
                 break;

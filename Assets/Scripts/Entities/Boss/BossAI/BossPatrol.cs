@@ -15,7 +15,7 @@ public class BossPatrol : BossBehaviour
 
     private void updateMovingAnimation()
     {
-        var direction = player.position - transform.position;
+        var direction = bossMovement.GetVectorToPlayer();
         animator.SetFloat(AnimatorParams.Horizontal, direction.normalized.x);
         animator.SetFloat(AnimatorParams.Vertical, direction.normalized.y);
     }

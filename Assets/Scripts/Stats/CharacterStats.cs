@@ -1,26 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Utils;
 
-public class CharacterStats : MonoBehaviour
+public abstract class CharacterStats : MonoBehaviour
 {
     [Header("Character base status")]
-    public float BaseMaxHealth;
-    public float MaxHealth;
-    public float CurrentHealth { get; protected set; }
-    public float Armor;
+    public int BaseMaxHealth;
+    public int MaxHealth;
+    public int CurrentHealth { get; protected set; }
+    public int Armor;
     public StatusEnum Status = StatusEnum.Mortal;
+    [SerializeField]
+    protected GameObject healthBar;
+    protected Image healthBarImage;
 
-    protected const float depleteHealth = 0.01f;
-
+    public int depleteHealth = 0;
     //private readonly List<MovementBuff> movementBuffs;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         Status = StatusEnum.Mortal;
+        MaxHealth = BaseMaxHealth;
         CurrentHealth = MaxHealth;
+        GetHealthBarImage();
     }
 
 
@@ -30,7 +35,7 @@ public class CharacterStats : MonoBehaviour
         // TODO: remove (For debugging)
         if (Input.GetKeyDown(KeyCode.L))
         {
-            TakeDamage(5.0f);
+            TakeDamage(1);
         }
     }
 
@@ -39,28 +44,33 @@ public class CharacterStats : MonoBehaviour
         CurrentHealth = MaxHealth;
     }
 
-    public void TakeDamage(float damage)
+    protected abstract void GetHealthBarImage();
+    protected virtual void HandleHealthBar()
+    {
+        healthBarImage.fillAmount = GetHealthPercentage();
+    }
+    
+    public virtual void TakeDamage(int damage)
     {
         if (Status == StatusEnum.Mortal)
         {
             damage -= this.Armor;
 
-            if (damage < GrayConstants.EPSILON) damage = 0.0f;
+            if (damage < 0) damage = 0;
 
             CurrentHealth -= damage;
-            //Debug.Log(transform.name + " -" + damage + " Health left: " + CurrentHealth);
             HandleHealth();
         }
 
     }
 
-    public void Heal(float healValue)
+    public void Heal(int healValue)
     {
         if (Status != StatusEnum.Dead)
         {
-            if (healValue < GrayConstants.EPSILON)
+            if (healValue < 0)
             {
-                healValue = 0.0f;
+                healValue = 0;
             }
 
             CurrentHealth += healValue;
@@ -75,16 +85,22 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void HandleHealth()
     {
+        HandleHealthBar();
         if (CurrentHealth <= depleteHealth)
         {
-            Die();
+            HealthRunOut();
         }
+    }
+
+    public virtual void HealthRunOut()
+    {
+        Status = StatusEnum.Dead;
+        Debug.Log(transform.name + " Died");
+        Die();
     }
 
     public virtual void Die()
     {
-        Status = StatusEnum.Dead;
-        Debug.Log(transform.name + " Died");
         Destroy(gameObject);
     }
 
@@ -95,10 +111,10 @@ public class CharacterStats : MonoBehaviour
 
     public float GetHealthPercentage()
     {
-        return CurrentHealth / MaxHealth;
+        return (float)CurrentHealth / (float)MaxHealth;
     }
 
-    public void setMaxHealth(float health)
+    public void setMaxHealth(int health)
     {
         MaxHealth = health;
     }

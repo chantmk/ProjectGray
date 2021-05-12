@@ -11,11 +11,9 @@ public class ResemblanceRedeemManager : Interactable
     public GameObject resemblanceUI;
 
 
-    private int[] checkpointAmount = { 2, 4, 6 };
-    public GameObject player;
-    public PlayerInventory playerInventory;
-    
-   
+    private int[] checkpointAmount = { 1, 2, 3};
+    private GameObject player;
+    private PlayerInventory playerInventory;
 
     private int playerResemblanceCount;
     private int requiredResemblanceCount;
@@ -90,55 +88,22 @@ public class ResemblanceRedeemManager : Interactable
     public override void OnInteract()
     {
         //show ui
-        Debug.Log("Interact with resemblance redemption");
+        //Debug.Log("Interact with resemblance redemption");
         //render ui according to the amount of resemblance player has
         isOpen = !isOpen;
         resemblanceUI.SetActive(isOpen);
-        //render redeem button
 
-    }
-
-    // For resemblance UI redeem button action
-    public void OnButtonPress()
-    {
-        if (playerResemblanceCount >= checkpointAmount[2])
+        if (isOpen)
         {
-            // Redeem 6 resemblances
-            if (playerInventory.UseResemblance(checkpointAmount[2]))
-            {
-                
-            }
-            else
-            {
-                Debug.Log("Failed to redeem 6");
-            }
-
-        }
-        else if (playerResemblanceCount >= checkpointAmount[1])
-        {
-            // Redeem 4 resemblances
-            if (playerInventory.UseResemblance(checkpointAmount[1]))
-            {
-
-            }
-            else
-            {
-                Debug.Log("Failed to redeem 4");
-            }
-
+            PauseManager.PauseTime();
         }
         else
         {
-            // Redeem 2 resemblances
-            if (playerInventory.UseResemblance(checkpointAmount[0]))
-            {
-                //TODO : playerInventory.AddBuff(ResemblanceBuffEnum.IncreaseHealth);
-            }
-            else
-            {
-                Debug.Log("Failed to redeem 2");
-            }
-
+            PauseManager.ResumeTime();
         }
+        
+        //render redeem button
+        
+
     }
 }

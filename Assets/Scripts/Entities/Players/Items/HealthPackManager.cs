@@ -5,6 +5,7 @@ using UnityEngine;
 public class HealthPackManager : Interactable
 {
     public GameObject player;
+    [SerializeField] private float dropChance;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +17,10 @@ public class HealthPackManager : Interactable
     {
         player.GetComponent<PlayerInventory>().AddHealthPack(1);
         Destroy(gameObject);
+    }
+
+    public float GetDropChance()
+    {
+        return dropChance;
     }
 }
