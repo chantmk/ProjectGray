@@ -37,6 +37,7 @@ public class PlayerStats : CharacterStats
         {
             case ResemblanceBuffEnum.IncreaseHealth:
                 setMaxHealth((int) (BaseMaxHealth * statMultiplierValue));
+                PlayerConfig.healValue = MaxHealth;
                 break;
             case ResemblanceBuffEnum.IncreaseStamina:
                 RechargeStamina = (BaseRechargeStamina * statMultiplierValue);
