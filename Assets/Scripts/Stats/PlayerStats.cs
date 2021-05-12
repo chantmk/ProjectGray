@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Utils;
 
 public class PlayerStats : CharacterStats
 {
@@ -18,11 +19,19 @@ public class PlayerStats : CharacterStats
     protected override void Start()
     {
         base.Start();
+        EventPublisher.DialogueStart += ListenDialogueStart;
+        EventPublisher.DialogueDone += ListenDialogueStart;
     }
     
     protected override void Update()
     {
         base.Update();
+    }
+
+    private void OnDestroy()
+    {
+        EventPublisher.DialogueStart -= ListenDialogueStart;
+        EventPublisher.DialogueDone -= ListenDialogueDone;
     }
 
     protected override void GetHealthBarImage()
@@ -48,6 +57,16 @@ public class PlayerStats : CharacterStats
         }
 
 
+    }
+
+    public void ListenDialogueStart()
+    {
+        Status = StatusEnum.Immortal;
+    }
+    
+    public void ListenDialogueDone()
+    {
+        Status = StatusEnum.Mortal;
     }
 
     public override void HealthRunOut()

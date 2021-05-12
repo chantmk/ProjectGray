@@ -125,6 +125,7 @@ public class DialogueManager : MonoBehaviour
 		mercyButton.SetActive(false);
 		currentDialogueState = dialogueState;
 		PlayDialogue(dialogue);
+		EventPublisher.TriggerDialogueStart();
 	}
 
 	public void StopDialogue()
