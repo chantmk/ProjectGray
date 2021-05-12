@@ -9,6 +9,7 @@ public class BlackBossWeapon : BossWeapon
     private float enrageShootAngle = 60.0f;
     public override void EnrageAttack(int EnrageNumber)
     {
+        Debug.Log("Enrage ATK");
         base.EnrageAttack(EnrageNumber);
         var enrageAttackComponent = Instantiate(EnrageAttacks[EnrageNumber], transform.position, Quaternion.Euler(Vector3.zero));
         var rotation = Quaternion.AngleAxis(Random.Range(-enrageShootAngle, enrageShootAngle), Vector3.up);

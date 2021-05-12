@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class PlayerConfig
 {
-    public static int DamageMultiplier;
-    public static bool IsWeaponBlack;
+    public static int DamageMultiplier = 1;
     public static bool IsWeaponBlue;
     public static bool IsWeaponBlackSpecial;
     public static bool IsWeaponBlueSpecial;
+    public static bool IsWeaponBlack;
 }

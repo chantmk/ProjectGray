@@ -41,7 +41,7 @@ public class BlueBossWeapon : BossWeapon
     public override void HyperAttack(int HyperNumber)
     {
         base.HyperAttack(HyperNumber);
-
+        Debug.Log("Hyper ");
         for (int i = 0; i < HyperBulletCount; i++)
         {
             Vector3 position = new Vector3(Random.Range(HyperAttackRange / 2, HyperAttackRange), Random.Range(HyperAttackRange / 2, HyperAttackRange));

@@ -11,6 +11,7 @@ TagManager:
   - Weapon
   - HealthBar
   - Boss
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - NaturalHitbox
   - WallHitbox
   - Particle
-  - 
+  - Item
   - 
   - 
   - 

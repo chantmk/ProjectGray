@@ -25,7 +25,7 @@ namespace Players.Weapon
         private void Start()
         {
             // weaponTransform = GetComponent
-            audioSrc = GetComponent<AudioSource>();
+            audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
         }
 
         public void Fire(Vector2 direction)

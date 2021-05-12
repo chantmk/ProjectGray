@@ -62,9 +62,12 @@ MonoBehaviour:
   EnrageRatio: 0.71
   HyperRatio: 0.4
   Aggro: 0
+  healthBarContainer: {fileID: 3310285250441847977, guid: 578741e2ac93a754bafbda7abe3118aa,
+    type: 3}
   calmSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   enrageSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   hyperSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
+  resemblanceOrbPrefab: {fileID: 0}
 --- !u!114 &1399494168960419412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +127,12 @@ MonoBehaviour:
   HyperAttackMaxCooldown: 8
   HyperAttacks:
   - {fileID: 7264316411559659834, guid: 34f60f0308a6ae54687c8c671d9fd3cd, type: 3}
+  enrageSound: {fileID: 8300000, guid: be49a9207c30ac54da618a3f070b8c0f, type: 3}
+  enrageVolume: 0.5
+  hyperSound: {fileID: 8300000, guid: 4f3f81e0be54fba40938c31be7af8c08, type: 3}
+  hyperVolume: 0.5
+  dashSound: {fileID: 8300000, guid: 1606c970a9047854fb79864b76c0b07b, type: 3}
+  dashVolume: 0.5
   EnrageBulletCount: 4
   HyperBulletCount: 8
   DashAttackCount: 1

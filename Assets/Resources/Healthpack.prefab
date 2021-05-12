@@ -121,5 +121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b41d672044916149a836576320efe5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   dropChance: 0.3
+  pickSound: {fileID: 0}
+  pickVolume: 0.3
