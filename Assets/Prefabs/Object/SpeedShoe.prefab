@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 361890111252141647}
   - component: {fileID: 361890111252141646}
   - component: {fileID: 361890111252141645}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: SpeedShoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

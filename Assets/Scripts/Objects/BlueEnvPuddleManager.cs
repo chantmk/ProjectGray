@@ -1,21 +1,20 @@
-﻿using System;
-using TMPro.EditorUtilities;
-using Unity.Mathematics;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using Utils;
 using MathUtils = Utils.MathUtils;
+using Random = UnityEngine.Random;
 
 namespace Objects
 {
     public class BlueEnvPuddleManager : MonoBehaviour
     {
         public GameObject puddleSplashPrefabs;
-
+        public Animator animator;
         public bool shouldRemove;
 
+        private RadiusUI radiusUI;
+        
         private float charge;
-        private readonly float chargeStep = 0.34f;
+        private readonly float chargeStep = 0.4f;
         private readonly float maxCharge = 1;
         
         [SerializeField] private float dischargeRate; 
@@ -31,7 +30,6 @@ namespace Objects
         public void AddChargeOneStep()
         {
             isAddCharge = true;
-            ChangeCharge(chargeStep);
         }
 
         void Start()
@@ -42,7 +40,10 @@ namespace Objects
             charge = chargeStep;
             dischargeCountDown = maxDischargeCountDown;
             spriteRenderer = GetComponent<SpriteRenderer>();
-            
+
+            radiusUI = GetComponentInChildren<RadiusUI>();
+
+            animator.SetFloat(AnimatorParams.AnimSpeed, Random.Range(0.1f,0.3f));
             ChangeAlpha();
         }
         
@@ -67,7 +68,15 @@ namespace Objects
         
         private void ActivatePuddle()
         {
-            // Instantiate(puddleSplashPrefabs, transform.position, Quaternion.Euler(Vector3.zero));
+            radiusUI.Show(0.5f);
+            //Instantiate(puddleSplashPrefabs, transform.position, Quaternion.Euler(Vector3.zero));
+            Invoke("CreateSplash", 0.5f);
+        }
+
+        private void CreateSplash()
+        {
+            // radiusUI.Show(0.5f);
+            Instantiate(puddleSplashPrefabs, transform.position, Quaternion.Euler(Vector3.zero));
             Die();
         }
 
@@ -102,6 +111,7 @@ namespace Objects
                                     }
                                     if (isAddCharge)
                                     {
+                                        dischargeCountDown = maxDischargeCountDown;
                                         stateMachine.SetNextState(EnvStateEnum.Charging);
                                     }
                                     break;
@@ -109,7 +119,7 @@ namespace Objects
                             
                             if (isAddCharge)
                             {
-                                ChangeCharge(0.5f); // 1/2 charge
+                                ChangeCharge(chargeStep); // 1/2 charge
                             }
                             
                             stateMachine.ChangeState();
