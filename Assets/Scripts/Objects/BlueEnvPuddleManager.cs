@@ -11,6 +11,8 @@ namespace Objects
         public Animator animator;
         public bool shouldRemove;
 
+        private RadiusUI radiusUI;
+        
         private float charge;
         private readonly float chargeStep = 0.4f;
         private readonly float maxCharge = 1;
@@ -38,7 +40,9 @@ namespace Objects
             charge = chargeStep;
             dischargeCountDown = maxDischargeCountDown;
             spriteRenderer = GetComponent<SpriteRenderer>();
-            
+
+            radiusUI = GetComponentInChildren<RadiusUI>();
+
             animator.SetFloat(AnimatorParams.AnimSpeed, Random.Range(0.1f,0.3f));
             ChangeAlpha();
         }
@@ -64,7 +68,15 @@ namespace Objects
         
         private void ActivatePuddle()
         {
-            // Instantiate(puddleSplashPrefabs, transform.position, Quaternion.Euler(Vector3.zero));
+            radiusUI.Show(0.5f);
+            //Instantiate(puddleSplashPrefabs, transform.position, Quaternion.Euler(Vector3.zero));
+            Invoke("CreateSplash", 0.5f);
+        }
+
+        private void CreateSplash()
+        {
+            // radiusUI.Show(0.5f);
+            Instantiate(puddleSplashPrefabs, transform.position, Quaternion.Euler(Vector3.zero));
             Die();
         }
 

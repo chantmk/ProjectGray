@@ -22,7 +22,6 @@ public class ParticleManager : MonoBehaviour
     private void particleSpawn(ParticleEnum particleEnum, Vector2 position)
     {
         //Spawn particle
-        Debug.Log("Spawn particle");
         ParticleSystem ps = Instantiate(ParticleDict[particleEnum], position, Quaternion.identity).GetComponent<ParticleSystem>();
         Destroy(ps.gameObject, ps.startLifetime);
     }
