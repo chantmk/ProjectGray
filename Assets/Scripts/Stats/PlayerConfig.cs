@@ -6,4 +6,5 @@ public static class PlayerConfig
 {
     public static int DamageMultiplier = 1;
     public static int HealthPackCount = 0;
+    public static int ResemblanceCount = 0;
 }
