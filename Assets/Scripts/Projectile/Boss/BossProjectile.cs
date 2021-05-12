@@ -7,15 +7,22 @@ public class BossProjectile : EnemyProjectile
     public override void Start()
     {
         base.Start();
-        EventPublisher.DecisionMake += OnDecisionMakeHandler;
+        EventPublisher.DialogueStart += OnDialogueStart;
+        //EventPublisher.DecisionMake += OnDecisionMakeHandler;
     }
 
     private void OnDestroy()
     {
-        EventPublisher.DecisionMake -= OnDecisionMakeHandler;
+        EventPublisher.DialogueStart -= OnDialogueStart;
+        //EventPublisher.DecisionMake -= OnDecisionMakeHandler;
     }
 
     public void OnDecisionMakeHandler(DecisionEnum decision)
+    {
+        Execute();
+    }
+
+    public void OnDialogueStart()
     {
         Execute();
     }

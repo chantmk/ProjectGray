@@ -43,6 +43,12 @@ public class PlayerInventory : MonoBehaviour
         resemblanceUI.SetActive(false);
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 
+        healthPackCount = PlayerConfig.HealthPackCount;
+        resemblanceCount = PlayerConfig.ResemblanceCount;
+        
+        healthPackText.text = $"{healthPackCount}";
+        resemblanceText.text = $"{resemblanceCount}";
+
 
     }
 
@@ -54,7 +60,6 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             UseHealthPack(1);
-            AddResemblance(1);
         }
     }
 

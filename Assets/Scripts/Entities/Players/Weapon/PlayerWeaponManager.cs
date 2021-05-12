@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Players.Weapon;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utils;
 
 public class PlayerWeaponManager : MonoBehaviour
@@ -36,7 +38,7 @@ public class PlayerWeaponManager : MonoBehaviour
     {
         camera = Camera.main;
         
-        weaponNumber = transform.childCount;
+        weaponNumber = transform.childCount;;
         //print( weaponNumber );
         for (int i = 0; i < weaponNumber; i++)
         {
@@ -45,23 +47,49 @@ public class PlayerWeaponManager : MonoBehaviour
             var id = (int)weapon.WeaponID;
             
             weaponObject.SetActive(false);
-            
             weaponIDs.Add(id);
+    
+            
             weaponObjects[id] = weaponObject;
             weapons[id] = weapon;
+            
         }
         
         // TODO
-        weaponObjects[(int)WeaponIDEnum.Black].SetActive(true);
-        CurrentWeaponID = (int) WeaponIDEnum.Black;
+        weaponObjects[(int)WeaponIDEnum.Cheap].SetActive(true);
+        CurrentWeaponID = (int) WeaponIDEnum.Cheap;
         
         playerTransform = transform.parent;
         EventPublisher.PlayerPressFire += processFireCommand;
+
+        EventPublisher.DecisionMake += OnDecisionMake;
+    }
+
+    private void OnDecisionMake(DecisionEnum decision)
+    {
+        var scenename = SceneManager.GetActiveScene().name;
+        if (scenename == "BlackBossScene")
+        {
+            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Black);
+            if (decision == DecisionEnum.Kill)
+            {
+                PlayerConfig.IsWeaponBlackSpecial = true;
+            }
+        }
+        else if (scenename == "BlueBossScene")
+        {
+            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Blue);
+            if (decision == DecisionEnum.Kill)
+            {
+                PlayerConfig.IsWeaponBlueSpecial = true;
+            }
+        }
     }
 
     private void OnDestroy()
     {
         EventPublisher.PlayerPressFire -= processFireCommand;
+        EventPublisher.DecisionMake -= OnDecisionMake;
     }
 
     // Update is called once per frame
@@ -75,6 +103,24 @@ public class PlayerWeaponManager : MonoBehaviour
 
     void Update()
     {
+        //Debug
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Black);
+        }
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Blue);
+        }
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            PlayerConfig.IsWeaponBlackSpecial = true;
+        }
+        if (Input.GetKeyDown(KeyCode.Equals))
+        {
+            PlayerConfig.IsWeaponBlueSpecial = true;
+        }
+        
         var playerPosition = playerTransform.position;
         Direction = ((Vector2) (camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition)).normalized;
         transform.position = playerPosition + (Vector3)Direction * HoverDistance;
@@ -98,16 +144,33 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void ChangeWeaponPrev()
     {
-        weaponObjects[CurrentWeaponID].SetActive(false);
-        CurrentWeaponID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
-        
-        weaponObjects[CurrentWeaponID].SetActive(true);
+            weaponObjects[CurrentWeaponID].SetActive(false);
+            var nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
+            CurrentWeaponID = nextID;
+            while (!PlayerConfig.HaveWeapon.Contains(nextID))
+            {
+                nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
+                CurrentWeaponID = nextID;
+            }
+            
+            
+            
+            weaponObjects[CurrentWeaponID].SetActive(true);
     }
 
     public void ChangeWeaponNext()
     {
-        weaponObjects[CurrentWeaponID].SetActive(false);
-        CurrentWeaponID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
-        weaponObjects[CurrentWeaponID].SetActive(true);
+        if (weaponIDs.Count > 1)
+        {
+            weaponObjects[CurrentWeaponID].SetActive(false);
+            var nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) + 1, weaponNumber)];
+            CurrentWeaponID = nextID;
+            while (!PlayerConfig.HaveWeapon.Contains(nextID))
+            {
+                nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) + 1, weaponNumber)];
+                CurrentWeaponID = nextID;
+            }
+            weaponObjects[CurrentWeaponID].SetActive(true);
+        }
     }
 }

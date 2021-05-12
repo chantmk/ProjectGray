@@ -13,6 +13,8 @@ public class BlackPillarManager : MonoBehaviour
 {
     public Sprite[] sprites = new Sprite[3];
     public GameObject blackHolePrefab;
+    public Transform Status;
+    public RadiusUI radiusUI;
     
     private int level;
     private readonly int maxLevel = 2;
@@ -77,6 +79,8 @@ public class BlackPillarManager : MonoBehaviour
     {
         charge += amount;
         charge = Mathf.Max(Mathf.Min(charge, maxCharge), 0f);
+
+        Status.transform.localScale = Vector3.one * (1.5f * charge);
         var newLevel = charge == 0f ? 0: (charge > 0.5 ? 2 : 1) ;
         if (newLevel != level)
         {
@@ -88,6 +92,8 @@ public class BlackPillarManager : MonoBehaviour
 
     private void SetActivateEnd()
     {
+        Status.transform.localScale = Vector3.one*0f;
+        radiusUI.Hide();
         isActivateEnd = true;
     }
     
@@ -156,15 +162,29 @@ public class BlackPillarManager : MonoBehaviour
             case EnvStateEnum.Activataed:
                 if (stateMachine.PreviousState != EnvStateEnum.Activataed)
                 {
-                    GameObject.Instantiate(blackHolePrefab, transform.position, quaternion.Euler(Vector3.zero));
-                    Invoke("SetActivateEnd", 1f);
+                    ActivateBlackHole();
+                    
                 }
                 break;
         }
 
         isAddCharge = false;
     }
+
+    private void ActivateBlackHole()
+    {
+        radiusUI.Show(2f);
+        Invoke("ActivateBlackHoleJing2", 2f);
+    }
+
+    private void ActivateBlackHoleJing2()
+    {
+        
+        GameObject.Instantiate(blackHolePrefab, transform.position, quaternion.Euler(Vector3.zero));
+        Invoke("SetActivateEnd", 10f);
+    }
     
+
     private void OnDrawGizmos()
     {
         if (Application.isPlaying)

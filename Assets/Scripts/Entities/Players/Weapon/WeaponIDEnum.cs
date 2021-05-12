@@ -3,4 +3,5 @@
     Black,
     Yellow,
     Blue,
+    Cheap,
 }
