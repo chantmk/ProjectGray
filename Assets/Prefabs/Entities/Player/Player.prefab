@@ -159,7 +159,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571559736}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &811335463
 SpriteRenderer:
@@ -461,9 +461,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4137414237471724563}
   - {fileID: 811335462}
   - {fileID: 1903335473}
-  - {fileID: 4137414237471724563}
   m_Father: {fileID: 4532720954757015451}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HoverDistance: 0.75
   Direction: {x: 1, y: 0}
-  currentWeaponID: 0
+  currentWeaponID: 3
 --- !u!1 &1903335472
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +513,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571559736}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1903335476
 SpriteRenderer:
@@ -632,7 +632,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571559736}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6195688419575657890
 SpriteRenderer:
@@ -673,8 +673,7 @@ SpriteRenderer:
   m_SortingLayerID: -2050882081
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4710378942119259419, guid: 9f89ee25a98a0544a97772dc8c03dff9,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12ea39f8efff13f4dbd7a971f5538934, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -697,9 +696,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f409ad43564731a44de661b9cadb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObject: {fileID: 3803865437179387221, guid: 584387ce4f609714d988fbaa56048471,
+  bulletObject: {fileID: 3803865437179387221, guid: 601db7e629c61224486db410a9ec52e3,
     type: 3}
-  weaponID: 0
+  weaponID: 3
   maxFireCooldown: 0.5
   shootingSound: {fileID: 8300000, guid: 8acf3e811d84dca439ee67257afa084a, type: 3}
   soundVolume: 0.3
@@ -830,6 +829,7 @@ GameObject:
   - component: {fileID: 7156235225171064192}
   - component: {fileID: 620563490}
   - component: {fileID: 1381136330}
+  - component: {fileID: 6310069749525297950}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseMaxHealth: 5
-  MaxHealth: 100
+  MaxHealth: 5
   Armor: 0
   Status: 0
   healthBar: {fileID: 0}
@@ -1037,9 +1037,9 @@ MonoBehaviour:
   player: {fileID: 0}
   playerStats: {fileID: 0}
   healValue: 0
+  HealingParticle: {fileID: 0}
   healSound: {fileID: 8300000, guid: 60d8266d705af744ba26352d13c7a98c, type: 3}
   healVolume: 0.6
-  HealingParticle: {fileID: 0}
 --- !u!95 &1381136330
 Animator:
   serializedVersion: 3

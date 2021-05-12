@@ -54,7 +54,6 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             UseHealthPack(1);
-            AddResemblance(1);
         }
     }
 

@@ -30,8 +30,21 @@ namespace Players.Weapon
 
         public void Fire(Vector2 direction)
         {
-            var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
-            bullet.GetComponent<PlayerProjectile>().Shoot(direction);
+            if (weaponID == WeaponIDEnum.Black && PlayerConfig.IsWeaponBlackSpecial)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
+                    bullet.GetComponent<PlayerProjectile>().Shoot(Quaternion.AngleAxis(i*30-30, Vector3.forward) * direction);
+                
+                }
+            }
+            else
+            {
+                var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
+                bullet.GetComponent<PlayerProjectile>().Shoot(direction);
+            }
+            
             audioSrc.PlayOneShot(shootingSound, soundVolume);
 
         }

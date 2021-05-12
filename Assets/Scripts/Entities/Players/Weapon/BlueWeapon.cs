@@ -44,7 +44,13 @@ namespace Players.Weapon
         {
             int sign = 1;
             audioSrc.PlayOneShot(shootingSound, soundVolume);
-            for (int i = 0; i < bulletAmount; i++)
+            var actualAount = bulletAmount;
+            if (PlayerConfig.IsWeaponBlueSpecial)
+            {
+                actualAount = 9;
+                maxScatterAngle = 70;
+            }
+            for (int i = 0; i < actualAount; i++)
             {
                 sign *= -1;
                 var angle = sign * Random.Range(0f, maxScatterAngle);

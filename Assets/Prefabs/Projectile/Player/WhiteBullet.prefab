@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8861078287528897344}
   - component: {fileID: -6472121074493143935}
   m_Layer: 0
-  m_Name: BlackBullet
+  m_Name: WhiteBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 266bed4d1a63c064fa6598d6ff6f598f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12ea39f8efff13f4dbd7a971f5538934, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e404db446d60449c966beafd91f2bcd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 1
   MaxDuration: 5
   MaxFlightSpeed: 15
   MinFlightSpeed: 0.2
