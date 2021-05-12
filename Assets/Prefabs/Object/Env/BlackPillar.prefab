@@ -140,7 +140,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ec9d8218fc0cd1545ab955581a019917, type: 3}
   - {fileID: 21300000, guid: 5ab2f2f84b4ce224fbce1c7a06b9f7a0, type: 3}
   - {fileID: 21300000, guid: 16de54e0e105edc43b95dad58002e7a5, type: 3}
-  blackHolePrefab: {fileID: 3324922126660757951, guid: c782d94ccd12d52469f10ea75ff6606c,
+  blackHolePrefab: {fileID: 3324922126660757951, guid: 492e92f347a2fbf4ebce5c0b01005fb3,
     type: 3}
   Status: {fileID: 7705093708227895043}
   radiusUI: {fileID: 2080266176868995766}

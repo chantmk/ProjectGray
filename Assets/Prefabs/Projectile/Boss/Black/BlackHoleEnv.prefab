@@ -59,7 +59,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 7
 --- !u!1 &3324922126660757951
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,8 +112,8 @@ MonoBehaviour:
   MaxDuration: 10
   MaxFlightSpeed: 2
   MinFlightSpeed: 0.5
-  pullStrength: 50
-  affectRange: 1.5
+  pullStrength: 100
+  affectRange: 7
 --- !u!212 &3324922126660757950
 SpriteRenderer:
   m_ObjectHideFlags: 0
