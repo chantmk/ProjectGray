@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 7156235225171064192}
   - component: {fileID: 620563490}
   - component: {fileID: 1381136330}
+  - component: {fileID: 6310069749525297950}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -791,7 +792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseMaxHealth: 5
-  MaxHealth: 100
+  MaxHealth: 5
   Armor: 0
   Status: 0
   healthBar: {fileID: 0}
@@ -823,10 +824,10 @@ MonoBehaviour:
   resemblanceCount: 0
   player: {fileID: 0}
   playerStats: {fileID: 0}
-  healValue: 0
+  healValue: 5
+  HealingParticle: {fileID: 0}
   healSound: {fileID: 8300000, guid: 60d8266d705af744ba26352d13c7a98c, type: 3}
   healVolume: 0.6
-  HealingParticle: {fileID: 0}
 --- !u!95 &1381136330
 Animator:
   serializedVersion: 3
