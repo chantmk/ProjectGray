@@ -7,6 +7,7 @@ using UnityEngine.Tilemaps;
 // [ExecuteAlways]
 public class BlueEnvManager : MonoBehaviour
 {
+    [SerializeField] private Sprite[] puddleSprites = new Sprite[6];
     [SerializeField] private GameObject puddlePrefabs;
     private Dictionary<Vector2Int, BlueEnvPuddleManager> puddleDict;
     private Transform playerTransform;
@@ -35,11 +36,27 @@ public class BlueEnvManager : MonoBehaviour
         
         
         EventPublisher.PlayerFire += OnPlayerFire;
+        EventPublisher.BlueBubbleDestroy += OnBlueBubbleDestroy;
     }
 
     private void OnDestroy()
     {
         EventPublisher.PlayerFire -= OnPlayerFire;
+        EventPublisher.BlueBubbleDestroy -= OnBlueBubbleDestroy;
+    }
+
+    private void OnBlueBubbleDestroy(Vector3 position)
+    {
+        CreateSmallPuddle(Coord2PuddleCoord(QuantizePosition(position)));
+    }
+
+    private void CreateSmallPuddle(Vector2Int centerCoord)
+    {
+        createPuddle(centerCoord + new Vector2Int(0,0));
+        createPuddle(centerCoord + new Vector2Int(-1,0));
+        createPuddle(centerCoord + new Vector2Int(1,0));
+        createPuddle(centerCoord + new Vector2Int(0,1));
+        createPuddle(centerCoord + new Vector2Int(0,-1));
     }
 
     private void OnPlayerFire(WeaponIDEnum weaponID)
@@ -50,30 +67,53 @@ public class BlueEnvManager : MonoBehaviour
         }
     }
 
-    private void CreateBigPuddle(Vector2Int centerCoord)
+    public void CreateBigPuddle(Vector2Int centerCoord)
     {
-        for (int x = -1; x < 2; x++)
-        {
-            for (int y = -1; y < 2; y++)
-            {
-                createPuddle(centerCoord + new Vector2Int(x,y));
-            }
-        }
+        
+        createPuddleStrong(centerCoord);
+        createPuddleStrong(centerCoord + new Vector2Int(-1,0));
+        createPuddleStrong(centerCoord + new Vector2Int(1,0));
+        createPuddleStrong(centerCoord + new Vector2Int(0,-1));
+        createPuddleStrong(centerCoord + new Vector2Int(0,1));
+        
+        createPuddle(centerCoord + new Vector2Int(-1,-1));
+        createPuddle(centerCoord + new Vector2Int(1,-1));
+        createPuddle(centerCoord + new Vector2Int(-1,1));
+        createPuddle(centerCoord + new Vector2Int(1,1));
+        
         
     }
     private void createPuddle(Vector2Int puddleCoord)
     {
-        print("Craete");
         if (puddleDict.ContainsKey(puddleCoord))
         {
             puddleDict[puddleCoord].AddChargeOneStep();
         }
         else
         {
-            var puddleManager = Instantiate(puddlePrefabs, 
-                PuddleCoord2Coord(puddleCoord), 
-                Quaternion.Euler(Vector3.zero)).GetComponent<BlueEnvPuddleManager>();
-
+            var puddle = Instantiate(puddlePrefabs,
+                PuddleCoord2Coord(puddleCoord),
+                Quaternion.Euler(Vector3.zero));
+            var puddleManager = puddle.GetComponent<BlueEnvPuddleManager>();
+            
+            puddleDict[puddleCoord] = puddleManager;
+        }
+        
+    }
+    
+    private void createPuddleStrong(Vector2Int puddleCoord)
+    {
+        if (puddleDict.ContainsKey(puddleCoord))
+        {
+            puddleDict[puddleCoord].AddChargeOneStep();
+        }
+        else
+        {
+            var puddle = Instantiate(puddlePrefabs,
+                PuddleCoord2Coord(puddleCoord),
+                Quaternion.Euler(Vector3.zero));
+            var puddleManager = puddle.GetComponent<BlueEnvPuddleManager>();
+            puddleManager.AddChargeOneStep();
             puddleDict[puddleCoord] = puddleManager;
         }
         
@@ -82,8 +122,8 @@ public class BlueEnvManager : MonoBehaviour
     private Vector3 QuantizePosition(Vector3 position)
     {
         return new Vector3(
-            Mathf.Round((position.x -0.25f)* invScale) * scale,
-            Mathf.Round((position.y -0.25f)* invScale) * scale,
+            Mathf.Round((position.x - 0.25f) * invScale) * scale,
+            Mathf.Round((position.y - 0.25f) * invScale) * scale,
             0f
         );
     }
@@ -95,7 +135,7 @@ public class BlueEnvManager : MonoBehaviour
     
     private Vector3 PuddleCoord2Coord(Vector2Int coord)
     {
-        return new Vector3(coord.x * scale, coord.y * scale, 0f);
+        return new Vector3(coord.x * scale + 0.25f, coord.y * scale + 0.25f, 0f);
     }
 
     void FixedUpdate()

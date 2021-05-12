@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackDamage: 1
-  AttackRange: 1.5
+  AttackRange: 2.56
   AttackRatio: 0.5
   AttackMaxCooldown: 2
   IsRange: 1

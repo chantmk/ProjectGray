@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 017cd658eb376444b8032867d68b46bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 2
   MaxDuration: 10
-  FlightSpeed: 1
+  MaxFlightSpeed: 4
+  MinFlightSpeed: 1
   isStunt: 1
   stuntDuration: 1
 --- !u!212 &217903051370320711

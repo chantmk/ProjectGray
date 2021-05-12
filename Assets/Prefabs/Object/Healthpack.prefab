@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8199501130399546959}
   - component: {fileID: 8199501130399546960}
   - component: {fileID: 8199501130399546961}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Healthpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}

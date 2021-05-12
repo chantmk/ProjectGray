@@ -43,6 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 995b51a6e61840c4298027f5c00221c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puddleSprites:
+  - {fileID: 2746616444389416295, guid: 89229a374e0cb904ab8c85a7f728a125, type: 3}
+  - {fileID: -6582975216672204439, guid: 89229a374e0cb904ab8c85a7f728a125, type: 3}
+  - {fileID: -2301316435261215850, guid: 89229a374e0cb904ab8c85a7f728a125, type: 3}
+  - {fileID: 3678345246335718504, guid: 89229a374e0cb904ab8c85a7f728a125, type: 3}
+  - {fileID: -7823658836229782371, guid: 89229a374e0cb904ab8c85a7f728a125, type: 3}
+  - {fileID: 4653046054671271989, guid: 89229a374e0cb904ab8c85a7f728a125, type: 3}
   puddlePrefabs: {fileID: 316490964001467468, guid: 4302161def4cdae479d22ccd94497903,
     type: 3}
   playerPuddleCoordCache: {x: 0, y: 0}

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class PlayerConfig
 {
-    public static int DamageMultiplier;
+    public static int DamageMultiplier = 1;
 }
