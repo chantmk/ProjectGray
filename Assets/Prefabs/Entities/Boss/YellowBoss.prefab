@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 15
+  BaseMaxHealth: 60
   MaxHealth: 15
   Armor: 0
   Status: 0
@@ -188,21 +188,21 @@ MonoBehaviour:
   - {fileID: 6022004361414076165, guid: 5ad0b38045926224e871f3f7a5805509, type: 3}
   EnrageAttackRange: 23.05
   EnrageAttackRatio: 0.57
-  EnrageAttackMaxCooldown: 3
+  EnrageAttackMaxCooldown: 5
   EnrageAttacks:
   - {fileID: 6179133934991320362, guid: bf1924f50e29141489ea8d40245da4ae, type: 3}
   - {fileID: 8390698030216503684, guid: 97d80cb047ea384458e20612930a0ad8, type: 3}
   HyperAttackRange: 23.13
   HyperAttackRatio: 0.4
-  HyperAttackMaxCooldown: 10
+  HyperAttackMaxCooldown: 12
   HyperAttacks:
   - {fileID: 5807322506427292163, guid: 7695ad07697dd8e4d91278cd6dbdaebf, type: 3}
   EnrageBulletCount: 1
-  EnrageSpawnRange: 5
+  EnrageSpawnRange: 3
   HyperBulletCount: 1
-  HyperSpawnRange: 5
+  HyperSpawnRange: 3
   DashAttackCount: 1
-  centerPosition: {x: -2.21, y: -3.88}
+  centerPosition: {x: -2.21, y: -0.71}
   TrapSpawnRange: 5
   CalmTrapMaxCooldown: 5
   CalmTrapRatio: 0.32
@@ -294,7 +294,7 @@ MonoBehaviour:
       sentence: "\u0E41\u0E2D\u0E48\u0E01555555 555555555"
       IsRight: 0
   mercyDialogue:
-    IsDecision: 1
+    IsDecision: 0
     sentences:
     - name: Little heir
       ProfilePicture: {fileID: -7546562681500478495, guid: b4fc9a3eb8191604b9578241881abfba,

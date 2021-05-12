@@ -11,6 +11,7 @@ public class EnemyWeapon : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float AttackRatio = 0.5f;
     public float AttackMaxCooldown = 2.0f;
+    [Header("Range parameter")]
     public bool IsRange = false;
     public GameObject ProjectileComponent;
     public int ProjectileCount = 1;

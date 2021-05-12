@@ -112,11 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 30
+  BaseMaxHealth: 5
   MaxHealth: 0
   Armor: 0
   Status: 1
   healthBar: {fileID: 0}
+  depleteHealth: 0
 --- !u!114 &8927539840941536687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
   - {x: 0, y: 0.5}
   - {x: 0, y: -0.5}
   MaxIdleDelay: 10
-  collisionDamage: 20
+  collisionDamage: 2
 --- !u!95 &6461289664328180922
 Animator:
   serializedVersion: 3
@@ -308,6 +309,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1791362188960812967}
     m_Modifications:
+    - target: {fileID: 237807035180898445, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 60163163
+      objectReference: {fileID: 0}
     - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Name

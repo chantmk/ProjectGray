@@ -23,10 +23,7 @@ public class PlayerInventory : MonoBehaviour
 
     private List<ResemblanceBuffEnum> buffs = new List<ResemblanceBuffEnum>();
 
-    public ParticleSystem HealingParticle;
-    public AudioClip healingSound;
-    public float soundVolume = 1f;
-    private AudioSource audioSrc;
+    //public ParticleSystem HealingParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -77,9 +74,7 @@ public class PlayerInventory : MonoBehaviour
         healthPackText.text = $"{healthPackCount}";
         
         //Play healing particle
-        HealingParticle.Play();
-        //Play heal sound
-        audioSrc.PlayOneShot(healingSound, soundVolume);
+        EventPublisher.TriggerParticleSpawn(ParticleEnum.HealingParticle, transform.position);
         return true;
     }
 
