@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3347655081861880093}
   - component: {fileID: 26587493315669903}
   - component: {fileID: 5165298189996748146}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   MaxDuration: 10
-  FlightSpeed: 0
+  MaxFlightSpeed: 1.5
+  MinFlightSpeed: 0.2
 --- !u!212 &1728827443324649766
 SpriteRenderer:
   m_ObjectHideFlags: 0

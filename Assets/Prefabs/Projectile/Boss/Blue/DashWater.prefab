@@ -50,7 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   MaxDuration: 5
-  FlightSpeed: 0
+  MaxFlightSpeed: 1.5
+  MinFlightSpeed: 0.2
 --- !u!212 &3427061052686157399
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -166,7 +167,7 @@ GameObject:
   - component: {fileID: 8533552401982606654}
   - component: {fileID: 956118239642176560}
   - component: {fileID: 8215879628624549152}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
