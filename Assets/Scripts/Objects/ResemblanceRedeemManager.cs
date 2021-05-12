@@ -11,7 +11,7 @@ public class ResemblanceRedeemManager : Interactable
     public GameObject resemblanceUI;
 
 
-    private int[] checkpointAmount = { 2, 4, 6 };
+    private int[] checkpointAmount = { 1, 2, 3};
     private GameObject player;
     private PlayerInventory playerInventory;
 

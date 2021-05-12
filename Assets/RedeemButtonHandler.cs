@@ -10,7 +10,7 @@ public class RedeemButtonHandler : MonoBehaviour
     private PlayerInventory playerInventory;
     
     private int playerResemblanceCount;
-    private readonly int[] checkpointAmount = { 2, 4, 6 };
+    private readonly int[] checkpointAmount = {1, 2, 3 };
 
     public GameObject DoubleDamagePrefab;
     public GameObject SpeedShoePrefab;
