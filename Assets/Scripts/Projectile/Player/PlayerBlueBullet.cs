@@ -49,6 +49,12 @@ public class PlayerBlueBullet : PlayerProjectile
     {
         target.GetComponent<CharacterStats>().TakeDamage(damage);
         EventPublisher.TriggerParticleSpawn(ParticleEnum.BlueBulletSplashParticle, transform.position);
-        Destroy(gameObject);
+        Execute();
+    }
+
+    protected override void Execute()
+    {
+        EventPublisher.TriggerBlueBubbleDestroy(transform.position);
+        SelfDestruct();
     }
 }

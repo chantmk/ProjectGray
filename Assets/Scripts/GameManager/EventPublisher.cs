@@ -84,4 +84,11 @@ public class EventPublisher
     {
         ParticleSpawn?.Invoke(particleEnum, position);
     }
+    
+    public delegate void OnBlueBubbleDestroy(Vector3 position);
+    public static event OnBlueBubbleDestroy BlueBubbleDestroy;
+    public static void TriggerBlueBubbleDestroy(Vector3 position)
+    {
+        BlueBubbleDestroy?.Invoke(position);
+    }
 }

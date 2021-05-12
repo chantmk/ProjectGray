@@ -788,7 +788,7 @@ MonoBehaviour:
     type: 3}
   weaponID: 2
   maxFireCooldown: 1
-  maxScatterAngle: 20
+  maxScatterAngle: 45
   bulletAmount: 5
   shootingSound: {fileID: 8300000, guid: 947f505725f7f1242b54f89d47e0dd59, type: 3}
   soundVolume: 0.4
