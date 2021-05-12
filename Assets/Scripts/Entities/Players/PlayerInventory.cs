@@ -61,6 +61,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddHealthPack(int amount)
     {
         healthPackCount += amount;
+        PlayerConfig.HealthPackCount = healthPackCount;
         Debug.Log("Total health pack " + healthPackCount);
         healthPackText.text = $"{healthPackCount}";
     }
