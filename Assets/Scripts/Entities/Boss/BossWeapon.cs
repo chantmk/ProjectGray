@@ -35,7 +35,6 @@ public class BossWeapon : EnemyWeapon
     private float EnrageAttackCooldown;
     private float HyperAttackCooldown;
     private float DashAttackCooldown;
-
     public AudioClip enrageSound;
     public float enrageVolume = 1f;
     public AudioClip hyperSound;
@@ -43,6 +42,7 @@ public class BossWeapon : EnemyWeapon
     public AudioClip dashSound;
     public float dashVolume = 1f;
     private AudioSource audioSrc;
+
 
     public override void Start()
     {
@@ -107,13 +107,14 @@ public class BossWeapon : EnemyWeapon
     {
         // TODO override Hyper pattern here should check which boss state
         audioSrc.PlayOneShot(hyperSound, hyperVolume);
+        Debug.Log("Hyper ");
         HyperAttackCooldown = HyperAttackMaxCooldown;
     }
 
     public virtual void DashAttack()
     {
         // TODO override Dash attack pattern here should check which boss state
-        audioSrc.PlayOneShot(hyperSound, hyperVolume);
+        audioSrc.PlayOneShot(dashSound, dashVolume);
         DashAttackCooldown = DashAttackMaxCooldown;
         Debug.Log("DashAttack: " + DashAttackEffectRange);
     }

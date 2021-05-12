@@ -93,6 +93,7 @@ public class YellowBossWeapon : BossWeapon
     {
         // this method instantiate only one merry go round which will call by enrage attack
         base.HyperAttack(HyperNumber);
+        Debug.Log("Hyper ");
         for (int i = 0; i < HyperBulletCount; i++)
         {
             var bullet = Instantiate(HyperAttacks[0], centerPosition+(Vector2.up*2.0f), Quaternion.Euler(Vector3.zero));
@@ -104,6 +105,7 @@ public class YellowBossWeapon : BossWeapon
     {
         // Dash and spawn balloon at it last place
         base.DashAttack();
+        Debug.Log("Dash ");
         for (int i = 0; i < DashAttackCount; i++)
         {
             var bullet = Instantiate(DashAttacks[0], transform.position, Quaternion.Euler(Vector3.zero));

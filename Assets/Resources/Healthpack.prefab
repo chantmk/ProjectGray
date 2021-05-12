@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 0.3
-  pickingSound: {fileID: 8300000, guid: cac6665ca8234f846a7b7527cbae1256, type: 3}
-  soundVolume: 1
+  pickSound: {fileID: 0}
+  pickVolume: 0.3

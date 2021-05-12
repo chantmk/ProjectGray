@@ -5,8 +5,8 @@ using UnityEngine;
 public class ResemblanceManager : Interactable
 {
     public GameObject player;
-    public AudioClip pickingSound;
-    public float soundVolume = 1f;
+    public AudioClip pickSound;
+    public float pickVolume = 1f;
     private AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
@@ -18,8 +18,7 @@ public class ResemblanceManager : Interactable
     public override void OnInteract()
     {
         player.GetComponent<PlayerInventory>().AddResemblance(1);
-        Debug.Log("picked");
-        audioSrc.PlayOneShot(pickingSound, soundVolume);
+        audioSrc.PlayOneShot(pickSound, pickVolume);
         Destroy(gameObject);
     }
 }

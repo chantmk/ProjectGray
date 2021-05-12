@@ -4017,6 +4017,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: dashVolume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: enrageVolume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: HyperSpawnRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: EnrageSpawnRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: centerPosition.y
+      value: -0.71
+      objectReference: {fileID: 0}
     - target: {fileID: 3481867557849703455, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: healthBar

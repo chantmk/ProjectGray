@@ -20,15 +20,13 @@ public class DialogueManager : MonoBehaviour
 	private Animator animator;
 	private Queue<Sentence> sentences;
 	private bool isDecision = false;
-
+	public AudioClip nextSound;
+	public float nextVolume = 1f;
 	public AudioClip mercySound;
 	public float mercyVolume = 1f;
 	public AudioClip killSound;
 	public float killVolume = 1f;
-	public AudioClip nextSound;
-	public float nextVolume = 1f;
 	private AudioSource audioSrc;
-
 
 	// Use this for initialization
 	private void Start()
@@ -47,6 +45,7 @@ public class DialogueManager : MonoBehaviour
 		nextButton = transform.Find("NextButton").gameObject;
 		killButton = transform.Find("KillButton").gameObject;
 		mercyButton = transform.Find("MercyButton").gameObject;
+
 		audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 	}
 
@@ -70,16 +69,11 @@ public class DialogueManager : MonoBehaviour
 
 	public void DisplayNext()
     {
-		PlayNextSound();
+		audioSrc.PlayOneShot(nextSound, nextVolume);
 		DisplayNextSentence();
 
 	}
-	public void PlayNextSound()
-    {
-		//Debug.Log("NEXT");
-		audioSrc.PlayOneShot(nextSound, nextVolume);
-		return;
-	}
+
 	public void DisplayNextSentence()
 	{
 		

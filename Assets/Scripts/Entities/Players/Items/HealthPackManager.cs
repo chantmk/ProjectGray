@@ -6,8 +6,8 @@ public class HealthPackManager : Interactable
 {
     private GameObject player;
     [SerializeField] private float dropChance;
-    public AudioClip pickingSound;
-    public float soundVolume = 1f;
+    public AudioClip pickSound;
+    public float pickVolume = 1f;
     private AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class HealthPackManager : Interactable
     public override void OnInteract()
     {
         player.GetComponent<PlayerInventory>().AddHealthPack(1);
-        audioSrc.PlayOneShot(pickingSound, soundVolume);
+        audioSrc.PlayOneShot(pickSound, pickVolume);
         Destroy(gameObject);
     }
 

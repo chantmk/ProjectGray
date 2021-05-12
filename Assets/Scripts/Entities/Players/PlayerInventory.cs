@@ -23,8 +23,10 @@ public class PlayerInventory : MonoBehaviour
 
     private List<ResemblanceBuffEnum> buffs = new List<ResemblanceBuffEnum>();
 
-    //public ParticleSystem HealingParticle;
-
+    public ParticleSystem HealingParticle;
+    public AudioClip healSound;
+    public float healVolume = 1f;
+    private AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,7 @@ public class PlayerInventory : MonoBehaviour
         resemblanceCountText = resemblanceUI.transform.Find("ResemblanceCountText").GetComponent<Text>();
         healthPackText = inventoryBox.transform.Find("HealthPackText").GetComponent<Text>();
         resemblanceText = inventoryBox.transform.Find("ResemblanceText").GetComponent<Text>();
+        audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 
         resemblanceUI.SetActive(false);
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
@@ -64,6 +67,7 @@ public class PlayerInventory : MonoBehaviour
 
     public bool UseHealthPack(int amount)
     {
+        audioSrc.PlayOneShot(healSound, healVolume);
         if (healthPackCount < amount) return false;
 
         for (int i = 0; i < amount; ++i)

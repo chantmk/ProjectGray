@@ -1,0 +1,33 @@
+[33mcommit d86b8cdf12361c2e09f78484fcf9501ec4e27eb4[m[33m ([m[1;36mHEAD -> [m[1;32mfeat/Sound[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/feat/Sound[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: c6826d4 d94a622
+Author: Krit Cholapand <flap.atyz@gmail.com>
+Date:   Wed May 12 04:27:49 2021 +0700
+
+    Merge branch 'feat/Env/FormatTemplate' into main
+
+[33mcommit d94a6224842984ea58f05a62b7f89ceeee1283c4[m[33m ([m[1;31morigin/feat/Env/FormatTemplate[m[33m)[m
+Author: Krit Cholapand <flap.atyz@gmail.com>
+Date:   Wed May 12 04:27:36 2021 +0700
+
+    :ambulance: Fix blueboss script and stats
+
+[33mcommit 0360567bed16090a8d771fe7797f3eca340b692e[m
+Merge: 269f455 c6826d4
+Author: Krit Cholapand <flap.atyz@gmail.com>
+Date:   Wed May 12 04:19:39 2021 +0700
+
+    Merge branch 'main' into feat/Env/FormatTemplate
+
+[33mcommit 269f4552108e491eb5fd70ede58e6c64479cc561[m
+Author: ThammakornK <chan_tham@hotmail.com>
+Date:   Wed May 12 03:27:34 2021 +0700
+
+    :wrench: Fix Blue boss dialogue loop
+
+[33mcommit 3640c4d0f63478c8c9d82a35e7a05c79f8b076d4[m
+Author: ThammakornK <chan_tham@hotmail.com>
+Date:   Wed May 12 03:26:42 2021 +0700
+
+    :poop: Hopelessly yellow boss is working
+    
+    Fuck no im lying to myself (well it playable but sometime create weird bug)
