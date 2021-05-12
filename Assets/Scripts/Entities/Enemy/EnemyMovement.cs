@@ -259,7 +259,7 @@ public class EnemyMovement : MonoBehaviour
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, dashRange);
 
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawLine(transform.position, transform.position + footOffset);
         Gizmos.DrawWireCube(transform.position + footOffset, new Vector3(0.5f, 0.2f, 0.2f));
     }

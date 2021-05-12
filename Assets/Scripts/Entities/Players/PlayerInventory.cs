@@ -41,6 +41,7 @@ public class PlayerInventory : MonoBehaviour
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 
         resemblanceUI.SetActive(false);
+        audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 
 
     }
@@ -77,7 +78,7 @@ public class PlayerInventory : MonoBehaviour
         healthPackText.text = $"{healthPackCount}";
         
         //Play healing particle
-        HealingParticle.Play();
+        EventPublisher.TriggerParticleSpawn(ParticleEnum.HealingParticle, transform.position);
         return true;
     }
 

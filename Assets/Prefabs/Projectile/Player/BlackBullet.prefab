@@ -121,6 +121,7 @@ MonoBehaviour:
   MaxDuration: 5
   MaxFlightSpeed: 15
   MinFlightSpeed: 0.2
+  blackBulletParticle: {fileID: 0}
 --- !u!1001 &3411438961164411725
 PrefabInstance:
   m_ObjectHideFlags: 0

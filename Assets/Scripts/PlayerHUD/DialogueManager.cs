@@ -28,6 +28,15 @@ public class DialogueManager : MonoBehaviour
 	public float killVolume = 1f;
 	private AudioSource audioSrc;
 
+	public AudioClip mercySound;
+	public float mercyVolume = 1f;
+	public AudioClip killSound;
+	public float killVolume = 1f;
+	public AudioClip nextSound;
+	public float nextVolume = 1f;
+	private AudioSource audioSrc;
+
+
 	// Use this for initialization
 	private void Start()
 	{
@@ -76,6 +85,7 @@ public class DialogueManager : MonoBehaviour
 
 	public void DisplayNextSentence()
 	{
+		
 		if (isDecision && sentences.Count == 1)
         {
 			nextButton.SetActive(false);

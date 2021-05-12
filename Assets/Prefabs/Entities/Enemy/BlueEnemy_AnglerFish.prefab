@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7548500899747343339}
   - component: {fileID: 1526862029896547541}
   - component: {fileID: 8648933500623538507}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.17, y: 0}
@@ -113,11 +113,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 30
+  BaseMaxHealth: 15
   MaxHealth: 0
   Armor: 0
   Status: 1
   healthBar: {fileID: 0}
+  depleteHealth: 0
 --- !u!114 &1948036666126841283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851d1d2534b691549a6ab39f5cf4dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 20
+  AttackDamage: 1
   AttackRange: 1
   AttackRatio: 0.5
   AttackMaxCooldown: 2
@@ -198,8 +199,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2050882081
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 642436548744082850, guid: 348a761d02ae06f49b501e95deab18a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -254,7 +255,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.06, y: 0}
@@ -316,6 +317,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2729082055297048509}
     m_Modifications:
+    - target: {fileID: 237807035180898445, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 60163163
+      objectReference: {fileID: 0}
     - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Name

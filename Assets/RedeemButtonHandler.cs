@@ -15,18 +15,24 @@ public class RedeemButtonHandler : MonoBehaviour
     public GameObject DoubleDamagePrefab;
     public GameObject SpeedShoePrefab;
     public GameObject HealthArmorPrefab;
-    
+
+    public AudioClip redeemSound;
+    public float soundVolume = 1f;
+    private AudioSource audioSrc;
+
     public void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         playerInventory = player.GetComponent<PlayerInventory>();
-        resemblancePad = GameObject.Find("ResemblancePad").transform;
+        resemblancePad = GameObject.Find ("ResemblancePad").transform;
+        audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
     }
 
     public void OnButtonPress()
     {
+        audioSrc.PlayOneShot(redeemSound, soundVolume);
         playerResemblanceCount = playerInventory.GetResemblanceCount();
-        
+
         if (playerResemblanceCount >= checkpointAmount[2])
         {
             // Redeem 6 resemblances

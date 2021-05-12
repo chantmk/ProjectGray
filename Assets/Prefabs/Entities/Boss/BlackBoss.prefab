@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 6852541505086270379}
   - component: {fileID: 6852541505086270378}
   - component: {fileID: 6852541505086270382}
+  - component: {fileID: 902138454}
   m_Layer: 9
   m_Name: BlackBoss
   m_TagString: Enemy
@@ -122,14 +123,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 15
-  MaxHealth: 15
+  BaseMaxHealth: 40
+  MaxHealth: 0
   Armor: 0
   Status: 0
   healthBar: {fileID: 0}
   depleteHealth: 0
   EnrageRatio: 0.46
-  HyperRatio: 0.21
+  HyperRatio: 0.28
   Aggro: 0
   calmSprite: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
     type: 3}
@@ -152,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ManualFlip: 0
-  footOffset: {x: 0, y: 0, z: 0}
-  speed: 1
+  footOffset: {x: 0, y: -1.82, z: 0}
+  speed: 1.75
   visionRange: 1
   minimumDistance: 0.2
   seekPathInterval: 0.5
@@ -381,3 +382,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &902138454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852541505086270373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

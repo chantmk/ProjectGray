@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 516416394}
   - component: {fileID: 516416395}
   - component: {fileID: 516416396}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 15
+  BaseMaxHealth: 9
   MaxHealth: 0
   Armor: 0
   Status: 1
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851d1d2534b691549a6ab39f5cf4dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AttackDamage: 10
+  AttackDamage: 1
   AttackRange: 0.7
   AttackRatio: 0.5
   AttackMaxCooldown: 2
@@ -211,8 +211,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -2050882081
-  m_SortingLayer: 1
+  m_SortingLayerID: 60163163
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4050057611143992889, guid: 5633766c4009b0b46b3cbcfec7557044,
     type: 3}
@@ -330,6 +330,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8249095275983056009}
     m_Modifications:
+    - target: {fileID: 237807035180898445, guid: 638fc67364d87dd4393c86fe0f93008c,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 60163163
+      objectReference: {fileID: 0}
     - target: {fileID: 276361025475887635, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_Name
@@ -373,12 +378,12 @@ PrefabInstance:
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.5923354
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.06785977
+      value: 0.075
       objectReference: {fileID: 0}
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
@@ -423,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.477
+      value: 0.405
       objectReference: {fileID: 0}
     - target: {fileID: 6702067971201396690, guid: 638fc67364d87dd4393c86fe0f93008c,
         type: 3}

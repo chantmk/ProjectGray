@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthPackManager : Interactable
 {
-    public GameObject player;
+    private GameObject player;
     [SerializeField] private float dropChance;
     public AudioClip pickSound;
     public float pickVolume = 1f;

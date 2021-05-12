@@ -42,6 +42,7 @@ public class TalkManager : MonoBehaviour
     }
     public void TriggerDialogue(DialogueStateEnum dialogueState)
     {
+		Debug.Log(dialogueState);
         switch (dialogueState)
         {
 			case DialogueStateEnum.Enter:
