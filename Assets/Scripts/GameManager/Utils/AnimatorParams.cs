@@ -20,5 +20,8 @@ namespace Utils
 
         // Projectile execution
         public static int Execute = Animator.StringToHash("Execute");
+        
+        // Env
+        public static int CycleOffset = Animator.StringToHash("CycleOffset");
     }
 }
