@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cat_walk_left
+  m_Name: CatRunUp
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,22 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -3598682698665172469, guid: c17d0b84889fda74fbbb4713bd09b80c,
+      value: {fileID: 5115001047623075895, guid: 41529643e5a22d143b3da38f6515b297,
         type: 3}
-    - time: 0.1
-      value: {fileID: -7100371125094748291, guid: c17d0b84889fda74fbbb4713bd09b80c,
-        type: 3}
-    - time: 0.2
-      value: {fileID: -7571048291295012400, guid: c17d0b84889fda74fbbb4713bd09b80c,
-        type: 3}
-    - time: 0.3
-      value: {fileID: -625405604494984229, guid: c17d0b84889fda74fbbb4713bd09b80c,
+    - time: 0.125
+      value: {fileID: 7319829036119299154, guid: 41529643e5a22d143b3da38f6515b297,
         type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 10
+  m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -50,16 +44,14 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -3598682698665172469, guid: c17d0b84889fda74fbbb4713bd09b80c, type: 3}
-    - {fileID: -7100371125094748291, guid: c17d0b84889fda74fbbb4713bd09b80c, type: 3}
-    - {fileID: -7571048291295012400, guid: c17d0b84889fda74fbbb4713bd09b80c, type: 3}
-    - {fileID: -625405604494984229, guid: c17d0b84889fda74fbbb4713bd09b80c, type: 3}
+    - {fileID: 5115001047623075895, guid: 41529643e5a22d143b3da38f6515b297, type: 3}
+    - {fileID: 7319829036119299154, guid: 41529643e5a22d143b3da38f6515b297, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
