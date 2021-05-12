@@ -802,7 +802,7 @@ MonoBehaviour:
   MaxStamina: 100
   BaseStamina: 100
   DamageMultiplier: 1
-  statMultiplierValue: 1.5
+  statMultiplierValue: 2
 --- !u!114 &620563490
 MonoBehaviour:
   m_ObjectHideFlags: 0

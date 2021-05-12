@@ -39,6 +39,12 @@ public class EventPublisher
     //{
     //    PlayerTakeDamage?.Invoke();
     //}
+    public delegate void OnDialogueStart();
+    public static event OnDialogueStart DialogueStart;
+    public static void TriggerDialogueStart()
+    {
+        DialogueStart?.Invoke();
+    }
 
     public delegate void OnDialogueDone();
     public static event OnDialogueDone DialogueDone;
