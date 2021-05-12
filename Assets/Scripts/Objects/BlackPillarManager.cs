@@ -173,8 +173,8 @@ public class BlackPillarManager : MonoBehaviour
 
     private void ActivateBlackHole()
     {
-        radiusUI.Show(1f);
-        Invoke("ActivateBlackHoleJing2", 1f);
+        radiusUI.Show(2f);
+        Invoke("ActivateBlackHoleJing2", 2f);
     }
 
     private void ActivateBlackHoleJing2()
