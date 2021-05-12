@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -42,9 +43,10 @@ public class BlackHole : BossProjectile
     {
         foreach (GameObject target in targets)
         {
-            Vector2 direction = (transform.position - target.transform.position).normalized;
+            Vector2 direction = (transform.position - target.transform.position);
             float range = direction.magnitude;
-            target.GetComponent<Rigidbody2D>().AddForce(direction * ((affectRange-range)/affectRange) * pullStrength);
+            direction = direction.normalized;
+            target.GetComponent<Rigidbody2D>().AddForce(direction * (((affectRange-Mathf.Min(0,(range-3f)))/affectRange) * pullStrength));
             Attack(target);
         }
     }
