@@ -61,6 +61,7 @@ public class PlayerInventory : MonoBehaviour
     public void AddHealthPack(int amount)
     {
         healthPackCount += amount;
+        PlayerConfig.HealthPackCount = healthPackCount;
         Debug.Log("Total health pack " + healthPackCount);
         healthPackText.text = $"{healthPackCount}";
     }
@@ -76,7 +77,7 @@ public class PlayerInventory : MonoBehaviour
         }
         healthPackCount -= amount;
         healthPackText.text = $"{healthPackCount}";
-        
+        PlayerConfig.HealthPackCount = healthPackCount;
         //Play healing particle
         EventPublisher.TriggerParticleSpawn(ParticleEnum.HealingParticle, transform.position);
         return true;
@@ -92,6 +93,7 @@ public class PlayerInventory : MonoBehaviour
         resemblanceCount += amount;
         resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
         resemblanceText.text = $"{resemblanceCount}";
+        PlayerConfig.ResemblanceCount = resemblanceCount;
     }
 
     public bool UseResemblance(int amount)
@@ -102,6 +104,7 @@ public class PlayerInventory : MonoBehaviour
         Debug.Log("Redeem "+amount+" resemblances");
         resemblanceCountText.text = $"Resemblance Count {resemblanceCount}";
         resemblanceText.text = $"{resemblanceCount}";
+        PlayerConfig.ResemblanceCount = resemblanceCount;
         return true;
     }
     
