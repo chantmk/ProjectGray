@@ -1014,7 +1014,7 @@ MonoBehaviour:
   MaxStamina: 100
   BaseStamina: 100
   DamageMultiplier: 1
-  statMultiplierValue: 1.5
+  statMultiplierValue: 2
 --- !u!114 &620563490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   resemblanceCount: 0
   player: {fileID: 0}
   playerStats: {fileID: 0}
-  healValue: 0
+  healValue: 5
   HealingParticle: {fileID: 0}
   healSound: {fileID: 8300000, guid: 60d8266d705af744ba26352d13c7a98c, type: 3}
   healVolume: 0.6

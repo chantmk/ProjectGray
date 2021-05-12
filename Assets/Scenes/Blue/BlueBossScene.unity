@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: 7663808165876596324, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7663808165876596324, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
@@ -395,6 +395,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5799712895011780179, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5799712895011780179, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 537805ea4e439f6479df2fd96a6a95af, type: 3}
+    - target: {fileID: 5799712895011780179, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2, type: 3}
 --- !u!1001 &832373314
@@ -404,6 +419,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3482650007038657854, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 7e96c4bfd0a216a419c50e10bacc9cc4,
+        type: 3}
     - target: {fileID: 7452341877007267923, guid: 381786c5ffd72b041a148bc9a1a45df2,
         type: 3}
       propertyPath: m_Name
@@ -903,7 +924,7 @@ PrefabInstance:
     - target: {fileID: 756261980017379260, guid: a1db8926bc589ad4ca1cedf24dbfc67a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 756261980017379260, guid: a1db8926bc589ad4ca1cedf24dbfc67a,
         type: 3}
@@ -967,7 +988,7 @@ PrefabInstance:
     - target: {fileID: 1102555091586577403, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1102555091586577403, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
@@ -1038,7 +1059,7 @@ PrefabInstance:
         type: 3}
       propertyPath: hyperSound
       value: 
-      objectReference: {fileID: 8300000, guid: 596bf271cefbdc0419fe8eaf75fb9a23, type: 3}
+      objectReference: {fileID: 8300000, guid: 4f3f81e0be54fba40938c31be7af8c08, type: 3}
     - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: hyperVolume

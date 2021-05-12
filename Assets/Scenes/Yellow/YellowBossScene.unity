@@ -3916,6 +3916,11 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: bcecaeacd968b154582b54eab7315995, type: 3}
+    - target: {fileID: 5799712895011780179, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8a020e2a0e64f40a9deb4ea8ea8af2, type: 3}
 --- !u!1 &1883567227 stripped
@@ -4047,6 +4052,12 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 805226141}
+    - target: {fileID: 3481867557849703455, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: resemblanceOrbPrefab
+      value: 
+      objectReference: {fileID: 3310285250441847977, guid: 578741e2ac93a754bafbda7abe3118aa,
+        type: 3}
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_RootOrder
