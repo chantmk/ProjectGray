@@ -1,13 +1,4 @@
-﻿using System;
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using TMPro.EditorUtilities;
-using UnityEngine;
-
-public class StateMachine <T>
+﻿public class StateMachine <T>
 {
     public T CurrentState { get; private set; }
     public T PreviousState { get; private set; }
