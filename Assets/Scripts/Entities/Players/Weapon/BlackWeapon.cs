@@ -5,6 +5,7 @@ namespace Players.Weapon
 {
     class BlackWeapon : MonoBehaviour, IWeapon
     {
+        public bool isCheap;
         [SerializeField] private GameObject bulletObject;
 
         [SerializeField] private WeaponIDEnum weaponID;
@@ -30,22 +31,26 @@ namespace Players.Weapon
 
         public void Fire(Vector2 direction)
         {
-            if (weaponID == WeaponIDEnum.Black && PlayerConfig.IsWeaponBlackSpecial)
+            if (!isCheap)
             {
-                for (int i = 0; i < 3; i++)
+                if (weaponID == WeaponIDEnum.Black && PlayerConfig.IsWeaponBlackSpecial)
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
+                        bullet.GetComponent<PlayerProjectile>().Shoot(Quaternion.AngleAxis(i*30-30, Vector3.forward) * direction);
+                
+                    }
+                }
+                else
                 {
                     var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
-                    bullet.GetComponent<PlayerProjectile>().Shoot(Quaternion.AngleAxis(i*30-30, Vector3.forward) * direction);
-                
+                    bullet.GetComponent<PlayerProjectile>().Shoot(direction);
                 }
-            }
-            else
-            {
-                var bullet = Instantiate(bulletObject, transform.position, Quaternion.Euler(Vector3.zero));
-                bullet.GetComponent<PlayerProjectile>().Shoot(direction);
+            
+                audioSrc.PlayOneShot(shootingSound, soundVolume);
             }
             
-            audioSrc.PlayOneShot(shootingSound, soundVolume);
 
         }
     }

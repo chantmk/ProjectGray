@@ -32,22 +32,22 @@ public class PlayerInventory : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerStats = player.GetComponent<PlayerStats>();
-        resemblanceUI = GameObject.Find("ResemblanceUI");
+        // resemblanceUI = GameObject.Find("ResemblanceUI");
         inventoryBox = GameObject.Find("InventoryBox");
         
-        resemblanceCountText = resemblanceUI.transform.Find("ResemblanceCountText").GetComponent<Text>();
+        // resemblanceCountText = resemblanceUI.transform.Find("ResemblanceCountText").GetComponent<Text>();
         healthPackText = inventoryBox.transform.Find("HealthPackText").GetComponent<Text>();
-        resemblanceText = inventoryBox.transform.Find("ResemblanceText").GetComponent<Text>();
+        // resemblanceText = inventoryBox.transform.Find("ResemblanceText").GetComponent<Text>();
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 
-        resemblanceUI.SetActive(false);
+        // resemblanceUI.SetActive(false);
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 
         healthPackCount = PlayerConfig.HealthPackCount;
         resemblanceCount = PlayerConfig.ResemblanceCount;
         
         healthPackText.text = $"{healthPackCount}";
-        resemblanceText.text = $"{resemblanceCount}";
+        // resemblanceText.text = $"{resemblanceCount}";
 
 
     }
