@@ -1,4 +1,6 @@
-﻿namespace Utils
+﻿using System.Collections.Generic;
+
+namespace Utils
 {
     public enum MovementEnum
     {
@@ -51,5 +53,35 @@
         Charging,
         Discharging,
         Activataed,
+    }
+
+    public enum CharacterNameEnum
+    {
+        Player,
+        Black,
+        Blue,
+        Yellow,
+        Red,
+        Purple,
+        Green,
+        Orange,
+        White
+    }
+
+    public static class CharacterName
+    {
+
+        private static Dictionary<CharacterNameEnum, string> nameMap = new Dictionary<CharacterNameEnum, string>()
+        {
+            { CharacterNameEnum.Player, "ทายาทน้อย" },
+            { CharacterNameEnum.Black, "แบล็ค" },
+            { CharacterNameEnum.Blue, "บลู" },
+            { CharacterNameEnum.Yellow, "เบลโล่" },
+        };
+
+        public static string GetName(CharacterNameEnum nameEnum)
+        {
+            return nameMap[nameEnum];
+        }
     }
 }

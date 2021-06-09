@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utils;
 using MathUtils = Utils.MathUtils;
 
@@ -184,10 +180,4 @@ public class BlackPillarManager : MonoBehaviour
         Invoke("SetActivateEnd", 10f);
     }
     
-
-    private void OnDrawGizmos()
-    {
-        if (Application.isPlaying)
-            Handles.Label(transform.position, String.Format("Level {0} Charge {1} State {2}", level, charge, stateMachine.CurrentState));
-    }
 }
