@@ -193,6 +193,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5999317228200081421, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0E04\u0E34\u0E14\u0E44\u0E21\u0E48\u0E2D\u0E2D\u0E01\u0E42\u0E27\u0E49\u0E22"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317229307984032, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0E04\u0E27\u0E32\u0E21\u0E42\u0E28\u0E01\u0E40\u0E28\u0E23\u0E49\u0E32\u0E44\u0E14\u0E49\u0E04\u0E23\u0E2D\u0E1A\u0E07\u0E33..."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831901f9a75def742922d729f46ccda4, type: 3}
 --- !u!1 &1432989025

@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 2689685939577050053, guid: 96597600a2d90d44ebc1eb6280b77277,
         type: 3}
       propertyPath: m_Text
-      value: "\u0E1F\u0E49\u0E32\u0E42\u0E27\u0E49\u0E22\u0E2B\u0E19\u0E36\u0E48\u0E07"
+      value: "\u0E04\u0E27\u0E32\u0E21\u0E42\u0E28\u0E01\u0E40\u0E28\u0E23\u0E49\u0E32\u0E44\u0E14\u0E49\u0E04\u0E23\u0E2D\u0E1A\u0E07\u0E33..."
       objectReference: {fileID: 0}
     - target: {fileID: 2689685940681380712, guid: 96597600a2d90d44ebc1eb6280b77277,
         type: 3}
       propertyPath: m_Text
-      value: "\u0E1F\u0E49\u0E32\u0E42\u0E27\u0E49\u0E22\u0E2A\u0E2D\u0E07"
+      value: T _ T
       objectReference: {fileID: 0}
     - target: {fileID: 2689685940947348380, guid: 96597600a2d90d44ebc1eb6280b77277,
         type: 3}

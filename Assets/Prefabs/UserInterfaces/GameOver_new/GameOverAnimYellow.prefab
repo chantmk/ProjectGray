@@ -75,12 +75,12 @@ PrefabInstance:
     - target: {fileID: 5999317228200081421, guid: 831901f9a75def742922d729f46ccda4,
         type: 3}
       propertyPath: m_Text
-      value: "\u0E21\u0E30\u0E21\u0E48\u0E27\u0E07\u0E2D\u0E30 mango"
+      value: "\u0E41\u0E15\u0E48\u0E16\u0E49\u0E32\u0E2B\u0E32\u0E01\u0E21\u0E32\u0E01\u0E44\u0E1B..."
       objectReference: {fileID: 0}
     - target: {fileID: 5999317229307984032, guid: 831901f9a75def742922d729f46ccda4,
         type: 3}
       propertyPath: m_Text
-      value: "\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E07\u0E2D\u0E30 yellow"
+      value: "\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E34\u0E48\u0E07\u0E17\u0E35\u0E48\u0E14\u0E35"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 831901f9a75def742922d729f46ccda4, type: 3}
