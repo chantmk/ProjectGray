@@ -211,20 +211,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3863949345139361698, guid: f3456b7a013a8ad4389645a21df38131,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E34\u0E48\u0E07\u0E17\u0E35\u0E48\u0E14\u0E35"
-      objectReference: {fileID: 0}
     - target: {fileID: 3863949345917222907, guid: f3456b7a013a8ad4389645a21df38131,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3863949346182907663, guid: f3456b7a013a8ad4389645a21df38131,
-        type: 3}
-      propertyPath: m_Text
-      value: "\u0E41\u0E15\u0E48\u0E16\u0E49\u0E32\u0E2B\u0E32\u0E01\u0E21\u0E32\u0E01\u0E44\u0E1B..."
       objectReference: {fileID: 0}
     - target: {fileID: 3863949346495874441, guid: f3456b7a013a8ad4389645a21df38131,
         type: 3}
