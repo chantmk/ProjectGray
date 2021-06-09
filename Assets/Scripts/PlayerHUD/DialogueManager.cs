@@ -8,6 +8,7 @@ public class DialogueManager : MonoBehaviour
 {
 
 	public static DialogueStateEnum currentDialogueState = DialogueStateEnum.Enter;
+	private GameObject dialogueContainer;
 	private GameObject leftProfile;
 	private Image leftProfileImage;
 	private GameObject rightProfile;
@@ -42,18 +43,31 @@ public class DialogueManager : MonoBehaviour
 		rightProfile = transform.Find("RightProfile").gameObject;
 		rightProfileImage = rightProfile.GetComponent<Image>();
 
-		nameText = transform.Find("Name").GetComponent<Text>();
-		dialogueText = transform.Find("DialogueText").GetComponent<Text>();
 		animator = transform.GetComponent<Animator>();
 
-		nextButton = transform.Find("NextButton").gameObject;
+		dialogueContainer = transform.Find("DialogueContainer").gameObject;
+		nameText = dialogueContainer.transform.Find("Name").GetComponent<Text>();
+		dialogueText = dialogueContainer.transform.Find("DialogueText").GetComponent<Text>();
+		nextButton = dialogueContainer.transform.Find("NextButton").gameObject;
 
 		decisionBox = transform.parent.Find("DecisionBox").gameObject;
 		killButton = decisionBox.transform.Find("KillButton").gameObject;
 		mercyButton = decisionBox.transform.Find("MercyButton").gameObject;
 
 		audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
+
+		EventPublisher.PlayCutscene += Hide;
 	}
+
+    private void OnDestroy()
+    {
+		EventPublisher.PlayCutscene -= Hide;
+    }
+
+    public void Hide()
+    {
+		animator.SetBool(AnimatorParams.IsOpen, false);
+    }
 
 	private void PlayDialogue(Dialogue dialogue)
     {
@@ -61,7 +75,7 @@ public class DialogueManager : MonoBehaviour
         {
 			StopDialogue();
         }
-		animator.SetBool("IsOpen", true);
+		animator.SetBool(AnimatorParams.IsOpen, true);
 		PauseManager.PauseTime();
 		sentences.Clear();
 
@@ -146,12 +160,12 @@ public class DialogueManager : MonoBehaviour
     {
 		holderName = holderEnum;
     }
+
     public void Mercy()
     {
         audioSrc.PlayOneShot(mercySound, mercyVolume);
         StopDialogue();
         EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy, holderName);
-        Debug.Log("Trigger");
     }
 
     public void Kill()

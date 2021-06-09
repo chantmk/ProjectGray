@@ -39,20 +39,6 @@ public class EventPublisher
     //{
     //    PlayerTakeDamage?.Invoke();
     //}
-    public delegate void OnDialogueStart();
-    public static event OnDialogueStart DialogueStart;
-    public static void TriggerDialogueStart()
-    {
-        DialogueStart?.Invoke();
-    }
-
-    public delegate void OnDialogueDone();
-    public static event OnDialogueDone DialogueDone;
-
-    public static void TriggerDialogueDone()
-    {
-        DialogueDone?.Invoke();
-    }
 
     public delegate void OnStatusChange(BossAggroEnum bossStatus);
     public static event OnStatusChange StatusChange;
@@ -61,6 +47,25 @@ public class EventPublisher
         StatusChange?.Invoke(bossStatus);
     }
 
+
+
+    public delegate void OnParticleSpawn(ParticleEnum particleEnum, Vector2 position);
+
+    public static event OnParticleSpawn ParticleSpawn;
+
+    public static void TriggerParticleSpawn(ParticleEnum particleEnum, Vector2 position)
+    {
+        ParticleSpawn?.Invoke(particleEnum, position);
+    }
+    
+    public delegate void OnBlueBubbleDestroy(Vector3 position);
+    public static event OnBlueBubbleDestroy BlueBubbleDestroy;
+    public static void TriggerBlueBubbleDestroy(Vector3 position)
+    {
+        BlueBubbleDestroy?.Invoke(position);
+    }
+
+    // Game event
     public delegate void OnPlayCutScene();
     public static event OnPlayCutScene PlayCutscene;
     public static void TriggerPlayCutScene()
@@ -82,19 +87,18 @@ public class EventPublisher
         DecisionMake?.Invoke(decision, bossName);
     }
 
-    public delegate void OnParticleSpawn(ParticleEnum particleEnum, Vector2 position);
-
-    public static event OnParticleSpawn ParticleSpawn;
-
-    public static void TriggerParticleSpawn(ParticleEnum particleEnum, Vector2 position)
+    public delegate void OnDialogueStart();
+    public static event OnDialogueStart DialogueStart;
+    public static void TriggerDialogueStart()
     {
-        ParticleSpawn?.Invoke(particleEnum, position);
+        DialogueStart?.Invoke();
     }
-    
-    public delegate void OnBlueBubbleDestroy(Vector3 position);
-    public static event OnBlueBubbleDestroy BlueBubbleDestroy;
-    public static void TriggerBlueBubbleDestroy(Vector3 position)
+
+    public delegate void OnDialogueDone();
+    public static event OnDialogueDone DialogueDone;
+
+    public static void TriggerDialogueDone()
     {
-        BlueBubbleDestroy?.Invoke(position);
+        DialogueDone?.Invoke();
     }
 }

@@ -33,6 +33,7 @@ public class BossStats : CharacterStats
     {
         Teleport.DisablePortal();
         healthBar.SetActive(true);
+        healthBarImage = healthBar.transform.Find("BossHealthBar").GetComponent<Image>();
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
         
@@ -62,7 +63,6 @@ public class BossStats : CharacterStats
 
     protected override void GetHealthBarImage()
     {
-        healthBarImage = healthBar.GetComponentInChildren<Image>();
         healthBarImage.color = Color.green;
     }
 

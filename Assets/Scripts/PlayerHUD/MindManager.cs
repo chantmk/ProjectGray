@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Utils;
 
 public class MindManager : MonoBehaviour
 {
     private GameObject blackMind;
     private GameObject blackGuardian;
-    private GameObject blackBar;
+    private Image blackBar;
     private bool isBlackGuard = false;
 
     private GameObject blueMind;
     private GameObject blueGuardian;
-    private GameObject blueBar;
+    private Image blueBar;
     private bool isBlueGuard = false;
 
     // Start is called before the first frame update
@@ -19,10 +21,11 @@ public class MindManager : MonoBehaviour
     {
         blackMind = transform.Find("BlackMindContainer").gameObject;
         blackGuardian = blackMind.transform.Find("Guardian").gameObject;
-        blackBar = blackMind.transform.Find("BlackBar").gameObject;
+        blackBar = blackMind.transform.Find("BlackBar").GetComponent<Image>();
+
         blueMind = transform.Find("BlueMindContainer").gameObject;
-        blueGuardian = blackMind.transform.Find("Guardian").gameObject;
-        blueBar = blackMind.transform.Find("BlackBar").gameObject;
+        blueGuardian = blueMind.transform.Find("Guardian").gameObject;
+        blueBar = blueMind.transform.Find("BlueBar").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -32,8 +35,16 @@ public class MindManager : MonoBehaviour
         blueGuardian.SetActive(isBlueGuard);
     }
 
-    public void updateBar()
+    public void UpdateBar(CharacterNameEnum characterEnum, float ratio)
     {
-
+        switch(characterEnum)
+        {
+            case CharacterNameEnum.Black:
+                blackBar.fillAmount = ratio;
+                break;
+            case CharacterNameEnum.Blue:
+                blueBar.fillAmount = ratio;
+                break;
+        }
     }
 }
