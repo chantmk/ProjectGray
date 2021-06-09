@@ -57,7 +57,7 @@ public class PlayerInventory : MonoBehaviour
     {
 
         //TODO: debug
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             UseHealthPack(1);
         }

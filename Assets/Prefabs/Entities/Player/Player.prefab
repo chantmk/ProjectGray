@@ -1028,8 +1028,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resemblanceCountText: {fileID: 0}
-  healthPackText: {fileID: 0}
-  resemblanceText: {fileID: 0}
+  healthPackText: {fileID: 4263146737916592134, guid: a8bd95060fd68534ea4599d26093a1a6,
+    type: 3}
+  resemblanceText: {fileID: 4553350694762510327, guid: 8cc2eaed2bb3954438f7bddcd9fdaf6b,
+    type: 3}
   resemblanceUI: {fileID: 0}
   inventoryBox: {fileID: 0}
   healthPackCount: 0
