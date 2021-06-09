@@ -41,7 +41,6 @@ public class BossWeapon : EnemyWeapon
     public float hyperVolume = 1f;
     public AudioClip dashSound;
     public float dashVolume = 1f;
-    private AudioSource audioSrc;
 
 
     public override void Start()

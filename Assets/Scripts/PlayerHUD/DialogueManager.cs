@@ -15,11 +15,15 @@ public class DialogueManager : MonoBehaviour
 	private Text nameText;
 	private Text dialogueText;
 	private GameObject nextButton;
+	private GameObject decisionBox;
 	private GameObject mercyButton;
 	private GameObject killButton;
 	private Animator animator;
 	private Queue<Sentence> sentences;
+	
 	private bool isDecision = false;
+	private CharacterNameEnum holderName;
+
 	public AudioClip nextSound;
 	public float nextVolume = 1f;
 	public AudioClip mercySound;
@@ -43,8 +47,10 @@ public class DialogueManager : MonoBehaviour
 		animator = transform.GetComponent<Animator>();
 
 		nextButton = transform.Find("NextButton").gameObject;
-		killButton = transform.Find("KillButton").gameObject;
-		mercyButton = transform.Find("MercyButton").gameObject;
+
+		decisionBox = transform.parent.Find("DecisionBox").gameObject;
+		killButton = decisionBox.transform.Find("KillButton").gameObject;
+		mercyButton = decisionBox.transform.Find("MercyButton").gameObject;
 
 		audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 	}
@@ -80,8 +86,7 @@ public class DialogueManager : MonoBehaviour
 		if (isDecision && sentences.Count == 1)
         {
 			nextButton.SetActive(false);
-			mercyButton.SetActive(true);
-			killButton.SetActive(true);
+			decisionBox.SetActive(true);
 		}
 		if (sentences.Count == 0)
 		{
@@ -90,7 +95,7 @@ public class DialogueManager : MonoBehaviour
 		}
 
 		Sentence sentence = sentences.Dequeue();
-		nameText.text = sentence.name;
+		nameText.text = CharacterName.GetName(sentence.name);
 		if (sentence.IsRight)
         {
 			rightProfile.SetActive(true);
@@ -121,8 +126,7 @@ public class DialogueManager : MonoBehaviour
 	public void StartDialogue(DialogueStateEnum dialogueState, Dialogue dialogue)
 	{
 		nextButton.SetActive(true);
-		killButton.SetActive(false);
-		mercyButton.SetActive(false);
+		decisionBox.SetActive(false);
 		currentDialogueState = dialogueState;
 		PlayDialogue(dialogue);
 		EventPublisher.TriggerDialogueStart();
@@ -132,25 +136,28 @@ public class DialogueManager : MonoBehaviour
 	{
 		// Call event to invoke other that may subscribing this event
 		nextButton.SetActive(false);
-		mercyButton.SetActive(false);
-		killButton.SetActive(false);
+		decisionBox.SetActive(false);
 		animator.SetBool("IsOpen", false);
 		EventPublisher.TriggerDialogueDone();
 		PauseManager.ResumeTime();
 	}
 
-	public void Mercy()
-	{
-		audioSrc.PlayOneShot(mercySound, mercyVolume);
-		StopDialogue();
-		EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy);
-		Debug.Log("Trigger");
-	}
+	public void setHolderName(CharacterNameEnum holderEnum)
+    {
+		holderName = holderEnum;
+    }
+    public void Mercy()
+    {
+        audioSrc.PlayOneShot(mercySound, mercyVolume);
+        StopDialogue();
+        EventPublisher.TriggerDecisionMake(DecisionEnum.Mercy, holderName);
+        Debug.Log("Trigger");
+    }
 
-	public void Kill()
-	{
-		audioSrc.PlayOneShot(killSound, killVolume);
-		StopDialogue();
-		EventPublisher.TriggerDecisionMake(DecisionEnum.Kill);
-	}
+    public void Kill()
+    {
+        audioSrc.PlayOneShot(killSound, killVolume);
+        StopDialogue();
+        EventPublisher.TriggerDecisionMake(DecisionEnum.Kill, holderName);
+    }
 }

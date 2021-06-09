@@ -25,7 +25,7 @@ public class EnemyWeapon : MonoBehaviour
 
     public AudioClip atkSound;
     public float atkVolume = 1f;
-    private AudioSource audioSrc;
+    protected AudioSource audioSrc;
 
     public virtual void Start()
     {

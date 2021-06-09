@@ -128,6 +128,7 @@ MonoBehaviour:
   Status: 0
   healthBar: {fileID: 0}
   depleteHealth: 0
+  bossName: 1
   EnrageRatio: 0.77
   HyperRatio: 0.42
   Aggro: 0
@@ -232,46 +233,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7801dfad0da39454aab95fdecd2c982e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holderName: 3
   enterDialogue:
     IsDecision: 0
     sentences:
-    - name: Little heir
+    - name: 0
       ProfilePicture: {fileID: 5010711115108243104, guid: b4fc9a3eb8191604b9578241881abfba,
         type: 3}
       sentence: ...
       IsRight: 1
-    - name: Yellow boss
+    - name: 3
       ProfilePicture: {fileID: 6856173514695861955, guid: 5c7408ab38c783b4bb90dd0ef7d8f588,
         type: 3}
       sentence: "\u0E2B\u0E19\u0E39\u0E2D\u0E22\u0E32\u0E01\u0E44\u0E14\u0E49\u0E25\u0E39\u0E01\u0E42\u0E1B\u0E48\u0E07\u0E21\u0E31\u0E49\u0E22"
       IsRight: 0
-    - name: Little heir
+    - name: 0
       ProfilePicture: {fileID: 1465051537225570131, guid: b4fc9a3eb8191604b9578241881abfba,
         type: 3}
       sentence: ...
       IsRight: 1
-    - name: Yellow boss
+    - name: 3
       ProfilePicture: {fileID: -7922558845722700951, guid: 5c7408ab38c783b4bb90dd0ef7d8f588,
         type: 3}
       sentence: "\u0E44\u0E21\u0E48\u0E40\u0E2D\u0E32\u0E40\u0E2B\u0E23\u0E2D? \u0E27\u0E48\u0E32\u0E41\u0E15\u0E48\u0E2B\u0E19\u0E49\u0E32\u0E1A\u0E36\u0E49\u0E07\u0E08\u0E31\u0E07\u0E40\u0E25\u0E22
         \u0E44\u0E21\u0E48\u0E21\u0E35\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02\u0E40\u0E2B\u0E23\u0E2D?"
       IsRight: 0
-    - name: Little heir
+    - name: 0
       ProfilePicture: {fileID: 2533612084097095118, guid: b4fc9a3eb8191604b9578241881abfba,
         type: 3}
       sentence: ...
       IsRight: 1
-    - name: Yellow boss
+    - name: 0
       ProfilePicture: {fileID: -7922558845722700951, guid: 5c7408ab38c783b4bb90dd0ef7d8f588,
         type: 3}
       sentence: "\u0E22\u0E34\u0E49\u0E21\u0E2A\u0E34 \u0E01\u0E32\u0E23\u0E22\u0E34\u0E49\u0E21\u0E08\u0E30\u0E17\u0E33\u0E43\u0E2B\u0E49\u0E19\u0E32\u0E22\u0E21\u0E35\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02!"
       IsRight: 0
-    - name: Little heir
+    - name: 0
       ProfilePicture: {fileID: 2533612084097095118, guid: b4fc9a3eb8191604b9578241881abfba,
         type: 3}
       sentence: ...
       IsRight: 1
-    - name: Yellow boss
+    - name: 3
       ProfilePicture: {fileID: -7729499622858779909, guid: a7816602758777e4b95874509ffa1c1e,
         type: 3}
       sentence: "\u0E17\u0E33\u0E44\u0E21\u0E19\u0E32\u0E22\u0E22\u0E31\u0E07\u0E44\u0E21\u0E48\u0E22\u0E34\u0E49\u0E21\u0E2D\u0E35\u0E01\u0E25\u0E48\u0E30
@@ -284,7 +286,7 @@ MonoBehaviour:
   askForMercyDialogue:
     IsDecision: 1
     sentences:
-    - name: Pedobear
+    - name: 3
       ProfilePicture: {fileID: -7729499622858779909, guid: a7816602758777e4b95874509ffa1c1e,
         type: 3}
       sentence: "\u0E40\u0E23\u0E32\u0E08\u0E30\u0E44\u0E21\u0E48\u0E17\u0E33\u0E2D\u0E30\u0E44\u0E23\u0E2A\u0E19\u0E38\u0E01\u0E46\u0E14\u0E49\u0E27\u0E22\u0E01\u0E31\u0E19
@@ -293,11 +295,12 @@ MonoBehaviour:
   killDialogue:
     IsDecision: 0
     sentences:
-    - name: Pedobear
-      ProfilePicture: {fileID: 0}
+    - name: 3
+      ProfilePicture: {fileID: -7729499622858779909, guid: a7816602758777e4b95874509ffa1c1e,
+        type: 3}
       sentence: "\u0E09\u0E31\u0E19\u0E01\u0E47\u0E41\u0E04\u0E48\u2026 \u0E2D\u0E22\u0E32\u0E01\u0E08\u0E30\u0E21\u0E35\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02\u0E2D\u0E35\u0E01\u0E2A\u0E31\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07\u2026."
       IsRight: 0
-    - name: Pedobear
+    - name: 3
       ProfilePicture: {fileID: -7729499622858779909, guid: a7816602758777e4b95874509ffa1c1e,
         type: 3}
       sentence: "\u0E41\u0E2D\u0E48\u0E01555555 555555555"
@@ -305,12 +308,12 @@ MonoBehaviour:
   mercyDialogue:
     IsDecision: 0
     sentences:
-    - name: Little heir
+    - name: 0
       ProfilePicture: {fileID: -7546562681500478495, guid: b4fc9a3eb8191604b9578241881abfba,
         type: 3}
       sentence: ...
       IsRight: 1
-    - name: Pedobear
+    - name: 3
       ProfilePicture: {fileID: -7351235702537770211, guid: 5c7408ab38c783b4bb90dd0ef7d8f588,
         type: 3}
       sentence: "\u0E19\u0E35\u0E48\u0E19\u0E32\u0E22\u0E25\u0E39\u0E1A\u0E2B\u0E31\u0E27\u0E43\u0E2B\u0E49\u0E01\u0E33\u0E25\u0E31\u0E07\u0E43\u0E08\u0E09\u0E31\u0E19\u0E40\u0E2B\u0E23\u0E2D

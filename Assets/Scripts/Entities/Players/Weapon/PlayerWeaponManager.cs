@@ -65,7 +65,7 @@ public class PlayerWeaponManager : MonoBehaviour
         EventPublisher.DecisionMake += OnDecisionMake;
     }
 
-    private void OnDecisionMake(DecisionEnum decision)
+    private void OnDecisionMake(DecisionEnum decision, CharacterNameEnum bossName)
     {
         var scenename = SceneManager.GetActiveScene().name;
         if (scenename == "BlackBossScene")

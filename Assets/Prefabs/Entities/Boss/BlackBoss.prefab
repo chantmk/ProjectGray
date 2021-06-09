@@ -129,6 +129,7 @@ MonoBehaviour:
   Status: 0
   healthBar: {fileID: 0}
   depleteHealth: 0
+  bossName: 1
   EnrageRatio: 0.46
   HyperRatio: 0.28
   Aggro: 0
@@ -219,10 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7801dfad0da39454aab95fdecd2c982e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holderName: 1
   enterDialogue:
     IsDecision: 0
     sentences:
-    - name: Prince
+    - name: 0
       ProfilePicture: {fileID: 5010711115108243104, guid: b4fc9a3eb8191604b9578241881abfba,
         type: 3}
       sentence: '!'
@@ -230,7 +232,7 @@ MonoBehaviour:
   lastStandDialogue:
     IsDecision: 0
     sentences:
-    - name: Black boss
+    - name: 1
       ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
         type: 3}
       sentence: "\u235C\u235C\u235C\u2291"
@@ -238,7 +240,7 @@ MonoBehaviour:
   askForMercyDialogue:
     IsDecision: 1
     sentences:
-    - name: KuHaKu
+    - name: 1
       ProfilePicture: {fileID: 2767779679321132673, guid: e217e03940660854c8aca5b484674390,
         type: 3}
       sentence: "\u2330\u27D2\u23C1 \u22D4\u27D2 \u260C\u235C"
