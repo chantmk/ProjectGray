@@ -22,10 +22,12 @@ public class MindManager : MonoBehaviour
         blackMind = transform.Find("BlackMindContainer").gameObject;
         blackGuardian = blackMind.transform.Find("Guardian").gameObject;
         blackBar = blackMind.transform.Find("BlackBar").GetComponent<Image>();
+        blackBar.fillAmount = 0.0f;
 
         blueMind = transform.Find("BlueMindContainer").gameObject;
         blueGuardian = blueMind.transform.Find("Guardian").gameObject;
         blueBar = blueMind.transform.Find("BlueBar").GetComponent<Image>();
+        blueBar.fillAmount = 0.0f;
     }
 
     // Update is called once per frame
