@@ -75,11 +75,11 @@ public class EventPublisher
         EndCutscene?.Invoke();
     }
 
-    public delegate void OnDecisionMake(DecisionEnum decision);
+    public delegate void OnDecisionMake(DecisionEnum decision, CharacterNameEnum bossName);
     public static event OnDecisionMake DecisionMake;
-    public static void TriggerDecisionMake(DecisionEnum decision)
+    public static void TriggerDecisionMake(DecisionEnum decision, CharacterNameEnum bossName)
     {
-        DecisionMake?.Invoke(decision);
+        DecisionMake?.Invoke(decision, bossName);
     }
 
     public delegate void OnParticleSpawn(ParticleEnum particleEnum, Vector2 position);

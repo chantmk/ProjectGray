@@ -6,6 +6,8 @@ using Utils;
 
 public class BossStats : CharacterStats
 {
+    [Header("Boss name")]
+    public CharacterNameEnum bossName = CharacterNameEnum.Black;
     [Header("Boss Life parameter")]
     [Range(0.0f, 1.0f)]
     public float EnrageRatio;
