@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
         } else {
             _instance = this;
         }
+
+        
+        PlayerConfig.CurrentScene = (SceneEnum)SceneManager.GetActiveScene().buildIndex;
     }
     void ChangeScene()
     {
@@ -25,6 +28,27 @@ public class GameManager : MonoBehaviour
 
     public void HandleGameOver()
     {
-        SceneManager.LoadScene("GameOverScene");
+        switch (PlayerConfig.CurrentScene)
+        {
+            case SceneEnum.BlackEnemyScene:
+                SceneManager.LoadScene("GameOverBlack");
+                break;
+            case SceneEnum.BlackBossScene:
+                SceneManager.LoadScene("GameOverBlack");
+                break;
+            case SceneEnum.BlueEnemyScene:
+                SceneManager.LoadScene("GameOverBlue");
+                break;
+            case SceneEnum.BlueBossScene:
+                SceneManager.LoadScene("GameOverBlue");
+                break;
+            case SceneEnum.YellowEnemyScene:
+                SceneManager.LoadScene("GameOverYellow");
+                break;
+            case SceneEnum.YellowBossScene:
+                SceneManager.LoadScene("GameOverYellow");
+                break;
+        }
+        
     }
 }

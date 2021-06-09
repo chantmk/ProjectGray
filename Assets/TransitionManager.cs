@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TransitionManager : MonoBehaviour
 {
@@ -33,9 +34,8 @@ public class TransitionManager : MonoBehaviour
             new Vector3(0f, -10f, 0f),
             new Vector3(0f, -21f, 0f),
         };
-
-        transform.position = points[0];
-        playerIcon.transform.position = playerPoints[0];
+        
+        setUp();
     }
     
     void Update()
@@ -46,6 +46,25 @@ public class TransitionManager : MonoBehaviour
         }
 
         move();
+    }
+
+    private void setUp()
+    {
+        switch (PlayerConfig.CurrentScene)
+        {
+            case SceneEnum.MainMenuScene:
+                traverse(0,3);
+                break;
+            case SceneEnum.BlackBossScene:
+                traverse(3,2);
+                break;
+            case SceneEnum.BlueBossScene:
+                traverse(2,1);
+                break;
+            case SceneEnum.YellowBossScene:
+                traverse(1,0);
+                break;
+        }
     }
 
     public void traverse(int begin, int end)
@@ -65,9 +84,24 @@ public class TransitionManager : MonoBehaviour
             playerIcon.transform.position = Vector3.SmoothDamp(playerIcon.transform.position, playerPoints[endPos], ref vel, smoothDampSpeed * Time.deltaTime);
             
         }
-        if (transform.position == points[endPos])
+        if (Vector3.Distance(transform.position ,points[endPos]) < 0.1f) //End Effect
         {
             isMoving = false;
+            switch (PlayerConfig.CurrentScene)
+            {
+                case SceneEnum.MainMenuScene:
+                    SceneManager.LoadScene("BlackEnemyScene");
+                    break;
+                case SceneEnum.BlackBossScene:
+                    SceneManager.LoadScene("BlueEnemyScene");
+                    break;
+                case SceneEnum.BlueBossScene:
+                    SceneManager.LoadScene("YellowEnemyScene");
+                    break;
+                case SceneEnum.YellowBossScene:
+                    //To be continue scene...
+                    break;
+            }
         }
     }
     

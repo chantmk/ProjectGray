@@ -14,7 +14,7 @@ public class GameOverManager : MonoBehaviour
         //Translate(GameOverImage);
         if (Input.anyKeyDown && Time.timeSinceLevelLoad >= waitTime)
         {
-            SceneManager.LoadScene("MainMenuScene");
+            SceneManager.LoadScene("MainMenu_new");
         }
     }
 }
