@@ -8,6 +8,8 @@ public class BossWeapon : EnemyWeapon
     /**
      * This class tell weapon stat and what to create
      */
+    [SerializeField]
+    protected Vector2 centerPoint;
 
     [Header("Dash attack parameters")]
     public float DashAttackEffectRange;
@@ -125,5 +127,7 @@ public class BossWeapon : EnemyWeapon
         Gizmos.DrawWireSphere(transform.position, EnrageAttackRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, HyperAttackRange);
+
+        Gizmos.DrawSphere(centerPoint, 0.2f);
     }
 }
