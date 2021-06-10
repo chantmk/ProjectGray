@@ -33,7 +33,7 @@ public class PlayerStats : CharacterStats
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        StartCoroutine(CameraShake.Shake(0.1f, 0.2f));
+        StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
     }
 
     private void OnDestroy()
