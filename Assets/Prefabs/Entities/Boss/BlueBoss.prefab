@@ -115,7 +115,7 @@ MonoBehaviour:
   shootAngle: 60
   atkSound: {fileID: 0}
   atkVolume: 1
-  centerPoint: {x: 0, y: 0}
+  centerPoint: {x: 11.01, y: -12.64}
   DashAttackEffectRange: 1
   DashAttackMaxCooldown: 3
   DashAttacks:
@@ -141,6 +141,7 @@ MonoBehaviour:
   CalmAttack2Count: 0a0000000f00000014000000
   CalmAttack2Range: 5
   EnrageAttackCount: 040000000600000008000000
+  EnrageAttackCount2: 030000000400000005000000
   HyperAttackCount: 020000000300000004000000
 --- !u!114 &4719026838900429687
 MonoBehaviour:
