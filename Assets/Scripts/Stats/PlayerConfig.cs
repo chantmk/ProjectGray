@@ -11,4 +11,6 @@ public static class PlayerConfig
     public static List<int> HaveWeapon = new List<int>{(int)WeaponIDEnum.Cheap};
     public static bool IsWeaponBlueSpecial;
     public static bool IsWeaponBlackSpecial;
+
+    public static SceneEnum CurrentScene = SceneEnum.MainMenuScene;
 }

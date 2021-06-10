@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7412461331660078850
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 841.4595
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 560.9049
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1130.2744
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352841, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227417352843, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_Name
+      value: GameOverAnimYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317227928895737, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317228200081421, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0E41\u0E15\u0E48\u0E16\u0E49\u0E32\u0E2B\u0E32\u0E01\u0E21\u0E32\u0E01\u0E44\u0E1B..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5999317229307984032, guid: 831901f9a75def742922d729f46ccda4,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E02\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E34\u0E48\u0E07\u0E17\u0E35\u0E48\u0E14\u0E35"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 831901f9a75def742922d729f46ccda4, type: 3}
