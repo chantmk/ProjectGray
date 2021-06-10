@@ -15,7 +15,7 @@ public class PlayerStats : CharacterStats
     public float DamageMultiplier;
 
     [SerializeField] private float statMultiplierValue;
-
+    public CameraShake CameraShake;
     protected override void Start()
     {
         base.Start();
@@ -26,6 +26,12 @@ public class PlayerStats : CharacterStats
     protected override void Update()
     {
         base.Update();
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        StartCoroutine(CameraShake.Shake(0.1f, 0.2f));
     }
 
     private void OnDestroy()
