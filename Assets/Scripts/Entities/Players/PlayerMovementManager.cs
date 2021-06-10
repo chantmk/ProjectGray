@@ -7,6 +7,9 @@ using Utils;
 
 public class PlayerMovementManager : MonoBehaviour
 {
+    public CameraShake CameraShake;
+
+    public float blueDebuffSlowCoeff = 0.5f;
     
     [SerializeField] private Rigidbody2D playerRigidbody;
 
@@ -50,6 +53,8 @@ public class PlayerMovementManager : MonoBehaviour
         stateMachine = new StateMachine<MovementEnum>(MovementEnum.Idle);
         image = staminaBar.GetComponent<Image>();
         playerStats = GetComponent<PlayerStats>();
+        
+        CameraShake = GameObject.Find("CameraHolder").GetComponentInChildren<CameraShake>();
     }
 
     void Update()
@@ -64,15 +69,25 @@ public class PlayerMovementManager : MonoBehaviour
 
         inputX = rawInputX == 0 ? 0 : (int)Mathf.Sign(rawInputX);
         inputY = rawInputY == 0 ? 0 : (int)Mathf.Sign(rawInputY);
-
+        var isBlueDebuff = playerStats.DebuffColor == ColorEnum.Blue;
         var isStartRolling = inputRoll && stamina > 0 && !isExhault;
+
+        // Block Roll while on blue
+        if (isStartRolling && isBlueDebuff)
+        {
+            StartCoroutine(CameraShake.Shake(0.1f, 0.1f));
+            isStartRolling = false;
+        }
+        
         var isInputMoving = (inputX != 0 || inputY != 0);
         // Update State
         switch (stateMachine.CurrentState)
         {
             case MovementEnum.Idle:
                 if (isStartRolling)
+                {
                     stateMachine.SetNextState(MovementEnum.Roll);
+                }
                 if (isInputMoving)
                     stateMachine.SetNextState(MovementEnum.Move);
                     
@@ -101,8 +116,11 @@ public class PlayerMovementManager : MonoBehaviour
                 playerStats.Status = StatusEnum.Mortal;
                 // coefficient = Mathf.Pow(expValue, tileData[0]);
                 movement = new Vector2(inputX, inputY);
-                //Debug.Log(coefficient);
                 movement = movement.normalized * moveSpeed;
+                if (isBlueDebuff)
+                {
+                    movement *= blueDebuffSlowCoeff;
+                }
                 break;
             
             case MovementEnum.Roll:

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class PlayerStats : CharacterStats
     public ColorEnum DebuffColor;
     private float MaxDebuffTime = 0.25f;
     private float DebuffTime;
+    private BlackDebuffManager blackDebuffManager;
     
     public float RechargeStamina;
     [SerializeField] private float BaseRechargeStamina;
@@ -28,14 +30,45 @@ public class PlayerStats : CharacterStats
         base.Start();
         EventPublisher.DialogueStart += ListenDialogueStart;
         EventPublisher.DialogueDone += ListenDialogueStart;
+        EventPublisher.StepOnTile += ListenStepOnTile;
 
+        blackDebuffManager = GetComponentInChildren<BlackDebuffManager>();
+        
         CameraShake = GameObject.Find("CameraHolder").GetComponentInChildren<CameraShake>();
         SpriteRenderer = GetComponent<SpriteRenderer>();
+
+        DebuffColor = ColorEnum.None;
     }
     
     protected override void Update()
     {
         base.Update();
+    }
+
+    private void FixedUpdate()
+    {
+        DebuffTime -= Time.fixedDeltaTime;
+        if (DebuffTime <= 0f)
+        {
+            DebuffExit(DebuffColor);
+            DebuffColor = ColorEnum.None;
+        }
+    }
+
+    private void DebuffExit(ColorEnum debuffColor)
+    {
+        if (debuffColor == ColorEnum.Black)
+        {
+            blackDebuffManager.DebuffExit();
+        }
+    }
+
+    private void DebuffEnter(ColorEnum debuffColor)
+    {
+        if (debuffColor == ColorEnum.Black)
+        {
+            blackDebuffManager.DebuffEnter();
+        }
     }
 
     public override void TakeDamage(int damage)
@@ -49,13 +82,25 @@ public class PlayerStats : CharacterStats
     {
         EventPublisher.DialogueStart -= ListenDialogueStart;
         EventPublisher.DialogueDone -= ListenDialogueDone;
+        EventPublisher.StepOnTile -= ListenStepOnTile;
+    }
+
+    private void ListenStepOnTile(ColorEnum colorenum)
+    {
+        print(colorenum);
+        
+        if (DebuffColor != colorenum)
+        {
+            DebuffEnter(colorenum);
+        }
+        DebuffColor = colorenum;
+        DebuffTime = MaxDebuffTime;
     }
 
     protected override void GetHealthBarImage()
     {
         if (healthBar == null)
             healthBar = GameObject.FindGameObjectWithTag("HealthBar");
-        Debug.Log("Shit"+healthBar);
         healthBarImage = healthBar.GetComponent<Image>();
     }
     public void ApplyStatBuff(ResemblanceBuffEnum buff)
@@ -75,11 +120,6 @@ public class PlayerStats : CharacterStats
         }
 
 
-    }
-
-    public void ApplyDebuff(ColorEnum color)
-    {
-        
     }
 
     public void ListenDialogueStart()

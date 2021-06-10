@@ -27,6 +27,8 @@ namespace Objects
         private float DecayLifeTime;
         private bool ShouldRemove;
 
+        private bool isTriggerStay;
+
         private void Start()
         {
             stateMachine = new StateMachine<TileStateEnum>(TileStateEnum.Active);
@@ -40,14 +42,24 @@ namespace Objects
             
         }
 
-        private void OnTriggerStay(Collider other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (stateMachine.CurrentState == TileStateEnum.Active && 
+                other.gameObject.CompareTag("Player"))
             {
-                EventPublisher.TriggerStepOnTile(TileColor);
+                isTriggerStay = true;
             }
         }
-        
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (stateMachine.CurrentState == TileStateEnum.Active && 
+                other.gameObject.CompareTag("Player"))
+            {
+                isTriggerStay = false;
+            }
+        }
+
         private void ChangeAlpha()
         {
             var color = spriteRenderer.color;
@@ -66,7 +78,7 @@ namespace Objects
                     }
                     break;
                 case TileStateEnum.Decay:
-                    if (MaxDecayLifeTime <= 0f)
+                    if (DecayLifeTime <= 0f)
                     {
                         stateMachine.SetNextState(TileStateEnum.ShouldRemove);
                     }
@@ -78,6 +90,8 @@ namespace Objects
             switch (stateMachine.CurrentState)
             {
                 case TileStateEnum.Active:
+                    if (isTriggerStay)
+                        EventPublisher.TriggerStepOnTile(TileColor);
                     LifeTime -= Time.fixedDeltaTime;
                     break;
                 case TileStateEnum.Decay:
@@ -91,3 +105,4 @@ namespace Objects
         }
     }
 }
+
