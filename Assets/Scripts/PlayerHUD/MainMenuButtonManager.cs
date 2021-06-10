@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuButtonManager : MonoBehaviour
 {
@@ -22,12 +24,15 @@ public class MainMenuButtonManager : MonoBehaviour
     {
         Debug.Log("Play");
         videoPlayer.Play();
+        
     }
 
     public void StopVideo(VideoPlayer videoPlayer)
     {
         videoPlayer.Stop();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("MapTransition");
+
     }
 
     public void OnQuitButtonClicked()

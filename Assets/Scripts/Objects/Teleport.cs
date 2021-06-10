@@ -29,11 +29,33 @@ public class Teleport : MonoBehaviour
     {
         if (isEnable && other.gameObject.name == "Player")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene("MapTransition");
+            switch (PlayerConfig.CurrentScene)
+            {
+                case SceneEnum.BlackEnemyScene:
+                    SceneManager.LoadScene("BlackBossScene");
+                    break;
+                case SceneEnum.BlackBossScene:
+                    SceneManager.LoadScene("MapTransition");
+                    break;
+                case SceneEnum.BlueEnemyScene:
+                    SceneManager.LoadScene("BlueBossScene");
+                    break;
+                case SceneEnum.BlueBossScene:
+                    SceneManager.LoadScene("MapTransition");
+                    break;
+                case SceneEnum.YellowEnemyScene:
+                    SceneManager.LoadScene("YellowBossScene");
+                    break;
+                case SceneEnum.YellowBossScene:
+                    SceneManager.LoadScene("MapTransition");
+                    break;
+            }
         }
     }
 
-    public void EnablePortal(DecisionEnum decision)
+    public void EnablePortal(DecisionEnum decision, CharacterNameEnum bossName)
     {
         isEnable = true;
     }

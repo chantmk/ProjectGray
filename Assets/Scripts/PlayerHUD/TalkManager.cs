@@ -13,6 +13,8 @@ public class TalkManager : MonoBehaviour
 	 * - Contain Dialogues
 	 */
 
+	[Header("Talker name")]
+	public CharacterNameEnum holderName;
 	[Header("DialogueParameter")]
 	public Dialogue enterDialogue;
 	public Dialogue lastStandDialogue;
@@ -33,6 +35,7 @@ public class TalkManager : MonoBehaviour
 		EventPublisher.DecisionMake += DecisionHandler;
 
 		dialogueManager = FindObjectOfType<DialogueManager>();
+		dialogueManager.setHolderName(holderName);
     }
 
     private void OnDestroy()
@@ -97,7 +100,7 @@ public class TalkManager : MonoBehaviour
 		}
 	}
 
-	public void DecisionHandler(DecisionEnum decision)
+	public void DecisionHandler(DecisionEnum decision, CharacterNameEnum bossName)
     {
 		switch (decision)
         {
