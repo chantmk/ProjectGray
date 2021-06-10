@@ -128,6 +128,6 @@ public class BossWeapon : EnemyWeapon
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, HyperAttackRange);
 
-        Gizmos.DrawSphere(centerPoint, 2);
+        Gizmos.DrawSphere(centerPoint, 0.2f);
     }
 }

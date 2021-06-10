@@ -136,12 +136,12 @@ MonoBehaviour:
   hyperVolume: 0.5
   dashSound: {fileID: 8300000, guid: 1606c970a9047854fb79864b76c0b07b, type: 3}
   dashVolume: 0.5
-  DashAttackCount: 
-  CalmAttackCount: 000000000000000000000000
-  CalmAttack2Count: 000000000000000000000000
+  DashAttackCount: 010000000100000001000000
+  CalmAttackCount: 0a0000000f00000014000000
+  CalmAttack2Count: 0a0000000f00000014000000
   CalmAttack2Range: 5
-  EnrageAttackCount: 000000000000000000000000
-  HyperAttackCount: 000000000000000000000000
+  EnrageAttackCount: 040000000600000008000000
+  HyperAttackCount: 020000000300000004000000
 --- !u!114 &4719026838900429687
 MonoBehaviour:
   m_ObjectHideFlags: 0

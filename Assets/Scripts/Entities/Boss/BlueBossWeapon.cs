@@ -24,6 +24,7 @@ public class BlueBossWeapon : BossWeapon
 
     protected override void RangeAttack()
     {
+        
         switch (rangeAttackPattern[rangeCount])
         {
             case 0:
@@ -41,6 +42,7 @@ public class BlueBossWeapon : BossWeapon
     }
     public void CalmAttack(int EnrageNumber)
     {
+        Debug.Log("Range Attack Blue0");
         float count = CalmAttackCount[(int)bossStats.Aggro];
         float degree = 360.0f / count;
         for(int i=0; i<count; i++)
@@ -52,6 +54,7 @@ public class BlueBossWeapon : BossWeapon
 
     public void CalmAttack2(int EnrageNumber)
     {
+        Debug.Log("Range Attack Blue1");
         float count = CalmAttack2Count[(int)bossStats.Aggro];
         float degree = 360.0f / count;
         for(int i=0; i<count; i++)
