@@ -32,7 +32,7 @@ public class PlayerInventory : MonoBehaviour
     {
         player = GameObject.Find("Player");
         playerStats = player.GetComponent<PlayerStats>();
-        resemblanceUI = GameObject.Find("ResemblanceUI");
+        //resemblanceUI = GameObject.Find("ResemblanceUI");
         inventoryBox = GameObject.Find("InventoryBox");
         
         resemblanceCountText = resemblanceUI.transform.Find("ResemblanceCountText").GetComponent<Text>();
