@@ -50,7 +50,6 @@ public class PlayerStats : CharacterStats
     {
         if (healthBar == null)
             healthBar = GameObject.FindGameObjectWithTag("HealthBar");
-        Debug.Log("Shit"+healthBar);
         healthBarImage = healthBar.GetComponent<Image>();
     }
     public void ApplyStatBuff(ResemblanceBuffEnum buff)
