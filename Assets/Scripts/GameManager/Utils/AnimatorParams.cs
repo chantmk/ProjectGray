@@ -4,6 +4,7 @@ namespace Utils
 {
     public static class AnimatorParams
     {
+        // Player move
         public static int Horizontal = Animator.StringToHash("Horizontal");
         public static int Vertical = Animator.StringToHash("Vertical");
         public static int Movement = Animator.StringToHash("Movement");
@@ -23,5 +24,8 @@ namespace Utils
         
         // Env
         public static int CycleOffset = Animator.StringToHash("CycleOffset");
+
+        // Hub
+        public static int IsOpen = Animator.StringToHash("IsOpen");
     }
 }
