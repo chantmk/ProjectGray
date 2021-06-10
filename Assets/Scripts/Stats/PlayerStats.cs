@@ -16,6 +16,8 @@ public class PlayerStats : CharacterStats
 
     [SerializeField] private float statMultiplierValue;
     public CameraShake CameraShake;
+
+    public SpriteRenderer SpriteRenderer;
     protected override void Start()
     {
         base.Start();
@@ -23,6 +25,7 @@ public class PlayerStats : CharacterStats
         EventPublisher.DialogueDone += ListenDialogueStart;
 
         CameraShake = GameObject.Find("CameraHolder").GetComponentInChildren<CameraShake>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
     
     protected override void Update()
@@ -34,6 +37,7 @@ public class PlayerStats : CharacterStats
     {
         base.TakeDamage(damage);
         StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
+        StartCoroutine(Flash(SpriteRenderer,0.5f, 4));
     }
 
     private void OnDestroy()
@@ -83,4 +87,6 @@ public class PlayerStats : CharacterStats
         GameManager.Instance.HandleGameOver();
         // SceneManager.LoadScene("MainMenuScene");
     }
+
+    
 }

@@ -118,4 +118,17 @@ public abstract class CharacterStats : MonoBehaviour
     {
         MaxHealth = health;
     }
+    public IEnumerator Flash(SpriteRenderer spriteRenderer, float percent, int count )
+    {
+        float duration = 0.1f;
+        float[] opacity = {1f, percent};
+        Color old = spriteRenderer.color;
+        for (int i = 0; i < count; ++i)
+        {
+            spriteRenderer.color = new Color(old.r, old.g, old.b, opacity[1]);
+            yield return new WaitForSeconds(duration);
+            spriteRenderer.color = new Color(old.r, old.g, old.b, opacity[0]);
+            yield return new WaitForSeconds(duration);
+        }
+    }
 }
