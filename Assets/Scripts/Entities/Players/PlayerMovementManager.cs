@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utils;
 
+
 public class PlayerMovementManager : MonoBehaviour
 {
+    
     [SerializeField] private Rigidbody2D playerRigidbody;
 
     [SerializeField] private float moveSpeed = 2.0f;

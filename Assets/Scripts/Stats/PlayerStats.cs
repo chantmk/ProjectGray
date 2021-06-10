@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,10 @@ using Utils;
 
 public class PlayerStats : CharacterStats
 {
+    public ColorEnum DebuffColor;
+    private float MaxDebuffTime = 0.25f;
+    private float DebuffTime;
+    
     public float RechargeStamina;
     [SerializeField] private float BaseRechargeStamina;
     public float MaxStamina; //Current max stamina
@@ -57,6 +62,11 @@ public class PlayerStats : CharacterStats
         }
 
 
+    }
+
+    public void ApplyDebuff(ColorEnum color)
+    {
+        
     }
 
     public void ListenDialogueStart()

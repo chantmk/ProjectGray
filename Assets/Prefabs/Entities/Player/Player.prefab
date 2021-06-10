@@ -449,7 +449,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1571559736
 Transform:
   m_ObjectHideFlags: 0
@@ -1009,6 +1009,7 @@ MonoBehaviour:
   Status: 0
   healthBar: {fileID: 0}
   depleteHealth: 0
+  DebuffColor: 0
   RechargeStamina: 20
   BaseRechargeStamina: 20
   MaxStamina: 100
