@@ -21,18 +21,18 @@ public class TransitionManager : MonoBehaviour
     {
         points = new Vector3[]
         {
-            new Vector3(0f, 21f, -10f),
-            new Vector3(0f, 7f, -10f),
-            new Vector3(0f, -7f, -10f),
-            new Vector3(0f, -21f, -10f),
+            new Vector3(0f, 21.11f, -10f),
+            new Vector3(0f, 7.07f, -10f),
+            new Vector3(0f, -7.26f, -10f),
+            new Vector3(0f, -21.11f, -10f),
         };
         
         playerPoints = new Vector3[]
         {
-            new Vector3(0f, 21f, 0f),
-            new Vector3(0f, 7f, 0f),
-            new Vector3(0f, -10f, 0f),
-            new Vector3(0f, -21f, 0f),
+            new Vector3(0f, 17.85f, 0f),
+            new Vector3(0f, 2.73f, 0f),
+            new Vector3(0f, -11.25f, 0f),
+            new Vector3(0f, -24.5f, 0f),
         };
         
         setUp();
@@ -40,10 +40,10 @@ public class TransitionManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            traverse(0,3);
-        }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     traverse(1,0);
+        // }
 
         move();
     }
