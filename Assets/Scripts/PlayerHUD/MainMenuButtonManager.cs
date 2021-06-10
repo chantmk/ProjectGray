@@ -35,6 +35,11 @@ public class MainMenuButtonManager : MonoBehaviour
 
     }
 
+    public void OnContinueButtonClicked()
+    {
+        SceneManager.LoadScene((int) PlayerConfig.CurrentScene);
+    }
+
     public void OnQuitButtonClicked()
     {
         Debug.Log("Quit");
