@@ -24,10 +24,10 @@ public class PlayerActionManager : MonoBehaviour
             EventPublisher.TriggerPlayerPressFire();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        /*if (Input.GetKeyDown(KeyCode.Q))
         {
             playerWeaponManager.ChangeWeaponPrev();
-        }
+        }*/
         
         if (Input.GetKeyDown(KeyCode.E))
         {

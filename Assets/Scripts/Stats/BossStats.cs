@@ -6,6 +6,8 @@ using Utils;
 
 public class BossStats : CharacterStats
 {
+    [Header("Boss name")]
+    public CharacterNameEnum bossName = CharacterNameEnum.Black;
     [Header("Boss Life parameter")]
     [Range(0.0f, 1.0f)]
     public float EnrageRatio;
@@ -31,6 +33,7 @@ public class BossStats : CharacterStats
     {
         Teleport.DisablePortal();
         healthBar.SetActive(true);
+        healthBarImage = healthBar.transform.Find("BossHealthBar").GetComponent<Image>();
         base.Start();
         renderer = GetComponent<SpriteRenderer>();
         
@@ -60,7 +63,6 @@ public class BossStats : CharacterStats
 
     protected override void GetHealthBarImage()
     {
-        healthBarImage = healthBar.GetComponentInChildren<Image>();
         healthBarImage.color = Color.green;
     }
 

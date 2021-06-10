@@ -55,7 +55,7 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    public void EnablePortal(DecisionEnum decision)
+    public void EnablePortal(DecisionEnum decision, CharacterNameEnum bossName)
     {
         isEnable = true;
     }

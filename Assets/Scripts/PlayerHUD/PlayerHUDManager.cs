@@ -12,6 +12,7 @@ public class PlayerHUDManager : MonoBehaviour
     {
         bossHealth = transform.Find("BossHealthContainer").gameObject;
         playerBar = transform.Find("PlayerBar").gameObject;
+
         bossHealth.SetActive(false);
 
         EventPublisher.PlayCutscene += HideBar;
