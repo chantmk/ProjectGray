@@ -70,7 +70,7 @@ public class EnemyWeapon : MonoBehaviour
 
     public virtual void Attack()
     {
-        audioSrc.PlayOneShot(atkSound, atkVolume);
+        //audioSrc.PlayOneShot(atkSound, atkVolume);
         attackCooldown = AttackMaxCooldown;
         if (IsRange)
         {

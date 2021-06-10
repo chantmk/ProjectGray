@@ -175,7 +175,7 @@ public class buttonGUI : MonoBehaviour
         if (Input.GetKey(KeyCode.W) == true)
         {
             button_W.sprite = hlSprite;
-            Debug.Log("W");
+            //Debug.Log("W");
         }
     }
 

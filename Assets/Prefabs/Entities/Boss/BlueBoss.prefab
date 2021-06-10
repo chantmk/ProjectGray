@@ -59,7 +59,7 @@ MonoBehaviour:
   Status: 1
   healthBar: {fileID: 0}
   depleteHealth: 0
-  bossName: 1
+  bossName: 2
   EnrageRatio: 0.71
   HyperRatio: 0.4
   Aggro: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   shootAngle: 60
   atkSound: {fileID: 0}
   atkVolume: 1
+  centerPoint: {x: 0, y: 0}
   DashAttackEffectRange: 1
   DashAttackMaxCooldown: 3
   DashAttacks:
@@ -135,9 +136,12 @@ MonoBehaviour:
   hyperVolume: 0.5
   dashSound: {fileID: 8300000, guid: 1606c970a9047854fb79864b76c0b07b, type: 3}
   dashVolume: 0.5
-  EnrageBulletCount: 4
-  HyperBulletCount: 8
-  DashAttackCount: 1
+  DashAttackCount: 
+  CalmAttackCount: 000000000000000000000000
+  CalmAttack2Count: 000000000000000000000000
+  CalmAttack2Range: 5
+  EnrageAttackCount: 000000000000000000000000
+  HyperAttackCount: 000000000000000000000000
 --- !u!114 &4719026838900429687
 MonoBehaviour:
   m_ObjectHideFlags: 0
