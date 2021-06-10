@@ -7,6 +7,7 @@ namespace Players
         private Transform target;
         public float SmoothTime = 0.3F;
         private Vector3 velocity = Vector3.zero;
+        [SerializeField] private GameObject CameraHolder;
 
         void Start()
         {
@@ -19,7 +20,7 @@ namespace Players
             Vector3 targetPosition = target.TransformPoint(new Vector3(0, 0, -10));
 
             // Smoothly move the camera towards that target position
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, SmoothTime);
+            CameraHolder.transform.position = Vector3.SmoothDamp(CameraHolder.transform.position, targetPosition, ref velocity, SmoothTime);
         }
     }
 }

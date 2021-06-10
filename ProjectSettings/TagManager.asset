@@ -12,6 +12,7 @@ TagManager:
   - HealthBar
   - Boss
   - Audio
+  - BossHealthBar
   layers:
   - Default
   - TransparentFX

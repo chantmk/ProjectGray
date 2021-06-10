@@ -20,17 +20,29 @@ public class PlayerStats : CharacterStats
     public float DamageMultiplier;
 
     [SerializeField] private float statMultiplierValue;
+    public CameraShake CameraShake;
 
+    public SpriteRenderer SpriteRenderer;
     protected override void Start()
     {
         base.Start();
         EventPublisher.DialogueStart += ListenDialogueStart;
         EventPublisher.DialogueDone += ListenDialogueStart;
+
+        CameraShake = GameObject.Find("CameraHolder").GetComponentInChildren<CameraShake>();
+        SpriteRenderer = GetComponent<SpriteRenderer>();
     }
     
     protected override void Update()
     {
         base.Update();
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
+        StartCoroutine(Flash(SpriteRenderer,0.5f, 4));
     }
 
     private void OnDestroy()
@@ -43,6 +55,7 @@ public class PlayerStats : CharacterStats
     {
         if (healthBar == null)
             healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        Debug.Log("Shit"+healthBar);
         healthBarImage = healthBar.GetComponent<Image>();
     }
     public void ApplyStatBuff(ResemblanceBuffEnum buff)
@@ -84,4 +97,6 @@ public class PlayerStats : CharacterStats
         GameManager.Instance.HandleGameOver();
         // SceneManager.LoadScene("MainMenuScene");
     }
+
+    
 }

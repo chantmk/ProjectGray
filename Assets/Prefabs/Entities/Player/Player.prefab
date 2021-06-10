@@ -1016,6 +1016,8 @@ MonoBehaviour:
   BaseStamina: 100
   DamageMultiplier: 1
   statMultiplierValue: 2
+  CameraShake: {fileID: 0}
+  SpriteRenderer: {fileID: 0}
 --- !u!114 &620563490
 MonoBehaviour:
   m_ObjectHideFlags: 0
