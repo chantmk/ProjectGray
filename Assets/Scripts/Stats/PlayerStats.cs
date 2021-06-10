@@ -21,6 +21,8 @@ public class PlayerStats : CharacterStats
         base.Start();
         EventPublisher.DialogueStart += ListenDialogueStart;
         EventPublisher.DialogueDone += ListenDialogueStart;
+
+        CameraShake = GameObject.Find("CameraHolder").GetComponentInChildren<CameraShake>();
     }
     
     protected override void Update()
@@ -44,6 +46,7 @@ public class PlayerStats : CharacterStats
     {
         if (healthBar == null)
             healthBar = GameObject.FindGameObjectWithTag("HealthBar");
+        Debug.Log("Shit"+healthBar);
         healthBarImage = healthBar.GetComponent<Image>();
     }
     public void ApplyStatBuff(ResemblanceBuffEnum buff)
