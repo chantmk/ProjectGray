@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public static bool GamePaused = false;
+    public static bool IsGameSlow = false;
 
     [SerializeField]
     private GameObject pauseMenu;
@@ -23,6 +24,24 @@ public class PauseManager : MonoBehaviour
                 Pause();
             }
         }
+        
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            if (IsGameSlow)
+            {
+                ResumeSlow();
+            }
+            else
+            {
+                Slow(0.5f);
+            }
+        }
+    }
+
+    private void Slow(float timescale)
+    {
+        Time.timeScale = timescale;
+        IsGameSlow = true;
     }
 
     public static void ResumeTime()
@@ -34,6 +53,12 @@ public class PauseManager : MonoBehaviour
     {
         ResumeTime();
         pauseMenu.SetActive(false);
+    }
+
+    public void ResumeSlow()
+    {
+        Time.timeScale = 1f;
+        IsGameSlow = false;
     }
 
     public static void PauseTime()
