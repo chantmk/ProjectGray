@@ -102,4 +102,20 @@ public class EventPublisher
     {
         MindBreak?.Invoke(color);
     }
+    
+    public delegate void OnGuardianCall(ColorEnum color);
+    public static event OnGuardianCall GuardianCall;
+    
+    public static void TriggerGuardianCall(ColorEnum color)
+    {
+        GuardianCall?.Invoke(color);
+    }
+    
+    public delegate void OnSetGuardianUI(ColorEnum color, bool enable);
+    public static event OnSetGuardianUI SetGuardianUI;
+    
+    public static void TriggerSetGuardianUI(ColorEnum color, bool enable)
+    {
+        SetGuardianUI?.Invoke(color, enable);
+    }
 }

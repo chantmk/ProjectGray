@@ -17,9 +17,12 @@ public class PlayerStats : CharacterStats
     private bool isBlackDebuffActivate;
     public float MindBreakDecayRate;
     public float MindBreakDecayCD;
+    public float GuardianCD;
 
     private Dictionary<ColorEnum, float> MindBreakChargeDict;
     private Dictionary<ColorEnum, float> MindBreakDecayCDDict;
+
+    private Dictionary<ColorEnum, float> GuardianCDDict;
 
     public float RechargeStamina;
     [SerializeField] private float BaseRechargeStamina;
@@ -58,6 +61,10 @@ public class PlayerStats : CharacterStats
         MindBreakDecayCDDict[ColorEnum.Black] = MindBreakDecayCD;
         MindBreakDecayCDDict[ColorEnum.Blue] = MindBreakDecayCD;
         
+        GuardianCDDict = new Dictionary<ColorEnum, float>();
+        GuardianCDDict[ColorEnum.Black] = 0f;
+        GuardianCDDict[ColorEnum.Blue] = 0f;
+        
         mindManager = GameObject.Find("MindBar").GetComponent<MindManager>();
     }
 
@@ -82,6 +89,12 @@ public class PlayerStats : CharacterStats
 
     private void MindBreak(ColorEnum color)
     {
+        if (GuardianCDDict[color] <= 0f)
+        {
+            EventPublisher.TriggerGuardianCall(color);
+            GuardianCDDict[color] = GuardianCD;
+        }
+        
         UpdateMindBreakValue(color,0f);
         EventPublisher.TriggerMindBreak(color);
     }
@@ -119,6 +132,7 @@ public class PlayerStats : CharacterStats
 
     private void FixedUpdate()
     {
+
         DebuffTime -= Time.fixedDeltaTime;
         if (DebuffTime <= 0f)
         {
@@ -140,8 +154,18 @@ public class PlayerStats : CharacterStats
             {
                 SubtractMindBreakValule(color, MindBreakDecayRate*Time.fixedDeltaTime);
             }
-            
+
+            if (GuardianCDDict[color] > 0f)
+            {
+                GuardianCDDict[color] -= Time.fixedDeltaTime;
+                EventPublisher.TriggerSetGuardianUI(color, false);
+            }
+            else
+            {
+                EventPublisher.TriggerSetGuardianUI(color, true);
+            }
         }
+        
     }
 
     private void DebuffExit(ColorEnum debuffColor)

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,8 +30,13 @@ public class MindManager : MonoBehaviour
         blueGuardian = blueMind.transform.Find("Guardian").gameObject;
         blueBar = blueMind.transform.Find("BlueBar").GetComponent<Image>();
         blueBar.fillAmount = 0.0f;
-
         mindAnim = GetComponent<Animator>();
+        EventPublisher.SetGuardianUI += SetGuardian;
+    }
+
+    private void OnDestroy()
+    {
+        EventPublisher.SetGuardianUI -= SetGuardian;
     }
 
     // Update is called once per frame
@@ -56,6 +62,19 @@ public class MindManager : MonoBehaviour
                 break;
         }
     }
-    
 
+    public void SetGuardian(ColorEnum colorEnum, bool enable)
+    {
+        switch(colorEnum)
+        {
+            case ColorEnum.Black:
+                if (isBlackGuard != enable)
+                    isBlackGuard = enable;
+                break;
+            case ColorEnum.Blue:
+                if (isBlueGuard != enable)
+                isBlueGuard = enable;
+                break;
+        }
+    }
 }
