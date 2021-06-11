@@ -19,6 +19,7 @@ public class EnvManager : MonoBehaviour
     private Dictionary<ColorEnum, GameObject> tilePrefabDict = new Dictionary<ColorEnum, GameObject>();
 
     private Dictionary<Vector2Int, TileManager> tileDict;
+    private GameObject playerGameObject;
     private Transform playerTransform;
     private PlayerMovementManager playerMovementManager;
     
@@ -28,8 +29,7 @@ public class EnvManager : MonoBehaviour
     
     [FormerlySerializedAs("playerTileCoordCache")] [HideInInspector] public Vector2Int playerTileXYCache;
     private bool isCreateOnPlayerFire;
-
-
+    
     public void RemovePuddle(Vector2Int key)
     {
         tileDict.Remove(key);
@@ -42,7 +42,7 @@ public class EnvManager : MonoBehaviour
         tilePrefabDict[ColorEnum.Yellow] = yellowTilePrefabs;
         
         
-        var playerGameObject = GameObject.FindGameObjectsWithTag("Player")[0];
+        playerGameObject = GameObject.FindGameObjectsWithTag("Player")[0];
         playerTransform = playerGameObject.transform;
         playerMovementManager = playerGameObject.GetComponent<PlayerMovementManager>();
         footOffset = playerGameObject.GetComponent<SpriteUpdateOrder>().footOffset;
@@ -56,6 +56,16 @@ public class EnvManager : MonoBehaviour
     )
     {
         CreateCircle(playerTileXYCache, color);
+        playerGameObject.GetComponent<PlayerStats>().shakeCamera();
+        switch (color)
+        {
+            case ColorEnum.Black:
+                EventPublisher.TriggerParticleSpawn(ParticleEnum.BlackBulletParticle, playerTransform.position);
+                break;
+            case ColorEnum.Blue:
+                EventPublisher.TriggerParticleSpawn(ParticleEnum.BlueBulletSplashParticle, playerTransform.position);
+                break;
+        }
     }
 
     // private void OnBlueBubbleDestroy(Vector3 position)

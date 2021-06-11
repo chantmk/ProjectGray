@@ -73,12 +73,11 @@ public abstract class CharacterStats : MonoBehaviour
                 healValue = 0;
             }
 
-            CurrentHealth += healValue;
+            //CurrentHealth += healValue;
             //Debug.Log(transform.name + " +" + healValue + " Health");
-            if (CurrentHealth > MaxHealth)
-            {
-                CurrentHealth = MaxHealth;
-            }
+
+            CurrentHealth = MaxHealth;
+            HandleHealth();
         }
 
     }

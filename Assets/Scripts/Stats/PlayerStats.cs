@@ -229,5 +229,9 @@ public class PlayerStats : CharacterStats
         // SceneManager.LoadScene("MainMenuScene");
     }
 
+    public void shakeCamera()
+    {
+        StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
+    }
     
 }
