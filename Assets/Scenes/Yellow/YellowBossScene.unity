@@ -128,6 +128,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 17156803426798988, guid: b1f9844eb43557046a07075a64546843,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 17156803426798988, guid: b1f9844eb43557046a07075a64546843,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.08
+      objectReference: {fileID: 0}
     - target: {fileID: 681955559944536564, guid: b1f9844eb43557046a07075a64546843,
         type: 3}
       propertyPath: m_RootOrder
@@ -187,6 +197,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: YellowLevelGrid
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279948465635756121, guid: b1f9844eb43557046a07075a64546843,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 3279948465635756121, guid: b1f9844eb43557046a07075a64546843,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f9844eb43557046a07075a64546843, type: 3}

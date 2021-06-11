@@ -9,10 +9,6 @@ public class YellowBossWeapon : BossWeapon
     [SerializeField]
     private int[] EnrageAttackPatternCount = new int[3];
     [SerializeField]
-    private int EnrageBulletCount = 4;
-    [SerializeField]
-    private float EnrageSpawnRange = 5.0f;
-    [SerializeField]
     private int HyperBulletCount = 8;
     [SerializeField]
     private float HyperSpawnRange = 5.0f;
@@ -86,9 +82,9 @@ public class YellowBossWeapon : BossWeapon
         for (int i=0; i < count; i++)
         {
             var bulletTop = Instantiate(EnrageAttacks[i % 2], new Vector2(BottomLeftCorner.x + (i * delta), TopRightCorner.y), Quaternion.Euler(Vector3.zero));
-            bulletTop.GetComponent<BumpCarMovement>().Shoot();
+            bulletTop.GetComponent<BumpCarMovement>().ShootToPlayer();
             var bulletBottom = Instantiate(EnrageAttacks[i % 2], new Vector2(BottomLeftCorner.x + (i * delta), BottomLeftCorner.y), Quaternion.Euler(Vector3.zero));
-            bulletBottom.GetComponent<BumpCarMovement>().Shoot();
+            bulletBottom.GetComponent<BumpCarMovement>().ShootToPlayer();
         }
     }
 

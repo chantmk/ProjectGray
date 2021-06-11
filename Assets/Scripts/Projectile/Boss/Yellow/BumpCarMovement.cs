@@ -54,6 +54,12 @@ public class BumpCarMovement : EnemyMovement
         currentHeading = -GetDirectionToPlayer() * speed;
     }
 
+    public void ShootToPlayer()
+    {
+        currentHeading = GetDirectionToPlayer() * speed;
+    }
+
+
     private void RandomHeading(Collider2D collision)
     {
         Vector3 direction = (transform.position - (Vector3)collision.ClosestPoint(transform.position)).normalized;
@@ -64,7 +70,7 @@ public class BumpCarMovement : EnemyMovement
     private void OnTriggerEnter2D(Collider2D collision)
     {
         LayerMask collisionLayer = collision.gameObject.layer;
-        if (collisionLayer == LayerMask.NameToLayer("WallHitbox"))
+        if (collisionLayer == LayerMask.NameToLayer("Wall"))
         {
             RandomHeading(collision);
         }

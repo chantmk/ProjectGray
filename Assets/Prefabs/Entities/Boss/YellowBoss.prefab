@@ -138,6 +138,7 @@ MonoBehaviour:
     type: 3}
   hyperSprite: {fileID: -7729499622858779909, guid: a7816602758777e4b95874509ffa1c1e,
     type: 3}
+  resemblanceOrbPrefab: {fileID: 0}
 --- !u!114 &6909054251121272368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +184,8 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 0}
   ProjectileCount: 1
   shootAngle: 30
+  atkSound: {fileID: 0}
+  atkVolume: 1
   DashAttackEffectRange: 1.35
   DashAttackMaxCooldown: 10
   DashAttacks:
@@ -204,12 +207,10 @@ MonoBehaviour:
   hyperVolume: 0.5
   dashSound: {fileID: 8300000, guid: 1da72087904d32b4b8e8ca3738718782, type: 3}
   dashVolume: 0.5
-  EnrageBulletCount: 1
-  EnrageSpawnRange: 3
+  EnrageAttackPatternCount: 020000000300000002000000
   HyperBulletCount: 1
   HyperSpawnRange: 3
   DashAttackCount: 1
-  centerPosition: {x: -2.21, y: -0.71}
   TrapSpawnRange: 5
   CalmTrapMaxCooldown: 5
   CalmTrapRatio: 0.32

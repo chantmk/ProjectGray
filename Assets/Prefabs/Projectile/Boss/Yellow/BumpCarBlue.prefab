@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 10
+  BaseMaxHealth: 5
   MaxHealth: 0
   Armor: 0
   Status: 1
