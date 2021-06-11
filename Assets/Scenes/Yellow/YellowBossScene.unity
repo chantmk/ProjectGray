@@ -4065,6 +4065,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
+      propertyPath: centerPoint.x
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
+      propertyPath: centerPoint.y
+      value: -2.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3436206288533657521, guid: ded1ab8579e4c4c46803f79af2c14939,
+        type: 3}
       propertyPath: HyperSpawnRange
       value: 3
       objectReference: {fileID: 0}
@@ -4097,12 +4107,12 @@ PrefabInstance:
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.22
+      value: 0.26
       objectReference: {fileID: 0}
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.71
+      value: -0.44
       objectReference: {fileID: 0}
     - target: {fileID: 9177887080544511686, guid: ded1ab8579e4c4c46803f79af2c14939,
         type: 3}
