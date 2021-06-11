@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2689685940681380712, guid: 96597600a2d90d44ebc1eb6280b77277,
         type: 3}
       propertyPath: m_Text
-      value: T _ T
+      value: T T
       objectReference: {fileID: 0}
     - target: {fileID: 2689685940947348380, guid: 96597600a2d90d44ebc1eb6280b77277,
         type: 3}

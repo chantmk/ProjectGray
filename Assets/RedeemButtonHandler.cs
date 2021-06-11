@@ -24,7 +24,7 @@ public class RedeemButtonHandler : MonoBehaviour
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
         playerInventory = player.GetComponent<PlayerInventory>();
-        resemblancePad = GameObject.Find ("ResemblancePad").transform;
+        // resemblancePad = GameObject.Find ("ResemblancePad").transform;
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
     }
 
@@ -39,7 +39,7 @@ public class RedeemButtonHandler : MonoBehaviour
             if (playerInventory.UseResemblance(checkpointAmount[2]))
             {
                 //TODO : spawn DoubleDamage Item
-                Instantiate(DoubleDamagePrefab, resemblancePad.position + new Vector3(2,-2,0), Quaternion.identity);
+                // Instantiate(DoubleDamagePrefab, resemblancePad.position + new Vector3(2,-2,0), Quaternion.identity);
             }
             else
             {
@@ -53,7 +53,7 @@ public class RedeemButtonHandler : MonoBehaviour
             if (playerInventory.UseResemblance(checkpointAmount[1]))
             {
                 //TODO : spawn SpeedShoe Item
-                Instantiate(SpeedShoePrefab, resemblancePad.position + new Vector3(2,-2,0), Quaternion.identity);
+                // Instantiate(SpeedShoePrefab, resemblancePad.position + new Vector3(2,-2,0), Quaternion.identity);
             }
             else
             {
@@ -67,7 +67,7 @@ public class RedeemButtonHandler : MonoBehaviour
             if (playerInventory.UseResemblance(checkpointAmount[0]))
             {
                 //TODO : spawn HealthArmor Item
-                Instantiate(HealthArmorPrefab, resemblancePad.position + new Vector3(2,-2,0), Quaternion.identity);
+                // Instantiate(HealthArmorPrefab, resemblancePad.position + new Vector3(2,-2,0), Quaternion.identity);
             }
             else
             {

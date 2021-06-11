@@ -8,7 +8,6 @@ public class ParticleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start particle manager");
         ParticleDict = new Dictionary<ParticleEnum, GameObject>();
         //Add particle prefab
         ParticleDict[ParticleEnum.HealingParticle] = Resources.Load("Particle/HealingParticle") as GameObject;

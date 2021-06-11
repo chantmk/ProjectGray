@@ -68,6 +68,14 @@ namespace Utils
         White
     }
 
+    public enum ColorEnum
+    {
+        Black,
+        Blue,
+        Yellow,
+        None,
+    }
+
     public static class CharacterName
     {
 

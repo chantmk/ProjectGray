@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f02bc5146708648478ed9eb33f5b6f07
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: RD CHULAJARUEK
+  fontNames:
+  - RD CHULAJARUEK
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: fe43a1d2ddfa71449b19c72c92f57861, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

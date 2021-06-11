@@ -9,21 +9,10 @@ public class EventPublisher
     //public delegate void OnPlayerJump();
     public delegate void OnPlayerPressFire();
     public delegate void OnPlayerFire(WeaponIDEnum weaponID);
-
-    //Player stats delegates
-    //public delegate void OnPlayerTakeDamage();
-
-    // Player events
-    //public static event OnPlayerJump PlayerJump;
+    
     public static event OnPlayerPressFire PlayerPressFire;
     public static event OnPlayerFire PlayerFire;
-
-    //public static event OnPlayerTakeDamage PlayerTakeDamage;
-
-    //public static void TriggerPlayerJump()
-    //{
-    //    PlayerJump?.Invoke();
-    //}
+    
 
     public static void TriggerPlayerPressFire()
     {
@@ -35,10 +24,14 @@ public class EventPublisher
         PlayerFire?.Invoke(weaponID);
     }
 
-    //pulblic static void TriggerPlayerTakeDamage()
-    //{
-    //    PlayerTakeDamage?.Invoke();
-    //}
+    public delegate void OnStepOnTile(ColorEnum colorEnum);
+
+    public static event OnStepOnTile StepOnTile;
+
+    public static void TriggerStepOnTile(ColorEnum colorEnum)
+    {
+        StepOnTile?.Invoke(colorEnum);
+    }
 
     public delegate void OnStatusChange(BossAggroEnum bossStatus);
     public static event OnStatusChange StatusChange;

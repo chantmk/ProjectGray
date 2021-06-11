@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
+    [SerializeField]
     private Transform playerTransform;
     private SpriteRenderer spriteRenderer;
 
@@ -11,7 +12,7 @@ public class CursorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerTransform = transform.parent.parent;
+        playerTransform = GameObject.Find("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         Cursor.visible = false;
         transform.localScale *= 1/(1+offset);
