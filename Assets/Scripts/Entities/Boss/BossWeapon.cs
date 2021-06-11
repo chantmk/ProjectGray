@@ -108,7 +108,7 @@ public class BossWeapon : EnemyWeapon
     {
         // TODO override Hyper pattern here should check which boss state
         audioSrc.PlayOneShot(hyperSound, hyperVolume);
-        Debug.Log("Hyper ");
+        //Debug.Log("Hyper ");
         HyperAttackCooldown = HyperAttackMaxCooldown;
     }
 
