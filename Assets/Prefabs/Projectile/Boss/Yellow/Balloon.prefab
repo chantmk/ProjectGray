@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00225f8ef170e546aff1fc4186d28bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
   MaxDuration: 15
   MaxFlightSpeed: 1.5
   MinFlightSpeed: 0.2

@@ -43,11 +43,7 @@ public class BlueBossWeapon : BossWeapon
                 CalmAttack2(0);
                 break;
         }
-        rangeCount += 1;
-        if (rangeCount >= rangeAttackPattern.Length)
-        {
-            rangeCount = 0;
-        }
+        rangeCount = (rangeCount + 1) % rangeAttackPattern.Length;
     }
     public void CalmAttack(int EnrageNumber)
     {
@@ -75,7 +71,7 @@ public class BlueBossWeapon : BossWeapon
     public override void EnrageAttack(int EnrageNumber)
     {
         base.EnrageAttack(EnrageNumber);
-        switch (enrageCount)
+        switch (enrageAttackPattern[enrageCount])
         {
             case 0:
                 EnrageAttackPattern(EnrageNumber);
@@ -87,11 +83,7 @@ public class BlueBossWeapon : BossWeapon
                 EnrageAttackPattern3(EnrageNumber);
                 break;
         }
-        enrageCount += 1;
-        if (enrageCount >= enrageAttackPattern.Length)
-        {
-            enrageCount = 0;
-        }
+        enrageCount = (enrageCount + 1)%enrageAttackPattern.Length;
     }
 
     public void EnrageAttackPattern(int EnrageNumber)

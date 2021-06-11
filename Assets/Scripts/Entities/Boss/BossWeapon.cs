@@ -8,8 +8,6 @@ public class BossWeapon : EnemyWeapon
     /**
      * This class tell weapon stat and what to create
      */
-    [SerializeField]
-    protected Vector2 centerPoint;
 
     [Header("Dash attack parameters")]
     public float DashAttackEffectRange;
@@ -33,10 +31,14 @@ public class BossWeapon : EnemyWeapon
     public GameObject[] HyperAttacks = new GameObject[1];
 
     protected BossStats bossStats;
+    protected Vector3 TopRightCorner;
+    protected Vector3 BottomLeftCorner;
+    protected Vector2 centerPoint;
 
     private float EnrageAttackCooldown;
     private float HyperAttackCooldown;
     private float DashAttackCooldown;
+    private GameObject Corner;
     public AudioClip enrageSound;
     public float enrageVolume = 1f;
     public AudioClip hyperSound;
@@ -53,6 +55,10 @@ public class BossWeapon : EnemyWeapon
         DashAttackCooldown = DashAttackMaxCooldown;
         bossStats = GetComponent<BossStats>();
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
+        Corner = GameObject.Find("Corner");
+        TopRightCorner = Corner.transform.Find("TopRight").transform.position;
+        BottomLeftCorner = Corner.transform.Find("BottomLeft").transform.position;
+        centerPoint = (TopRightCorner + BottomLeftCorner) / 2;
     }
 
     public override void FixedUpdate()
