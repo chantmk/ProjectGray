@@ -52,6 +52,12 @@ public class EnvManager : MonoBehaviour
         // EventPublisher.BlueBubbleDestroy += OnBlueBubbleDestroy;
     }
 
+    private void OnDestroy()
+    {
+        EventPublisher.PlayerFire -= OnPlayerFire;
+        EventPublisher.MindBreak -= OnMindBreak;
+    }
+
     private void OnMindBreak(ColorEnum color
     )
     {
