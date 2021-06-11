@@ -46,7 +46,7 @@ public class BossWeapon : EnemyWeapon
     public AudioClip dashSound;
     public float dashVolume = 1f;
 
-
+    
     public override void Start()
     {
         base.Start();

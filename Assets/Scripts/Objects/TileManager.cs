@@ -54,6 +54,13 @@ namespace Objects
             {
                 isTriggerStay = true;
             }
+
+            if (other.gameObject.CompareTag("BlackTileClearer"))
+            {
+                print("get clear");
+                stateMachine.SetNextState(TileStateEnum.ShouldRemove);
+                stateMachine.ChangeState();
+            }
         }
 
         private void OnTriggerExit2D(Collider2D other)

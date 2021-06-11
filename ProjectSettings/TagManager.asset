@@ -13,6 +13,7 @@ TagManager:
   - Boss
   - Audio
   - BossHealthBar
+  - BlackTileClearer
   layers:
   - Default
   - TransparentFX
