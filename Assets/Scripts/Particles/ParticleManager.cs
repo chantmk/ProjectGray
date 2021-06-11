@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
 public class ParticleManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class ParticleManager : MonoBehaviour
 
 
         EventPublisher.ParticleSpawn += particleSpawn;
+        // EventPublisher.MindBreak += mindBreakParticleSpawn;
     }
 
     private void particleSpawn(ParticleEnum particleEnum, Vector2 position)
@@ -26,4 +28,16 @@ public class ParticleManager : MonoBehaviour
         ParticleSystem ps = Instantiate(ParticleDict[particleEnum], position, Quaternion.identity).GetComponent<ParticleSystem>();
         Destroy(ps.gameObject, ps.startLifetime);
     }
+
+    // private void mindBreakParticleSpawn(ColorEnum color)
+    // {
+    //     switch (color)
+    //     {
+    //         case ColorEnum.Black:
+    //             
+    //             break;
+    //         case ColorEnum.Blue:
+    //             break;
+    //     }
+    // }
 }
