@@ -12,6 +12,7 @@ public class CatTalkingManager : MonoBehaviour
     void Start()
     {
         catDialogueManager = FindObjectOfType<CatDialogueManager>();
+        TriggerDialogue(0);
     }
 
     public void TriggerDialogue(int dialogueCount)

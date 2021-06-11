@@ -810,6 +810,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackCat
       objectReference: {fileID: 0}
+    - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
+        type: 3}
+      propertyPath: dialogues.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].sentences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].sentences.Array.data[0].name
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
+        type: 3}
+      propertyPath: dialogues.Array.data[0].sentences.Array.data[0].sentence
+      value: "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35 \u0E17\u0E32\u0E22\u0E32\u0E17\u0E19\u0E49\u0E2D\u0E22"
+      objectReference: {fileID: 0}
     - target: {fileID: 7663808165876596324, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
       propertyPath: m_RootOrder

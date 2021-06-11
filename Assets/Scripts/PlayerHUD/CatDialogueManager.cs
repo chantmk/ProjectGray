@@ -74,7 +74,7 @@ public class CatDialogueManager : MonoBehaviour
 			catText.text += letter;
 			yield return null;
 		}
-		DisplayNextSentence();
+		//DisplayNextSentence();
 	}
 
 	public void StartDialogue(Dialogue dialogue)
