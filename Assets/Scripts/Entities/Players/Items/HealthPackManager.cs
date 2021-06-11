@@ -21,6 +21,8 @@ public class HealthPackManager : Interactable
     {
         player.GetComponent<PlayerInventory>().AddHealthPack(1);
         audioSrc.PlayOneShot(pickSound, pickVolume);
+        //Change drop chance
+        
         Destroy(gameObject);
     }
 
