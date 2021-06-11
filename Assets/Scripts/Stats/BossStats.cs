@@ -28,10 +28,13 @@ public class BossStats : CharacterStats
     public GameObject resemblanceOrbPrefab;
 
     private ResemblanceManager resemblanceManager;
+
+    private Image healthBorderImage;
     // Start is called before the first frame update
     protected override void Start()
     {
         Teleport.DisablePortal();
+        healthBorderImage = healthBar.GetComponent<Image>();
         healthBar.SetActive(true);
         healthBarImage = healthBar.transform.Find("BossHealthBar").GetComponent<Image>();
         base.Start();
@@ -58,6 +61,15 @@ public class BossStats : CharacterStats
         else if (Aggro == BossAggroEnum.LastStand)
         {
             healthBar.SetActive(false);
+        }
+        
+        if (Status == StatusEnum.Immortal)
+        {
+            healthBorderImage.color = new Color(0.85f, 0.64f, 0.13f);
+        }
+        else
+        {
+            healthBorderImage.color = Color.black;
         }
     }
 
