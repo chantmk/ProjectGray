@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ManualFlip: 0
   footOffset: {x: 0, y: -0.7, z: 0}
-  speed: 1
+  speed: 2
   visionRange: 1
   minimumDistance: 0.2
   seekPathInterval: 0.5

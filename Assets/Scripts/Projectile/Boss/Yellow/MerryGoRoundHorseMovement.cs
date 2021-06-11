@@ -89,7 +89,7 @@ public class MerryGoRoundHorseMovement : EnemyMovement
                 StopMoving();
                 enemyStats.Die();
             }
-            else if (collisionLayer == LayerMask.NameToLayer("WallHitbox"))
+            else if (collisionLayer == LayerMask.NameToLayer("Wall"))
             {
                 StopMoving();
                 enemyStats.Die();
