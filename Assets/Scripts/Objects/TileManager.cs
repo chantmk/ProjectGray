@@ -25,13 +25,18 @@ namespace Objects
 
         private float MaxDecayLifeTime;
         private float DecayLifeTime;
-        private bool ShouldRemove;
+        public bool shouldRemove => stateMachine == null ? false
+            : stateMachine.CurrentState == TileStateEnum.ShouldRemove;
 
         private bool isTriggerStay;
 
-        private void Start()
+        private void Awake()
         {
             stateMachine = new StateMachine<TileStateEnum>(TileStateEnum.Active);
+        }
+
+        private void Start()
+        {
             
             spriteRenderer = GetComponent<SpriteRenderer>();
             LifeTime = Random.Range(LifeTimeMin, LifeTimeMax);
@@ -97,9 +102,6 @@ namespace Objects
                 case TileStateEnum.Decay:
                     ChangeAlpha();
                     DecayLifeTime -= Time.fixedDeltaTime;
-                    break;
-                case TileStateEnum.ShouldRemove:
-                    ShouldRemove = true;
                     break;
             }
         }

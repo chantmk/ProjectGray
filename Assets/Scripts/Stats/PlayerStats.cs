@@ -13,6 +13,9 @@ public class PlayerStats : CharacterStats
     private float MaxDebuffTime = 0.25f;
     private float DebuffTime;
     private BlackDebuffManager blackDebuffManager;
+    private bool isBlackDebuffActivate;
+
+    private Dictionary<ColorEnum, float> MindBreakChargeDict;
     
     public float RechargeStamina;
     [SerializeField] private float BaseRechargeStamina;
@@ -25,12 +28,16 @@ public class PlayerStats : CharacterStats
     public CameraShake CameraShake;
 
     public SpriteRenderer SpriteRenderer;
+    public float MindBreakIncrement;
+    private MindManager mindManager;
+
     protected override void Start()
     {
         base.Start();
         EventPublisher.DialogueStart += ListenDialogueStart;
         EventPublisher.DialogueDone += ListenDialogueStart;
         EventPublisher.StepOnTile += ListenStepOnTile;
+        EventPublisher.PlayerFire += OnPlayerFire;
 
         blackDebuffManager = GetComponentInChildren<BlackDebuffManager>();
         
@@ -38,8 +45,51 @@ public class PlayerStats : CharacterStats
         SpriteRenderer = GetComponent<SpriteRenderer>();
 
         DebuffColor = ColorEnum.None;
+
+        MindBreakChargeDict = new Dictionary<ColorEnum, float>();
+        MindBreakChargeDict[ColorEnum.Black] = 0f;
+        MindBreakChargeDict[ColorEnum.Blue] = 0f;
+        mindManager = GameObject.Find("MindBar").GetComponent<MindManager>();
     }
-    
+
+    private void OnPlayerFire(WeaponIDEnum weaponid)
+    {
+        ColorEnum color = ColorEnum.None;
+        switch (weaponid)
+        {
+            case WeaponIDEnum.Black:
+                color = ColorEnum.Black;
+                break;
+            case WeaponIDEnum.Blue:
+                color = ColorEnum.Blue;
+                break;
+        }
+
+        if (color != ColorEnum.None)
+        {
+            var mindbreakcharge = MindBreakChargeDict[color];
+            UpdateMindBreakValue(color,mindbreakcharge + MindBreakIncrement);
+            mindbreakcharge = MindBreakChargeDict[color];
+
+            if (mindbreakcharge >= 100f + MindBreakIncrement)
+            {
+                MindBreak(color);
+            }
+        }
+    }
+
+    private void MindBreak(ColorEnum color)
+    {
+        UpdateMindBreakValue(color,0f);
+        EventPublisher.TriggerMindBreak(color);
+    }
+
+    private void UpdateMindBreakValue(ColorEnum color, float value)
+    {
+        MindBreakChargeDict[color] = value;
+        mindManager.UpdateBar(color, Mathf.Min(1f, (value)/100f));
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -53,12 +103,18 @@ public class PlayerStats : CharacterStats
             DebuffExit(DebuffColor);
             DebuffColor = ColorEnum.None;
         }
+
+        if (isBlackDebuffActivate && DebuffColor != ColorEnum.Black)
+        {
+            DebuffExit(ColorEnum.Black);
+        }
     }
 
     private void DebuffExit(ColorEnum debuffColor)
     {
         if (debuffColor == ColorEnum.Black)
         {
+            isBlackDebuffActivate = false;
             blackDebuffManager.DebuffExit();
         }
     }
@@ -67,6 +123,7 @@ public class PlayerStats : CharacterStats
     {
         if (debuffColor == ColorEnum.Black)
         {
+            isBlackDebuffActivate = true;
             blackDebuffManager.DebuffEnter();
         }
     }
@@ -83,11 +140,11 @@ public class PlayerStats : CharacterStats
         EventPublisher.DialogueStart -= ListenDialogueStart;
         EventPublisher.DialogueDone -= ListenDialogueDone;
         EventPublisher.StepOnTile -= ListenStepOnTile;
+        EventPublisher.PlayerFire -= OnPlayerFire;
     }
 
     private void ListenStepOnTile(ColorEnum colorenum)
     {
-        print(colorenum);
         
         if (DebuffColor != colorenum)
         {

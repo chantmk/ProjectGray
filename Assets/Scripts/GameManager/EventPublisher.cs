@@ -94,4 +94,12 @@ public class EventPublisher
     {
         DialogueDone?.Invoke();
     }
+
+    public delegate void OnMindBreak(ColorEnum color);
+    public static event OnMindBreak MindBreak;
+    
+    public static void TriggerMindBreak(ColorEnum color)
+    {
+        MindBreak?.Invoke(color);
+    }
 }

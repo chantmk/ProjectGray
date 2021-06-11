@@ -37,14 +37,14 @@ public class MindManager : MonoBehaviour
         blueGuardian.SetActive(isBlueGuard);
     }
 
-    public void UpdateBar(CharacterNameEnum characterEnum, float ratio)
+    public void UpdateBar(ColorEnum colorEnum, float ratio)
     {
-        switch(characterEnum)
+        switch(colorEnum)
         {
-            case CharacterNameEnum.Black:
+            case ColorEnum.Black:
                 blackBar.fillAmount = ratio;
                 break;
-            case CharacterNameEnum.Blue:
+            case ColorEnum.Blue:
                 blueBar.fillAmount = ratio;
                 break;
         }

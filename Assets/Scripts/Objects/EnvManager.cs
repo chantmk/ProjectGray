@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using Objects;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.Tilemaps;
 using Utils;
+using Random = UnityEngine.Random;
 
 // [ExecuteAlways]
 public class EnvManager : MonoBehaviour
 {
-    // [SerializeField] private GameObject blackTilePrefabs;
-    // [SerializeField] private GameObject blueTilePrefabs;
+    public GameObject blackTilePrefabs;
+    public GameObject blueTilePrefabs;
+    public GameObject yellowTilePrefabs;
 
-    public Dictionary<ColorEnum, GameObject> TilePrefabDict;
-    
-    private Dictionary<Vector2Int, BlueEnvPuddleManager> tileDict;
+    private Dictionary<ColorEnum, GameObject> tilePrefabDict = new Dictionary<ColorEnum, GameObject>();
+
+    private Dictionary<Vector2Int, TileManager> tileDict;
     private Transform playerTransform;
     private PlayerMovementManager playerMovementManager;
     
@@ -22,7 +26,7 @@ public class EnvManager : MonoBehaviour
     private readonly float scale = 0.5f;
     private readonly int invScale = 2;
     
-    public Vector2Int playerPuddleCoordCache;
+    [FormerlySerializedAs("playerTileCoordCache")] [HideInInspector] public Vector2Int playerTileXYCache;
     private bool isCreateOnPlayerFire;
 
 
@@ -32,22 +36,26 @@ public class EnvManager : MonoBehaviour
     }
     void Start()
     {
-        tileDict = new Dictionary<Vector2Int, BlueEnvPuddleManager>();
-
+        tileDict = new Dictionary<Vector2Int, TileManager>();
+        tilePrefabDict[ColorEnum.Black] = blackTilePrefabs;
+        tilePrefabDict[ColorEnum.Blue] = blueTilePrefabs;
+        tilePrefabDict[ColorEnum.Yellow] = yellowTilePrefabs;
+        
+        
         var playerGameObject = GameObject.FindGameObjectsWithTag("Player")[0];
         playerTransform = playerGameObject.transform;
         playerMovementManager = playerGameObject.GetComponent<PlayerMovementManager>();
         footOffset = playerGameObject.GetComponent<SpriteUpdateOrder>().footOffset;
         
-        
         EventPublisher.PlayerFire += OnPlayerFire;
+        EventPublisher.MindBreak += OnMindBreak;
         // EventPublisher.BlueBubbleDestroy += OnBlueBubbleDestroy;
     }
 
-    private void OnDestroy()
+    private void OnMindBreak(ColorEnum color
+    )
     {
-        // EventPublisher.PlayerFire -= OnPlayerFire;
-        // EventPublisher.BlueBubbleDestroy -= OnBlueBubbleDestroy;
+        CreateCircle(playerTileXYCache, color);
     }
 
     // private void OnBlueBubbleDestroy(Vector3 position)
@@ -96,66 +104,59 @@ public class EnvManager : MonoBehaviour
             
         }
     }
-    
-    private void CreateTile(Vector2Int puddleCoord, ColorEnum color)
+
+    private void CreateCircle(Vector2Int center, ColorEnum color)
     {
-        if (tileDict.ContainsKey(puddleCoord))
+        for (int x = -12; x <= 11; x++)
         {
-            tileDict[puddleCoord].AddChargeOneStep();
+            for (int y = -8; y <= 1; y++)
+            {
+                var sqrmag = (new Vector2Int(x, y) - center).sqrMagnitude;
+                float prob = Mathf.Exp(-sqrmag/7.2f);
+                float randomnum = Random.value;
+                if (prob > randomnum && sqrmag >= 2)
+                    CreateTile(new Vector2Int(x,y), color);
+            }
         }
-        else
+    }
+    
+    private void CreateTile(Vector2Int xy, ColorEnum color)
+    {
+        if (tileDict.ContainsKey(xy))
         {
-            var puddle = Instantiate(TilePrefabDict[color],
-                PuddleCoord2Coord(puddleCoord),
+            Destroy(tileDict[xy].gameObject);
+            tileDict.Remove(xy);
+        }
+        
+        if (xy.x >= -12 && xy.x <= 11 && xy.y >= -8 && xy.y <= 1)
+        {
+            var tile = Instantiate(tilePrefabDict[color],
+                (Vector3Int)xy + new Vector3(0.5f,0.5f,0),
                 Quaternion.Euler(Vector3.zero));
-            var puddleManager = puddle.GetComponent<BlueEnvPuddleManager>();
-            
-            tileDict[puddleCoord] = puddleManager;
+            var tileManager = tile.GetComponent<TileManager>();
+            tileDict[xy] = tileManager;
         }
         
     }
-    
-    // private void createPuddleStrong(Vector2Int puddleCoord)
-    // {
-    //     if (tileDict.ContainsKey(puddleCoord))
-    //     {
-    //         tileDict[puddleCoord].AddChargeOneStep();
-    //     }
-    //     else
-    //     {
-    //         var puddle = Instantiate(puddlePrefabs,
-    //             PuddleCoord2Coord(puddleCoord),
-    //             Quaternion.Euler(Vector3.zero));
-    //         var puddleManager = puddle.GetComponent<BlueEnvPuddleManager>();
-    //         puddleManager.AddChargeOneStep();
-    //         tileDict[puddleCoord] = puddleManager;
-    //     }
-    //     
-    // }
-
-    private Vector3 QuantizePosition(Vector3 position)
+    private Vector2Int Quantize1Unit(Vector3 position)
     {
-        return new Vector3(
-            Mathf.Round((position.x - 0.25f) * invScale) * scale,
-            Mathf.Round((position.y - 0.25f) * invScale) * scale,
-            0f
+        return new Vector2Int(
+            (int) (Mathf.Floor(position.x)),
+            (int) (Mathf.Floor(position.y))
         );
-    }
-
-    private Vector2Int Coord2PuddleCoord(Vector3 coord)
-    {
-        return new Vector2Int(Mathf.RoundToInt(coord.x*invScale), Mathf.RoundToInt(coord.y*invScale));
-    }
-    
-    private Vector3 PuddleCoord2Coord(Vector2Int coord)
-    {
-        return new Vector3(coord.x * scale + 0.25f, coord.y * scale + 0.25f, 0f);
     }
 
     void FixedUpdate()
     {   
-        playerPuddleCoordCache = Coord2PuddleCoord(QuantizePosition(playerTransform.position + Vector3.up*footOffset));
+        // playerPuddleCoordCache = Coord2PuddleCoord(QuantizePosition(playerTransform.position + Vector3.up*footOffset));
+        playerTileXYCache = Quantize1Unit(playerTransform.position + Vector3.up * footOffset);
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            // CreateTile(playerTileXYCache, ColorEnum.Black);
+            CreateCircle(playerTileXYCache, ColorEnum.Blue);
+        }
+        // CreateTile(playerTileXYCache, ColorEnum.Black);
         // if (puddleDict.ContainsKey(playerPuddleCoordCache))
         // {
         //     playerMovementManager.MoveSpeedFactor = 0.2f;
