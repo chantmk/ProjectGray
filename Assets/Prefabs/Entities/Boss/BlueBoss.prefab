@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackDamage: 2
-  AttackRange: 5.52
+  AttackRange: 14.01
   AttackRatio: 0.75
   AttackMaxCooldown: 2
   IsRange: 1
@@ -120,12 +120,12 @@ MonoBehaviour:
   DashAttackMaxCooldown: 3
   DashAttacks:
   - {fileID: 1707451178030945541, guid: ac5b941be5b46ee4ca04efd7370f5fab, type: 3}
-  EnrageAttackRange: 5.84
+  EnrageAttackRange: 13.99
   EnrageAttackRatio: 0.69
   EnrageAttackMaxCooldown: 5
   EnrageAttacks:
   - {fileID: 1697653986579597741, guid: 502cd339522e2524bbd4b5501f2cd2fb, type: 3}
-  HyperAttackRange: 3.99
+  HyperAttackRange: 13.89
   HyperAttackRatio: 0.35
   HyperAttackMaxCooldown: 8
   HyperAttacks:
@@ -143,8 +143,11 @@ MonoBehaviour:
   CalmAttack2Count: 0a0000000f00000014000000
   CalmAttack2Range: 5
   EnrageAttackCount: 040000000600000008000000
+  EnrageAttackPatternRange: 10
   EnrageAttackCount2: 030000000400000005000000
+  EnrageAttackPattern2Range: 10
   HyperAttackCount: 020000000300000004000000
+  HyperAttackPatternRange: 5
 --- !u!114 &4719026838900429687
 MonoBehaviour:
   m_ObjectHideFlags: 0
