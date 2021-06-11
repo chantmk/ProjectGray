@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,9 +15,12 @@ public class PlayerStats : CharacterStats
     private float DebuffTime;
     private BlackDebuffManager blackDebuffManager;
     private bool isBlackDebuffActivate;
+    public float MindBreakDecayRate;
+    public float MindBreakDecayCD;
 
     private Dictionary<ColorEnum, float> MindBreakChargeDict;
-    
+    private Dictionary<ColorEnum, float> MindBreakDecayCDDict;
+
     public float RechargeStamina;
     [SerializeField] private float BaseRechargeStamina;
     public float MaxStamina; //Current max stamina
@@ -49,6 +53,11 @@ public class PlayerStats : CharacterStats
         MindBreakChargeDict = new Dictionary<ColorEnum, float>();
         MindBreakChargeDict[ColorEnum.Black] = 0f;
         MindBreakChargeDict[ColorEnum.Blue] = 0f;
+        
+        MindBreakDecayCDDict = new Dictionary<ColorEnum, float>();
+        MindBreakDecayCDDict[ColorEnum.Black] = MindBreakDecayCD;
+        MindBreakDecayCDDict[ColorEnum.Blue] = MindBreakDecayCD;
+        
         mindManager = GameObject.Find("MindBar").GetComponent<MindManager>();
     }
 
@@ -67,14 +76,7 @@ public class PlayerStats : CharacterStats
 
         if (color != ColorEnum.None)
         {
-            var mindbreakcharge = MindBreakChargeDict[color];
-            UpdateMindBreakValue(color,mindbreakcharge + MindBreakIncrement);
-            mindbreakcharge = MindBreakChargeDict[color];
-
-            if (mindbreakcharge >= 100f + MindBreakIncrement)
-            {
-                MindBreak(color);
-            }
+            AddMindBreakValue(color, MindBreakIncrement);
         }
     }
 
@@ -84,10 +86,30 @@ public class PlayerStats : CharacterStats
         EventPublisher.TriggerMindBreak(color);
     }
 
+    private void AddMindBreakValue(ColorEnum color, float value)
+    {
+        MindBreakDecayCDDict[color] = MindBreakDecayCD;
+        var currentValue = MindBreakChargeDict[color];
+        var newValue = currentValue + value;
+        UpdateMindBreakValue(color, newValue);
+        
+        if (value >= 100f + MindBreakIncrement)
+        {
+            MindBreak(color);
+        }
+    }
+    
+    private void SubtractMindBreakValule(ColorEnum color, float value)
+    {
+        var currentValue = MindBreakChargeDict[color];
+        var newValue = Mathf.Max(currentValue - value, 0f);
+        
+        UpdateMindBreakValue(color, newValue);
+    }
     private void UpdateMindBreakValue(ColorEnum color, float value)
     {
         MindBreakChargeDict[color] = value;
-        mindManager.UpdateBar(color, Mathf.Min(1f, (value)/100f));
+        mindManager.UpdateBar(color, Mathf.Max(0f,Mathf.Min(1f, (value)/100f)));
     }
 
     protected override void Update()
@@ -107,6 +129,18 @@ public class PlayerStats : CharacterStats
         if (isBlackDebuffActivate && DebuffColor != ColorEnum.Black)
         {
             DebuffExit(ColorEnum.Black);
+        }
+
+        var keylist = MindBreakDecayCDDict.Keys.ToList();
+        foreach (var color in keylist)
+        {
+            var newdecayCD = MindBreakDecayCDDict[color] - Time.fixedDeltaTime;
+            MindBreakDecayCDDict[color] = newdecayCD;
+            if (newdecayCD < 0)
+            {
+                SubtractMindBreakValule(color, MindBreakDecayRate*Time.fixedDeltaTime);
+            }
+            
         }
     }
 

@@ -37,7 +37,7 @@ public class PlayerInventory : MonoBehaviour
         
         // resemblanceCountText = resemblanceUI.transform.Find("ResemblanceCountText").GetComponent<Text>();
         healthPackText = inventoryBox.transform.Find("HealthPackText").GetComponent<Text>();
-        resemblanceText = inventoryBox.transform.Find("ResemblanceText").GetComponent<Text>();
+        // resemblanceText = inventoryBox.transform.Find("ResemblanceText").GetComponent<Text>();
         audioSrc = GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<AudioSource>();
 
         // resemblanceUI.SetActive(false);
