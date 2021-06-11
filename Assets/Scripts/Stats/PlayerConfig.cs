@@ -10,7 +10,7 @@ public static class PlayerConfig
     public static int healValue = 5;
     public static List<int> HaveWeapon = new List<int>
     {
-        (int)WeaponIDEnum.Cheap//, (int)WeaponIDEnum.Black, (int)WeaponIDEnum.Blue
+        (int)WeaponIDEnum.Cheap, (int)WeaponIDEnum.Black, (int)WeaponIDEnum.Blue
         
     };
     public static bool IsWeaponBlueSpecial;

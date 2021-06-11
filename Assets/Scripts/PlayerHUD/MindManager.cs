@@ -15,6 +15,7 @@ public class MindManager : MonoBehaviour
     private GameObject blueGuardian;
     private Image blueBar;
     private bool isBlueGuard = false;
+    private Animator mindAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,8 @@ public class MindManager : MonoBehaviour
         blueGuardian = blueMind.transform.Find("Guardian").gameObject;
         blueBar = blueMind.transform.Find("BlueBar").GetComponent<Image>();
         blueBar.fillAmount = 0.0f;
+
+        mindAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -43,10 +46,16 @@ public class MindManager : MonoBehaviour
         {
             case ColorEnum.Black:
                 blackBar.fillAmount = ratio;
+                mindAnim.SetBool("isBlackFull", ratio == 1f);
+               
+                
                 break;
             case ColorEnum.Blue:
                 blueBar.fillAmount = ratio;
+                mindAnim.SetBool("isBlueFull", ratio == 1f);
                 break;
         }
     }
+    
+
 }
