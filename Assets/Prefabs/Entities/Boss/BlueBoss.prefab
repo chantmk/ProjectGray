@@ -115,7 +115,7 @@ MonoBehaviour:
   shootAngle: 60
   atkSound: {fileID: 0}
   atkVolume: 1
-  centerPoint: {x: 11.01, y: -12.64}
+  centerPoint: {x: 0, y: -2.4}
   DashAttackEffectRange: 1
   DashAttackMaxCooldown: 3
   DashAttacks:
@@ -130,6 +130,8 @@ MonoBehaviour:
   HyperAttackMaxCooldown: 8
   HyperAttacks:
   - {fileID: 7264316411559659834, guid: 34f60f0308a6ae54687c8c671d9fd3cd, type: 3}
+  - {fileID: 3434371878462859994, guid: 1a5e478e8c398c94f904d83098be3e1e, type: 3}
+  - {fileID: 2330274646415488633, guid: 980b5b485d8edce418a5dfc600bbafab, type: 3}
   enrageSound: {fileID: 8300000, guid: be49a9207c30ac54da618a3f070b8c0f, type: 3}
   enrageVolume: 0.5
   hyperSound: {fileID: 8300000, guid: 4f3f81e0be54fba40938c31be7af8c08, type: 3}
@@ -213,15 +215,14 @@ MonoBehaviour:
   lastStandDialogue:
     IsDecision: 0
     sentences:
-    - name: 0
+    - name: 2
       ProfilePicture: {fileID: 21300000, guid: 4da8c2421b5b7564ebd25b19244ff004, type: 3}
-      sentence: "\u0E2E\u0E36\u0E01 \u0E09\u0E31\u0E19...\u0E09\u0E31\u0E19\u0E40\u0E2B\u0E07\u0E32
-        \u0E44\u0E21\u0E48\u0E21\u0E35\u0E43\u0E04\u0E23\u0E04\u0E38\u0E22\u0E01\u0E31\u0E1A\u0E09\u0E31\u0E19\u0E40\u0E25\u0E22"
+      sentence: "\u0E21\u0E48\u0E32\u0E22"
       IsRight: 0
   askForMercyDialogue:
     IsDecision: 1
     sentences:
-    - name: 0
+    - name: 2
       ProfilePicture: {fileID: 21300000, guid: 4da8c2421b5b7564ebd25b19244ff004, type: 3}
       sentence: "\u0E2E\u0E36\u0E01 \u0E09\u0E31\u0E19...\u0E09\u0E31\u0E19\u0E40\u0E2B\u0E07\u0E32
         \u0E44\u0E21\u0E48\u0E21\u0E35\u0E43\u0E04\u0E23\u0E04\u0E38\u0E22\u0E01\u0E31\u0E1A\u0E09\u0E31\u0E19\u0E40\u0E25\u0E22"
@@ -237,7 +238,7 @@ MonoBehaviour:
         type: 3}
       sentence: "...\u0E09\u0E31\u0E19\u0E08\u0E30\u0E40\u0E1B\u0E47\u0E19\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E40\u0E18\u0E2D\u0E40\u0E2D\u0E07"
       IsRight: 1
-    - name: 0
+    - name: 2
       ProfilePicture: {fileID: 21300000, guid: 12128925d99caab438194376417c0b1c, type: 3}
       sentence: "\u0E08\u0E23\u0E34\u0E07\u0E2B\u0E23\u0E2D \u0E19\u0E35\u0E48..\u0E19\u0E32\u0E22\u0E08\u0E30\u0E40\u0E1B\u0E47\u0E19\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19\u0E09\u0E31\u0E19\u0E40\u0E2B\u0E23\u0E2D"
       IsRight: 0
@@ -246,12 +247,12 @@ MonoBehaviour:
         type: 3}
       sentence: "\u0E2D\u0E37\u0E21...\u0E41\u0E15\u0E48\u0E09\u0E31\u0E19\u0E15\u0E49\u0E2D\u0E07\u0E44\u0E1B\u0E41\u0E25\u0E49\u0E27..."
       IsRight: 1
-    - name: 0
+    - name: 2
       ProfilePicture: {fileID: 21300000, guid: 12128925d99caab438194376417c0b1c, type: 3}
       sentence: "\u0E02\u0E2D\u0E1A\u0E04\u0E38\u0E13\u0E19\u0E30 \u0E02\u0E2D\u0E1A\u0E04\u0E38\u0E13\u0E08\u0E23\u0E34\u0E07
         \u0E46"
       IsRight: 0
-    - name: 0
+    - name: 2
       ProfilePicture: {fileID: 21300000, guid: 84d48f02c125e9d4696cd637922fb4dd, type: 3}
       sentence: "\u0E44\u0E27\u0E49\u0E40\u0E08\u0E2D\u0E01\u0E31\u0E19\u0E43\u0E2B\u0E21\u0E48\u0E19\u0E30...\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E19"
       IsRight: 0

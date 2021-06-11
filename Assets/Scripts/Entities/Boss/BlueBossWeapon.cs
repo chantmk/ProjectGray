@@ -127,7 +127,7 @@ public class BlueBossWeapon : BossWeapon
         float degree = 360.0f / count;
         for (int i = 0; i < count; i++)
         {
-            Vector2 position = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * EnrageAttackRange;
+            Vector2 position = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * EnrageAttackRange/2.0f;
             var bullet = Instantiate(EnrageAttacks[0], centerPoint + position, Quaternion.Euler(Vector3.zero));
             bullet.GetComponent<Projectile>().Shoot(Quaternion.AngleAxis(90, Vector3.forward)*position.normalized);
         }
@@ -143,15 +143,15 @@ public class BlueBossWeapon : BossWeapon
         {
             Vector2 position = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * HyperAttackRange*0.33f;
             var bullet = Instantiate(HyperAttacks[0], centerPoint + position, Quaternion.Euler(Vector3.zero));
-            bullet.GetComponent<Projectile>().Shoot(-position);
+            //bullet.GetComponent<Projectile>().Shoot(-position);
 
-            Vector2 position2 = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * HyperAttackRange*0.66f;
-            var bullet2 = Instantiate(HyperAttacks[0], centerPoint + position2, Quaternion.Euler(Vector3.zero));
-            bullet2.GetComponent<Projectile>().Shoot(-position);
+            Vector2 position2 = Quaternion.AngleAxis(degree * i+30, Vector3.forward) * Vector3.right * HyperAttackRange*0.66f;
+            var bullet2 = Instantiate(HyperAttacks[1], centerPoint + position2, Quaternion.Euler(Vector3.zero));
+            //bullet2.GetComponent<Projectile>().Shoot(-position);
 
-            Vector2 position3 = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * HyperAttackRange;
-            var bullet3 = Instantiate(HyperAttacks[0], centerPoint + position3, Quaternion.Euler(Vector3.zero));
-            bullet3.GetComponent<Projectile>().Shoot(-position);
+            Vector2 position3 = Quaternion.AngleAxis(degree * i+60, Vector3.forward) * Vector3.right * HyperAttackRange;
+            var bullet3 = Instantiate(HyperAttacks[2], centerPoint + position3, Quaternion.Euler(Vector3.zero));
+            //bullet3.GetComponent<Projectile>().Shoot(-position);
         }
     }
 

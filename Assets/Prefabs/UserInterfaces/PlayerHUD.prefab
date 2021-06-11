@@ -2331,7 +2331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5033545541788499119
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3144,7 +3144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4732796487753757224}
   - component: {fileID: 6012630174054642362}
-  - component: {fileID: 1778552490911015060}
   - component: {fileID: 5385361634636558776}
   - component: {fileID: 2919450350431143529}
   m_Layer: 5
@@ -3183,19 +3182,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7752910058184512968}
   m_CullTransparentMesh: 0
---- !u!114 &1778552490911015060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7752910058184512968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9316cb109ee26e34db3522dfb8786165, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delayTime: 0
 --- !u!95 &5385361634636558776
 Animator:
   serializedVersion: 3
