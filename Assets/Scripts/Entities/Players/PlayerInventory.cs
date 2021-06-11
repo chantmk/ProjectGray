@@ -47,7 +47,7 @@ public class PlayerInventory : MonoBehaviour
         resemblanceCount = PlayerConfig.ResemblanceCount;
         
         healthPackText.text = $"{healthPackCount}";
-        resemblanceText.text = $"{resemblanceCount}";
+        // resemblanceText.text = $"{resemblanceCount}";
 
 
     }

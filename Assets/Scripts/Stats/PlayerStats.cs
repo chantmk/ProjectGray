@@ -93,7 +93,7 @@ public class PlayerStats : CharacterStats
         var newValue = currentValue + value;
         UpdateMindBreakValue(color, newValue);
         
-        if (value >= 100f + MindBreakIncrement)
+        if (newValue >= 100f + MindBreakIncrement)
         {
             MindBreak(color);
         }

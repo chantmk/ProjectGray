@@ -17,7 +17,7 @@ public class ResemblanceManager : Interactable
 
     public override void OnInteract()
     {
-        player.GetComponent<PlayerInventory>().AddResemblance(1);
+        // player.GetComponent<PlayerInventory>().AddResemblance(1);
         audioSrc.PlayOneShot(pickSound, pickVolume);
         Destroy(gameObject);
     }
