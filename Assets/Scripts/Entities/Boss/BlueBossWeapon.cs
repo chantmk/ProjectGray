@@ -96,7 +96,6 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern(int EnrageNumber)
     {
-        Debug.Log("Enrage1");
         int count = EnrageAttackCount[(int)bossStats.Aggro];
         float delta = EnrageAttackRange / count;
         var bullet = Instantiate(EnrageAttacks[0], centerPoint, Quaternion.Euler(Vector3.zero));
@@ -112,7 +111,6 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern2(int EnrageNumber)
     {
-        Debug.Log("Enrage2");
         int count = EnrageAttackCount2[(int)bossStats.Aggro];
         float delta = EnrageAttackRange / count;
         var bullet = Instantiate(EnrageAttacks[0], centerPoint, Quaternion.Euler(Vector3.zero));
@@ -128,7 +126,6 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern3(int EnrageNumber)
     {
-        Debug.Log("Enrage3");
         int count = EnrageAttackCount2[(int)bossStats.Aggro];
         float degree = 360.0f / count;
         for (int i = 0; i < count; i++)
@@ -142,7 +139,6 @@ public class BlueBossWeapon : BossWeapon
     public override void HyperAttack(int HyperNumber)
     {
         base.HyperAttack(HyperNumber);
-        Debug.Log("Hyper ");
         float count = HyperAttackCount[2];
         float degree = 360.0f / count;
         for (int i = 0; i < count; i++)

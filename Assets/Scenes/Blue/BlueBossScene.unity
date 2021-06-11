@@ -1118,11 +1118,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
-        type: 3}
-      propertyPath: HyperAttackPatternRange
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: healthBar
