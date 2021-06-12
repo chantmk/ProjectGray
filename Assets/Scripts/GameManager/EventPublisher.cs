@@ -118,4 +118,11 @@ public class EventPublisher
     {
         SetGuardianUI?.Invoke(color, enable);
     }
+
+    public delegate void OnGateEnable(bool enable);
+    public static event OnGateEnable GateEnable;
+    public static void TriggerGateEnable(bool enable)
+    {
+        GateEnable?.Invoke(enable);
+    }
 }
