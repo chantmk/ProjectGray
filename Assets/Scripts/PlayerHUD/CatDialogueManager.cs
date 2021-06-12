@@ -52,7 +52,7 @@ public class CatDialogueManager : MonoBehaviour
 			sentences.Enqueue(catSentence);
 		}
 		waitForAction = catDialogue.isWait;
-		if(waitForAction)
+		if(waitForAction && catDialogue.timeOut >= 0.0f)
         {
 			timeLeft = catDialogue.timeOut;
 		}
