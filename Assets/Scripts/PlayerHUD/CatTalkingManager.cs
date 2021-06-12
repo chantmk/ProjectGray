@@ -5,7 +5,7 @@ using UnityEngine;
 public class CatTalkingManager : MonoBehaviour
 {
     [Header("Dialogues")]
-    public Dialogue[] dialogues;
+    public CatDialogue[] catDialogues;
     private CatDialogueManager catDialogueManager;
 
     // Start is called before the first frame update
@@ -15,8 +15,14 @@ public class CatTalkingManager : MonoBehaviour
         TriggerDialogue(0);
     }
 
-    public void TriggerDialogue(int dialogueCount)
+    private void Update()
     {
-        catDialogueManager.StartDialogue(dialogues[dialogueCount]);
+        if (Input.GetKeyDown(KeyCode.P)) {
+            CatDialogueManager.TriggerAction();
+        }
+    }
+    public void TriggerDialogue(int catDialogueCount)
+    {
+        catDialogueManager.StartDialogue(catDialogues[catDialogueCount]);
     }
 }
