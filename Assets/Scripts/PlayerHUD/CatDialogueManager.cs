@@ -8,20 +8,22 @@ public class CatDialogueManager : MonoBehaviour
 {
 	[SerializeField]
 	private float delayTime = 0.0f;
+	[SerializeField]
+	private float endTime = 0.0f;
 
 	private static bool waitForAction = false;
 	private Text catText;
     private Animator animator;
 	private Queue<CatSentence> sentences;
 	private bool isFinish = false;
-	private float timeLeft = 0.0f;
+	private static float timeLeft = 0.0f;
 
 	void Start()
     {
         catText = transform.Find("CatDialogue").GetComponent<Text>();
         animator = transform.GetComponent<Animator>();
 		sentences = new Queue<CatSentence>();
-		timeLeft = delayTime;
+		timeLeft = endTime;
 	}
 
     private void Update()
@@ -32,7 +34,7 @@ public class CatDialogueManager : MonoBehaviour
 			if (timeLeft < 0.0)
             {
 				StopDialogue();
-				timeLeft = delayTime;
+				timeLeft = endTime;
 				isFinish = false;
             }
         }
@@ -91,8 +93,12 @@ public class CatDialogueManager : MonoBehaviour
 		animator.SetBool("IsOpen", false);
 	}
 
-	public static void TriggerAction()
+	public static void TriggerAction(float newEndTime = -1.0f)
     {
 		waitForAction = false;
+		if(newEndTime >= 0.0f)
+        {
+			timeLeft = newEndTime;
+        }
     }
 }
