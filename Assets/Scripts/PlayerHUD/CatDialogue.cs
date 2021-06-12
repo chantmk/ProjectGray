@@ -6,5 +6,6 @@ using UnityEngine;
 public class CatDialogue 
 {
     public bool isWait = false;
+    public float timeOut = 0.0f;
     public CatSentence[] catSentences;
 }

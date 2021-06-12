@@ -18,7 +18,7 @@ public class CatTalkingManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) {
-            CatDialogueManager.TriggerAction(0.0f);
+            CatDialogueManager.TriggerAction();
         }
     }
     public void TriggerDialogue(int catDialogueCount)

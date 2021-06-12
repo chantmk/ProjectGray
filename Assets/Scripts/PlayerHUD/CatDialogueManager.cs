@@ -16,14 +16,13 @@ public class CatDialogueManager : MonoBehaviour
     private Animator animator;
 	private Queue<CatSentence> sentences;
 	private bool isFinish = false;
-	private static float timeLeft = 0.0f;
+	private float timeLeft = 0.0f;
 
 	void Start()
     {
         catText = transform.Find("CatDialogue").GetComponent<Text>();
         animator = transform.GetComponent<Animator>();
 		sentences = new Queue<CatSentence>();
-		timeLeft = endTime;
 	}
 
     private void Update()
@@ -53,6 +52,10 @@ public class CatDialogueManager : MonoBehaviour
 			sentences.Enqueue(catSentence);
 		}
 		waitForAction = catDialogue.isWait;
+		if(waitForAction)
+        {
+			timeLeft = catDialogue.timeOut;
+		}
 		DisplayNextSentence();
 	}
 
@@ -93,12 +96,8 @@ public class CatDialogueManager : MonoBehaviour
 		animator.SetBool("IsOpen", false);
 	}
 
-	public static void TriggerAction(float newEndTime = -1.0f)
+	public static void TriggerAction()
     {
 		waitForAction = false;
-		if(newEndTime >= 0.0f)
-        {
-			timeLeft = newEndTime;
-        }
     }
 }
