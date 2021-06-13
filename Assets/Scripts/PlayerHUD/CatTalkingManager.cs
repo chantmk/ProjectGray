@@ -12,7 +12,10 @@ public class CatTalkingManager : MonoBehaviour
     void Start()
     {
         catDialogueManager = FindObjectOfType<CatDialogueManager>();
-        TriggerDialogue(0);
+        if(catDialogues.Length > 0)
+        {
+            TriggerDialogue(0);
+        } 
     }
 
     private void Update()

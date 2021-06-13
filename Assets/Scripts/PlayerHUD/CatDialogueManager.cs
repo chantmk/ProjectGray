@@ -44,6 +44,7 @@ public class CatDialogueManager : MonoBehaviour
 		{
 			StopDialogue();
 		}
+		Debug.Log(animator);
 		animator.SetBool(AnimatorParams.IsOpen, true);
 		sentences.Clear();
 
@@ -80,7 +81,6 @@ public class CatDialogueManager : MonoBehaviour
 		{
 			catText.text += letter;
 			yield return null;
-			Debug.Log("Coroutine");
 		}
 		yield return new WaitForSeconds(delayTime);
         if (callback != null) callback();

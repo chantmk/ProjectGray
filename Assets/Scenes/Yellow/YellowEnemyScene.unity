@@ -1677,6 +1677,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: YellowEnemy_LittleBear
       objectReference: {fileID: 0}
+    - target: {fileID: 7450516599694171039, guid: b688386de90bd664e859b1ed517e17a1,
+        type: 3}
+      propertyPath: onlyPatrol
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7938880298156240729, guid: b688386de90bd664e859b1ed517e17a1,
         type: 3}
       propertyPath: m_RootOrder
