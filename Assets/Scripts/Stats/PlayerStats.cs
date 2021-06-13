@@ -193,8 +193,11 @@ public class PlayerStats : CharacterStats
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
-        StartCoroutine(Flash(SpriteRenderer,0.5f, 4));
+        if (Status == StatusEnum.Mortal)
+        {
+            StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
+            StartCoroutine(Flash(SpriteRenderer, 0.5f, 4));
+        }
     }
 
     private void OnDestroy()
