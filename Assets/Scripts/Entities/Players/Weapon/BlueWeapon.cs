@@ -60,5 +60,15 @@ namespace Players.Weapon
                 yield return new WaitForSeconds(timeBetweenBullet);
             }
         }
+        
+        public void Disable()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void Enable()
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

@@ -24,15 +24,13 @@ public class MainMenuButtonManager : MonoBehaviour
     {
         Debug.Log("Play");
         videoPlayer.Play();
-        
+        PlayerConfig.HardCode(); //Fucking Hard code all stats to zero
     }
 
     public void StopVideo(VideoPlayer videoPlayer)
     {
         videoPlayer.Stop();
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene("MapTransition");
-
     }
 
     public void OnContinueButtonClicked()

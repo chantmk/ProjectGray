@@ -20,8 +20,12 @@ public class CatDialogueManager : MonoBehaviour
 
 	void Start()
     {
-        catText = transform.Find("CatDialogue").GetComponent<Text>();
-        animator = transform.GetComponent<Animator>();
+	}
+
+    private void Awake()
+    {
+		catText = transform.Find("CatDialogue").GetComponent<Text>();
+		animator = transform.GetComponent<Animator>();
 		sentences = new Queue<CatSentence>();
 	}
 
@@ -44,6 +48,10 @@ public class CatDialogueManager : MonoBehaviour
 		{
 			StopDialogue();
 		}
+		if(animator == null)
+        {
+			animator = transform.GetComponent<Animator>();
+        }
 		animator.SetBool(AnimatorParams.IsOpen, true);
 		sentences.Clear();
 
@@ -52,7 +60,7 @@ public class CatDialogueManager : MonoBehaviour
 			sentences.Enqueue(catSentence);
 		}
 		waitForAction = catDialogue.isWait;
-		if(waitForAction)
+		if(waitForAction && catDialogue.timeOut >= 0.0f)
         {
 			timeLeft = catDialogue.timeOut;
 		}
@@ -80,7 +88,6 @@ public class CatDialogueManager : MonoBehaviour
 		{
 			catText.text += letter;
 			yield return null;
-			Debug.Log("Coroutine");
 		}
 		yield return new WaitForSeconds(delayTime);
         if (callback != null) callback();

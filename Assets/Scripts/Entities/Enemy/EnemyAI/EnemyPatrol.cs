@@ -9,6 +9,10 @@ public class EnemyPatrol : EnemyBehaviour
     {
         base.OnStateUpdate(animator, stateInfo, layerIndex);
         enemyMovement.Patrol();
+        if (enemyMovement.onlyPatrol)
+        {
+            ListenToAttackSignal();
+        }
         ListenToChaseSignal();
         updateMovingAnimation();
     }

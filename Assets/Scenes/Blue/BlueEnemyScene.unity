@@ -1125,6 +1125,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1948036666126841283, guid: 3aef8a13295baff4fa2ed26c3bb0d368,
+        type: 3}
+      propertyPath: onlyPatrol
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2729082055297048509, guid: 3aef8a13295baff4fa2ed26c3bb0d368,
         type: 3}
       propertyPath: m_RootOrder
@@ -1198,6 +1203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueEnemy_Fish (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187684241330485910, guid: 9ac9f3a8c5142e34299ebf136993c852,
+        type: 3}
+      propertyPath: onlyPatrol
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187684241330485910, guid: 9ac9f3a8c5142e34299ebf136993c852,
         type: 3}

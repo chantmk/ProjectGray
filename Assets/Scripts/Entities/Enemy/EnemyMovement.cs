@@ -29,6 +29,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private float dashCooldown;
     [Header("Patrol parameters")]
+    [Tooltip("This unit will patrol only")]
+    public bool onlyPatrol = false;
     [Tooltip("Offset from start position")]
     [SerializeField]
     protected List<Vector2> movePositions = new List<Vector2>();

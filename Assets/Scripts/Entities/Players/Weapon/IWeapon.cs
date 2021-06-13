@@ -8,5 +8,8 @@ namespace Players.Weapon
         float MaxFireCooldown { get; }
 
         void Fire(Vector2 direction);
+
+        void Disable();
+        void Enable();
     }
 }

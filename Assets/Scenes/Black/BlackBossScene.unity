@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4fb789eec258a409cb75ca4b01ea1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogues: []
+  catDialogues: []
 --- !u!1 &278932008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1410803850, guid: 381786c5ffd72b041a148bc9a1a45df2,

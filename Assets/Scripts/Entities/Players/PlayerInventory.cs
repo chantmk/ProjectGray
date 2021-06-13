@@ -73,13 +73,15 @@ public class PlayerInventory : MonoBehaviour
 
     public bool UseHealthPack(int amount)
     {
-        audioSrc.PlayOneShot(healSound, healVolume);
+        
         if (healthPackCount < amount) return false;
-
+        
         for (int i = 0; i < amount; ++i)
         {
             playerStats.Heal(PlayerConfig.healValue);
+            
         }
+        audioSrc.PlayOneShot(healSound, healVolume);
         healthPackCount -= amount;
         healthPackText.text = $"{healthPackCount}";
         PlayerConfig.HealthPackCount = healthPackCount;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utils;
@@ -19,6 +20,11 @@ public class ParticleManager : MonoBehaviour
 
         EventPublisher.ParticleSpawn += particleSpawn;
         // EventPublisher.MindBreak += mindBreakParticleSpawn;
+    }
+
+    private void OnDestroy()
+    {
+        EventPublisher.ParticleSpawn -= particleSpawn;
     }
 
     private void particleSpawn(ParticleEnum particleEnum, Vector2 position)
