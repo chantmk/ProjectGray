@@ -62,7 +62,7 @@ public class TransitionManager : MonoBehaviour
                 traverse(2,1);
                 break;
             case SceneEnum.YellowBossScene:
-                traverse(1,0);
+                traverse(1,1);
                 break;
         }
     }
@@ -100,6 +100,7 @@ public class TransitionManager : MonoBehaviour
                     break;
                 case SceneEnum.YellowBossScene:
                     //To be continue scene...
+                    SceneManager.LoadScene("ToBeContinueScene");
                     break;
             }
         }
