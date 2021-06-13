@@ -23,6 +23,7 @@ public class EnemyBehaviour : StateMachineBehaviour
         enemyWeapon = animator.gameObject.GetComponent<EnemyWeapon>();
         enemyStats = animator.gameObject.GetComponent<EnemyStats>();
         transform = animator.gameObject.transform;
+        animator.SetBool(AnimatorParams.OnlyPatrol, enemyMovement.onlyPatrol);
         //player = enemyMovement.player.transform;
     }
 

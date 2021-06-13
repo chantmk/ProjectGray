@@ -11,6 +11,7 @@ namespace Utils
         public static int AnimSpeed = Animator.StringToHash("AnimSpeed");
 
         // Enemy battle parameter
+        public static int OnlyPatrol = Animator.StringToHash("OnlyPatrol");
         public static int Decision = Animator.StringToHash("Decision");
         public static int Life = Animator.StringToHash("Life");
         public static int Aggro = Animator.StringToHash("Aggro");
