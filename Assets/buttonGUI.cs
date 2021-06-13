@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using Utils;
 public class buttonGUI : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -49,12 +50,18 @@ public class buttonGUI : MonoBehaviour
     private int spaceCounter = 0;
     private int shootCounter = 0;
 
-
+    CatTalkingManager catTakingManager;
+    CatDialogueManager catDialogueManager;
 
     private int state = 0;
 
     [SerializeField]
     Sprite hlSprite;
+
+    private void Awake()
+    {
+        //PlayerConfig.CurrentScene = (SceneEnum)SceneManager.GetActiveScene().buildIndex;
+    }
     void Start()
     {
         button_W = w.GetComponent<Image>();
@@ -69,7 +76,65 @@ public class buttonGUI : MonoBehaviour
 
         button_Q = q.GetComponent<Image>();
         button_F = f.GetComponent<Image>();
+        catTakingManager = GameObject.FindGameObjectWithTag("Cat").GetComponent<CatTalkingManager>();
+        catDialogueManager = GameObject.FindGameObjectWithTag("CatBox").GetComponent<CatDialogueManager>();
+        
+/*
+        w.SetActive(false);
+        a.SetActive(false);
+        s.SetActive(false);
+        d.SetActive(false);
+        space.SetActive(false);
+        q.SetActive(false);
+        e.SetActive(false);
+        f.SetActive(false);
+        mouseBase.SetActive(false);
+        mouseL.SetActive(false);
+        mouseR.SetActive(false);
+*/
+        if (PlayerConfig.CurrentScene == SceneEnum.BlackEnemyScene)
+        {
+            state = 0;
+            catTakingManager.TriggerDialogue(0);
+            w.SetActive(true);
+            a.SetActive(true);
+            s.SetActive(true);
+            d.SetActive(true);
+        }
+        else if (PlayerConfig.CurrentScene == SceneEnum.BlackBossScene)
+        {
+            state = 5;
+            EventPublisher.DecisionMake += changeWeapon;
+        }
+        else
+        {
+            state = -1;
+        }
 
+    }
+
+    public void changeWeapon(DecisionEnum decision, CharacterNameEnum bossName)
+    {
+        state = 6;
+        /*if(decision == DecisionEnum.Mercy)
+        {
+            catTakingManager.TriggerDialogue(1);
+            state = 7;
+        }
+        else if (decision == DecisionEnum.Kill)
+        {
+            catTakingManager.TriggerDialogue(2);
+            state = 8;
+        }*/
+
+    }
+
+    private void OnDestroy()
+    {
+        if (PlayerConfig.CurrentScene == SceneEnum.BlackBossScene)
+        { 
+            EventPublisher.DecisionMake += changeWeapon;
+        }
     }
 
     // Update is called once per frame
@@ -77,15 +142,31 @@ public class buttonGUI : MonoBehaviour
     {
         switch (state)
         {
+            case -1:
+                w.SetActive(false);
+                a.SetActive(false);
+                s.SetActive(false);
+                d.SetActive(false);
+                space.SetActive(false);
+                q.SetActive(false);
+                e.SetActive(false);
+                f.SetActive(false);
+                mouseBase.SetActive(false);
+                mouseL.SetActive(false);
+                mouseR.SetActive(false);
+                break;
+
             case 0:
                 if (bool_W & bool_S & bool_A & bool_D)
                 {
                     state = 1;
                     Debug.Log(state);
-                 //   w.SetActive(false);
-                 //   a.SetActive(false);
-                 //   s.SetActive(false);
-                 //   d.SetActive(false);
+                    //   w.SetActive(false);
+                    //   a.SetActive(false);
+                    //   s.SetActive(false);
+                    //   d.SetActive(false);
+                    
+                    catTakingManager.TriggerDialogue(state);
 
                     space.SetActive(true);
                 }
@@ -134,9 +215,12 @@ public class buttonGUI : MonoBehaviour
                     mouseL.SetActive(true);
                     mouseR.SetActive(true);
                     state = 2;
+                    
+                    catTakingManager.TriggerDialogue(state);
                 }
                 else
                 {
+                    
                     if (Input.GetKeyDown(KeyCode.Space) == true)
                     {
                         spaceCounter += 1;
@@ -151,6 +235,7 @@ public class buttonGUI : MonoBehaviour
                     f.SetActive(true);
                     q.SetActive(true);
                     state = 3;
+                    catTakingManager.TriggerDialogue(state);
                 }
                 else
                 {
@@ -162,20 +247,85 @@ public class buttonGUI : MonoBehaviour
                 break;
 
             case 3:
-                if (isPicked & isHealed)
+                
+                if (isPicked)
                 {
+                    state = 4;
+                    catTakingManager.TriggerDialogue(state);
                     button_F.sprite = hlSprite;
-                    button_Q.sprite = hlSprite;
                 }
                 break;
 
-            default:
+            case 4:
+                if (isHealed)
+                {
+                    state = 5;
+                    catTakingManager.TriggerDialogue(state);
+                    button_Q.sprite = hlSprite;
+                }
                 break;
-        }
-        if (Input.GetKey(KeyCode.W) == true)
-        {
-            button_W.sprite = hlSprite;
-            //Debug.Log("W");
+            case 5:
+                //catDialogueManager.StopDialogue();
+                w.SetActive(false);
+                a.SetActive(false);
+                s.SetActive(false);
+                d.SetActive(false);
+                space.SetActive(false);
+                q.SetActive(false);
+                e.SetActive(false);
+                f.SetActive(false);
+                mouseBase.SetActive(false);
+                mouseL.SetActive(false);
+                mouseR.SetActive(false);
+                break;
+
+            case 6:
+                w.SetActive(true);
+                a.SetActive(true);
+                s.SetActive(true);
+                d.SetActive(true);
+                space.SetActive(true);
+                q.SetActive(true);
+                e.SetActive(true);
+                f.SetActive(true);
+                mouseBase.SetActive(true);
+                mouseL.SetActive(true);
+                mouseR.SetActive(true);
+
+                button_W.sprite = hlSprite;
+                button_S.sprite = hlSprite;
+                button_A.sprite = hlSprite;
+                button_D.sprite = hlSprite;
+                button_Space.sprite = hlSprite;
+                button_Q.sprite = hlSprite;
+                button_F.sprite = hlSprite;
+                catTakingManager.TriggerDialogue(2);
+                state = 7;
+
+                break;
+
+            case 7:
+                if (Input.GetKey(KeyCode.E) == true)
+                {
+                    state = 8;
+                    catTakingManager.TriggerDialogue(3);
+                }
+
+                break;
+
+            default:
+                w.SetActive(false);
+                a.SetActive(false);
+                s.SetActive(false);
+                d.SetActive(false);
+                space.SetActive(false);
+                q.SetActive(false);
+                e.SetActive(false);
+                f.SetActive(false);
+                mouseBase.SetActive(false);
+                mouseL.SetActive(false);
+                mouseR.SetActive(false);
+                break;
         }
     }
 
