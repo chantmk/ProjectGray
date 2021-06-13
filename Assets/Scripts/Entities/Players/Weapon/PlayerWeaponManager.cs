@@ -13,12 +13,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private Transform playerTransform;
     
     private int weaponNumber;
-    
-    private List<int> weaponIDs = new List<int>();
-    
-    private Dictionary<int, GameObject> weaponObjects = new Dictionary<int, GameObject>();
-    
-    private Dictionary<int, IWeapon> weapons  = new Dictionary<int, IWeapon>();
+    private Dictionary<WeaponIDEnum, IWeapon> weaponDict  = new Dictionary<WeaponIDEnum, IWeapon>();
 
     private float fireCooldown = 0.0f;
     
@@ -26,12 +21,12 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private Camera camera;
 
-    public int CurrentWeaponID
+    public WeaponIDEnum CurrentWeaponID
     {
         get { return currentWeaponID; }
         private set { currentWeaponID = value; }
     }
-    [SerializeField] private int currentWeaponID;
+    [SerializeField] private WeaponIDEnum currentWeaponID;
 
     // Start is called before the first frame update
     void Start()
@@ -44,20 +39,22 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             var weaponObject = transform.GetChild(i).gameObject;
             var weapon = weaponObject.GetComponent<IWeapon>();
-            var id = (int)weapon.WeaponID;
-            
-            weaponObject.SetActive(false);
-            weaponIDs.Add(id);
-    
-            
-            weaponObjects[id] = weaponObject;
-            weapons[id] = weapon;
-            
+            var id = weapon.WeaponID;
+
+            // switch (id)
+            // {
+            //     case WeaponIDEnum.Black:
+            //         
+            //         break;
+            //     case WeaponIDEnum.Blue:
+            //         break;
+            //     case WeaponIDEnum.Cheap:
+            //         break;
+            // }
+            weaponDict[id] = weapon;
+            weaponDict[id].Disable();
+
         }
-        
-        // TODO
-        weaponObjects[(int)WeaponIDEnum.Cheap].SetActive(true);
-        CurrentWeaponID = (int) WeaponIDEnum.Cheap;
         
         playerTransform = transform.parent;
         EventPublisher.PlayerPressFire += processFireCommand;
@@ -65,25 +62,41 @@ public class PlayerWeaponManager : MonoBehaviour
         EventPublisher.DecisionMake += OnDecisionMake;
     }
 
+    public void SetWeapon()
+    {
+        
+    }
+
     private void OnDecisionMake(DecisionEnum decision, CharacterNameEnum bossName)
     {
-        var scenename = SceneManager.GetActiveScene().name;
-        if (scenename == "BlackBossScene")
+        switch (bossName)
         {
-            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Black);
-            if (decision == DecisionEnum.Kill)
-            {
-                PlayerConfig.IsWeaponBlackSpecial = true;
-            }
+            case CharacterNameEnum.Black:
+                AddWeapon(WeaponIDEnum.Black);
+                if (decision == DecisionEnum.Kill)
+                {
+                    PlayerConfig.IsWeaponBlackSpecial = true;
+                }
+                else if (decision == DecisionEnum.Mercy)
+                {
+                    PlayerConfig.HaveBlackResemblance = true;
+                }
+                
+                break;
+            case CharacterNameEnum.Blue:
+                AddWeapon(WeaponIDEnum.Blue);
+                if (decision == DecisionEnum.Kill)
+                {
+                    PlayerConfig.IsWeaponBlueSpecial = true;
+                }
+                else if (decision == DecisionEnum.Mercy)
+                {
+                    PlayerConfig.HaveBlueResemblance = true;
+                }
+
+                break;
         }
-        else if (scenename == "BlueBossScene")
-        {
-            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Blue);
-            if (decision == DecisionEnum.Kill)
-            {
-                PlayerConfig.IsWeaponBlueSpecial = true;
-            }
-        }
+                
     }
 
     private void OnDestroy()
@@ -99,6 +112,10 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             fireCooldown -= Time.fixedDeltaTime;
         }
+        
+        var playerPosition = playerTransform.position;
+        Direction = ((Vector2) (camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition)).normalized;
+        transform.position = playerPosition + (Vector3)Direction * HoverDistance;
     }
 
     void Update()
@@ -106,11 +123,11 @@ public class PlayerWeaponManager : MonoBehaviour
         //Debug
         if (Input.GetKeyDown(KeyCode.LeftBracket))
         {
-            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Black);
+            PlayerConfig.HaveWeapon.Add(WeaponIDEnum.Black);
         }
         if (Input.GetKeyDown(KeyCode.RightBracket))
         {
-            PlayerConfig.HaveWeapon.Add((int)WeaponIDEnum.Blue);
+            PlayerConfig.HaveWeapon.Add(WeaponIDEnum.Blue);
         }
         if (Input.GetKeyDown(KeyCode.Minus))
         {
@@ -120,10 +137,6 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             PlayerConfig.IsWeaponBlueSpecial = true;
         }
-        
-        var playerPosition = playerTransform.position;
-        Direction = ((Vector2) (camera.ScreenToWorldPoint(Input.mousePosition) - playerPosition)).normalized;
-        transform.position = playerPosition + (Vector3)Direction * HoverDistance;
     }
 
     private void processFireCommand()
@@ -132,45 +145,45 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             fireWeapon();
             
-            fireCooldown = weapons[CurrentWeaponID].MaxFireCooldown;   
+            fireCooldown = weaponDict[CurrentWeaponID].MaxFireCooldown;   
         }
     }
 
     private void fireWeapon()
     {
-        weapons[CurrentWeaponID].Fire(Direction);
-        EventPublisher.TriggerPlayerFire((WeaponIDEnum)CurrentWeaponID);
-    }
-
-    public void ChangeWeaponPrev()
-    {
-            weaponObjects[CurrentWeaponID].SetActive(false);
-            var nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
-            CurrentWeaponID = nextID;
-            while (!PlayerConfig.HaveWeapon.Contains(nextID))
-            {
-                nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) - 1, weaponNumber)];
-                CurrentWeaponID = nextID;
-            }
-            
-            
-            
-            weaponObjects[CurrentWeaponID].SetActive(true);
+        weaponDict[CurrentWeaponID].Fire(Direction);
+        EventPublisher.TriggerPlayerFire(CurrentWeaponID);
     }
 
     public void ChangeWeaponNext()
     {
-        if (weaponIDs.Count > 1)
+        weaponDict[CurrentWeaponID].Disable();
+        var currWeaponHaveWeaponIndex = PlayerConfig.HaveWeapon.FindLastIndex(x => x == currentWeaponID);
+        currentWeaponID =
+            PlayerConfig.HaveWeapon[MathUtils.Mod(currWeaponHaveWeaponIndex+1, PlayerConfig.HaveWeapon.Count)];
+        weaponDict[currentWeaponID].Enable();
+    }
+
+    public void SetWeapon(WeaponIDEnum weaponId)
+    {
+        if (!PlayerConfig.HaveWeapon.Contains(weaponId))
         {
-            weaponObjects[CurrentWeaponID].SetActive(false);
-            var nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) + 1, weaponNumber)];
-            CurrentWeaponID = nextID;
-            while (!PlayerConfig.HaveWeapon.Contains(nextID))
-            {
-                nextID = weaponIDs[MathUtils.Mod(weaponIDs.FindIndex(x => x == CurrentWeaponID) + 1, weaponNumber)];
-                CurrentWeaponID = nextID;
-            }
-            weaponObjects[CurrentWeaponID].SetActive(true);
+            print("Cannot set not have weapon" + weaponId);
+            return;
         }
+        foreach(var kv in weaponDict)
+        {
+            kv.Value.Disable();
+        }
+        weaponDict[weaponId].Enable();
+    }
+
+    public void AddWeapon(WeaponIDEnum weaponId)
+    {
+        if (!PlayerConfig.HaveWeapon.Contains(weaponId))
+        {
+            PlayerConfig.HaveWeapon.Add(weaponId);
+        }
+        SetWeapon(weaponId);
     }
 }
