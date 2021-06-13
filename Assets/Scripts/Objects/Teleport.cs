@@ -49,7 +49,7 @@ public class Teleport : MonoBehaviour
                     SceneManager.LoadScene("YellowBossScene");
                     break;
                 case SceneEnum.YellowBossScene:
-                    SceneManager.LoadScene("MapTransition");
+                    SceneManager.LoadScene("ToBeContinueScene");
                     break;
             }
         }

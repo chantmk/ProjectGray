@@ -71,7 +71,7 @@ public class MerryGoRoundHorseMovement : EnemyMovement
 
     public void Fly()
     {
-        enemyRigidbody.velocity = headingDirection * speed;
+        enemyRigidbody.velocity = headingDirection * speed * 3;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
