@@ -128,7 +128,7 @@ public class EnvManager : MonoBehaviour
             for (int y = -8; y <= 1; y++)
             {
                 var sqrmag = (new Vector2Int(x, y) - center).sqrMagnitude;
-                float prob = Mathf.Exp(-sqrmag/7.2f);
+                float prob = Mathf.Exp(-sqrmag/17f);
                 float randomnum = Random.value;
                 if (prob > randomnum && sqrmag >= 2)
                     CreateTile(new Vector2Int(x,y), color);

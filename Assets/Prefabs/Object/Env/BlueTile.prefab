@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileColor: 1
-  LifeTimeMin: 10
+  LifeTimeMin: 15
   LifeTimeMax: 20
 --- !u!61 &2783849614111871515
 BoxCollider2D:
