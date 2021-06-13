@@ -20,8 +20,12 @@ public class CatDialogueManager : MonoBehaviour
 
 	void Start()
     {
-        catText = transform.Find("CatDialogue").GetComponent<Text>();
-        animator = transform.GetComponent<Animator>();
+	}
+
+    private void Awake()
+    {
+		catText = transform.Find("CatDialogue").GetComponent<Text>();
+		animator = transform.GetComponent<Animator>();
 		sentences = new Queue<CatSentence>();
 	}
 
@@ -44,7 +48,10 @@ public class CatDialogueManager : MonoBehaviour
 		{
 			StopDialogue();
 		}
-		Debug.Log(animator);
+		if(animator == null)
+        {
+			animator = transform.GetComponent<Animator>();
+        }
 		animator.SetBool(AnimatorParams.IsOpen, true);
 		sentences.Clear();
 
