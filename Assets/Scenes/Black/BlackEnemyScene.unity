@@ -921,7 +921,7 @@ PrefabInstance:
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
       propertyPath: catDialogues.Array.data[5].timeOut
-      value: 40
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
@@ -998,7 +998,7 @@ PrefabInstance:
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
       propertyPath: catDialogues.Array.data[2].catSentences.Array.data[0].sentence
-      value: "\u0E40\u0E01\u0E48\u0E07\u0E21\u0E32\u0E01!! \u0E08\u0E30\u0E40\u0E2B\u0E47\u0E19\u0E44\u0E14\u0E49\u0E27\u0E48\u0E32\u0E41\u0E16\u0E1A\u0E2A\u0E35\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E07\u0E14\u0E49\u0E32\u0E19\u0E0B\u0E49\u0E32\u0E22\u0E1A\u0E19\n\u0E08\u0E30\u0E25\u0E14\u0E25\u0E07\u0E2B\u0E25\u0E31\u0E07\u0E08\u0E32\u0E01\u0E40\u0E18\u0E2D\u0E1E\u0E38\u0E48\u0E07\n"
+      value: "\u0E40\u0E01\u0E48\u0E07\u0E21\u0E32\u0E01!! \u0E08\u0E30\u0E40\u0E2B\u0E47\u0E19\u0E44\u0E14\u0E49\u0E27\u0E48\u0E32\u0E41\u0E16\u0E1A\u0E2A\u0E35\u0E40\u0E2B\u0E25\u0E37\u0E2D\u0E07\u0E14\u0E49\u0E32\u0E19\u0E0B\u0E49\u0E32\u0E22\u0E1A\u0E19\n\u0E08\u0E30\u0E25\u0E14\u0E25\u0E07\u0E2B\u0E25\u0E31\u0E07\u0E08\u0E32\u0E01\u0E40\u0E18\u0E2D\u0E1E\u0E38\u0E48\u0E07"
       objectReference: {fileID: 0}
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
@@ -1027,7 +1027,7 @@ PrefabInstance:
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
       propertyPath: catDialogues.Array.data[3].catSentences.Array.data[1].sentence
-      value: "\u0E40\u0E18\u0E2D\u0E40\u0E2B\u0E47\u0E19\u0E41\u0E16\u0E1A\u0E2A\u0E35\u0E41\u0E14\u0E07\u0E14\u0E49\u0E32\u0E19\u0E0B\u0E49\u0E32\u0E22\u0E1A\u0E19\u0E44\u0E2B\u0E21\n\u0E21\u0E31\u0E19\u0E04\u0E37\u0E2D\u0E1E\u0E25\u0E31\u0E07\u0E0A\u0E35\u0E27\u0E34\u0E08\u0E02\u0E2D\u0E07\u0E40\u0E18\u0E2D"
+      value: "\u0E40\u0E18\u0E2D\u0E40\u0E2B\u0E47\u0E19\u0E41\u0E16\u0E1A\u0E2A\u0E35\u0E41\u0E14\u0E07\u0E14\u0E49\u0E32\u0E19\u0E0B\u0E49\u0E32\u0E22\u0E1A\u0E19\u0E44\u0E2B\u0E21\n\u0E21\u0E31\u0E19\u0E04\u0E37\u0E2D\u0E1E\u0E25\u0E31\u0E07\u0E0A\u0E35\u0E27\u0E34\u0E15\u0E02\u0E2D\u0E07\u0E40\u0E18\u0E2D"
       objectReference: {fileID: 0}
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}

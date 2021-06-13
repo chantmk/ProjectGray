@@ -74,6 +74,23 @@ public class buttonGUI : MonoBehaviour
         catDialogueManager = GameObject.FindGameObjectWithTag("CatBox").GetComponent<CatDialogueManager>();
         catTakingManager.TriggerDialogue(0);
 
+        w.SetActive(false);
+        a.SetActive(false);
+        s.SetActive(false);
+        d.SetActive(false);
+        space.SetActive(false);
+        q.SetActive(false);
+        e.SetActive(false);
+        f.SetActive(false);
+        mouseBase.SetActive(false);
+        mouseL.SetActive(false);
+        mouseR.SetActive(false);
+
+    }
+
+    private void OnDestroy()
+    {
+        
     }
 
     // Update is called once per frame
@@ -178,7 +195,6 @@ public class buttonGUI : MonoBehaviour
                     state = 4;
                     catTakingManager.TriggerDialogue(state);
                     button_F.sprite = hlSprite;
-                    button_Q.sprite = hlSprite;
                 }
                 break;
 
@@ -187,7 +203,6 @@ public class buttonGUI : MonoBehaviour
                 {
                     state = 5;
                     catTakingManager.TriggerDialogue(state);
-                    button_F.sprite = hlSprite;
                     button_Q.sprite = hlSprite;
                 }
                 break;
