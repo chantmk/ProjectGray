@@ -49,9 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  MaxDuration: 0.06
-  MaxFlightSpeed: 5
-  MinFlightSpeed: 5
+  MaxDuration: 0.03
+  MaxFlightSpeed: 1
+  MinFlightSpeed: 3
   isStunt: 0
   stuntDuration: 1
 --- !u!212 &8671931426552885549
