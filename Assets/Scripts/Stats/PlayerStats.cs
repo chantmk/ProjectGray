@@ -55,12 +55,12 @@ public class PlayerStats : CharacterStats
                 newcolor.a = 0.5f;
 
                 spriteRenderer.color = newcolor;
-                // Status = StatusEnum.Immortal;
+                Status = StatusEnum.Immortal;
             }
             else
             {
                 spriteRenderer.color = originalColor;
-                // Status = StatusEnum.Mortal;
+                Status = StatusEnum.Mortal;
             }
         }
 
@@ -70,7 +70,7 @@ public class PlayerStats : CharacterStats
     {
         base.Start();
         EventPublisher.DialogueStart += ListenDialogueStart;
-        EventPublisher.DialogueDone += ListenDialogueStart;
+        EventPublisher.DialogueDone += ListenDialogueDone;
         EventPublisher.StepOnTile += ListenStepOnTile;
         EventPublisher.PlayerFire += OnPlayerFire;
 
