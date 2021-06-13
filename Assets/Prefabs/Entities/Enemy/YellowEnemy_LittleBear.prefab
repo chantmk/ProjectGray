@@ -81,6 +81,7 @@ MonoBehaviour:
   dashRange: 0
   dashDuration: 0
   dashCooldown: 0
+  onlyPatrol: 0
   movePositions:
   - {x: 0, y: 1}
 --- !u!114 &3154335901685747143
@@ -96,13 +97,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackDamage: 1
-  AttackRange: 1
+  AttackRange: 40
   AttackRatio: 1
-  AttackMaxCooldown: 2
-  IsRange: 0
-  ProjectileComponent: {fileID: 0}
-  ProjectileCount: 1
-  shootAngle: 30
+  AttackMaxCooldown: 0.2
+  IsRange: 1
+  ProjectileComponent: {fileID: 3781329692935539227, guid: 54424927f53664a4a868b4cc48f8387b,
+    type: 3}
+  ProjectileCount: 23
+  shootAngle: 360
+  atkSound: {fileID: 0}
+  atkVolume: 1
 --- !u!212 &5603021992721905039
 SpriteRenderer:
   m_ObjectHideFlags: 0
