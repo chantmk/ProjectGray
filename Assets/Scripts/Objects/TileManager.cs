@@ -29,6 +29,7 @@ namespace Objects
             : stateMachine.CurrentState == TileStateEnum.ShouldRemove;
 
         private bool isTriggerStay;
+        private string clearerTag;
 
         private void Awake()
         {
@@ -43,8 +44,19 @@ namespace Objects
 
             MaxDecayLifeTime = 1f;
             DecayLifeTime = MaxDecayLifeTime;
-            
-            
+
+            switch (TileColor)
+            {
+                case ColorEnum.Black:
+                    clearerTag = "BlackTileClearer";
+                    break;
+                case ColorEnum.Blue:
+                    clearerTag = "BlueTileClearer";
+                    break;
+                default:
+                    clearerTag = "";
+                    break;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -55,9 +67,10 @@ namespace Objects
                 isTriggerStay = true;
             }
 
-            if (other.gameObject.CompareTag("BlackTileClearer"))
+
+
+            if (other.gameObject.CompareTag(clearerTag))
             {
-                print("get clear");
                 stateMachine.SetNextState(TileStateEnum.ShouldRemove);
                 stateMachine.ChangeState();
             }
