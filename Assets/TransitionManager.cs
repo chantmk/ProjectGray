@@ -38,13 +38,18 @@ public class TransitionManager : MonoBehaviour
         setUp();
     }
     
-    void Update()
-    {
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     traverse(1,0);
-        // }
+    // void Update()
+    // {
+    //     // if (Input.GetMouseButtonDown(0))
+    //     // {
+    //     //     traverse(1,0);
+    //     // }
+    //
+    //     move();
+    // }
 
+    private void FixedUpdate()
+    {
         move();
     }
 
