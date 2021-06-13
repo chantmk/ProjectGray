@@ -35,7 +35,7 @@ public class PlayerStats : CharacterStats
     [SerializeField] private float statMultiplierValue;
     public CameraShake CameraShake;
 
-    public SpriteRenderer SpriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public float MindBreakIncrementBlack;
     public float MindBreakIncrementBlue;
     private MindManager mindManager;
