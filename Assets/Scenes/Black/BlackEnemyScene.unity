@@ -921,7 +921,7 @@ PrefabInstance:
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
       propertyPath: catDialogues.Array.data[5].timeOut
-      value: 120
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
@@ -1301,6 +1301,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: CatBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995005454703821378, guid: 381786c5ffd72b041a148bc9a1a45df2,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tutorial
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 381786c5ffd72b041a148bc9a1a45df2, type: 3}

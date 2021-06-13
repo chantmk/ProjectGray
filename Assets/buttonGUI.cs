@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class buttonGUI : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -56,6 +56,11 @@ public class buttonGUI : MonoBehaviour
 
     [SerializeField]
     Sprite hlSprite;
+
+    private void Awake()
+    {
+        //PlayerConfig.CurrentScene = (SceneEnum)SceneManager.GetActiveScene().buildIndex;
+    }
     void Start()
     {
         button_W = w.GetComponent<Image>();
@@ -72,8 +77,8 @@ public class buttonGUI : MonoBehaviour
         button_F = f.GetComponent<Image>();
         catTakingManager = GameObject.FindGameObjectWithTag("Cat").GetComponent<CatTalkingManager>();
         catDialogueManager = GameObject.FindGameObjectWithTag("CatBox").GetComponent<CatDialogueManager>();
-        catTakingManager.TriggerDialogue(0);
-
+        
+/*
         w.SetActive(false);
         a.SetActive(false);
         s.SetActive(false);
@@ -85,6 +90,24 @@ public class buttonGUI : MonoBehaviour
         mouseBase.SetActive(false);
         mouseL.SetActive(false);
         mouseR.SetActive(false);
+*/
+        if (PlayerConfig.CurrentScene == SceneEnum.BlackEnemyScene)
+        {
+            state = 0;
+            catTakingManager.TriggerDialogue(0);
+            w.SetActive(true);
+            a.SetActive(true);
+            s.SetActive(true);
+            d.SetActive(true);
+        }
+        else if (PlayerConfig.CurrentScene == SceneEnum.BlackBossScene)
+        {
+            state = 6;
+        }
+        else
+        {
+            state = -1;
+        }
 
     }
 
@@ -98,6 +121,20 @@ public class buttonGUI : MonoBehaviour
     {
         switch (state)
         {
+            case -1:
+                w.SetActive(false);
+                a.SetActive(false);
+                s.SetActive(false);
+                d.SetActive(false);
+                space.SetActive(false);
+                q.SetActive(false);
+                e.SetActive(false);
+                f.SetActive(false);
+                mouseBase.SetActive(false);
+                mouseL.SetActive(false);
+                mouseR.SetActive(false);
+                break;
+
             case 0:
                 if (bool_W & bool_S & bool_A & bool_D)
                 {
@@ -222,6 +259,17 @@ public class buttonGUI : MonoBehaviour
                 break;
 
             default:
+                w.SetActive(false);
+                a.SetActive(false);
+                s.SetActive(false);
+                d.SetActive(false);
+                space.SetActive(false);
+                q.SetActive(false);
+                e.SetActive(false);
+                f.SetActive(false);
+                mouseBase.SetActive(false);
+                mouseL.SetActive(false);
+                mouseR.SetActive(false);
                 break;
         }
         if (Input.GetKey(KeyCode.W) == true)

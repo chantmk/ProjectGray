@@ -222,6 +222,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlackCat
       objectReference: {fileID: 0}
+    - target: {fileID: 4750621204945687319, guid: dc82ca1c5e8db3242a308f77fab313a5,
+        type: 3}
+      propertyPath: catDialogues.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7663808165876596324, guid: dc82ca1c5e8db3242a308f77fab313a5,
         type: 3}
       propertyPath: m_RootOrder
