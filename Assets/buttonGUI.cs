@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Utils;
 public class buttonGUI : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -102,7 +103,8 @@ public class buttonGUI : MonoBehaviour
         }
         else if (PlayerConfig.CurrentScene == SceneEnum.BlackBossScene)
         {
-            state = 6;
+            state = 5;
+            EventPublisher.DecisionMake += changeWeapon;
         }
         else
         {
@@ -111,9 +113,28 @@ public class buttonGUI : MonoBehaviour
 
     }
 
+    public void changeWeapon(DecisionEnum decision, CharacterNameEnum bossName)
+    {
+        state = 6;
+        /*if(decision == DecisionEnum.Mercy)
+        {
+            catTakingManager.TriggerDialogue(1);
+            state = 7;
+        }
+        else if (decision == DecisionEnum.Kill)
+        {
+            catTakingManager.TriggerDialogue(2);
+            state = 8;
+        }*/
+
+    }
+
     private void OnDestroy()
     {
-        
+        if (PlayerConfig.CurrentScene == SceneEnum.BlackBossScene)
+        { 
+            EventPublisher.DecisionMake += changeWeapon;
+        }
     }
 
     // Update is called once per frame
@@ -258,6 +279,40 @@ public class buttonGUI : MonoBehaviour
                 mouseR.SetActive(false);
                 break;
 
+            case 6:
+                w.SetActive(true);
+                a.SetActive(true);
+                s.SetActive(true);
+                d.SetActive(true);
+                space.SetActive(true);
+                q.SetActive(true);
+                e.SetActive(true);
+                f.SetActive(true);
+                mouseBase.SetActive(true);
+                mouseL.SetActive(true);
+                mouseR.SetActive(true);
+
+                button_W.sprite = hlSprite;
+                button_S.sprite = hlSprite;
+                button_A.sprite = hlSprite;
+                button_D.sprite = hlSprite;
+                button_Space.sprite = hlSprite;
+                button_Q.sprite = hlSprite;
+                button_F.sprite = hlSprite;
+                catTakingManager.TriggerDialogue(2);
+                state = 7;
+
+                break;
+
+            case 7:
+                if (Input.GetKey(KeyCode.E) == true)
+                {
+                    state = 8;
+                    catTakingManager.TriggerDialogue(3);
+                }
+
+                break;
+
             default:
                 w.SetActive(false);
                 a.SetActive(false);
@@ -271,11 +326,6 @@ public class buttonGUI : MonoBehaviour
                 mouseL.SetActive(false);
                 mouseR.SetActive(false);
                 break;
-        }
-        if (Input.GetKey(KeyCode.W) == true)
-        {
-            button_W.sprite = hlSprite;
-            //Debug.Log("W");
         }
     }
 
