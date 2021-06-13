@@ -60,8 +60,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   depleteHealth: 0
   bossName: 2
-  EnrageRatio: 0.71
-  HyperRatio: 0.4
+  EnrageRatio: 0.6
+  HyperRatio: 0.2
   Aggro: 0
   calmSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   enrageSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
