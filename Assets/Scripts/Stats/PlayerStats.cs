@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utils;
 
@@ -38,19 +39,46 @@ public class PlayerStats : CharacterStats
     public float MindBreakIncrementBlack;
     public float MindBreakIncrementBlue;
     private MindManager mindManager;
+    
+    private int immortalBuffCount;
+    private Color originalColor;
+
+    public int ImmortalBuffCount
+    {
+        get { return immortalBuffCount; }
+        set
+        {
+            
+            immortalBuffCount = Mathf.Max(value, 0);
+            if (immortalBuffCount > 0)
+            {
+                var newcolor = originalColor;
+                newcolor.a = 0.5f;
+
+                spriteRenderer.color = newcolor;
+                Status = StatusEnum.Immortal;
+            }
+            else
+            {
+                spriteRenderer.color = originalColor;
+                Status = StatusEnum.Mortal;
+            }
+        }
+
+    }
 
     protected override void Start()
     {
         base.Start();
         EventPublisher.DialogueStart += ListenDialogueStart;
-        EventPublisher.DialogueDone += ListenDialogueStart;
+        EventPublisher.DialogueDone += ListenDialogueDone;
         EventPublisher.StepOnTile += ListenStepOnTile;
         EventPublisher.PlayerFire += OnPlayerFire;
 
         blackDebuffManager = GetComponentInChildren<BlackDebuffManager>();
         
         CameraShake = GameObject.Find("CameraHolder").GetComponentInChildren<CameraShake>();
-        SpriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         DebuffColor = ColorEnum.None;
 
@@ -67,6 +95,9 @@ public class PlayerStats : CharacterStats
         GuardianCDDict[ColorEnum.Blue] = 0f;
         
         mindManager = GameObject.Find("MindBar").GetComponent<MindManager>();
+
+        originalColor = spriteRenderer.color;
+        ImmortalBuffCount = 0;
     }
 
     private void OnPlayerFire(WeaponIDEnum weaponid)
@@ -212,11 +243,12 @@ public class PlayerStats : CharacterStats
 
     public override void TakeDamage(int damage)
     {
+        print("player collide");
         base.TakeDamage(damage);
         if (Status == StatusEnum.Mortal)
         {
             StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
-            StartCoroutine(Flash(SpriteRenderer, 0.5f, 4));
+            StartCoroutine(SetImmortalDelay(1.5f));
         }
     }
 
@@ -283,6 +315,13 @@ public class PlayerStats : CharacterStats
     public void shakeCamera()
     {
         StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
+    }
+    
+    public IEnumerator SetImmortalDelay(float duration )
+    {
+        ImmortalBuffCount += 1;
+        yield return new WaitForSeconds(duration);
+        ImmortalBuffCount -= 1;
     }
     
 }
