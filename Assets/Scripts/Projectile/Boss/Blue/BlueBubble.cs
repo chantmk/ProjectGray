@@ -13,6 +13,8 @@ public class BlueBubble : BossProjectile
         if (isStunt)
         {
             Debug.Log("Player stunt for " + stuntDuration);
+            target.GetComponent<CharacterStats>().TakeDamage(damage);
+            Execute();
         }
         else
         {
