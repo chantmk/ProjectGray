@@ -7,6 +7,15 @@ public class GateWallManager : MonoBehaviour
 {
     private Collider2D leftGateCollider;
     private Collider2D rightGateCollider;
+    private int enemyCount;
+
+    private void Awake()
+    {
+        EventPublisher.EnemySpawn += ListenEnemySpawn;
+        EventPublisher.EnemyDestroy += ListenEnemyDestroy;
+        enemyCount = 0;
+    }
+
     void Start()
     {
         leftGateCollider = GameObject.Find("LeftGate").GetComponent<Collider2D>();
@@ -22,7 +31,26 @@ public class GateWallManager : MonoBehaviour
     private void OnDestroy()
     {
         EventPublisher.GateEnable -= GateEnable;
+        EventPublisher.EnemySpawn -= ListenEnemySpawn;
+        EventPublisher.EnemyDestroy -= ListenEnemyDestroy;
     }
+
+    private void ListenEnemyDestroy()
+    {
+        enemyCount -= 1;
+        if (enemyCount <= 0)
+        {
+            EventPublisher.TriggerGateEnable(false);
+        }
+        print(enemyCount);
+    }
+
+    private void ListenEnemySpawn()
+    {
+        enemyCount += 1;
+        print(enemyCount);
+    }
+
 
     public void GateEnable(bool enable)
     {

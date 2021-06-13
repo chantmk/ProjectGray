@@ -125,4 +125,18 @@ public class EventPublisher
     {
         GateEnable?.Invoke(enable);
     }
+
+    public delegate void OnEnemySpawn();
+    public static event OnEnemySpawn EnemySpawn;
+    public static void TriggerEnemySpawn()
+    {
+        EnemySpawn?.Invoke();
+    }
+
+    public delegate void OnEnemyDestroy();
+    public static event OnEnemyDestroy EnemyDestroy;
+    public static void TriggerEnemyDestroy()
+    {
+        EnemyDestroy?.Invoke();
+    }
 }

@@ -8,16 +8,16 @@ public class BossProjectile : EnemyProjectile
     {
         base.Start();
         EventPublisher.DialogueStart += OnDialogueStart;
-        //EventPublisher.DecisionMake += OnDecisionMakeHandler;
+        EventPublisher.DecisionMake += OnDecisionMakeHandler;
     }
 
     private void OnDestroy()
     {
         EventPublisher.DialogueStart -= OnDialogueStart;
-        //EventPublisher.DecisionMake -= OnDecisionMakeHandler;
+        EventPublisher.DecisionMake -= OnDecisionMakeHandler;
     }
 
-    public void OnDecisionMakeHandler(DecisionEnum decision)
+    public void OnDecisionMakeHandler(DecisionEnum decision, CharacterNameEnum characterName)
     {
         Execute();
     }

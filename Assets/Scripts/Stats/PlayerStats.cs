@@ -243,7 +243,6 @@ public class PlayerStats : CharacterStats
 
     public override void TakeDamage(int damage)
     {
-        print("player collide");
         base.TakeDamage(damage);
         if (Status == StatusEnum.Mortal)
         {
