@@ -52,13 +52,11 @@ public class MindManager : MonoBehaviour
         {
             case ColorEnum.Black:
                 blackBar.fillAmount = ratio;
-                mindAnim.SetBool("isBlackFull", ratio == 1f);
-               
-                
+                mindAnim.SetBool("isBlackFull", ratio >= 0.8f);
                 break;
             case ColorEnum.Blue:
                 blueBar.fillAmount = ratio;
-                mindAnim.SetBool("isBlueFull", ratio == 1f);
+                mindAnim.SetBool("isBlueFull", ratio >= 0.8f);
                 break;
         }
     }
@@ -73,7 +71,7 @@ public class MindManager : MonoBehaviour
                 break;
             case ColorEnum.Blue:
                 if (isBlueGuard != enable)
-                isBlueGuard = enable;
+                    isBlueGuard = enable;
                 break;
         }
     }
