@@ -53,7 +53,7 @@ public class BumpCarMovement : EnemyMovement
 
     public void Shoot()
     {
-        currentHeading = -GetDirectionToPlayer() * speed;
+        currentHeading = -GetDirectionToPlayer() * speed * 5;
     }
 
     public void ShootToPlayer()
