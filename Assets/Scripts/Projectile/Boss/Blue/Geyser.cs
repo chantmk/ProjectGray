@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Geyser : EnemyProjectile
+public class Geyser : BossProjectile
 {
 }
