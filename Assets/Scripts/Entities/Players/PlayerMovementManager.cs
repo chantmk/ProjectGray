@@ -113,7 +113,6 @@ public class PlayerMovementManager : MonoBehaviour
         switch (stateMachine.CurrentState)
         {
             case MovementEnum.Move:
-                playerStats.Status = StatusEnum.Mortal;
                 // coefficient = Mathf.Pow(expValue, tileData[0]);
                 movement = new Vector2(inputX, inputY);
                 movement = movement.normalized * moveSpeed;
@@ -126,7 +125,6 @@ public class PlayerMovementManager : MonoBehaviour
             case MovementEnum.Roll:
                 if (stateMachine.PreviousState != MovementEnum.Roll)
                 {
-                    playerStats.Status = StatusEnum.Immortal;
                     stamina -= RollStaminaCost;
                     if (stamina <= 0.0f)
                     {
@@ -146,7 +144,6 @@ public class PlayerMovementManager : MonoBehaviour
 
                 break;
             case MovementEnum.Idle:
-                playerStats.Status = StatusEnum.Mortal;
                 movement = Vector2.zero;
                 break;
             default:
