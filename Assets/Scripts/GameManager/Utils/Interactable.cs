@@ -18,6 +18,7 @@ public abstract class Interactable : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && interactable)
         {
             //Debug.Log("key F pressed");
+            GameObject.FindGameObjectWithTag("Tutorial").GetComponent<buttonGUI>().setPick();
             OnInteract();
         }
     }

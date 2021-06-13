@@ -49,7 +49,8 @@ public class buttonGUI : MonoBehaviour
     private int spaceCounter = 0;
     private int shootCounter = 0;
 
-
+    CatTalkingManager catTakingManager;
+    CatDialogueManager catDialogueManager;
 
     private int state = 0;
 
@@ -69,6 +70,9 @@ public class buttonGUI : MonoBehaviour
 
         button_Q = q.GetComponent<Image>();
         button_F = f.GetComponent<Image>();
+        catTakingManager = GameObject.FindGameObjectWithTag("Cat").GetComponent<CatTalkingManager>();
+        catDialogueManager = GameObject.FindGameObjectWithTag("CatBox").GetComponent<CatDialogueManager>();
+        catTakingManager.TriggerDialogue(0);
 
     }
 
@@ -82,10 +86,12 @@ public class buttonGUI : MonoBehaviour
                 {
                     state = 1;
                     Debug.Log(state);
-                 //   w.SetActive(false);
-                 //   a.SetActive(false);
-                 //   s.SetActive(false);
-                 //   d.SetActive(false);
+                    //   w.SetActive(false);
+                    //   a.SetActive(false);
+                    //   s.SetActive(false);
+                    //   d.SetActive(false);
+                    
+                    catTakingManager.TriggerDialogue(state);
 
                     space.SetActive(true);
                 }
@@ -134,9 +140,12 @@ public class buttonGUI : MonoBehaviour
                     mouseL.SetActive(true);
                     mouseR.SetActive(true);
                     state = 2;
+                    
+                    catTakingManager.TriggerDialogue(state);
                 }
                 else
                 {
+                    
                     if (Input.GetKeyDown(KeyCode.Space) == true)
                     {
                         spaceCounter += 1;
@@ -151,6 +160,7 @@ public class buttonGUI : MonoBehaviour
                     f.SetActive(true);
                     q.SetActive(true);
                     state = 3;
+                    catTakingManager.TriggerDialogue(state);
                 }
                 else
                 {
@@ -162,11 +172,38 @@ public class buttonGUI : MonoBehaviour
                 break;
 
             case 3:
-                if (isPicked & isHealed)
+                
+                if (isPicked)
                 {
+                    state = 4;
+                    catTakingManager.TriggerDialogue(state);
                     button_F.sprite = hlSprite;
                     button_Q.sprite = hlSprite;
                 }
+                break;
+
+            case 4:
+                if (isHealed)
+                {
+                    state = 5;
+                    catTakingManager.TriggerDialogue(state);
+                    button_F.sprite = hlSprite;
+                    button_Q.sprite = hlSprite;
+                }
+                break;
+            case 5:
+                //catDialogueManager.StopDialogue();
+                w.SetActive(false);
+                a.SetActive(false);
+                s.SetActive(false);
+                d.SetActive(false);
+                space.SetActive(false);
+                q.SetActive(false);
+                e.SetActive(false);
+                f.SetActive(false);
+                mouseBase.SetActive(false);
+                mouseL.SetActive(false);
+                mouseR.SetActive(false);
                 break;
 
             default:
