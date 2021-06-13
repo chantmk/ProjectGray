@@ -100,6 +100,10 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern(int EnrageNumber)
     {
+        if ((int)bossStats.Aggro >= EnrageAttackCount.Length)
+        {
+            return;
+        }
         int count = EnrageAttackCount[(int)bossStats.Aggro];
         float delta = EnrageAttackRange / count;
         var bullet = Instantiate(EnrageAttacks[0], centerPoint, Quaternion.Euler(Vector3.zero));
@@ -115,6 +119,10 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern2(int EnrageNumber)
     {
+        if ((int)bossStats.Aggro >= EnrageAttackCount2.Length)
+        {
+            return;
+        }
         int count = EnrageAttackCount2[(int)bossStats.Aggro];
         float delta = EnrageAttackRange / count;
         var bullet = Instantiate(EnrageAttacks[0], centerPoint, Quaternion.Euler(Vector3.zero));
@@ -130,6 +138,10 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern3(int EnrageNumber)
     {
+        if ((int)bossStats.Aggro >= EnrageAttackCount2.Length)
+        {
+            return;
+        }
         int count = EnrageAttackCount2[(int)bossStats.Aggro];
         float degree = 360.0f / count;
         for (int i = 0; i < count; i++)

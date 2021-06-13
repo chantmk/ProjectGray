@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 10
+  BaseMaxHealth: 30
   MaxHealth: 0
   Armor: 0
   Status: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   dashRange: 0
   dashDuration: 0
   dashCooldown: 0
+  onlyPatrol: 0
   movePositions: []
   spotCap: 00000000
 --- !u!114 &470288516058063973
