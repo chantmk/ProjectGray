@@ -196,7 +196,7 @@ public class PlayerStats : CharacterStats
         if (Status == StatusEnum.Mortal)
         {
             StartCoroutine(CameraShake.Shake(0.1f, 0.4f));
-            StartCoroutine(Flash(SpriteRenderer, 0.5f, 4));
+            StartCoroutine(Flash(SpriteRenderer, 0.5f, 10));
         }
     }
 

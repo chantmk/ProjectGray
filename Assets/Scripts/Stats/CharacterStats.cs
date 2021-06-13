@@ -52,6 +52,7 @@ public abstract class CharacterStats : MonoBehaviour
     
     public virtual void TakeDamage(int damage)
     {
+        Debug.Log("Take damage at status "+Status);
         if (Status == StatusEnum.Mortal)
         {
             damage -= this.Armor;
@@ -122,6 +123,9 @@ public abstract class CharacterStats : MonoBehaviour
         float duration = 0.1f;
         float[] opacity = {1f, percent};
         Color old = spriteRenderer.color;
+        
+        Status = StatusEnum.Immortal;
+        Debug.Log("1Set " + Status);
         for (int i = 0; i < count; ++i)
         {
             spriteRenderer.color = new Color(old.r, old.g, old.b, opacity[1]);
@@ -129,5 +133,8 @@ public abstract class CharacterStats : MonoBehaviour
             spriteRenderer.color = new Color(old.r, old.g, old.b, opacity[0]);
             yield return new WaitForSeconds(duration);
         }
+       
+        Status = StatusEnum.Mortal;
+        Debug.Log("2Set " + Status);
     }
 }
