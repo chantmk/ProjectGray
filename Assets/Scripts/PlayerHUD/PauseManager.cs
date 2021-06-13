@@ -25,17 +25,17 @@ public class PauseManager : MonoBehaviour
             }
         }
         
-        if (Input.GetKeyDown(KeyCode.Minus))
-        {
-            if (IsGameSlow)
-            {
-                ResumeSlow();
-            }
-            else
-            {
-                Slow(0.5f);
-            }
-        }
+        // if (Input.GetKeyDown(KeyCode.Minus))
+        // {
+        //     if (IsGameSlow)
+        //     {
+        //         ResumeSlow();
+        //     }
+        //     else
+        //     {
+        //         Slow(0.5f);
+        //     }
+        // }
     }
 
     private void Slow(float timescale)
