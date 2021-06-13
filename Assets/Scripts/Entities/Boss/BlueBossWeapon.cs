@@ -47,6 +47,10 @@ public class BlueBossWeapon : BossWeapon
     }
     public void CalmAttack(int EnrageNumber)
     {
+        if((int)bossStats.Aggro >= CalmAttackCount.Length)
+        {
+            return;
+        }
         float count = CalmAttackCount[(int)bossStats.Aggro];
         float degree = 360.0f / count;
         for(int i=0; i<count; i++)
@@ -58,6 +62,10 @@ public class BlueBossWeapon : BossWeapon
 
     public void CalmAttack2(int EnrageNumber)
     {
+        if ((int)bossStats.Aggro >= CalmAttack2Count.Length)
+        {
+            return;
+        }
         float count = CalmAttack2Count[(int)bossStats.Aggro];
         float degree = 360.0f / count;
         for(int i=0; i<count; i++)
@@ -70,6 +78,10 @@ public class BlueBossWeapon : BossWeapon
 
     public override void EnrageAttack(int EnrageNumber)
     {
+        if ((int)bossStats.Aggro >= EnrageAttackCount.Length)
+        {
+            return;
+        }
         base.EnrageAttack(EnrageNumber);
         switch (enrageAttackPattern[enrageCount])
         {
@@ -130,6 +142,10 @@ public class BlueBossWeapon : BossWeapon
 
     public override void HyperAttack(int HyperNumber)
     {
+        if ((int)bossStats.Aggro >= HyperAttackCount.Length)
+        {
+            return;
+        }
         base.HyperAttack(HyperNumber);
         float count = HyperAttackCount[2];
         float degree = 360.0f / count;

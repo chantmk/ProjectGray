@@ -57,6 +57,10 @@ public class YellowBossWeapon : BossWeapon
     }
     public override void EnrageAttack(int EnrageNumber)
     {
+        if ((int)bossStats.Aggro >= enrageAttackPattern.Length)
+        {
+            return;
+        }
         // This method will Instantiate some roller coaster will be called by normal attack
         base.EnrageAttack(EnrageNumber);
         switch(enrageAttackPattern[enrageCount])

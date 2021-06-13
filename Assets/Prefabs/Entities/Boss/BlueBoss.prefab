@@ -53,15 +53,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9071d9ad25ed93946a4ac45a36b23e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 50
+  BaseMaxHealth: 150
   MaxHealth: 0
   Armor: 0
   Status: 1
   healthBar: {fileID: 0}
   depleteHealth: 0
   bossName: 2
-  EnrageRatio: 0.71
-  HyperRatio: 0.4
+  EnrageRatio: 0.6
+  HyperRatio: 0.2
   Aggro: 0
   calmSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
   enrageSprite: {fileID: 21300000, guid: 916bfe810dc69ee49a108f63ffe1fae1, type: 3}
@@ -90,6 +90,7 @@ MonoBehaviour:
   dashRange: 0
   dashDuration: 0
   dashCooldown: 0
+  onlyPatrol: 0
   movePositions: []
   spotCap: 00000000
 --- !u!114 &3602699276726790867
@@ -115,7 +116,6 @@ MonoBehaviour:
   shootAngle: 60
   atkSound: {fileID: 0}
   atkVolume: 1
-  centerPoint: {x: 0, y: -2.4}
   DashAttackEffectRange: 1
   DashAttackMaxCooldown: 3
   DashAttacks:

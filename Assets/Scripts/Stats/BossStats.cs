@@ -52,7 +52,7 @@ public class BossStats : CharacterStats
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            TakeCrashDamage(2);
+            TakeCrashDamage(10);
         }
         if (!healthBar.activeSelf && Aggro != BossAggroEnum.LastStand)
         {

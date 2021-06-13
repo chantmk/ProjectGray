@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834c70a5f56862449648ad19dc5dd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseMaxHealth: 15
+  BaseMaxHealth: 30
   MaxHealth: 0
   Armor: 0
   Status: 1
@@ -134,13 +134,14 @@ MonoBehaviour:
   ManualFlip: 1
   footOffset: {x: -0.15, y: -0.51, z: 0}
   speed: 1
-  visionRange: 5
+  visionRange: 8
   minimumDistance: 0.2
   seekPathInterval: 0.5
   dashProbability: 0
   dashRange: 0
   dashDuration: 0
   dashCooldown: 0
+  onlyPatrol: 0
   movePositions:
   - {x: 1, y: 0}
 --- !u!114 &852776168081835179
@@ -163,6 +164,8 @@ MonoBehaviour:
   ProjectileComponent: {fileID: 0}
   ProjectileCount: 1
   shootAngle: 30
+  atkSound: {fileID: 0}
+  atkVolume: 1
 --- !u!212 &2104859006870499037
 SpriteRenderer:
   m_ObjectHideFlags: 0

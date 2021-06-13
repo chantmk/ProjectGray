@@ -79,9 +79,11 @@ MonoBehaviour:
   dashRange: 0
   dashDuration: 0
   dashCooldown: 0
+  onlyPatrol: 0
   movePositions: []
   bounceAngle: 60
-  collisionDamage: 2
+  playerCollisionDamage: 1
+  bossCollisionDamage: 5
   consumeTime: 10
 --- !u!212 &8151421871441026833
 SpriteRenderer:

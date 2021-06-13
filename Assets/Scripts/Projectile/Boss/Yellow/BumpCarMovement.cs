@@ -9,7 +9,9 @@ public class BumpCarMovement : EnemyMovement
     [SerializeField]
     private float bounceAngle = 60.0f;
     [SerializeField]
-    private int collisionDamage = 1;
+    private int playerCollisionDamage;
+    [SerializeField]
+    private int bossCollisionDamage;
     [SerializeField]
     private float consumeTime = 10.0f;
     private Vector3 currentHeading;
@@ -77,12 +79,12 @@ public class BumpCarMovement : EnemyMovement
         else if (collisionLayer == LayerMask.NameToLayer("Player") && enemyStats.Status != StatusEnum.Dead)
         {
             RandomHeading(collision);
-            collision.gameObject.GetComponent<CharacterStats>().TakeDamage(collisionDamage);
+            collision.gameObject.GetComponent<CharacterStats>().TakeDamage(playerCollisionDamage);
         }
         else if (collisionLayer == LayerMask.NameToLayer("Boss") && enemyStats.Status == StatusEnum.Dead)
         {
             Debug.Log("Crash");
-            collision.gameObject.GetComponent<BossStats>().TakeCrashDamage(collisionDamage);
+            collision.gameObject.GetComponent<BossStats>().TakeCrashDamage(bossCollisionDamage);
             enemyStats.Die();
         }
         else if (collisionLayer == LayerMask.NameToLayer("PlayerHitbox"))
