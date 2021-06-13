@@ -134,14 +134,14 @@ MonoBehaviour:
   ManualFlip: 1
   footOffset: {x: -0.15, y: -0.51, z: 0}
   speed: 1
-  visionRange: 8
+  visionRange: 10
   minimumDistance: 0.2
   seekPathInterval: 0.5
   dashProbability: 0
   dashRange: 0
   dashDuration: 0
   dashCooldown: 0
-  onlyPatrol: 0
+  onlyPatrol: 1
   movePositions:
   - {x: 1, y: 0}
 --- !u!114 &852776168081835179
@@ -157,13 +157,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackDamage: 1
-  AttackRange: 1
+  AttackRange: 10
   AttackRatio: 0.5
   AttackMaxCooldown: 2
-  IsRange: 0
-  ProjectileComponent: {fileID: 0}
-  ProjectileCount: 1
-  shootAngle: 30
+  IsRange: 1
+  ProjectileComponent: {fileID: 1697653986579597741, guid: 502cd339522e2524bbd4b5501f2cd2fb,
+    type: 3}
+  ProjectileCount: 5
+  shootAngle: 90
   atkSound: {fileID: 0}
   atkVolume: 1
 --- !u!212 &2104859006870499037
