@@ -801,7 +801,8 @@ MonoBehaviour:
   statMultiplierValue: 2
   CameraShake: {fileID: 0}
   SpriteRenderer: {fileID: 0}
-  MindBreakIncrement: 10
+  MindBreakIncrementBlack: 10
+  MindBreakIncrementBlue: 20
 --- !u!114 &620563490
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,7 +35,8 @@ public class PlayerStats : CharacterStats
     public CameraShake CameraShake;
 
     public SpriteRenderer SpriteRenderer;
-    public float MindBreakIncrement;
+    public float MindBreakIncrementBlack;
+    public float MindBreakIncrementBlue;
     private MindManager mindManager;
 
     protected override void Start()
@@ -83,7 +84,15 @@ public class PlayerStats : CharacterStats
 
         if (color != ColorEnum.None)
         {
-            AddMindBreakValue(color, MindBreakIncrement);
+            switch (color)
+            {
+                case ColorEnum.Black:
+                    AddMindBreakValue(color, MindBreakIncrementBlack);
+                    break;
+                case ColorEnum.Blue:
+                    AddMindBreakValue(color, MindBreakIncrementBlue);
+                    break;
+            }
         }
     }
 
@@ -106,9 +115,20 @@ public class PlayerStats : CharacterStats
         var newValue = currentValue + value;
         UpdateMindBreakValue(color, newValue);
         
-        if (newValue >= 100f + MindBreakIncrement)
+        switch (color)
         {
-            MindBreak(color);
+            case ColorEnum.Black:
+                if (newValue >= 100f + MindBreakIncrementBlack)
+                {
+                    MindBreak(color);
+                }
+                break;
+            case ColorEnum.Blue:
+                if (newValue >= 100f + MindBreakIncrementBlue)
+                {
+                    MindBreak(color);
+                }
+                break;
         }
     }
     
