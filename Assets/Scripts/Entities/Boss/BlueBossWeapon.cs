@@ -17,9 +17,15 @@ public class BlueBossWeapon : BossWeapon
     [SerializeField]
     private int[] EnrageAttackCount = new int[3];
     [SerializeField]
+    private float EnrageAttackPatternRange = 10.0f;
+    [SerializeField]
     private int[] EnrageAttackCount2 = new int[3];
     [SerializeField]
+    private float EnrageAttackPattern2Range = 10.0f;
+    [SerializeField]
     private int[] HyperAttackCount = new int[3];
+    [SerializeField]
+    private float HyperAttackPatternRange = 20.0f;
 
     private int[] rangeAttackPattern = new int[] { 0, 1, 0, 1, 1 };
     private int rangeCount = 0;
@@ -37,11 +43,7 @@ public class BlueBossWeapon : BossWeapon
                 CalmAttack2(0);
                 break;
         }
-        rangeCount += 1;
-        if (rangeCount >= rangeAttackPattern.Length)
-        {
-            rangeCount = 0;
-        }
+        rangeCount = (rangeCount + 1) % rangeAttackPattern.Length;
     }
     public void CalmAttack(int EnrageNumber)
     {
@@ -69,7 +71,7 @@ public class BlueBossWeapon : BossWeapon
     public override void EnrageAttack(int EnrageNumber)
     {
         base.EnrageAttack(EnrageNumber);
-        switch (enrageCount)
+        switch (enrageAttackPattern[enrageCount])
         {
             case 0:
                 EnrageAttackPattern(EnrageNumber);
@@ -81,16 +83,11 @@ public class BlueBossWeapon : BossWeapon
                 EnrageAttackPattern3(EnrageNumber);
                 break;
         }
-        enrageCount += 1;
-        if (enrageCount >= enrageAttackPattern.Length)
-        {
-            enrageCount = 0;
-        }
+        enrageCount = (enrageCount + 1)%enrageAttackPattern.Length;
     }
 
     public void EnrageAttackPattern(int EnrageNumber)
     {
-        Debug.Log("Enrage1");
         int count = EnrageAttackCount[(int)bossStats.Aggro];
         float delta = EnrageAttackRange / count;
         var bullet = Instantiate(EnrageAttacks[0], centerPoint, Quaternion.Euler(Vector3.zero));
@@ -106,7 +103,6 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern2(int EnrageNumber)
     {
-        Debug.Log("Enrage2");
         int count = EnrageAttackCount2[(int)bossStats.Aggro];
         float delta = EnrageAttackRange / count;
         var bullet = Instantiate(EnrageAttacks[0], centerPoint, Quaternion.Euler(Vector3.zero));
@@ -122,12 +118,11 @@ public class BlueBossWeapon : BossWeapon
 
     public void EnrageAttackPattern3(int EnrageNumber)
     {
-        Debug.Log("Enrage3");
         int count = EnrageAttackCount2[(int)bossStats.Aggro];
         float degree = 360.0f / count;
         for (int i = 0; i < count; i++)
         {
-            Vector2 position = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * EnrageAttackRange;
+            Vector2 position = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * EnrageAttackPattern2Range/2.0f;
             var bullet = Instantiate(EnrageAttacks[0], centerPoint + position, Quaternion.Euler(Vector3.zero));
             bullet.GetComponent<Projectile>().Shoot(Quaternion.AngleAxis(90, Vector3.forward)*position.normalized);
         }
@@ -136,22 +131,21 @@ public class BlueBossWeapon : BossWeapon
     public override void HyperAttack(int HyperNumber)
     {
         base.HyperAttack(HyperNumber);
-        Debug.Log("Hyper ");
         float count = HyperAttackCount[2];
         float degree = 360.0f / count;
         for (int i = 0; i < count; i++)
         {
-            Vector2 position = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * HyperAttackRange*0.33f;
+            Vector2 position = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * HyperAttackPatternRange*0.33f;
             var bullet = Instantiate(HyperAttacks[0], centerPoint + position, Quaternion.Euler(Vector3.zero));
-            bullet.GetComponent<Projectile>().Shoot(-position);
+            //bullet.GetComponent<Projectile>().Shoot(-position);
 
-            Vector2 position2 = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * HyperAttackRange*0.66f;
-            var bullet2 = Instantiate(HyperAttacks[0], centerPoint + position2, Quaternion.Euler(Vector3.zero));
-            bullet2.GetComponent<Projectile>().Shoot(-position);
+            Vector2 position2 = Quaternion.AngleAxis(degree * i+30, Vector3.forward) * Vector3.right * HyperAttackPatternRange * 0.66f;
+            var bullet2 = Instantiate(HyperAttacks[1], centerPoint + position2, Quaternion.Euler(Vector3.zero));
+            //bullet2.GetComponent<Projectile>().Shoot(-position);
 
-            Vector2 position3 = Quaternion.AngleAxis(degree * i, Vector3.forward) * Vector3.right * HyperAttackRange;
-            var bullet3 = Instantiate(HyperAttacks[0], centerPoint + position3, Quaternion.Euler(Vector3.zero));
-            bullet3.GetComponent<Projectile>().Shoot(-position);
+            Vector2 position3 = Quaternion.AngleAxis(degree * i+60, Vector3.forward) * Vector3.right * HyperAttackPatternRange;
+            var bullet3 = Instantiate(HyperAttacks[2], centerPoint + position3, Quaternion.Euler(Vector3.zero));
+            //bullet3.GetComponent<Projectile>().Shoot(-position);
         }
     }
 
@@ -181,5 +175,15 @@ public class BlueBossWeapon : BossWeapon
                 }
                 break;
         }
+    }
+
+    public override void OnDrawGizmosSelected()
+    {
+        base.OnDrawGizmosSelected();
+        Gizmos.DrawWireSphere(transform.position, CalmAttack2Range);
+        Gizmos.DrawWireSphere(transform.position, HyperAttackPatternRange);
+        Gizmos.DrawWireSphere(transform.position, EnrageAttackPattern2Range);
+        Gizmos.DrawWireSphere(transform.position, EnrageAttackPatternRange);
+        Gizmos.DrawWireSphere(transform.position, EnrageAttackPatternRange);
     }
 }

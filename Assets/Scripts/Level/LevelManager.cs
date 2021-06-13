@@ -26,6 +26,5 @@ namespace Level
         {
             LeftGate.SetActive(false);
         }
-        
     }
 }

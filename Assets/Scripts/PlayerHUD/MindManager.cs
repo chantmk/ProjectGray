@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ public class MindManager : MonoBehaviour
     private GameObject blueGuardian;
     private Image blueBar;
     private bool isBlueGuard = false;
+    private Animator mindAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,13 @@ public class MindManager : MonoBehaviour
         blueGuardian = blueMind.transform.Find("Guardian").gameObject;
         blueBar = blueMind.transform.Find("BlueBar").GetComponent<Image>();
         blueBar.fillAmount = 0.0f;
+        mindAnim = GetComponent<Animator>();
+        EventPublisher.SetGuardianUI += SetGuardian;
+    }
+
+    private void OnDestroy()
+    {
+        EventPublisher.SetGuardianUI -= SetGuardian;
     }
 
     // Update is called once per frame
@@ -37,15 +46,34 @@ public class MindManager : MonoBehaviour
         blueGuardian.SetActive(isBlueGuard);
     }
 
-    public void UpdateBar(CharacterNameEnum characterEnum, float ratio)
+    public void UpdateBar(ColorEnum colorEnum, float ratio)
     {
-        switch(characterEnum)
+        switch(colorEnum)
         {
-            case CharacterNameEnum.Black:
+            case ColorEnum.Black:
                 blackBar.fillAmount = ratio;
+                mindAnim.SetBool("isBlackFull", ratio == 1f);
+               
+                
                 break;
-            case CharacterNameEnum.Blue:
+            case ColorEnum.Blue:
                 blueBar.fillAmount = ratio;
+                mindAnim.SetBool("isBlueFull", ratio == 1f);
+                break;
+        }
+    }
+
+    public void SetGuardian(ColorEnum colorEnum, bool enable)
+    {
+        switch(colorEnum)
+        {
+            case ColorEnum.Black:
+                if (isBlackGuard != enable)
+                    isBlackGuard = enable;
+                break;
+            case ColorEnum.Blue:
+                if (isBlueGuard != enable)
+                isBlueGuard = enable;
                 break;
         }
     }

@@ -207,7 +207,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f4fb789eec258a409cb75ca4b01ea1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogues: []
+  catDialogues:
+  - isWait: 1
+    timeOut: 0
+    catSentences:
+    - sentence: "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35\u0E17\u0E32\u0E22\u0E32\u0E17\u0E19\u0E49\u0E2D\u0E22\n"
+    - sentence: "\u0E19\u0E32\u0E22\u0E40\u0E08\u0E47\u0E1A\u0E44\u0E2B\u0E21"
+    - sentence: "\u0E40\u0E1B\u0E47\u0E19\u0E2D\u0E30\u0E44\u0E23\u0E23\u0E36\u0E40\u0E1B\u0E25\u0E48\u0E32"
 --- !u!1 &2991220634316828271
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,8 @@ public class YellowBossPatrol : YellowBossBehaviour
 
     private void updateMovingAnimation()
     {
-        var direction = bossMovement.GetVectorToPlayer();
+        //var direction = bossMovement.GetVectorToPlayer();
+        var direction = new Vector2(0.0f, -1.0f);
         animator.SetFloat(AnimatorParams.Horizontal, direction.normalized.x);
         animator.SetFloat(AnimatorParams.Vertical, direction.normalized.y);
     }

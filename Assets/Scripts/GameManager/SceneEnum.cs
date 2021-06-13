@@ -1,7 +1,7 @@
 ﻿public enum SceneEnum
 {
     MainMenuScene,
-    BlackTutorialScene,
+    // BlackTutorialScene,
     BlackEnemyScene,
     BlackBossScene,
     BlueEnemyScene,
