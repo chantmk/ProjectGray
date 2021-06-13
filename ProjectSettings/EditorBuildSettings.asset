@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOverScene/GameOverYellow.unity
     guid: 209ad07ffb749984184757185a44f560
+  - enabled: 1
+    path: Assets/Scenes/ToBeContinueScene.unity
+    guid: 96754aedc6066e54f98c987afa0bb203
   m_configObjects: {}

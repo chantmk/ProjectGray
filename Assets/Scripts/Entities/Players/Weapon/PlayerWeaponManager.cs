@@ -97,6 +97,18 @@ public class PlayerWeaponManager : MonoBehaviour
                 }
 
                 break;
+            case CharacterNameEnum.Yellow:
+                Debug.Log("End of yellow");
+                if (decision == DecisionEnum.Kill)
+                {
+                    Debug.Log("Choose yellow kill");
+                }
+                else if (decision == DecisionEnum.Mercy)
+                {
+                    Debug.Log("Choose yellow mercy");
+                }
+
+                break;
         }
                 
     }
