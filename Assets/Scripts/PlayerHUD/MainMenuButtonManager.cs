@@ -18,6 +18,7 @@ public class MainMenuButtonManager : MonoBehaviour
             videoPlayer = transform.parent.Find("VideoPlayer").GetComponent<VideoPlayer>();
         }
         videoPlayer.loopPointReached += StopVideo;
+        Cursor.visible = true;
     }
 
     public void OnPlayButtonClicked()
