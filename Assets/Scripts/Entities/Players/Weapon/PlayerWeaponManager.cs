@@ -137,19 +137,19 @@ public class PlayerWeaponManager : MonoBehaviour
         //Debug
         if (Input.GetKeyDown(KeyCode.LeftBracket))
         {
-            PlayerConfig.HaveWeapon.Add(WeaponIDEnum.Black);
+            PlayerConfig.HaveWeapon = PlayerConfig.HaveWeaponBluePreset;
         }
         if (Input.GetKeyDown(KeyCode.RightBracket))
         {
-            PlayerConfig.HaveWeapon.Add(WeaponIDEnum.Blue);
+            PlayerConfig.HaveWeapon = PlayerConfig.HaveWeaponYellowPreset;
         }
         if (Input.GetKeyDown(KeyCode.Minus))
         {
-            PlayerConfig.IsWeaponBlackSpecial = true;
+            PlayerConfig.IsWeaponBlackSpecial = !PlayerConfig.IsWeaponBlackSpecial;
         }
         if (Input.GetKeyDown(KeyCode.Equals))
         {
-            PlayerConfig.IsWeaponBlueSpecial = true;
+            PlayerConfig.IsWeaponBlueSpecial = !PlayerConfig.IsWeaponBlueSpecial;
         }
     }
 
