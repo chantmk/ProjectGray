@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
+using Random = UnityEngine.Random;
 
 public class EnemyStats : CharacterStats
 {
@@ -16,6 +18,8 @@ public class EnemyStats : CharacterStats
         base.Start();
         healthPackPrefab = Resources.Load("Healthpack") as GameObject;
         healthPackManager = healthPackPrefab.GetComponent<HealthPackManager>();
+        
+        EventPublisher.TriggerEnemySpawn();
     }
     
     protected override void GetHealthBarImage()
@@ -41,5 +45,10 @@ public class EnemyStats : CharacterStats
         }
         
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        EventPublisher.TriggerEnemyDestroy();
     }
 }
