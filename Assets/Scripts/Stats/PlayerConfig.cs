@@ -55,4 +55,26 @@ public static class PlayerConfig
     };
 
     public static SceneEnum CurrentScene = SceneEnum.MainMenuScene;
+
+    public static void HardCode()
+    {
+        DamageMultiplier = 1;
+        HealthPackCount = 0;
+        ResemblanceCount = 0;
+        healValue = 5;
+        HaveWeapon = new List<WeaponIDEnum> 
+        {
+            WeaponIDEnum.Cheap
+            
+        };
+        IsWeaponBlackSpecial = false;
+        IsWeaponBlueSpecial = false;
+        HaveResemblanceDict = new Dictionary<ColorEnum, bool>
+        {
+            {ColorEnum.Black, false},
+            {ColorEnum.Blue, false}
+        };
+
+        CurrentScene = SceneEnum.MainMenuScene;
+    }
 }
