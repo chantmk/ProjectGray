@@ -89,7 +89,7 @@ public class PlayerStats : CharacterStats
 
     private void MindBreak(ColorEnum color)
     {
-        if (GuardianCDDict[color] <= 0f)
+        if (GuardianCDDict[color] <= 0f && PlayerConfig.HaveResemblanceDict[color])
         {
             EventPublisher.TriggerGuardianCall(color);
             GuardianCDDict[color] = GuardianCD;
@@ -158,11 +158,15 @@ public class PlayerStats : CharacterStats
             if (GuardianCDDict[color] > 0f)
             {
                 GuardianCDDict[color] -= Time.fixedDeltaTime;
-                EventPublisher.TriggerSetGuardianUI(color, false);
+            }
+
+            if (GuardianCDDict[color] <= 0f && PlayerConfig.HaveResemblanceDict[color])
+            {
+                EventPublisher.TriggerSetGuardianUI(color,true);
             }
             else
             {
-                EventPublisher.TriggerSetGuardianUI(color, true);
+                EventPublisher.TriggerSetGuardianUI(color, false);
             }
         }
         

@@ -56,6 +56,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
         }
         
+        SetWeapon(WeaponIDEnum.Cheap);
+        
         playerTransform = transform.parent;
         EventPublisher.PlayerPressFire += processFireCommand;
 
@@ -79,7 +81,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 }
                 else if (decision == DecisionEnum.Mercy)
                 {
-                    PlayerConfig.HaveBlackResemblance = true;
+                    PlayerConfig.HaveResemblanceDict[ColorEnum.Black] = true;
                 }
                 
                 break;
@@ -91,7 +93,7 @@ public class PlayerWeaponManager : MonoBehaviour
                 }
                 else if (decision == DecisionEnum.Mercy)
                 {
-                    PlayerConfig.HaveBlueResemblance = true;
+                    PlayerConfig.HaveResemblanceDict[ColorEnum.Blue] = true;
                 }
 
                 break;
