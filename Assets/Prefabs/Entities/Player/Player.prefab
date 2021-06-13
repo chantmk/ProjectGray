@@ -790,8 +790,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   depleteHealth: 0
   DebuffColor: 0
-  MindBreakDecayRate: 5
-  MindBreakDecayCD: 5
+  MindBreakDecayRate: 25
+  MindBreakDecayCD: 6.5
   GuardianCD: 20
   RechargeStamina: 20
   BaseRechargeStamina: 20
@@ -800,7 +800,7 @@ MonoBehaviour:
   DamageMultiplier: 1
   statMultiplierValue: 2
   CameraShake: {fileID: 0}
-  SpriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   MindBreakIncrementBlack: 10
   MindBreakIncrementBlue: 20
 --- !u!114 &620563490

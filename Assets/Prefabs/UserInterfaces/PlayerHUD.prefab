@@ -3492,6 +3492,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7310340344989926447, guid: 591b1b850d1c3d44e994365814b12fcb,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.4811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310340344989926447, guid: 591b1b850d1c3d44e994365814b12fcb,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.32623932
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310340344989926447, guid: 591b1b850d1c3d44e994365814b12fcb,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.2746084
+      objectReference: {fileID: 0}
     - target: {fileID: 7390554562255851762, guid: 591b1b850d1c3d44e994365814b12fcb,
         type: 3}
       propertyPath: m_Name
@@ -3886,7 +3901,7 @@ PrefabInstance:
     - target: {fileID: 3787598157845056508, guid: ee10db127cbe0674592ca11000550b30,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 269.99988
       objectReference: {fileID: 0}
     - target: {fileID: 3787598157845056508, guid: ee10db127cbe0674592ca11000550b30,
         type: 3}
@@ -3931,7 +3946,7 @@ PrefabInstance:
     - target: {fileID: 3787598157845056508, guid: ee10db127cbe0674592ca11000550b30,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -135.00006
       objectReference: {fileID: 0}
     - target: {fileID: 3787598157845056508, guid: ee10db127cbe0674592ca11000550b30,
         type: 3}
@@ -3952,6 +3967,33 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236289558743223582, guid: ee10db127cbe0674592ca11000550b30,
+        type: 3}
+      propertyPath: m_Text
+      value: 'MEOWMEOWMEOWMEOW
+
+        MEOWMEOWMEOWMEOW'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236289558743223582, guid: ee10db127cbe0674592ca11000550b30,
+        type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236289558743223582, guid: ee10db127cbe0674592ca11000550b30,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5236289558743223582, guid: ee10db127cbe0674592ca11000550b30,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754833743604006845, guid: ee10db127cbe0674592ca11000550b30,
+        type: 3}
+      propertyPath: delayTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee10db127cbe0674592ca11000550b30, type: 3}
