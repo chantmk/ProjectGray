@@ -81,6 +81,10 @@ public class YellowBossWeapon : BossWeapon
 
     private void EnragePattern1()
     {
+        if ((int)bossStats.Aggro >= enrageAttackPattern.Length)
+        {
+            return;
+        }
         int count = EnrageAttackPatternCount[(int)bossStats.Aggro];
         float delta = (TopRightCorner.x - BottomLeftCorner.x)/count;
         for (int i=0; i < count; i++)
@@ -94,6 +98,10 @@ public class YellowBossWeapon : BossWeapon
 
     private void EnragePattern2()
     {
+        if ((int)bossStats.Aggro >= enrageAttackPattern.Length)
+        {
+            return;
+        }
         int count = EnrageAttackPatternCount[(int)bossStats.Aggro];
         float delta = (TopRightCorner.y - BottomLeftCorner.y) / count;
         for (int i = 0; i < count; i++)
