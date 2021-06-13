@@ -99,7 +99,7 @@ MonoBehaviour:
   bulletObject: {fileID: 3803865437179387221, guid: 584387ce4f609714d988fbaa56048471,
     type: 3}
   weaponID: 0
-  maxFireCooldown: 0.5
+  maxFireCooldown: 0.2
   shootingSound: {fileID: 8300000, guid: b6eb7f09d99dfce4b9b02b71f5d9ba7c, type: 3}
   soundVolume: 0.3
 --- !u!114 &811335465
