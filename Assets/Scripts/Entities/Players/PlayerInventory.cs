@@ -60,6 +60,7 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             UseHealthPack(1);
+            GameObject.FindGameObjectWithTag("Tutorial").GetComponent<buttonGUI>().setHeal();
         }
     }
 

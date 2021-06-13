@@ -9,16 +9,16 @@ public static class PlayerConfig
     public static int HealthPackCount = 0;
     public static int ResemblanceCount = 0;
     public static int healValue = 5;
-    // public static List<WeaponIDEnum> HaveWeapon = new List<WeaponIDEnum>
-    // {
-    //     WeaponIDEnum.Cheap
-    //     
-    // };
     public static List<WeaponIDEnum> HaveWeapon = new List<WeaponIDEnum>
     {
-        WeaponIDEnum.Cheap, WeaponIDEnum.Black, WeaponIDEnum.Blue
+        WeaponIDEnum.Cheap
         
     };
+    // public static List<WeaponIDEnum> HaveWeapon = new List<WeaponIDEnum>
+    // {
+    //     WeaponIDEnum.Cheap, WeaponIDEnum.Black, WeaponIDEnum.Blue
+    //     
+    // };
     
     
     public static List<WeaponIDEnum> HaveWeaponBlackPreset = new List<WeaponIDEnum>
@@ -42,17 +42,17 @@ public static class PlayerConfig
     public static bool IsWeaponBlueSpecial;
     public static bool IsWeaponBlackSpecial;
 
-    // public static Dictionary<ColorEnum, bool> HaveResemblanceDict = new Dictionary<ColorEnum, bool>
-    // {
-    //     {ColorEnum.Black, false},
-    //     {ColorEnum.Blue, false}
-    // };
-    
     public static Dictionary<ColorEnum, bool> HaveResemblanceDict = new Dictionary<ColorEnum, bool>
     {
-        {ColorEnum.Black, true},
-        {ColorEnum.Blue, true}
+        {ColorEnum.Black, false},
+        {ColorEnum.Blue, false}
     };
+    
+    // public static Dictionary<ColorEnum, bool> HaveResemblanceDict = new Dictionary<ColorEnum, bool>
+    // {
+    //     {ColorEnum.Black, true},
+    //     {ColorEnum.Blue, true}
+    // };
 
     public static SceneEnum CurrentScene = SceneEnum.MainMenuScene;
 

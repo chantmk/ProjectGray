@@ -86,6 +86,7 @@ public class BossStats : CharacterStats
         {
             Aggro = BossAggroEnum.LastStand;
             Status = StatusEnum.Immortal;
+            Destroy(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>());
             Debug.Log("Death");
             EventPublisher.TriggerStatus(Aggro);
         }
