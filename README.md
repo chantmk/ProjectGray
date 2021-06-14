@@ -1,5 +1,6 @@
 # ProjectGray
 Game Programming class 
+![til](./GithubAssets/gray_final.gif)
 
 # Before push
 1. make sure game is playable, if not fix it before push or code on your own branch
