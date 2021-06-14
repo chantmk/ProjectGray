@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,6 +44,7 @@ public class BossStats : CharacterStats
         //resemblanceOrbPrefab = Resources.Load("ResemblanceOrb") as GameObject;
         resemblanceManager = resemblanceOrbPrefab.GetComponent<ResemblanceManager>();
         // Work on exception handling below
+        EventPublisher.TriggerEnemySpawn();
     }
 
     // Update is called once per frame
@@ -150,5 +152,10 @@ public class BossStats : CharacterStats
     {
         //Do sth
         Instantiate(resemblanceOrbPrefab, transform.position, Quaternion.identity);
+    }
+
+    private void OnDestroy()
+    {
+        EventPublisher.TriggerEnemyDestroy();
     }
 }
