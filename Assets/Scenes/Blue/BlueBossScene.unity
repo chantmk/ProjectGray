@@ -1224,6 +1224,16 @@ PrefabInstance:
       propertyPath: movePositions.Array.data[2].y
       value: -6
       objectReference: {fileID: 0}
+    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: AttackRange
+      value: 13.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602699276726790867, guid: 55baceafcd8e19d44a99b15999327eac,
+        type: 3}
+      propertyPath: HyperAttackRange
+      value: 14.11
+      objectReference: {fileID: 0}
     - target: {fileID: 8712510896010723697, guid: 55baceafcd8e19d44a99b15999327eac,
         type: 3}
       propertyPath: healthBar
